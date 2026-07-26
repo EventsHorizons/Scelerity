@@ -6,7 +6,9 @@
   --card: #17191e;
   --fg: #f5f7fa;
   --fg-muted: #9ba3af;
-  --fg-subtle: #6b7280;
+  /* Nudged up from #6b7280 to clear WCAG AA (4.85:1) on --bg */
+  --fg-subtle: #767e8b;
+  --danger: #f87171;
   --border: rgba(255, 255, 255, 0.06);
   --border-strong: rgba(255, 255, 255, 0.1);
   --glass: rgba(255, 255, 255, 0.03);
@@ -45,7 +47,9 @@ html[data-theme="light"] {
   --card: #e8eaef;
   --fg: #0c0d10;
   --fg-muted: #5b6472;
-  --fg-subtle: #8b93a1;
+  /* Darkened from #8b93a1 to clear WCAG AA (4.53:1) on the light --bg */
+  --fg-subtle: #667085;
+  --danger: #c02626;
   --border: rgba(12, 13, 16, 0.08);
   --border-strong: rgba(12, 13, 16, 0.14);
   --glass: rgba(255, 255, 255, 0.72);
@@ -66,12 +70,117 @@ html[data-theme="light"] {
   --font-mono: var(--font-mono);
 }
 
+/* ──────────────────────────────────────────────────────────────
+   RESPONSIVE SYSTEM 2.0 — breakpoints, fluid type, containers
+   ────────────────────────────────────────────────────────────── */
+@theme {
+  --breakpoint-xs: 20rem; /* 320 */
+  --breakpoint-sm: 30rem; /* 480 */
+  --breakpoint-md: 48rem; /* 768 */
+  --breakpoint-lg: 64rem; /* 1024 */
+  --breakpoint-xl: 80rem; /* 1280 */
+  --breakpoint-2xl: 96rem; /* 1536 */
+  --breakpoint-3xl: 120rem; /* 1920 */
+
+  /* Fluid type scale — every step interpolates between mobile and desktop. */
+  --text-hero: clamp(2.75rem, 1.55rem + 6vw, 6rem); /* 44 → 96 */
+  --text-hero--line-height: 0.96;
+  --text-hero--letter-spacing: -0.04em;
+
+  --text-display: clamp(2.25rem, 1.35rem + 4.5vw, 4.5rem); /* 36 → 72 */
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.04em;
+
+  --text-h2: clamp(1.875rem, 1.35rem + 2.6vw, 3.5rem); /* 30 → 56 */
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.035em;
+
+  /* Card / list titles 28 → 44 */
+  --text-title: clamp(1.75rem, 1.3rem + 2.2vw, 2.75rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.035em;
+
+  --text-h3: clamp(1.375rem, 1.16rem + 1.05vw, 2rem); /* 22 → 32 */
+  --text-h3--line-height: 1.16;
+  --text-h3--letter-spacing: -0.03em;
+
+  --text-h4: clamp(1.125rem, 1.03rem + 0.48vw, 1.5rem); /* 18 → 24 */
+  --text-h4--line-height: 1.25;
+  --text-h4--letter-spacing: -0.025em;
+
+  /* Subtitles 20 → 32 */
+  --text-sub: clamp(1.25rem, 1.05rem + 1vw, 2rem);
+  --text-sub--line-height: 1.32;
+  --text-sub--letter-spacing: -0.02em;
+
+  /* Lead paragraph 17 → 22 */
+  --text-lead: clamp(1.0625rem, 0.99rem + 0.38vw, 1.375rem);
+  --text-lead--line-height: 1.6;
+
+  /* Body 16 → 20 */
+  --text-body: clamp(1rem, 0.955rem + 0.22vw, 1.25rem);
+  --text-body--line-height: 1.65;
+
+  /* Small 14 → 16 */
+  --text-small: clamp(0.875rem, 0.845rem + 0.15vw, 1rem);
+  --text-small--line-height: 1.55;
+
+  --text-eyebrow: clamp(0.6875rem, 0.66rem + 0.12vw, 0.8125rem);
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.2em;
+
+  --text-micro: clamp(0.625rem, 0.61rem + 0.08vw, 0.75rem);
+  --text-micro--line-height: 1.4;
+}
+
+:root {
+  /* Spacing tokens — every gap in the UI resolves to one of these. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Fluid rhythm tokens */
+  --space-fluid-sm: clamp(1rem, 0.7rem + 1.5vw, 1.75rem);
+  --space-fluid-md: clamp(1.75rem, 1.1rem + 3.2vw, 3.5rem);
+  --space-fluid-lg: clamp(2.75rem, 1.7rem + 5.2vw, 6rem);
+  --space-fluid-xl: clamp(4rem, 2.4rem + 8vw, 9rem);
+
+  /* Container system: mobile 20–24 · tablet 32–48 · desktop 64–96 */
+  --gutter: clamp(1.25rem, 0.85rem + 2.4vw, 6rem);
+  --page-max: 90rem; /* 1440 */
+  --content-max: 80rem; /* 1280 */
+
+  /* Vertical section rhythm */
+  --section-y: clamp(4rem, 2.5rem + 7.5vw, 7.5rem);
+  --section-y-lg: clamp(5.5rem, 3.2rem + 11vw, 11rem);
+
+  /* Minimum accessible touch target */
+  --tap: 2.75rem;
+  --tap-safe: 3rem;
+
+  --header-h: clamp(3.5rem, 3.2rem + 1.2vw, 4.25rem);
+}
+
 * {
   border-color: var(--border);
 }
 
 html {
   scroll-behavior: auto;
+  /* clip (not hidden) so position: sticky keeps working */
+  overflow-x: clip;
+  scroll-padding-top: calc(var(--header-h) + var(--space-6));
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 html,
@@ -146,12 +255,72 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
+  min-width: 20rem;
+}
+
+/* Media never breaks the grid, never deforms. */
+img,
+svg,
+video,
+canvas,
+picture,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+/* Long unbroken strings (emails, URLs) can never force horizontal scroll. */
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+a,
+span,
+button {
+  overflow-wrap: break-word;
 }
 
 ::selection {
   background: var(--selection-bg);
   color: var(--selection-fg);
+}
+
+/* ── Focus: invisible for mouse users, unmistakable for keyboard users ── */
+:focus-visible {
+  outline: 2px solid var(--selection-bg);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+body.has-custom-cursor :focus-visible {
+  outline-color: var(--selection-bg);
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 200;
+  transform: translateY(-200%);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -199,32 +368,257 @@ body {
   will-change: transform, opacity, filter;
 }
 
+/* ──────────────────────────────────────────────────────────────
+   CONTAINERS — content never touches the edge, at any width
+   ────────────────────────────────────────────────────────────── */
+.container-shell {
+  --shell-max: var(--content-max);
+  width: 100%;
+  margin-inline: auto;
+  /* Notched phones in landscape keep their safe area */
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+  max-width: min(calc(var(--shell-max) + var(--gutter) * 2), var(--page-max));
+  container-type: inline-size;
+}
+
+.container-shell--narrow {
+  --shell-max: 48rem; /* 768 */
+}
+
+.container-shell--content {
+  --shell-max: 75rem; /* 1200 */
+}
+
+.container-shell--wide {
+  --shell-max: 80rem; /* 1280 */
+}
+
+.container-shell--full {
+  --shell-max: var(--page-max);
+  max-width: none;
+}
+
 .section-pad {
-  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
 }
 
 .section-y {
-  padding-block: clamp(5rem, 14vw, 9rem);
+  padding-block: var(--section-y);
 }
 
 /* Editorial rhythm — sections are given room to breathe. */
 .section-y-lg {
-  padding-block: clamp(7rem, 18vw, 13rem);
+  padding-block: var(--section-y-lg);
+}
+
+/* ── Auto-fit card grid: reflows without a single media query ── */
+.auto-grid {
+  display: grid;
+  gap: var(--auto-grid-gap, var(--space-6));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, var(--auto-grid-min, 18rem)), 1fr)
+  );
+}
+
+/* ── Editorial header: label above on mobile, aside on desktop ── */
+.section-head {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 64rem) {
+  .section-head {
+    grid-template-columns: minmax(9rem, 3fr) minmax(0, 9fr);
+    gap: var(--space-8);
+  }
+
+  .section-head--baseline {
+    align-items: end;
+  }
+}
+
+/* ── Editorial divider grid ──
+   Horizontal rules while stacked, vertical rules once columns appear.
+   Modifier = number of columns at the widest breakpoint. */
+.rule-grid {
+  display: grid;
+  border-top: 1px solid var(--border);
+}
+
+.rule-grid > * {
+  border-bottom: 1px solid var(--border);
+  padding-block: var(--space-8);
+}
+
+@media (min-width: 48rem) {
+  .rule-grid--2,
+  .rule-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rule-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rule-grid > *:nth-child(n) {
+    padding-block: var(--space-12);
+    padding-inline: var(--space-8);
+    border-inline-start: 1px solid var(--border);
+  }
+
+  .rule-grid--2 > *:nth-child(2n + 1),
+  .rule-grid--4 > *:nth-child(2n + 1),
+  .rule-grid--3 > *:nth-child(3n + 1) {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .rule-grid--2 > *:nth-child(2n),
+  .rule-grid--4 > *:nth-child(2n),
+  .rule-grid--3 > *:nth-child(3n) {
+    padding-inline-end: 0;
+  }
+}
+
+@media (min-width: 80rem) {
+  .rule-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .rule-grid--4 > *:nth-child(n) {
+    padding-inline: var(--space-6);
+    border-inline-start: 1px solid var(--border);
+  }
+
+  .rule-grid--4 > *:nth-child(4n + 1) {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .rule-grid--4 > *:nth-child(4n) {
+    padding-inline-end: 0;
+  }
+}
+
+/* ── Readable measure: 60–75 characters on desktop ── */
+.measure {
+  max-width: 68ch;
+}
+
+.measure-sm {
+  max-width: 46ch;
+}
+
+.measure-lg {
+  max-width: 75ch;
+}
+
+/* ── Guaranteed 48×48 hit area without inflating the visual box ── */
+.tap-target {
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tap-target::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--tap-safe));
+  height: max(100%, var(--tap-safe));
+  transform: translate(-50%, -50%);
 }
 
 .chapter-label {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--fg-subtle);
 }
 
 .glass-panel {
   background: var(--glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  /* Match Tailwind's backdrop pipeline so Lightning CSS cannot collapse it
+     into a webkit-only declaration that Chromium silently ignores. */
+  --tw-backdrop-blur: blur(24px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
   border: 1px solid var(--glass-border);
+}
+
+/* Contact form fields — editorial, light border, generous air.
+   font-size stays at 16px so iOS never zooms the viewport on focus. */
+.field {
+  width: 100%;
+  min-height: var(--tap-safe);
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0.7rem 0;
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.field::placeholder {
+  color: var(--fg-subtle);
+}
+
+.field:focus {
+  border-bottom-color: var(--border-strong);
+}
+
+.field:focus-visible {
+  outline: none;
+  border-bottom-color: var(--selection-bg);
+}
+
+.field[aria-invalid="true"] {
+  border-bottom-color: color-mix(in srgb, var(--danger) 65%, transparent);
+}
+
+.field--textarea {
+  resize: vertical;
+  min-height: 8rem;
+  padding-top: 0.55rem;
+}
+
+.field-select {
+  position: relative;
+}
+
+.field-select::after {
+  content: "";
+  position: absolute;
+  right: 0.15rem;
+  top: 50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid var(--fg-subtle);
+  border-bottom: 1.5px solid var(--fg-subtle);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.field--select {
+  cursor: pointer;
+  padding-right: 1.5rem;
+  text-overflow: ellipsis;
+}
+
+.field--select option {
+  background: var(--surface);
+  color: var(--fg);
 }
 
 .btn-gradient {
@@ -241,10 +635,18 @@ body {
     filter 0.4s ease;
 }
 
-.btn-gradient:hover {
+@media (hover: hover) and (pointer: fine) {
+  .btn-gradient:hover {
+    background-position: 100% 50%;
+    filter: brightness(1.06);
+    box-shadow: 0 0 40px rgba(92, 141, 255, 0.4);
+  }
+}
+
+/* Touch devices get a real pressed state instead of a stuck hover. */
+.btn-gradient:active {
   background-position: 100% 50%;
-  filter: brightness(1.06);
-  box-shadow: 0 0 40px rgba(92, 141, 255, 0.4);
+  filter: brightness(1.08);
 }
 
 /* Light sweep that shoots across on hover. */
@@ -262,8 +664,15 @@ body {
   transition: transform 0.6s cubic-bezier(0.05, 0.9, 0.1, 1);
 }
 
-.group\/btn:hover .btn-sweep,
-.btn-gradient:hover .btn-sweep {
+@media (hover: hover) and (pointer: fine) {
+  .group\/btn:hover .btn-sweep,
+  .btn-gradient:hover .btn-sweep {
+    transform: translate3d(140%, 0, 0);
+  }
+}
+
+.group\/btn:active .btn-sweep,
+.btn-gradient:active .btn-sweep {
   transform: translate3d(140%, 0, 0);
 }
 
@@ -332,13 +741,31 @@ body {
   transition: opacity 0.4s ease;
 }
 
-.kinetic-card:hover::before {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  .kinetic-card:hover::before {
+    opacity: 1;
+  }
+
+  .kinetic-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 20px 60px -30px rgba(92, 141, 255, 0.5);
+  }
 }
 
-.kinetic-card:hover {
-  border-color: var(--border-strong);
-  box-shadow: 0 20px 60px -30px rgba(92, 141, 255, 0.5);
+/* Coarse pointers: the card responds to the press itself. */
+@media (hover: none), (pointer: coarse) {
+  .kinetic-card:active {
+    border-color: var(--border-strong);
+    box-shadow: 0 16px 44px -28px rgba(92, 141, 255, 0.45);
+    transform: scale(0.995);
+  }
+
+  .kinetic-card {
+    transition:
+      box-shadow 0.35s ease,
+      border-color 0.35s ease,
+      transform 0.25s ease;
+  }
 }
 
 /* Secondary button — transparent until hover reveals gradient fill. */
@@ -355,12 +782,18 @@ body {
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-secondary:hover .btn-secondary-fill {
-  opacity: 0.14;
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover .btn-secondary-fill {
+    opacity: 0.14;
+  }
+
+  .btn-secondary:hover {
+    border-color: transparent;
+  }
 }
 
-.btn-secondary:hover {
-  border-color: transparent;
+.btn-secondary:active .btn-secondary-fill {
+  opacity: 0.18;
 }
 
 /* Cursor — theme-aware bolt + core. */
@@ -519,6 +952,18 @@ html[data-theme="light"] .ambient-glow__orb-b {
   opacity: 0.5;
 }
 
+/* Large blurs are the most expensive paint on phones — scale them down. */
+@media (max-width: 47.99rem) {
+  .ambient-glow__orb {
+    filter: blur(56px);
+  }
+
+  .ambient-glow--featured .ambient-glow__orb-a,
+  .ambient-glow--cta .ambient-glow__orb-b {
+    display: none;
+  }
+}
+
 @keyframes ambient-drift-a {
   from {
     transform: translate3d(0, 0, 0) scale(1);
@@ -537,6 +982,66 @@ html[data-theme="light"] .ambient-glow__orb-b {
   }
 }
 
+/* ──────────────────────────────────────────────────────────────
+   MOBILE FULLSCREEN NAVIGATION
+   ────────────────────────────────────────────────────────────── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  /* svh keeps the panel exact while mobile browser chrome collapses */
+  height: 100svh;
+  padding-inline: var(--gutter);
+  padding-top: calc(var(--header-h) + var(--space-6));
+  padding-bottom: max(var(--space-8), env(safe-area-inset-bottom));
+  /* Solid by default so the menu stays legible without backdrop-filter.
+     Frost is applied via Tailwind utilities on the element itself — Lightning CSS
+     rewrites bare `backdrop-filter` declarations to a webkit-only form that
+     Chromium ignores. */
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  overscroll-behavior: contain;
+  overflow-y: auto;
+}
+
+.nav-overlay__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--tap-safe);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(1.75rem, 1.2rem + 2.6vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--fg);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-overlay__index {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-micro);
+  letter-spacing: 0.18em;
+  color: var(--fg-subtle);
+}
+
+.nav-overlay__link:active {
+  color: var(--fg-muted);
+}
+
+/* Scroll lock without layout shift or iOS rubber-banding. */
+body.nav-locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   MOTION PREFERENCES
+   ────────────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -544,10 +1049,15 @@ html[data-theme="light"] .ambient-glow__orb-b {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
   html,
   body {
     transition: none;
+  }
+
+  .ambient-glow__orb {
+    animation: none;
   }
 }

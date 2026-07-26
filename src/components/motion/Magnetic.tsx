@@ -53,7 +53,10 @@ export function Magnetic({ children, strength = 0.4, className }: Props) {
   }, [enabled, strength]);
 
   return (
-    <div ref={ref} className={cn("inline-block will-change-transform", className)}>
+    <div
+      ref={ref}
+      className={cn("inline-block max-w-full will-change-transform", className)}
+    >
       {children}
     </div>
   );

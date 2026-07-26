@@ -16,7 +16,8 @@ export function Section({ children, id, className, full = false }: Props) {
     <section
       id={id}
       className={cn(
-        "relative overflow-hidden",
+        // clip contains decorative overflow without creating a scroll container
+        "relative w-full overflow-x-clip",
         full && "min-h-[100svh]",
         className,
       )}

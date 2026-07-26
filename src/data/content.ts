@@ -14,6 +14,10 @@ export type Content = {
     about: string;
     services: string;
     contact: string;
+    menu: string;
+    openMenu: string;
+    closeMenu: string;
+    skipToContent: string;
   };
   hero: {
     brand: string;
@@ -65,11 +69,29 @@ export type Content = {
     items: { q: string; a: string }[];
   };
   cta: {
+    eyebrow: string;
     headline: string;
-    body: string;
+    body: string[];
     primary: string;
-    secondary: string;
     email: string;
+    location: string;
+    response: string;
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      source: string;
+      sourcePlaceholder: string;
+      message: string;
+      messagePlaceholder: string;
+      captcha: string;
+      submit: string;
+      submitting: string;
+      success: string;
+      error: string;
+      required: string;
+      sources: { value: string; label: string }[];
+    };
   };
   footer: {
     tagline: string;
@@ -84,6 +106,10 @@ export const content: Record<Locale, Content> = {
       about: "Estudio",
       services: "Servicios",
       contact: "Contacto",
+      menu: "Menú",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
+      skipToContent: "Saltar al contenido",
     },
     hero: {
       brand: "Scelerity",
@@ -265,11 +291,41 @@ export const content: Record<Locale, Content> = {
       ],
     },
     cta: {
+      eyebrow: "Let's build something exceptional",
       headline: "Construyamos algo que se mueva.",
-      body: "Cuéntanos el proyecto. Respondemos en menos de 48 horas.",
-      primary: "Agendar llamada",
-      secondary: "Escribir",
-      email: "hello@scelerity.studio",
+      body: [
+        "Creamos experiencias digitales de alto impacto para empresas que buscan diferenciarse mediante diseño, desarrollo, inteligencia artificial y tecnología.",
+        "Cuéntanos tu idea y nuestro equipo se pondrá en contacto contigo en menos de 24 horas.",
+      ],
+      primary: "Agenda una llamada",
+      email: "hello@scelerity.co",
+      location: "Remote · Worldwide",
+      response: "Respuesta en menos de 24 horas",
+      form: {
+        name: "Nombre",
+        email: "Correo electrónico",
+        phone: "Teléfono",
+        source: "¿Cómo nos conoces?",
+        sourcePlaceholder: "Selecciona una opción",
+        message: "Mensaje",
+        messagePlaceholder: "Cuéntanos sobre tu proyecto...",
+        captcha: "No soy un robot",
+        submit: "Enviar mensaje",
+        submitting: "Enviando...",
+        success: "Mensaje enviado. Te respondemos pronto.",
+        error: "No pudimos enviar el mensaje. Inténtalo de nuevo.",
+        required: "Campo obligatorio",
+        sources: [
+          { value: "google", label: "Google" },
+          { value: "linkedin", label: "LinkedIn" },
+          { value: "instagram", label: "Instagram" },
+          { value: "behance", label: "Behance" },
+          { value: "dribbble", label: "Dribbble" },
+          { value: "client", label: "Cliente" },
+          { value: "referral", label: "Referido" },
+          { value: "other", label: "Otro" },
+        ],
+      },
     },
     footer: {
       tagline: "Craft. Velocidad. Precisión.",
@@ -282,6 +338,10 @@ export const content: Record<Locale, Content> = {
       about: "Studio",
       services: "Services",
       contact: "Contact",
+      menu: "Menu",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      skipToContent: "Skip to content",
     },
     hero: {
       brand: "Scelerity",
@@ -463,11 +523,41 @@ export const content: Record<Locale, Content> = {
       ],
     },
     cta: {
-      headline: "Let’s build something that moves.",
-      body: "Tell us about the project. We reply within 48 hours.",
+      eyebrow: "Let's build something exceptional",
+      headline: "Let's build something that moves.",
+      body: [
+        "We create high-impact digital experiences for companies that want to stand out through design, development, artificial intelligence, and technology.",
+        "Tell us your idea and our team will get back to you within 24 hours.",
+      ],
       primary: "Book a call",
-      secondary: "Write to us",
-      email: "hello@scelerity.studio",
+      email: "hello@scelerity.co",
+      location: "Remote · Worldwide",
+      response: "Reply within 24 hours",
+      form: {
+        name: "Name",
+        email: "Email",
+        phone: "Phone",
+        source: "How did you find us?",
+        sourcePlaceholder: "Select an option",
+        message: "Message",
+        messagePlaceholder: "Tell us about your project...",
+        captcha: "I'm not a robot",
+        submit: "Send message",
+        submitting: "Sending...",
+        success: "Message sent. We'll be in touch soon.",
+        error: "We couldn't send the message. Please try again.",
+        required: "Required field",
+        sources: [
+          { value: "google", label: "Google" },
+          { value: "linkedin", label: "LinkedIn" },
+          { value: "instagram", label: "Instagram" },
+          { value: "behance", label: "Behance" },
+          { value: "dribbble", label: "Dribbble" },
+          { value: "client", label: "Client" },
+          { value: "referral", label: "Referral" },
+          { value: "other", label: "Other" },
+        ],
+      },
     },
     footer: {
       tagline: "Craft. Speed. Precision.",

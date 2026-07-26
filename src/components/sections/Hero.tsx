@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { SplitText } from "@/components/motion/SplitText";
 import { Section } from "@/components/layout/Section";
+import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
 import { registerGsap, gsap } from "@/lib/gsap";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -29,7 +30,7 @@ export function Hero() {
 
     const ctx = gsap.context(() => {
       gsap.set(".hero-sub", { y: 18, autoAlpha: 0 });
-      gsap.set(".hero-cta", { x: -28, autoAlpha: 0 });
+      gsap.set(".hero-cta", { y: 18, autoAlpha: 0 });
       gsap.set(".hero-energy", { autoAlpha: 0 });
 
       const tl = gsap.timeline({ defaults: { ease: "craft" } });
@@ -62,7 +63,7 @@ export function Hero() {
 
       tl.to(".hero-sub", { y: 0, autoAlpha: 1, duration: 0.65 }, 1.35).to(
         ".hero-cta",
-        { x: 0, autoAlpha: 1, duration: 0.7, stagger: 0.1 },
+        { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.1 },
         1.55,
       );
     }, el);
@@ -71,58 +72,70 @@ export function Hero() {
   }, [reduced, t.hero.headline]);
 
   return (
-    <Section
-      id="top"
-      full
-      className="flex flex-col justify-center pb-32 pt-32"
-    >
+    <Section id="top" full className="flex flex-col justify-center">
       <AmbientGlow variant="hero" />
-      <div ref={root} className="relative z-10">
+
+      <div
+        ref={root}
+        className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-[var(--space-fluid-xl)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]"
+      >
+        {/*
+          Mobile: the energy core sits centred behind the composition.
+          Desktop: it slides right and grows into the negative space.
+        */}
         <div
-          className="hero-energy pointer-events-none absolute -right-[8%] top-1/2 h-[min(88vh,760px)] w-[min(58vw,720px)] -translate-y-1/2"
+          className="hero-energy pointer-events-none absolute left-1/2 top-1/2 h-[min(60svh,26rem)] w-[min(120%,34rem)] -translate-x-1/2 -translate-y-1/2 opacity-60 sm:h-[min(64svh,30rem)] sm:w-[min(105%,38rem)] md:opacity-75 lg:left-auto lg:right-[-6%] lg:h-[min(88svh,47.5rem)] lg:w-[min(56vw,45rem)] lg:translate-x-0 lg:opacity-100"
           aria-hidden
         >
           <EnergyField />
         </div>
 
-        <div className="section-pad relative z-10 mx-auto w-full max-w-[1200px]">
-          <div className="relative max-w-3xl">
-            <div
-              className="hero-sweep speed-line pointer-events-none absolute -top-5 left-0 h-px w-44 rounded-full"
-              aria-hidden
-            />
-            <SplitText
-              text={t.hero.headline}
-              as="h1"
-              paused
-              onReady={(chars) => {
-                charsRef.current = chars;
-              }}
-              className="font-display text-[clamp(2.75rem,7.5vw,6rem)] font-semibold leading-[0.98] tracking-[-0.04em]"
-            />
-          </div>
-
-          <p className="hero-sub mt-8 max-w-md text-base text-[var(--fg-muted)] sm:text-lg">
-            {t.hero.sub}
-          </p>
-
-          <div className="mt-14 flex flex-wrap items-center gap-3">
-            <div className="hero-cta">
-              <Magnetic>
-                <Button href="#contact" size="lg">
-                  {t.hero.ctaPrimary}
-                </Button>
-              </Magnetic>
+        <Container size="content" className="relative z-10">
+          <div className="flex flex-col items-center text-center lg:max-w-[62ch] lg:items-start lg:text-left">
+            <div className="relative w-full">
+              <div
+                className="hero-sweep speed-line pointer-events-none absolute -top-5 left-1/2 h-px w-32 -translate-x-1/2 rounded-full sm:w-44 lg:left-0 lg:translate-x-0"
+                aria-hidden
+              />
+              <SplitText
+                text={t.hero.headline}
+                as="h1"
+                paused
+                onReady={(chars) => {
+                  charsRef.current = chars;
+                }}
+                className="text-balance font-display text-hero font-semibold"
+              />
             </div>
-            <div className="hero-cta">
-              <Magnetic strength={0.25}>
-                <Button href="#work" variant="secondary" size="lg">
-                  {t.hero.ctaSecondary}
-                </Button>
-              </Magnetic>
+
+            <p className="hero-sub mt-[var(--space-6)] max-w-[34ch] text-sub text-[var(--fg-muted)] sm:mt-[var(--space-8)]">
+              {t.hero.sub}
+            </p>
+
+            <div className="mt-[var(--space-10)] flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4 lg:mt-[var(--space-12)]">
+              <div className="hero-cta w-full sm:w-auto">
+                <Magnetic className="w-full sm:w-auto">
+                  <Button href="#contact" size="lg" block className="sm:w-auto">
+                    {t.hero.ctaPrimary}
+                  </Button>
+                </Magnetic>
+              </div>
+              <div className="hero-cta w-full sm:w-auto">
+                <Magnetic strength={0.25} className="w-full sm:w-auto">
+                  <Button
+                    href="#work"
+                    variant="secondary"
+                    size="lg"
+                    block
+                    className="sm:w-auto"
+                  >
+                    {t.hero.ctaSecondary}
+                  </Button>
+                </Magnetic>
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     </Section>
   );

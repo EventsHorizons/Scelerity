@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/context/LocaleContext";
+import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/brand/Logo";
 
 export function Footer() {
@@ -8,25 +9,30 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="section-pad border-t border-[var(--border)] pb-10 pt-8">
-      <div className="mx-auto flex max-w-[1100px] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="border-t border-[var(--border)]">
+      <Container
+        size="content"
+        className="flex flex-col gap-[var(--space-6)] pb-[max(var(--space-10),env(safe-area-inset-bottom))] pt-[var(--space-8)] md:flex-row md:items-center md:justify-between"
+      >
         <div>
-          <Logo className="text-base" />
-          <p className="mt-2 text-sm text-[var(--fg-muted)]">{t.footer.tagline}</p>
+          <Logo className="text-[1.0625rem]" />
+          <p className="mt-2 text-small text-[var(--fg-muted)]">
+            {t.footer.tagline}
+          </p>
         </div>
-        <div className="flex flex-col gap-1 text-sm text-[var(--fg-subtle)] sm:items-end">
+        <div className="flex flex-col gap-1 text-small text-[var(--fg-subtle)] md:items-end">
           <a
             href={`mailto:${t.cta.email}`}
             data-cursor="link"
-            className="transition-colors hover:text-[var(--fg)]"
+            className="tap-target inline-flex min-h-11 items-center transition-colors hover:text-[var(--fg)]"
           >
             {t.cta.email}
           </a>
-          <p className="font-mono text-[0.65rem]">
+          <p className="font-mono text-micro">
             © {year} · {t.footer.rights}
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SkipLink } from "@/components/layout/SkipLink";
 import { Hero } from "@/components/sections/Hero";
 import { Work } from "@/components/sections/Work";
 import { About } from "@/components/sections/About";
@@ -13,8 +14,9 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 export default function Home() {
   return (
     <>
+      <SkipLink />
       <Header />
-      <main>
+      <main id="main">
         <Hero />
         <Work />
         <About />
