@@ -1,3 +1,9 @@
+import {
+  solutionsEn,
+  solutionsEs,
+  type SolutionsContent,
+} from "@/data/solutions";
+
 export type Locale = "es" | "en";
 
 export type Project = {
@@ -13,12 +19,14 @@ export type Content = {
     work: string;
     about: string;
     services: string;
+    solutions: string;
     contact: string;
     menu: string;
     openMenu: string;
     closeMenu: string;
     skipToContent: string;
   };
+  solutions: SolutionsContent;
   hero: {
     brand: string;
     headline: string;
@@ -73,6 +81,8 @@ export type Content = {
     headline: string;
     body: string[];
     primary: string;
+    /** E.164 digits only — used for wa.me links */
+    whatsapp: string;
     email: string;
     location: string;
     response: string;
@@ -96,6 +106,14 @@ export type Content = {
   footer: {
     tagline: string;
     rights: string;
+    navLabel: string;
+    links: { href: string; label: string }[];
+    legal: { href: string; label: string }[];
+    social: {
+      platform: "instagram" | "facebook" | "tiktok" | "linkedin";
+      href: string;
+      label: string;
+    }[];
   };
 };
 
@@ -105,12 +123,14 @@ export const content: Record<Locale, Content> = {
       work: "Trabajo",
       about: "Estudio",
       services: "Servicios",
+      solutions: "Soluciones",
       contact: "Contacto",
       menu: "Menú",
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
       skipToContent: "Saltar al contenido",
     },
+    solutions: solutionsEs,
     hero: {
       brand: "Scelerity",
       headline: "Velocidad con precisión.",
@@ -297,7 +317,8 @@ export const content: Record<Locale, Content> = {
         "Creamos experiencias digitales de alto impacto para empresas que buscan diferenciarse mediante diseño, desarrollo, inteligencia artificial y tecnología.",
         "Cuéntanos tu idea y nuestro equipo se pondrá en contacto contigo en menos de 24 horas.",
       ],
-      primary: "Agenda una llamada",
+      primary: "Escríbenos",
+      whatsapp: "573001234567",
       email: "hello@scelerity.co",
       location: "Remote · Worldwide",
       response: "Respuesta en menos de 24 horas",
@@ -330,6 +351,40 @@ export const content: Record<Locale, Content> = {
     footer: {
       tagline: "Craft. Velocidad. Precisión.",
       rights: "Todos los derechos reservados.",
+      navLabel: "Navegación",
+      links: [
+        { href: "/soluciones/", label: "Soluciones" },
+        { href: "/#services", label: "Servicios" },
+        { href: "/#work", label: "Portafolio" },
+        { href: "/#about", label: "Estudio" },
+        { href: "/#contact", label: "Contacto" },
+      ],
+      legal: [
+        { href: "#", label: "Política de privacidad" },
+        { href: "#", label: "Términos y condiciones" },
+      ],
+      social: [
+        {
+          platform: "instagram",
+          href: "https://instagram.com/scelerity",
+          label: "Instagram",
+        },
+        {
+          platform: "facebook",
+          href: "https://facebook.com/scelerity",
+          label: "Facebook",
+        },
+        {
+          platform: "tiktok",
+          href: "https://tiktok.com/@scelerity",
+          label: "TikTok",
+        },
+        {
+          platform: "linkedin",
+          href: "https://linkedin.com/company/scelerity",
+          label: "LinkedIn",
+        },
+      ],
     },
   },
   en: {
@@ -337,12 +392,14 @@ export const content: Record<Locale, Content> = {
       work: "Work",
       about: "Studio",
       services: "Services",
+      solutions: "Solutions",
       contact: "Contact",
       menu: "Menu",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       skipToContent: "Skip to content",
     },
+    solutions: solutionsEn,
     hero: {
       brand: "Scelerity",
       headline: "Speed with precision.",
@@ -529,7 +586,8 @@ export const content: Record<Locale, Content> = {
         "We create high-impact digital experiences for companies that want to stand out through design, development, artificial intelligence, and technology.",
         "Tell us your idea and our team will get back to you within 24 hours.",
       ],
-      primary: "Book a call",
+      primary: "Write to us",
+      whatsapp: "573001234567",
       email: "hello@scelerity.co",
       location: "Remote · Worldwide",
       response: "Reply within 24 hours",
@@ -562,6 +620,40 @@ export const content: Record<Locale, Content> = {
     footer: {
       tagline: "Craft. Speed. Precision.",
       rights: "All rights reserved.",
+      navLabel: "Navigation",
+      links: [
+        { href: "/soluciones/", label: "Solutions" },
+        { href: "/#services", label: "Services" },
+        { href: "/#work", label: "Portfolio" },
+        { href: "/#about", label: "Studio" },
+        { href: "/#contact", label: "Contact" },
+      ],
+      legal: [
+        { href: "#", label: "Privacy Policy" },
+        { href: "#", label: "Terms & Conditions" },
+      ],
+      social: [
+        {
+          platform: "instagram",
+          href: "https://instagram.com/scelerity",
+          label: "Instagram",
+        },
+        {
+          platform: "facebook",
+          href: "https://facebook.com/scelerity",
+          label: "Facebook",
+        },
+        {
+          platform: "tiktok",
+          href: "https://tiktok.com/@scelerity",
+          label: "TikTok",
+        },
+        {
+          platform: "linkedin",
+          href: "https://linkedin.com/company/scelerity",
+          label: "LinkedIn",
+        },
+      ],
     },
   },
 };

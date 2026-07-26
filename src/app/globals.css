@@ -335,24 +335,45 @@ body.has-custom-cursor :focus-visible {
 }
 
 /* ── Scelerity wordmark system ── */
+.wordmark-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42em;
+  color: currentColor;
+  line-height: 1;
+}
+
+.wordmark-lockup__mark {
+  height: 1.12em;
+  width: auto;
+  aspect-ratio: 1293 / 1558;
+  flex-shrink: 0;
+}
+
+.wordmark-lockup__mark--solo {
+  height: 1.25em;
+  width: auto;
+}
+
 .wordmark {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   font-kerning: normal;
-  font-feature-settings: "kern" 1, "liga" 1;
-  letter-spacing: -0.04em;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  letter-spacing: -0.048em;
   line-height: 1;
   color: currentColor;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-.wordmark--compact {
-  letter-spacing: -0.055em;
+.wordmark-lockup .wordmark {
+  /* Optical centering against the rotated mark */
+  transform: translateY(0.03em);
 }
 
-.wordmark-lockup .wordmark {
-  letter-spacing: -0.04em;
+.wordmark--compact {
+  letter-spacing: -0.055em;
 }
 
 .font-mono {
@@ -647,6 +668,32 @@ body.has-custom-cursor :focus-visible {
 .btn-gradient:active {
   background-position: 100% 50%;
   filter: brightness(1.08);
+}
+
+/* WhatsApp CTA — accent glow on hover, 280ms */
+.btn-whatsapp {
+  transition:
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-whatsapp:hover {
+    box-shadow:
+      0 0 28px rgba(92, 141, 255, 0.28),
+      0 0 48px rgba(92, 141, 255, 0.14);
+  }
+}
+
+.btn-whatsapp:active {
+  box-shadow: 0 0 24px rgba(92, 141, 255, 0.32);
+}
+
+/* Footer social — focus ring matches site accent */
+.social-link:focus-visible {
+  outline: 2px solid var(--selection-bg);
+  outline-offset: 3px;
+  border-radius: 999px;
 }
 
 /* Light sweep that shoots across on hover. */
@@ -1037,6 +1084,128 @@ html[data-theme="light"] .ambient-glow__orb-b {
 body.nav-locked {
   overflow: hidden;
   touch-action: none;
+}
+
+/* ── CSS hero energy core (mobile / low-power — zero WebGL) ── */
+.hero-energy-fallback {
+  overflow: hidden;
+}
+
+.hero-energy-fallback__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(72%, 19rem);
+  height: min(72%, 19rem);
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    rgba(103, 240, 193, 0.38) 0%,
+    rgba(92, 141, 255, 0.3) 26%,
+    rgba(124, 108, 255, 0.16) 50%,
+    transparent 72%
+  );
+}
+
+.hero-energy-fallback__halo {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(92, 141, 255, 0.14) 0%,
+    rgba(124, 108, 255, 0.07) 42%,
+    transparent 70%
+  );
+  filter: blur(36px);
+}
+
+@keyframes energy-breathe {
+  from {
+    transform: translate3d(-50%, -50%, 0) scale(0.94);
+    opacity: 0.86;
+  }
+  to {
+    transform: translate3d(-50%, -50%, 0) scale(1.05);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-energy-fallback__core {
+    animation: energy-breathe 14s ease-in-out infinite alternate;
+  }
+}
+
+.hero-headline-enter {
+  animation: hero-fade-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Below-fold sections — defer layout/paint until near viewport */
+main > section:not(#top) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
+/* ── Soluciones: editorial bento showcase ── */
+.solutions-bento {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.solutions-bento__cell {
+  min-height: 0;
+}
+
+@media (min-width: 48rem) {
+  .solutions-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .solutions-bento__cell--hero {
+    grid-column: span 2;
+  }
+
+  .solutions-bento__cell--wide {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 80rem) {
+  .solutions-bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .solutions-bento__cell--hero {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .solutions-bento__cell--wide {
+    grid-column: span 2;
+  }
+}
+
+/* Reserve GPU layers only on desktop fine-pointer devices */
+@media (max-width: 47.99rem), (hover: none), (pointer: coarse) {
+  .split-char,
+  .ambient-glow__orb,
+  .kinetic-card {
+    will-change: auto;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────

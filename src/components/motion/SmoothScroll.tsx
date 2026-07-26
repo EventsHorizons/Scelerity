@@ -1,59 +1,61 @@
 "use client";
 
 import { useEffect } from "react";
-import Lenis from "lenis";
-import { registerGsap, gsap, ScrollTrigger } from "@/lib/gsap";
-import { setScrollVelocity } from "@/lib/scrollVelocity";
+import { registerGsap, gsap, registerScrollTrigger } from "@/lib/gsap";
 import { setLenisInstance } from "@/lib/lenis";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 
+/** Desktop-only Lenis — loaded dynamically so mobile never pays the bundle cost. */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const reduced = useReducedMotion();
-
   useEffect(() => {
-    if (reduced) return;
+    let destroyed = false;
+    let cleanup: (() => void) | undefined;
 
-    registerGsap();
+    (async () => {
+      const [{ default: Lenis }, ScrollTrigger] = await Promise.all([
+        import("lenis"),
+        registerScrollTrigger(),
+      ]);
 
-    // Aggressive, high-momentum wheel response — quick to react, quick to stop.
-    const lenis = new Lenis({
-      duration: 0.9,
-      easing: (t) => 1 - Math.pow(1 - t, 3.5),
-      smoothWheel: true,
-      wheelMultiplier: 1.05,
-      touchMultiplier: 1.4,
-    });
+      if (destroyed) return;
 
-    setLenisInstance(lenis);
+      registerGsap();
 
-    lenis.on(
-      "scroll",
-      (e: { velocity: number }) => {
+      const lenis = new Lenis({
+        duration: 0.9,
+        easing: (t) => 1 - Math.pow(1 - t, 3.5),
+        smoothWheel: true,
+        wheelMultiplier: 1.05,
+        touchMultiplier: 1.4,
+      });
+
+      setLenisInstance(lenis);
+
+      lenis.on("scroll", () => {
         ScrollTrigger.update();
-        const v = e.velocity ?? 0;
-        // Normalize into a soft [-1, 1]-ish band for downstream transforms.
-        const clamped = gsap.utils.clamp(-1, 1, v / 40);
-        setScrollVelocity(clamped, v >= 0 ? 1 : -1);
-      },
-    );
+      });
 
-    const ticker = (time: number) => {
-      lenis.raf(time * 1000);
-    };
+      const ticker = (time: number) => {
+        lenis.raf(time * 1000);
+      };
 
-    gsap.ticker.add(ticker);
-    gsap.ticker.lagSmoothing(0);
+      gsap.ticker.add(ticker);
+      gsap.ticker.lagSmoothing(0);
 
-    document.documentElement.classList.add("lenis", "lenis-smooth");
+      document.documentElement.classList.add("lenis", "lenis-smooth");
+
+      cleanup = () => {
+        gsap.ticker.remove(ticker);
+        setLenisInstance(null);
+        lenis.destroy();
+        document.documentElement.classList.remove("lenis", "lenis-smooth");
+      };
+    })();
 
     return () => {
-      gsap.ticker.remove(ticker);
-      setLenisInstance(null);
-      lenis.destroy();
-      setScrollVelocity(0, 1);
-      document.documentElement.classList.remove("lenis", "lenis-smooth");
+      destroyed = true;
+      cleanup?.();
     };
-  }, [reduced]);
+  }, []);
 
   return <>{children}</>;
 }

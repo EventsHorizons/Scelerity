@@ -9,8 +9,10 @@ import { SplitText } from "@/components/motion/SplitText";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
+import { HeroEnergyFallback } from "@/components/canvas/HeroEnergyFallback";
 import { registerGsap, gsap } from "@/lib/gsap";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useDeviceProfile } from "@/hooks/useDeviceProfile";
+import { cn } from "@/lib/cn";
 
 const EnergyField = dynamic(
   () => import("@/components/canvas/EnergyField").then((m) => m.EnergyField),
@@ -21,7 +23,7 @@ export function Hero() {
   const { t } = useLocale();
   const root = useRef<HTMLDivElement>(null);
   const charsRef = useRef<Element[]>([]);
-  const reduced = useReducedMotion();
+  const { animate, webgl, reduced } = useDeviceProfile();
 
   useEffect(() => {
     const el = root.current;
@@ -35,41 +37,43 @@ export function Hero() {
 
       const tl = gsap.timeline({ defaults: { ease: "craft" } });
 
-      tl.to(".hero-energy", { autoAlpha: 1, duration: 1.8, ease: "none" }, 0)
-        .fromTo(
+      tl.to(".hero-energy", { autoAlpha: 1, duration: 1.8, ease: "none" }, 0);
+
+      if (animate) {
+        tl.fromTo(
           ".hero-sweep",
           { xPercent: -120, opacity: 0, scaleX: 0.35 },
           { xPercent: 220, opacity: 0.9, scaleX: 1, duration: 1.1, ease: "scene" },
           0.15,
-        )
-        .to(".hero-sweep", { opacity: 0, duration: 0.35 }, 1.05);
+        ).to(".hero-sweep", { opacity: 0, duration: 0.35 }, 1.05);
 
-      tl.add(() => {
-        const chars = charsRef.current;
-        if (!chars.length) return;
-        gsap.fromTo(
-          chars,
-          { yPercent: 120, autoAlpha: 0, filter: "blur(10px)" },
-          {
-            yPercent: 0,
-            autoAlpha: 1,
-            filter: "blur(0px)",
-            duration: 0.9,
-            ease: "type",
-            stagger: { each: 0.028, from: "start" },
-          },
-        );
-      }, 0.35);
+        tl.add(() => {
+          const chars = charsRef.current;
+          if (!chars.length) return;
+          gsap.fromTo(
+            chars,
+            { yPercent: 120, autoAlpha: 0, filter: "blur(10px)" },
+            {
+              yPercent: 0,
+              autoAlpha: 1,
+              filter: "blur(0px)",
+              duration: 0.9,
+              ease: "type",
+              stagger: { each: 0.028, from: "start" },
+            },
+          );
+        }, 0.35);
+      }
 
-      tl.to(".hero-sub", { y: 0, autoAlpha: 1, duration: 0.65 }, 1.35).to(
+      tl.to(".hero-sub", { y: 0, autoAlpha: 1, duration: 0.65 }, animate ? 1.35 : 0.25).to(
         ".hero-cta",
         { y: 0, autoAlpha: 1, duration: 0.7, stagger: 0.1 },
-        1.55,
+        animate ? 1.55 : 0.45,
       );
     }, el);
 
     return () => ctx.revert();
-  }, [reduced, t.hero.headline]);
+  }, [reduced, animate, t.hero.headline]);
 
   return (
     <Section id="top" full className="flex flex-col justify-center">
@@ -79,24 +83,22 @@ export function Hero() {
         ref={root}
         className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-[var(--space-fluid-xl)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]"
       >
-        {/*
-          Mobile: the energy core sits centred behind the composition.
-          Desktop: it slides right and grows into the negative space.
-        */}
         <div
           className="hero-energy pointer-events-none absolute left-1/2 top-1/2 h-[min(60svh,26rem)] w-[min(120%,34rem)] -translate-x-1/2 -translate-y-1/2 opacity-60 sm:h-[min(64svh,30rem)] sm:w-[min(105%,38rem)] md:opacity-75 lg:left-auto lg:right-[-6%] lg:h-[min(88svh,47.5rem)] lg:w-[min(56vw,45rem)] lg:translate-x-0 lg:opacity-100"
           aria-hidden
         >
-          <EnergyField />
+          {webgl ? <EnergyField /> : <HeroEnergyFallback />}
         </div>
 
         <Container size="content" className="relative z-10">
           <div className="flex flex-col items-center text-center lg:max-w-[62ch] lg:items-start lg:text-left">
             <div className="relative w-full">
-              <div
-                className="hero-sweep speed-line pointer-events-none absolute -top-5 left-1/2 h-px w-32 -translate-x-1/2 rounded-full sm:w-44 lg:left-0 lg:translate-x-0"
-                aria-hidden
-              />
+              {animate ? (
+                <div
+                  className="hero-sweep speed-line pointer-events-none absolute -top-5 left-1/2 h-px w-32 -translate-x-1/2 rounded-full sm:w-44 lg:left-0 lg:translate-x-0"
+                  aria-hidden
+                />
+              ) : null}
               <SplitText
                 text={t.hero.headline}
                 as="h1"
@@ -104,7 +106,10 @@ export function Hero() {
                 onReady={(chars) => {
                   charsRef.current = chars;
                 }}
-                className="text-balance font-display text-hero font-semibold"
+                className={cn(
+                  "text-balance font-display text-hero font-semibold",
+                  !animate && "hero-headline-enter",
+                )}
               />
             </div>
 

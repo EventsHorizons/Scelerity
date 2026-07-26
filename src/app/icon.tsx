@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
+import { LOGO_MARK_PATHS, LOGO_VIEWBOX } from "@/components/brand/LogoMark";
 
 export const dynamic = "force-static";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-/** Favicon — compact Sc mark, monochrome on brand dark. */
+/** PNG favicon fallback — isotipo only, dark canvas. */
 export default function Icon() {
   return new ImageResponse(
     (
@@ -16,15 +17,13 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           background: "#09090b",
-          borderRadius: 8,
-          color: "#f5f7fa",
-          fontSize: 15,
-          fontWeight: 800,
-          letterSpacing: "-0.06em",
-          fontFamily: "system-ui, sans-serif",
         }}
       >
-        Sc
+        <svg viewBox={LOGO_VIEWBOX} width="20" height="24" xmlns="http://www.w3.org/2000/svg">
+          {LOGO_MARK_PATHS.map((d) => (
+            <path key={d.slice(0, 12)} d={d} fill="#f5f7fa" />
+          ))}
+        </svg>
       </div>
     ),
     { ...size },

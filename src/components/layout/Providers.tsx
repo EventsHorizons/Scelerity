@@ -2,17 +2,13 @@
 
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LocaleProvider } from "@/context/LocaleContext";
-import { SmoothScroll } from "@/components/motion/SmoothScroll";
-import { CustomCursor } from "@/components/motion/CustomCursor";
+import { ClientEnhancements } from "@/components/layout/ClientEnhancements";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
       <LocaleProvider>
-        <SmoothScroll>
-          <CustomCursor />
-          {children}
-        </SmoothScroll>
+        <ClientEnhancements>{children}</ClientEnhancements>
       </LocaleProvider>
     </ThemeProvider>
   );

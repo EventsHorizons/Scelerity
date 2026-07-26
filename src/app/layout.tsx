@@ -6,7 +6,7 @@ import "./globals.css";
 const display = Syne({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   display: "swap",
   preload: true,
 });
@@ -14,7 +14,7 @@ const display = Syne({
 const body = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   display: "swap",
   preload: true,
 });
@@ -42,6 +42,13 @@ export const metadata: Metadata = {
   title: "Scelerity — Velocidad con precisión",
   description:
     "Diseño y producto digital de alto rendimiento. Craft, velocidad y precisión.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
+  },
   openGraph: {
     title: "Scelerity",
     description: "Velocidad con precisión.",

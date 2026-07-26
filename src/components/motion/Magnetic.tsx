@@ -52,6 +52,10 @@ export function Magnetic({ children, strength = 0.4, className }: Props) {
     };
   }, [enabled, strength]);
 
+  if (!enabled) {
+    return <>{children}</>;
+  }
+
   return (
     <div
       ref={ref}

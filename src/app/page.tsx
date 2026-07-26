@@ -1,15 +1,33 @@
+import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Hero } from "@/components/sections/Hero";
-import { Work } from "@/components/sections/Work";
-import { About } from "@/components/sections/About";
-import { Services } from "@/components/sections/Services";
-import { Featured } from "@/components/sections/Featured";
-import { Process } from "@/components/sections/Process";
-import { Benefits } from "@/components/sections/Benefits";
-import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+
+const Work = dynamic(() =>
+  import("@/components/sections/Work").then((m) => ({ default: m.Work })),
+);
+const About = dynamic(() =>
+  import("@/components/sections/About").then((m) => ({ default: m.About })),
+);
+const Services = dynamic(() =>
+  import("@/components/sections/Services").then((m) => ({ default: m.Services })),
+);
+const Featured = dynamic(() =>
+  import("@/components/sections/Featured").then((m) => ({ default: m.Featured })),
+);
+const Process = dynamic(() =>
+  import("@/components/sections/Process").then((m) => ({ default: m.Process })),
+);
+const Benefits = dynamic(() =>
+  import("@/components/sections/Benefits").then((m) => ({ default: m.Benefits })),
+);
+const FAQ = dynamic(() =>
+  import("@/components/sections/FAQ").then((m) => ({ default: m.FAQ })),
+);
+const FinalCTA = dynamic(() =>
+  import("@/components/sections/FinalCTA").then((m) => ({ default: m.FinalCTA })),
+);
 
 export default function Home() {
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
@@ -9,11 +10,13 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/brand/Logo";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { useSiteNav } from "@/hooks/useSiteNav";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/easings";
 
 export function Header() {
   const { t } = useLocale();
+  const { links, logoHref, contactHref } = useSiteNav();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -33,7 +36,6 @@ export function Header() {
     toggleRef.current?.focus({ preventScroll: true });
   }, []);
 
-  // Escape closes; the desktop layout closing the panel must not strand focus.
   useEffect(() => {
     if (!open) return;
 
@@ -52,12 +54,6 @@ export function Header() {
       desktop.removeEventListener("change", onBreakpoint);
     };
   }, [open, close]);
-
-  const links = [
-    { href: "#work", label: t.nav.work },
-    { href: "#about", label: t.nav.about },
-    { href: "#services", label: t.nav.services },
-  ];
 
   return (
     <>
@@ -82,25 +78,23 @@ export function Header() {
             <div className="header-speed-line speed-line h-full w-1/3 rounded-full" />
           </div>
 
-          <a
-            href="#top"
+          <Link
+            href={logoHref}
             data-cursor="link"
             onClick={() => setOpen(false)}
             className="tap-target relative z-10 inline-flex items-center py-1 pr-2 text-[var(--fg)]"
             aria-label="Scelerity — Home"
           >
             <Logo className="text-[1.0625rem] md:text-[1.125rem]" />
-          </a>
+          </Link>
 
           <nav
-            className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex xl:gap-8"
+            className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
             aria-label="Primary"
           >
             {links.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                data-cursor="link"
+              <motion.div
+                key={link.href + link.label}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -108,20 +102,23 @@ export function Header() {
                   duration: 0.55,
                   ease: ease.outExpo,
                 }}
-                className="tap-target text-[0.8125rem] text-[var(--fg-muted)] transition-colors duration-300 hover:text-[var(--fg)]"
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  data-cursor="link"
+                  className="tap-target text-[0.8125rem] text-[var(--fg-muted)] transition-colors duration-300 hover:text-[var(--fg)]"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
-            {/* Wrapper owns the display switch so it can never lose to a
-                child component's own display utility. */}
             <div className="hidden items-center gap-2 lg:flex">
               <LanguageToggle />
               <ThemeToggle />
-              <Button href="#contact" size="sm">
+              <Button href={contactHref} size="sm">
                 {t.nav.contact}
               </Button>
             </div>
@@ -164,7 +161,7 @@ export function Header() {
               <ul className="border-t border-[var(--border)]">
                 {links.map((link, i) => (
                   <motion.li
-                    key={link.href}
+                    key={link.href + link.label}
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -173,7 +170,7 @@ export function Header() {
                       ease: ease.outExpo,
                     }}
                   >
-                    <a
+                    <Link
                       href={link.href}
                       data-cursor="link"
                       onClick={close}
@@ -183,20 +180,20 @@ export function Header() {
                       <span className="nav-overlay__index" aria-hidden>
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
                 <motion.li
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
-                    delay: 0.21,
+                    delay: 0.26,
                     duration: 0.35,
                     ease: ease.outExpo,
                   }}
                 >
-                  <a
-                    href="#contact"
+                  <Link
+                    href={contactHref}
                     data-cursor="link"
                     onClick={close}
                     className="nav-overlay__link"
@@ -207,7 +204,7 @@ export function Header() {
                       className="text-[var(--fg-subtle)]"
                       aria-hidden
                     />
-                  </a>
+                  </Link>
                 </motion.li>
               </ul>
             </nav>

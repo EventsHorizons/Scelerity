@@ -57,6 +57,10 @@ export function KineticCard({ children, className, lean = 6 }: Props) {
     };
   }, [enabled, lean]);
 
+  if (!enabled) {
+    return <div className={cn("kinetic-card", className)}>{children}</div>;
+  }
+
   return (
     <div
       ref={ref}

@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "predev": "node scripts/ensure-next-cache.mjs --dev",
+    "dev": "node scripts/dev.mjs",
+    "dev:reset": "node scripts/dev-reset.mjs",
+    "prebuild": "node scripts/ensure-next-cache.mjs --build",
+    "build": "next build",
+    "postbuild": "node scripts/ensure-next-cache.mjs --dev --fresh",
     "start": "next start",
     "lint": "eslint",
+    "cache:fix": "node scripts/ensure-next-cache.mjs --dev",
     "audit:responsive": "node scripts/responsive-audit.mjs",
     "audit:sections": "node scripts/section-shots.mjs"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",

@@ -1,13 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Mail, Globe2, Zap } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { Magnetic } from "@/components/motion/Magnetic";
-import { ContactForm } from "@/components/ui/ContactForm";
+
+const ContactForm = dynamic(
+  () => import("@/components/ui/ContactForm").then((m) => m.ContactForm),
+  { ssr: false },
+);
 
 export function FinalCTA() {
   const { t } = useLocale();
@@ -60,11 +66,15 @@ export function FinalCTA() {
             <div className="mt-[var(--space-10)]">
               <Magnetic className="w-full sm:w-auto">
                 <Button
-                  href={`mailto:${t.cta.email}`}
+                  href={`https://wa.me/${t.cta.whatsapp}`}
                   size="lg"
                   block
-                  className="sm:w-auto"
+                  className="btn-whatsapp sm:w-auto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t.cta.primary} — WhatsApp`}
                 >
+                  <WhatsAppIcon size={19} />
                   {t.cta.primary}
                 </Button>
               </Magnetic>
