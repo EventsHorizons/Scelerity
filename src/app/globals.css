@@ -1,0 +1,553 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #09090b;
+  --surface: #111216;
+  --card: #17191e;
+  --fg: #f5f7fa;
+  --fg-muted: #9ba3af;
+  --fg-subtle: #6b7280;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --cursor: #f5f7fa;
+  --accent-fg: #09090b;
+  --selection-bg: #5c8dff;
+  --selection-fg: #f5f7fa;
+  --radius-lg: 22px;
+  --radius-md: 18px;
+  --radius-sm: 14px;
+  --glow: rgba(92, 141, 255, 0.18);
+  --gradient-primary: linear-gradient(
+    135deg,
+    #7c6cff 0%,
+    #5c8dff 35%,
+    #45c8ff 70%,
+    #67f0c1 100%
+  );
+  --gradient-secondary: linear-gradient(135deg, #5c8dff, #7c6cff);
+  --gradient-accent: linear-gradient(135deg, #45c8ff, #67f0c1);
+  --gradient-aurora: linear-gradient(
+    120deg,
+    #7c6cff,
+    #45c8ff,
+    #67f0c1,
+    #b7ffdf
+  );
+  color-scheme: dark;
+}
+
+/* Theme tokens — only change via Theme Toggle, never on scroll. */
+html[data-theme="light"] {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --card: #e8eaef;
+  --fg: #0c0d10;
+  --fg-muted: #5b6472;
+  --fg-subtle: #8b93a1;
+  --border: rgba(12, 13, 16, 0.08);
+  --border-strong: rgba(12, 13, 16, 0.14);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(12, 13, 16, 0.08);
+  --cursor: #0c0d10;
+  --accent-fg: #f5f7fa;
+  --glow: rgba(92, 141, 255, 0.14);
+  --selection-bg: #5c8dff;
+  --selection-fg: #f5f7fa;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html,
+body {
+  transition:
+    background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Surfaces morph together when the user toggles theme. */
+.glass-panel,
+.kinetic-card,
+.field,
+.btn-gradient,
+.btn-secondary {
+  transition:
+    background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Soft glow pulse only on explicit theme toggle. */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 40%,
+    var(--glow),
+    transparent 60%
+  );
+}
+
+html.theme-shifting::after {
+  animation: theme-shift 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes theme-shift {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+/* ── Scelerity wordmark system ── */
+.wordmark {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: currentColor;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wordmark--compact {
+  letter-spacing: -0.055em;
+}
+
+.wordmark-lockup .wordmark {
+  letter-spacing: -0.04em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.section-pad {
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.section-y {
+  padding-block: clamp(5rem, 14vw, 9rem);
+}
+
+/* Editorial rhythm — sections are given room to breathe. */
+.section-y-lg {
+  padding-block: clamp(7rem, 18vw, 13rem);
+}
+
+.chapter-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+}
+
+.btn-gradient {
+  position: relative;
+  background-image: var(--gradient-primary);
+  background-size: 220% 220%;
+  background-position: 0% 50%;
+  color: var(--accent-fg);
+  box-shadow: 0 0 28px rgba(92, 141, 255, 0.22);
+  overflow: hidden;
+  transition:
+    background-position 0.5s cubic-bezier(0.05, 0.9, 0.1, 1),
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
+}
+
+.btn-gradient:hover {
+  background-position: 100% 50%;
+  filter: brightness(1.06);
+  box-shadow: 0 0 40px rgba(92, 141, 255, 0.4);
+}
+
+/* Light sweep that shoots across on hover. */
+.btn-sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 80%
+  );
+  transform: translate3d(-140%, 0, 0);
+  transition: transform 0.6s cubic-bezier(0.05, 0.9, 0.1, 1);
+}
+
+.group\/btn:hover .btn-sweep,
+.btn-gradient:hover .btn-sweep {
+  transform: translate3d(140%, 0, 0);
+}
+
+.aurora-text {
+  background-image: var(--gradient-aurora);
+  background-size: 260% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aurora-breathe 9s ease-in-out infinite alternate;
+}
+
+/* Gradients breathe — almost imperceptible flowing energy. */
+@keyframes aurora-breathe {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.speed-line {
+  background: var(--gradient-primary);
+  opacity: 0.55;
+}
+
+@keyframes speed-sweep {
+  0% {
+    transform: translate3d(-120%, 0, 0) scaleX(0.4);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(140%, 0, 0) scaleX(1);
+    opacity: 0;
+  }
+}
+
+.header-speed-line {
+  animation: speed-sweep 1.1s cubic-bezier(0.05, 0.9, 0.1, 1) 0.15s both;
+}
+
+/* Kinetic card — cursor-tracked light and directional lean. */
+.kinetic-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.kinetic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(92, 141, 255, 0.16),
+    transparent 60%
+  );
+  transition: opacity 0.4s ease;
+}
+
+.kinetic-card:hover::before {
+  opacity: 1;
+}
+
+.kinetic-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 20px 60px -30px rgba(92, 141, 255, 0.5);
+}
+
+/* Secondary button — transparent until hover reveals gradient fill. */
+.btn-secondary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary-fill {
+  position: absolute;
+  inset: 0;
+  background-image: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover .btn-secondary-fill {
+  opacity: 0.14;
+}
+
+.btn-secondary:hover {
+  border-color: transparent;
+}
+
+/* Cursor — theme-aware bolt + core. */
+.cursor-core {
+  background: var(--cursor);
+  mix-blend-mode: difference;
+  box-shadow: 0 0 12px var(--glow);
+}
+
+.cursor-bolt {
+  border: 1px solid var(--cursor);
+  background: transparent;
+  box-shadow: 0 0 20px var(--glow);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.cursor-bolt[data-theme="dark"] {
+  border-color: rgba(245, 247, 250, 0.85);
+  box-shadow: 0 0 24px rgba(92, 141, 255, 0.45);
+}
+
+.cursor-bolt[data-theme="light"] {
+  border-color: rgba(12, 13, 16, 0.75);
+  box-shadow: 0 0 20px rgba(92, 141, 255, 0.35);
+}
+
+.cursor-bolt[data-mode="cta"] {
+  background: rgba(92, 141, 255, 0.12);
+  border-color: #5c8dff;
+}
+
+.cursor-bolt[data-mode="media"] {
+  background: rgba(103, 240, 193, 0.1);
+  border-color: #67f0c1;
+}
+
+.split-word {
+  display: inline-block;
+}
+
+/* ── Ambient gradient system (architectural lighting) ── */
+.ambient-glow {
+  z-index: 0;
+}
+
+.ambient-glow__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.ambient-glow__orb-a {
+  animation: ambient-drift-a 32s ease-in-out infinite alternate;
+}
+
+.ambient-glow__orb-b {
+  animation: ambient-drift-b 38s ease-in-out infinite alternate;
+}
+
+/* Hero — blue + purple */
+.ambient-glow--hero .ambient-glow__orb-a {
+  width: 50vmax;
+  height: 50vmax;
+  right: -5%;
+  top: 8%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 108, 255, 0.13) 0%,
+    transparent 68%
+  );
+}
+
+.ambient-glow--hero .ambient-glow__orb-b {
+  width: 42vmax;
+  height: 42vmax;
+  right: 8%;
+  bottom: 0%;
+  background: radial-gradient(
+    circle,
+    rgba(92, 141, 255, 0.09) 0%,
+    transparent 68%
+  );
+}
+
+/* Services — blue + cyan */
+.ambient-glow--services .ambient-glow__orb-a {
+  width: 48vmax;
+  height: 48vmax;
+  left: -12%;
+  top: 20%;
+  background: radial-gradient(
+    circle,
+    rgba(92, 141, 255, 0.1) 0%,
+    transparent 68%
+  );
+}
+
+.ambient-glow--services .ambient-glow__orb-b {
+  width: 40vmax;
+  height: 40vmax;
+  right: -8%;
+  bottom: 10%;
+  background: radial-gradient(
+    circle,
+    rgba(69, 200, 255, 0.08) 0%,
+    transparent 68%
+  );
+}
+
+/* Featured — very subtle cyan */
+.ambient-glow--featured .ambient-glow__orb-a {
+  width: 44vmax;
+  height: 44vmax;
+  left: 30%;
+  top: 15%;
+  background: radial-gradient(
+    circle,
+    rgba(69, 200, 255, 0.055) 0%,
+    transparent 70%
+  );
+}
+
+.ambient-glow--featured .ambient-glow__orb-b {
+  display: none;
+}
+
+/* CTA — full palette, whisper-soft */
+.ambient-glow--cta .ambient-glow__orb-a {
+  width: 50vmax;
+  height: 50vmax;
+  left: -10%;
+  top: 10%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 108, 255, 0.09) 0%,
+    transparent 68%
+  );
+}
+
+.ambient-glow--cta .ambient-glow__orb-b {
+  width: 46vmax;
+  height: 46vmax;
+  right: -6%;
+  bottom: 0%;
+  background: radial-gradient(
+    circle,
+    rgba(103, 240, 193, 0.07) 0%,
+    transparent 68%
+  );
+}
+
+html[data-theme="light"] .ambient-glow__orb-a,
+html[data-theme="light"] .ambient-glow__orb-b {
+  opacity: 0.5;
+}
+
+@keyframes ambient-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2.5%, -1.5%, 0) scale(1.05);
+  }
+}
+
+@keyframes ambient-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-2%, 2.5%, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html,
+  body {
+    transition: none;
+  }
+}
