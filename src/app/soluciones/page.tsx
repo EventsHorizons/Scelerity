@@ -4,6 +4,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { SolutionsHero } from "@/components/sections/solutions/SolutionsHero";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { pageGraph, serviceNode } from "@/lib/seo/schema";
+import { solutionsEs } from "@/data/solutions";
 
 const SolutionsPillars = dynamic(() =>
   import("@/components/sections/solutions/SolutionsPillars").then((m) => ({
@@ -41,17 +45,33 @@ const SolutionsClose = dynamic(() =>
   })),
 );
 
-export const metadata: Metadata = {
-  title: "Soluciones — Scelerity",
-  description:
-    "Diseño, desarrollo y marketing digital para marcas que quieren crecer con claridad.",
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: solutionsEs.meta.title,
+  description: solutionsEs.meta.description,
+  path: "/soluciones/",
+  keywords: ["soluciones digitales", "planes diseño web", "desarrollo", "marketing digital"],
+});
+
+const solucionesSchema = pageGraph(
+  [
+    { name: "Inicio", path: "/" },
+    { name: "Soluciones", path: "/soluciones/" },
+  ],
+  [
+    serviceNode({
+      name: "Soluciones digitales Scelerity",
+      description: solutionsEs.meta.description,
+      path: "/soluciones/",
+    }),
+  ],
+);
 
 export default function SolucionesPage() {
   return (
     <>
       <SkipLink />
       <Header />
+      <JsonLd data={solucionesSchema} />
       <main id="main">
         <SolutionsHero />
         <SolutionsPillars />

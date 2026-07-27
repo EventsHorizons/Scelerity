@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Hero } from "@/components/sections/Hero";
+import { HomeJsonLd } from "@/components/seo/HomeJsonLd";
 import { getRecentPosts } from "@/lib/blog";
 
 const Work = dynamic(() =>
@@ -40,6 +41,7 @@ export default function Home() {
     <>
       <SkipLink />
       <Header />
+      <HomeJsonLd />
       <main id="main" className="landing-rhythm">
         <Hero />
         <Work />

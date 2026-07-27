@@ -381,8 +381,8 @@ export const content: Record<Locale, Content> = {
         { href: "/#contact", label: "Contacto" },
       ],
       legal: [
-        { href: "#", label: "Política de privacidad" },
-        { href: "#", label: "Términos y condiciones" },
+        { href: "/privacidad/", label: "Política de privacidad" },
+        { href: "/terminos/", label: "Términos y condiciones" },
       ],
       social: [
         {
@@ -661,8 +661,8 @@ export const content: Record<Locale, Content> = {
         { href: "/#contact", label: "Contact" },
       ],
       legal: [
-        { href: "#", label: "Privacy Policy" },
-        { href: "#", label: "Terms & Conditions" },
+        { href: "/privacidad/", label: "Privacy Policy" },
+        { href: "/terminos/", label: "Terms & Conditions" },
       ],
       social: [
         {

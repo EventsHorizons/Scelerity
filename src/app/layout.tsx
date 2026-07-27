@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/layout/Providers";
+import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
+import { Analytics } from "@/components/seo/Analytics";
 import { getSiteUrl } from "@/lib/site";
+import { HOME_METADATA } from "@/lib/seo/metadata";
 import "./globals.css";
 
 const display = Syne({
@@ -41,27 +44,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
-  title: "Scelerity — Velocidad con precisión",
-  description:
-    "Diseño y producto digital de alto rendimiento. Craft, velocidad y precisión.",
+  ...HOME_METADATA,
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/icon", type: "image/png", sizes: "32x32" },
     ],
     apple: [{ url: "/apple-icon", type: "image/png", sizes: "180x180" }],
-  },
-  openGraph: {
-    title: "Scelerity",
-    description: "Velocidad con precisión.",
-    type: "website",
-    locale: "es_ES",
-    siteName: "Scelerity",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Scelerity",
-    description: "Velocidad con precisión.",
   },
 };
 
@@ -86,10 +75,18 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning data-theme="dark">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Scelerity Blog RSS"
+          href={`${getSiteUrl()}/feed.xml`}
+        />
       </head>
       <body
         className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}
       >
+        <SiteJsonLd />
+        <Analytics />
         <Providers>{children}</Providers>
       </body>
     </html>
