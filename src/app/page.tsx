@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Hero } from "@/components/sections/Hero";
+import { getRecentPosts } from "@/lib/blog";
 
 const Work = dynamic(() =>
   import("@/components/sections/Work").then((m) => ({ default: m.Work })),
@@ -25,11 +26,16 @@ const Benefits = dynamic(() =>
 const FAQ = dynamic(() =>
   import("@/components/sections/FAQ").then((m) => ({ default: m.FAQ })),
 );
+const Insights = dynamic(() =>
+  import("@/components/sections/Insights").then((m) => ({ default: m.Insights })),
+);
 const FinalCTA = dynamic(() =>
   import("@/components/sections/FinalCTA").then((m) => ({ default: m.FinalCTA })),
 );
 
 export default function Home() {
+  const recentPosts = getRecentPosts(6);
+
   return (
     <>
       <SkipLink />
@@ -43,6 +49,7 @@ export default function Home() {
         <Process />
         <Benefits />
         <FAQ />
+        <Insights posts={recentPosts} />
         <FinalCTA />
       </main>
       <Footer />

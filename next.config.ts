@@ -13,7 +13,15 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix: basePath || undefined,
   trailingSlash: true,
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -1,0 +1,112 @@
+---
+title: "Velocidad web y Core Web Vitals: por qué cada segundo cuenta"
+description: "La velocidad no es un detalle técnico. Impacta SEO, conversión y percepción de marca. Guía práctica de Core Web Vitals para equipos de producto."
+excerpt: "Cada segundo de carga cuesta confianza y dinero. Core Web Vitals explicados sin jerga innecesaria, con prioridades reales."
+category: "desarrollo"
+tags: ["performance", "Core Web Vitals", "Next.js", "desarrollo web"]
+author: "Scelerity"
+authorRole: "Ingeniería frontend"
+publishedAt: "2026-07-02"
+cover: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
+coverAlt: "Sala de servidores con luces azules en perspectiva"
+---
+
+Un usuario no necesita entender LCP para abandonar tu sitio. Solo necesita sentir que “esto va lento”. Ese juicio ocurre en milisegundos y rara vez da una segunda oportunidad, sobre todo en móvil con red imperfecta.
+
+La velocidad web es producto, SEO y marca al mismo tiempo. Tratarla como tarea de “al final del sprint” es una de las deudas más caras que puede acumular un equipo digital.
+
+## Índice
+
+- [Por qué la velocidad vende](#por-qué-la-velocidad-vende)
+- [Core Web Vitals sin misterio](#core-web-vitals-sin-misterio)
+- [Qué suele romper el rendimiento](#qué-suele-romper-el-rendimiento)
+- [Prioridades que sí mueven la aguja](#prioridades-que-sí-mueven-la-aguja)
+- [Cómo medir de verdad](#cómo-medir-de-verdad)
+- [Performance como cultura](#performance-como-cultura)
+- [Conclusión](#conclusión)
+
+## Por qué la velocidad vende
+
+Estudios de la industria llevan años repitiendo la misma dirección: más latencia, menos conversión. No hace falta memorizar porcentajes exactos para actuar. Basta observar embudos reales: el drop-off entre impresión de anuncio y primera interacción útil suele estar hinchado por assets pesados, JS innecesario y hero images sin disciplina.
+
+Además, Google usa señales de experiencia de página. No es el único factor de ranking, pero sí un diferenciador cuando el contenido es comparable.
+
+> La percepción de calidad llega antes que el contenido. Si la interfaz tarda, la marca ya empezó perdiendo.
+
+## Core Web Vitals sin misterio
+
+### LCP — Largest Contentful Paint
+
+¿Cuándo aparece el contenido principal? Objetivo práctico: que el hero o bloque dominante sea estable y temprano. Imágenes enormes, fuentes bloqueantes y server lentos lo castigan.
+
+### INP — Interaction to Next Paint
+
+¿La interfaz responde al toque o al clic? Listeners pesados, hidratación excesiva y main thread saturado lo degradan.
+
+### CLS — Cumulative Layout Shift
+
+¿La página “salta” mientras carga? Reservas de espacio, fuentes y embeds sin dimensiones son culpables habituales.
+
+No optimices métricas de laboratorio mientras ignoras la experiencia de campo (CrUX). Ambos importan; el usuario vive en el campo.
+
+## Qué suele romper el rendimiento
+
+1. Carruseles y videos autoplay en el primer viewport
+2. Bundles JS monolíticos sin code splitting
+3. Fuentes sin `display: swap` y con demasiados pesos
+4. Imágenes sin tamaño, formato moderno ni lazy loading
+5. Terceros (pixels, chat, tag managers) sin control
+6. Animaciones que fuerzan layout en scroll
+7. CMS que inyecta CSS/JS global en todas las páginas
+
+En sitios “premium” el problema casi nunca es falta de talento visual. Es exceso de peso sin presupuesto de performance.
+
+![Desarrollador revisando código en monitor ultrawide](https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80)
+
+## Prioridades que sí mueven la aguja
+
+### 1. Presupuesto de peso por ruta
+
+Define límites: KB de JS, KB de imagen hero, número de fuentes. Si no hay presupuesto, todo “entra”.
+
+### 2. Critical path limpio
+
+HTML útil pronto. CSS crítico razonable. Diferir lo no esencial. El primer paint no necesita tu librería de gráficos.
+
+### 3. Imágenes con oficio
+
+Dimensiones explícitas, `srcset`, formatos modernos, compresión real, lazy fuera del LCP. Un Unsplash a 4000px no es “calidad”: es descuido.
+
+### 4. Menos JS en el cliente
+
+Server Components, islands, hidratar solo lo interactivo. En Scelerity preferimos motion selectivo a librerías globales por defecto.
+
+### 5. Terceros con correa
+
+Carga diferida, consent mode, auditoría trimestral. Cada tag tiene dueño o se elimina.
+
+## Cómo medir de verdad
+
+- Lighthouse como humo inicial, no como verdad absoluta
+- Web Vitals en RUM (usuarios reales)
+- Pruebas en mid-range Android, no solo en tu Mac
+- Comparar antes/después por release
+
+Si no puedes explicar qué cambió el LCP tras un deploy, no estás midiendo: estás mirando.
+
+## Performance como cultura
+
+La velocidad se sostiene cuando:
+
+- Está en definición de done
+- Hay budgets en CI
+- Diseño y develo hablan el mismo idioma
+- Marketing entiende el costo de un pixel extra
+
+Un rediseño hermoso y lento no es premium. Es frágil.
+
+## Conclusión
+
+Cada segundo cuenta porque el usuario decide en segundos. Core Web Vitals son el lenguaje compartido para hablar de esa decisión con datos.
+
+Si tu sitio se siente pesado o tus métricas de campo están en rojo, podemos ayudarte a corregirlo dentro de un sistema de diseño y desarrollo — no como parche. Empieza por [Soluciones](/soluciones/) o [hablemos](/#contact).

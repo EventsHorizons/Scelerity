@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Scelerity Journal</title>
+    <link>https://scelerity.vercel.app/blog/</link>
+    <description>Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial.</description>
+    <language>es</language>
+    <item>
+      <title>Cómo una página web bien diseñada puede aumentar las conversiones de un negocio</title>
+      <link>https://scelerity.vercel.app/blog/pagina-web-conversiones/</link>
+      <guid>https://scelerity.vercel.app/blog/pagina-web-conversiones/</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Una web no es un folleto digital. Es un sistema de decisión. Te explicamos cómo el diseño, la claridad y la velocidad convierten visitas en clientes.</description>
+      <category>diseno</category>
+    </item>
+    <item>
+      <title>SEO en 2026: estrategias que siguen funcionando y errores que debes evitar</title>
+      <link>https://scelerity.vercel.app/blog/seo-2026/</link>
+      <guid>https://scelerity.vercel.app/blog/seo-2026/</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+      <description>El SEO no murió con la IA. Cambió. Estas son las prácticas que siguen generando demanda cualificada y los errores que siguen costando posiciones.</description>
+      <category>seo</category>
+    </item>
+    <item>
+      <title>La inteligencia artificial ya no reemplaza personas: potencia empresas</title>
+      <link>https://scelerity.vercel.app/blog/ia-potencia-empresas/</link>
+      <guid>https://scelerity.vercel.app/blog/ia-potencia-empresas/</guid>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+      <description>La IA no es un sustituto del criterio humano. Es un multiplicador cuando se integra con procesos, datos y equipos reales. Guía práctica para empresas.</description>
+      <category>ia</category>
+    </item>
+    <item>
+      <title>Branding digital: por qué una marca fuerte vende antes de ofrecer un producto</title>
+      <link>https://scelerity.vercel.app/blog/branding-digital/</link>
+      <guid>https://scelerity.vercel.app/blog/branding-digital/</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Una marca clara reduce fricción comercial. Cómo el branding digital genera confianza, preferencia y precio antes del pitch.</description>
+      <category>branding</category>
+    </item>
+    <item>
+      <title>Velocidad web y Core Web Vitals: por qué cada segundo cuenta</title>
+      <link>https://scelerity.vercel.app/blog/velocidad-core-web-vitals/</link>
+      <guid>https://scelerity.vercel.app/blog/velocidad-core-web-vitals/</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>La velocidad no es un detalle técnico. Impacta SEO, conversión y percepción de marca. Guía práctica de Core Web Vitals para equipos de producto.</description>
+      <category>desarrollo</category>
+    </item>
+    <item>
+      <title>Marketing digital integrado: cómo conectar SEO, contenido y publicidad para crecer de forma sostenible</title>
+      <link>https://scelerity.vercel.app/blog/marketing-digital-integrado/</link>
+      <guid>https://scelerity.vercel.app/blog/marketing-digital-integrado/</guid>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 GMT</pubDate>
+      <description>SEO, contenido y paid media no deberían pelearse por presupuesto. Cómo construir un sistema integrado que genera demanda sin quemar caja.</description>
+      <category>marketing</category>
+    </item>
+  </channel>
+</rss>

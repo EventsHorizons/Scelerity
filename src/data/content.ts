@@ -20,11 +20,21 @@ export type Content = {
     about: string;
     services: string;
     solutions: string;
+    journal: string;
     contact: string;
     menu: string;
     openMenu: string;
     closeMenu: string;
     skipToContent: string;
+  };
+  journal: {
+    label: string;
+    headline: string;
+    sub: string;
+    readArticle: string;
+    viewAll: string;
+    prev: string;
+    next: string;
   };
   solutions: SolutionsContent;
   hero: {
@@ -124,11 +134,21 @@ export const content: Record<Locale, Content> = {
       about: "Nosotros",
       services: "Servicios",
       solutions: "Soluciones",
+      journal: "Journal",
       contact: "Contacto",
       menu: "Menú",
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
       skipToContent: "Saltar al contenido",
+    },
+    journal: {
+      label: "Journal",
+      headline: "Ideas que mueven marcas.",
+      sub: "Diseño, producto y marketing — sin relleno, con criterio.",
+      readArticle: "Leer artículo",
+      viewAll: "Ver todo el Journal",
+      prev: "Anterior",
+      next: "Siguiente",
     },
     solutions: solutionsEs,
     hero: {
@@ -354,6 +374,7 @@ export const content: Record<Locale, Content> = {
       navLabel: "Navegación",
       links: [
         { href: "/soluciones/", label: "Soluciones" },
+        { href: "/blog/", label: "Journal" },
         { href: "/#services", label: "Servicios" },
         { href: "/#work", label: "Portafolio" },
         { href: "/#about", label: "Nosotros" },
@@ -393,11 +414,21 @@ export const content: Record<Locale, Content> = {
       about: "About us",
       services: "Services",
       solutions: "Solutions",
+      journal: "Journal",
       contact: "Contact",
       menu: "Menu",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       skipToContent: "Skip to content",
+    },
+    journal: {
+      label: "Journal",
+      headline: "Ideas that move brands.",
+      sub: "Design, product, and marketing — no filler, just judgment.",
+      readArticle: "Read article",
+      viewAll: "View all Journal",
+      prev: "Previous",
+      next: "Next",
     },
     solutions: solutionsEn,
     hero: {
@@ -623,6 +654,7 @@ export const content: Record<Locale, Content> = {
       navLabel: "Navigation",
       links: [
         { href: "/soluciones/", label: "Solutions" },
+        { href: "/blog/", label: "Journal" },
         { href: "/#services", label: "Services" },
         { href: "/#work", label: "Portfolio" },
         { href: "/#about", label: "About us" },

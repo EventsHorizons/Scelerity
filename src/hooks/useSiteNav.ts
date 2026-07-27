@@ -16,6 +16,7 @@ export function useSiteNav() {
 
   const links = [
     { href: "/soluciones/", label: t.nav.solutions, external: false as const },
+    { href: "/blog/", label: t.nav.journal, external: false as const },
     { href: home("work"), label: t.nav.work, external: false as const },
     { href: home("about"), label: t.nav.about, external: false as const },
     { href: home("services"), label: t.nav.services, external: false as const },
