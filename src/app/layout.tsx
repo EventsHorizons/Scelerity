@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/layout/Providers";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const display = Syne({
@@ -39,6 +40,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: "Scelerity — Velocidad con precisión",
   description:
     "Diseño y producto digital de alto rendimiento. Craft, velocidad y precisión.",
@@ -53,6 +55,13 @@ export const metadata: Metadata = {
     title: "Scelerity",
     description: "Velocidad con precisión.",
     type: "website",
+    locale: "es_ES",
+    siteName: "Scelerity",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Scelerity",
+    description: "Velocidad con precisión.",
   },
 };
 
