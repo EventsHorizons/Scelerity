@@ -164,7 +164,7 @@ export default async function BlogArticlePage({ params }: Props) {
             </div>
 
             <BlogNewsletter
-              title="Recibe lo esencial del Journal"
+              title="Recibe lo esencial del Blog"
               body="Una entrega ocasional con ideas de producto, SEO y marketing."
               placeholder="tu@email.com"
               submit="Suscribirse"

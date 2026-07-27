@@ -12,12 +12,12 @@ import { getAllPosts } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Journal — Scelerity",
+  title: "Blog — Scelerity",
   description:
-    "Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial. El journal editorial de Scelerity.",
+    "Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial. El blog editorial de Scelerity.",
   alternates: { canonical: "/blog/" },
   openGraph: {
-    title: "Journal — Scelerity",
+    title: "Blog — Scelerity",
     description:
       "Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial.",
     type: "website",
@@ -33,9 +33,9 @@ export default function BlogPage() {
       <SkipLink />
       <Header />
       <main id="main">
-        <Section id="journal-hero" className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
+        <Section id="blog-hero" className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="content" className="pb-[var(--space-fluid-lg)]">
-            <p className="chapter-label">Journal</p>
+            <p className="chapter-label">Blog</p>
             <div className="mt-[var(--space-6)] grid items-end gap-[var(--space-fluid-lg)] lg:grid-cols-12">
               <div className="lg:col-span-7">
                 <h1 className="text-balance font-display text-hero font-semibold">
@@ -76,7 +76,7 @@ export default function BlogPage() {
             />
 
             <BlogNewsletter
-              title="Recibe lo esencial del Journal"
+              title="Recibe lo esencial del Blog"
               body="Una entrega ocasional con ideas de producto, SEO y marketing. Sin ruido."
               placeholder="tu@email.com"
               submit="Suscribirse"

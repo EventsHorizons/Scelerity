@@ -37,7 +37,7 @@ export function ArticleJsonLd({ post, url }: ArticleJsonLdProps) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Journal",
+            name: "Blog",
             item: `${base}/blog/`,
           },
           {

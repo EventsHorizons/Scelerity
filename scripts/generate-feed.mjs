@@ -70,7 +70,7 @@ const items = posts
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Scelerity Journal</title>
+    <title>Scelerity Blog</title>
     <link>${base}/blog/</link>
     <description>Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial.</description>
     <language>es</language>${items}
