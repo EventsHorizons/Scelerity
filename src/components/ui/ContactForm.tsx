@@ -3,6 +3,12 @@
 import { useId, useState, type FormEvent, type ReactNode } from "react";
 import { Check, Loader2 } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
+import {
+  canSubmitForm,
+  contactFormSchema,
+  markFormSubmitted,
+  secondsUntilNextSubmit,
+} from "@/lib/security";
 import { cn } from "@/lib/cn";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -14,6 +20,7 @@ type FormState = {
   source: string;
   message: string;
   captcha: boolean;
+  website: string;
 };
 
 const initial: FormState = {
@@ -23,6 +30,7 @@ const initial: FormState = {
   source: "",
   message: "",
   captcha: false,
+  website: "",
 };
 
 export function ContactForm() {
@@ -54,6 +62,12 @@ export function ContactForm() {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!canSubmitForm()) {
+      setStatus("error");
+      return;
+    }
+
     setTouched({
       name: true,
       email: true,
@@ -62,12 +76,23 @@ export function ContactForm() {
       captcha: true,
     });
 
+    const parsed = contactFormSchema.safeParse({
+      ...values,
+      captcha: values.captcha,
+    });
+
+    if (!parsed.success) {
+      if (values.website) return;
+      return;
+    }
+
     if (Object.values(errors).some(Boolean)) return;
 
     setStatus("loading");
     try {
-      // Ready for API / Formspree / Resend — simulated success for now.
+      // Ready for API / Formspree / Resend — validated payload in parsed.data
       await new Promise((r) => setTimeout(r, 1100));
+      markFormSubmitted();
       setStatus("success");
       setValues(initial);
       setTouched({});
@@ -84,8 +109,22 @@ export function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label={t.cta.form.submit}
-      className="contact-form flex w-full flex-col gap-[var(--space-6)] rounded-[24px] border border-[var(--border)] bg-[var(--fg)]/[0.03] p-[var(--space-5)] sm:p-[var(--space-8)]"
+      className="contact-form relative flex w-full flex-col gap-[var(--space-6)] rounded-[24px] border border-[var(--border)] bg-[var(--fg)]/[0.03] p-[var(--space-5)] sm:p-[var(--space-8)]"
     >
+      {/* Honeypot — hidden from users, bots fill this */}
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
+        <label htmlFor={fieldId("website")}>Website</label>
+        <input
+          id={fieldId("website")}
+          tabIndex={-1}
+          autoComplete="off"
+          name="website"
+          type="text"
+          value={values.website}
+          onChange={(e) => set("website")(e.target.value)}
+        />
+      </div>
+
       <Field
         id={fieldId("name")}
         label={f.name}
@@ -279,7 +318,9 @@ export function ContactForm() {
       ) : null}
       {status === "error" ? (
         <p className="text-small text-[var(--danger)]" role="alert">
-          {f.error}
+          {!canSubmitForm()
+            ? `Espera ${secondsUntilNextSubmit()}s antes de enviar de nuevo.`
+            : f.error}
         </p>
       ) : null}
     </form>

@@ -1,15 +1,28 @@
 import Script from "next/script";
+import { getPublicEnv } from "@/lib/env";
 
-const gaId = process.env.NEXT_PUBLIC_GA4_ID;
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
-
-/** GA4 + GTM + Microsoft Clarity — loads only when env vars are set. */
+/** GA4 + GTM + Clarity + Sentry — loads only when env vars are set. */
 export function Analytics() {
-  if (!gaId && !gtmId && !clarityId) return null;
+  const { NEXT_PUBLIC_GA4_ID: gaId, NEXT_PUBLIC_GTM_ID: gtmId, NEXT_PUBLIC_CLARITY_ID: clarityId, NEXT_PUBLIC_SENTRY_DSN: sentryDsn } =
+    getPublicEnv();
+
+  if (!gaId && !gtmId && !clarityId && !sentryDsn) return null;
 
   return (
     <>
+      {sentryDsn ? (
+        <>
+          <Script
+            src="https://browser.sentry-cdn.com/9.5.0/bundle.tracing.min.js"
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+          <Script id="sentry-init" strategy="afterInteractive">
+            {`if(typeof Sentry!=='undefined'){Sentry.init({dsn:'${sentryDsn}',tracesSampleRate:0.1,environment:'${process.env.NODE_ENV}'});}`}
+          </Script>
+        </>
+      ) : null}
+
       {gtmId ? (
         <>
           <Script id="gtm-init" strategy="afterInteractive">
@@ -34,7 +47,7 @@ export function Analytics() {
       {gaId && !gtmId ? (
         <>
           <Script
-            src={`https://www.googtagmanager.com/gtag/js?id=${gaId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="afterInteractive"
           />
           <Script id="ga4-init" strategy="afterInteractive">
@@ -65,4 +78,11 @@ export function trackEvent(
   const w = window as Window & { dataLayer?: Record<string, unknown>[] };
   w.dataLayer = w.dataLayer || [];
   w.dataLayer.push({ event: name, ...params });
+}
+
+/** Report errors to Sentry when configured. */
+export function captureError(error: unknown, context?: Record<string, string>) {
+  if (typeof window === "undefined") return;
+  const w = window as Window & { Sentry?: { captureException: (e: unknown, o?: object) => void } };
+  w.Sentry?.captureException(error, context ? { extra: context } : undefined);
 }

@@ -10,6 +10,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     let destroyed = false;
     let cleanup: (() => void) | undefined;
 
+    const cores = navigator.hardwareConcurrency ?? 8;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
+    const lowPower = cores <= 4 || memory <= 4;
+
     (async () => {
       const [{ default: Lenis }, ScrollTrigger] = await Promise.all([
         import("lenis"),
@@ -21,11 +25,12 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       registerGsap();
 
       const lenis = new Lenis({
-        duration: 0.9,
+        duration: lowPower ? 0.75 : 0.9,
         easing: (t) => 1 - Math.pow(1 - t, 3.5),
         smoothWheel: true,
-        wheelMultiplier: 1.05,
-        touchMultiplier: 1.4,
+        wheelMultiplier: lowPower ? 0.9 : 1.05,
+        touchMultiplier: lowPower ? 1.2 : 1.4,
+        lerp: lowPower ? 0.085 : 0.1,
       });
 
       setLenisInstance(lenis);

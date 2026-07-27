@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/layout/Providers";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
@@ -6,6 +7,8 @@ import { Analytics } from "@/components/seo/Analytics";
 import { getSiteUrl } from "@/lib/site";
 import { HOME_METADATA } from "@/lib/seo/metadata";
 import "./globals.css";
+
+const assetPrefix = process.env.GITHUB_PAGES === "true" ? "/Scelerity" : "";
 
 const display = Syne({
   variable: "--font-display",
@@ -45,6 +48,9 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   ...HOME_METADATA,
+  ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } }
+    : {}),
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -54,18 +60,6 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInit = `
-(function(){
-  try {
-    var stored = localStorage.getItem('scelerity-theme');
-    var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    document.documentElement.dataset.theme = theme;
-    var locale = localStorage.getItem('scelerity-locale');
-    if (locale === 'es' || locale === 'en') document.documentElement.lang = locale;
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -74,7 +68,10 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning data-theme="dark">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        {/* beforeInteractive — prevents theme flash without blocking parser long */}
+        <Script src={`${assetPrefix}/theme-init.js`} strategy="beforeInteractive" />
         <link
           rel="alternate"
           type="application/rss+xml"
