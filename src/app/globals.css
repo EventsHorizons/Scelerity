@@ -346,6 +346,11 @@ body.has-custom-cursor :focus-visible {
   line-height: 1;
 }
 
+/* Header lockup — extra air between isotipo and wordmark (Tailwind gap is overridden above). */
+.wordmark-lockup.wordmark-lockup--header {
+  gap: 0.65em;
+}
+
 .wordmark-lockup__mark {
   height: 1.12em;
   width: auto;
