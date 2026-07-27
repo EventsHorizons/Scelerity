@@ -341,7 +341,7 @@ body.has-custom-cursor :focus-visible {
 .wordmark-lockup {
   display: inline-flex;
   align-items: center;
-  gap: 0.42em;
+  gap: 0.48em;
   color: currentColor;
   line-height: 1;
 }

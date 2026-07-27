@@ -88,12 +88,12 @@ export function Header() {
             data-cursor="link"
             onClick={() => setOpen(false)}
             className={cn(
-              "tap-target relative z-10 inline-flex items-center py-1 pr-2 transition-colors duration-500",
+              "tap-target relative z-10 inline-flex items-center overflow-visible py-1 pl-0.5 pr-2 transition-colors duration-500",
               logoOnDarkHero ? "text-white" : "text-[var(--fg)]",
             )}
             aria-label="Scelerity — Home"
           >
-            <Logo className="text-[1.0625rem] md:text-[1.125rem]" />
+            <Logo className="gap-[0.52em] text-[1.0625rem] md:text-[1.125rem]" />
           </Link>
 
           <nav
