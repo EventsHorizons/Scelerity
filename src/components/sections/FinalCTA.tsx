@@ -19,7 +19,7 @@ export function FinalCTA() {
   const { t } = useLocale();
 
   return (
-    <Section id="contact">
+    <Section id="contact" cardTone="light">
       <AmbientGlow variant="cta" />
       <Container size="content" className="relative z-10 section-y-lg">
         {/* Single column until there is genuinely room for two */}

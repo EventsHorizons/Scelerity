@@ -163,6 +163,9 @@ html[data-theme="light"] {
   --section-y: clamp(4rem, 2.5rem + 7.5vw, 7.5rem);
   --section-y-lg: clamp(5.5rem, 3.2rem + 11vw, 11rem);
 
+  /* Hero — extra air before the next editorial block */
+  --hero-pad-bottom: clamp(5.5rem, 3rem + 11vw, 12rem);
+
   /* Minimum accessible touch target */
   --tap: 2.75rem;
   --tap-safe: 3rem;
@@ -432,6 +435,63 @@ body.has-custom-cursor :focus-visible {
 /* Editorial rhythm — sections are given room to breathe. */
 .section-y-lg {
   padding-block: var(--section-y-lg);
+}
+
+/* ── Landing card rhythm — light theme only ──
+   Dark bands: full bleed · Light bands: rounded cards on the base canvas. */
+html[data-theme="light"] {
+  --section-card-gap: clamp(1rem, 0.7rem + 1.6vw, 1.75rem);
+  --section-card-radius: clamp(1.25rem, 1rem + 1.4vw, 2rem);
+}
+
+html[data-theme="light"] #main.landing-rhythm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-card-gap);
+  padding-bottom: var(--section-card-gap);
+}
+
+html[data-theme="light"] #main.landing-rhythm .section-card {
+  isolation: isolate;
+  transition:
+    background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="light"] #main.landing-rhythm .section-card--dark {
+  --bg: #09090b;
+  --surface: #111216;
+  --card: #17191e;
+  --fg: #f5f7fa;
+  --fg-muted: #9ba3af;
+  --fg-subtle: #767e8b;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  width: 100%;
+  border-radius: 0;
+  background-color: #09090b;
+  color: #f5f7fa;
+  box-shadow: none;
+}
+
+html[data-theme="light"] #main.landing-rhythm .section-card--light {
+  width: auto;
+  margin-inline: max(var(--gutter), env(safe-area-inset-left));
+  border-radius: var(--section-card-radius);
+  overflow: hidden;
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, #ffffff 72%, var(--bg)) 0%,
+    color-mix(in srgb, #5c8dff 5.5%, var(--bg)) 42%,
+    color-mix(in srgb, #7c6cff 4%, var(--bg)) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 0 0 1px rgba(12, 13, 16, 0.05),
+    0 20px 40px -28px rgba(12, 13, 16, 0.12);
 }
 
 /* ── Auto-fit card grid: reflows without a single media query ── */

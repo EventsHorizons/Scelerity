@@ -12,7 +12,7 @@ export function Featured() {
   const project = t.featured.project;
 
   return (
-    <Section id="featured">
+    <Section id="featured" cardTone="dark">
       <AmbientGlow variant="featured" />
       <Container size="content" className="relative z-10 section-y-lg">
         <p className="chapter-label">{t.featured.label}</p>

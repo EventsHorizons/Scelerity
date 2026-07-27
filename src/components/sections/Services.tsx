@@ -14,7 +14,7 @@ export function Services() {
   ] as const;
 
   return (
-    <Section id="services">
+    <Section id="services" cardTone="light">
       <AmbientGlow variant="services" />
       <Container size="content" className="relative z-10 section-y-lg">
         <div className="section-head">

@@ -156,7 +156,24 @@ if (!underOneDrive) {
   process.exit(0);
 }
 
+function freePort(port) {
+  if (process.platform !== "win32") return;
+
+  spawnSync(
+    "powershell",
+    [
+      "-NoProfile",
+      "-Command",
+      `$c = Get-NetTCPConnection -LocalPort ${port} -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1; if ($c) { Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue }`,
+    ],
+    { stdio: "ignore" },
+  );
+}
+
 if (mode === "build") {
+  // A running dev server + build corrupts `.next` (junction swap). Stop it first.
+  freePort(3000);
+  freePort(3001);
   setupBuildLocal();
 } else {
   setupDevJunction();

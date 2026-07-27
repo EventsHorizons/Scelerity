@@ -13,7 +13,7 @@ export function FAQ() {
   const uid = useId();
 
   return (
-    <Section id="faq">
+    <Section id="faq" cardTone="light">
       <Container size="content" className="section-y-lg">
         <div className="section-head section-head--baseline">
           <p className="chapter-label">{t.faq.label}</p>

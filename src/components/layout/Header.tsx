@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useLocale } from "@/context/LocaleContext";
+import { useTheme } from "@/context/ThemeContext";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { Button } from "@/components/ui/Button";
@@ -16,7 +17,8 @@ import { ease } from "@/lib/easings";
 
 export function Header() {
   const { t } = useLocale();
-  const { links, logoHref, contactHref } = useSiteNav();
+  const { theme } = useTheme();
+  const { links, logoHref, contactHref, onHome } = useSiteNav();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -55,6 +57,9 @@ export function Header() {
     };
   }, [open, close]);
 
+  const logoOnDarkHero =
+    theme === "light" && onHome && !scrolled && !open;
+
   return (
     <>
       <motion.header
@@ -82,7 +87,10 @@ export function Header() {
             href={logoHref}
             data-cursor="link"
             onClick={() => setOpen(false)}
-            className="tap-target relative z-10 inline-flex items-center py-1 pr-2 text-[var(--fg)]"
+            className={cn(
+              "tap-target relative z-10 inline-flex items-center py-1 pr-2 transition-colors duration-500",
+              logoOnDarkHero ? "text-white" : "text-[var(--fg)]",
+            )}
             aria-label="Scelerity — Home"
           >
             <Logo className="text-[1.0625rem] md:text-[1.125rem]" />

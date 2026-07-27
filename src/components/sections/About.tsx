@@ -8,7 +8,7 @@ export function About() {
   const { t } = useLocale();
 
   return (
-    <Section id="about">
+    <Section id="about" cardTone="dark">
       <Container size="content" className="section-y-lg">
         <div className="section-head">
           <p className="chapter-label lg:pt-3">{t.about.label}</p>

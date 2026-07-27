@@ -17,7 +17,7 @@ export function Work() {
   const { t } = useLocale();
 
   return (
-    <Section id="work">
+    <Section id="work" cardTone="light">
       <Container size="content" className="section-y-lg">
         <div className="section-head section-head--baseline">
           <p className="chapter-label">{t.work.label}</p>

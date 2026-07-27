@@ -121,7 +121,7 @@ export const content: Record<Locale, Content> = {
   es: {
     nav: {
       work: "Trabajo",
-      about: "Estudio",
+      about: "Nosotros",
       services: "Servicios",
       solutions: "Soluciones",
       contact: "Contacto",
@@ -218,7 +218,7 @@ export const content: Record<Locale, Content> = {
           result: "Sistemas listos para crecer sin reescribirse.",
         },
         {
-          name: "Marca & IA",
+          name: "Marca",
           what: "Identidad, motion y herramientas inteligentes.",
           why: "Porque la marca debe operar, no solo verse.",
           result: "Presencia con carácter e inteligencia con propósito.",
@@ -318,7 +318,7 @@ export const content: Record<Locale, Content> = {
         "Cuéntanos tu idea y nuestro equipo se pondrá en contacto contigo en menos de 24 horas.",
       ],
       primary: "Escríbenos",
-      whatsapp: "573001234567",
+      whatsapp: "(+57) 301 599 3300",
       email: "hello@scelerity.co",
       location: "Remote · Worldwide",
       response: "Respuesta en menos de 24 horas",
@@ -356,7 +356,7 @@ export const content: Record<Locale, Content> = {
         { href: "/soluciones/", label: "Soluciones" },
         { href: "/#services", label: "Servicios" },
         { href: "/#work", label: "Portafolio" },
-        { href: "/#about", label: "Estudio" },
+        { href: "/#about", label: "Nosotros" },
         { href: "/#contact", label: "Contacto" },
       ],
       legal: [
@@ -390,7 +390,7 @@ export const content: Record<Locale, Content> = {
   en: {
     nav: {
       work: "Work",
-      about: "Studio",
+      about: "About us",
       services: "Services",
       solutions: "Solutions",
       contact: "Contact",
@@ -587,7 +587,7 @@ export const content: Record<Locale, Content> = {
         "Tell us your idea and our team will get back to you within 24 hours.",
       ],
       primary: "Write to us",
-      whatsapp: "573001234567",
+      whatsapp: "+57 3015993300",
       email: "hello@scelerity.co",
       location: "Remote · Worldwide",
       response: "Reply within 24 hours",
@@ -625,7 +625,7 @@ export const content: Record<Locale, Content> = {
         { href: "/soluciones/", label: "Solutions" },
         { href: "/#services", label: "Services" },
         { href: "/#work", label: "Portfolio" },
-        { href: "/#about", label: "Studio" },
+        { href: "/#about", label: "About us" },
         { href: "/#contact", label: "Contact" },
       ],
       legal: [

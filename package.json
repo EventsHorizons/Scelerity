@@ -8,7 +8,7 @@
     "dev:reset": "node scripts/dev-reset.mjs",
     "prebuild": "node scripts/ensure-next-cache.mjs --build",
     "build": "next build",
-    "postbuild": "node scripts/ensure-next-cache.mjs --dev --fresh",
+    "postbuild": "node scripts/ensure-next-cache.mjs --dev",
     "start": "next start",
     "lint": "eslint",
     "cache:fix": "node scripts/ensure-next-cache.mjs --dev",

@@ -34,7 +34,7 @@ export default function Home() {
     <>
       <SkipLink />
       <Header />
-      <main id="main">
+      <main id="main" className="landing-rhythm">
         <Hero />
         <Work />
         <About />

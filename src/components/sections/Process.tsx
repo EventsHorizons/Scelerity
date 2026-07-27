@@ -8,7 +8,7 @@ export function Process() {
   const { t } = useLocale();
 
   return (
-    <Section id="process">
+    <Section id="process" cardTone="light">
       <Container size="content" className="section-y-lg">
         <div className="section-head">
           <p className="chapter-label lg:pt-3">{t.process.label}</p>
