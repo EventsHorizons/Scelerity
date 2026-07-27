@@ -70,7 +70,7 @@ export function Header() {
       >
         <div
           className={cn(
-            "relative mx-auto flex h-[var(--header-h)] w-full max-w-[1200px] items-center justify-between gap-3 rounded-[22px] px-3 transition-[background-color,border-color,box-shadow] duration-500 sm:px-5",
+            "relative mx-auto flex h-[var(--header-h)] w-full max-w-[1200px] items-center justify-between gap-3 overflow-visible rounded-[22px] px-3 transition-[background-color,border-color,box-shadow] duration-500 sm:px-5",
             scrolled || open
               ? "glass-panel shadow-[0_8px_40px_rgba(0,0,0,0.18)]"
               : "border border-transparent bg-transparent",
@@ -88,7 +88,7 @@ export function Header() {
             data-cursor="link"
             onClick={() => setOpen(false)}
             className={cn(
-              "tap-target relative z-10 inline-flex items-center overflow-visible py-1.5 pl-1 pr-3 transition-colors duration-500",
+              "tap-target relative z-20 inline-flex shrink-0 items-center overflow-visible py-1.5 pl-1 pr-4 transition-colors duration-500",
               logoOnDarkHero ? "text-white" : "text-[var(--fg)]",
             )}
             aria-label="Scelerity — Home"
@@ -97,7 +97,7 @@ export function Header() {
           </Link>
 
           <nav
-            className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7"
+            className="pointer-events-none absolute left-1/2 z-0 hidden -translate-x-1/2 items-center gap-5 lg:flex xl:gap-7 [&_a]:pointer-events-auto"
             aria-label="Primary"
           >
             {links.map((link, i) => (

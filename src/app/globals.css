@@ -342,20 +342,23 @@ body.has-custom-cursor :focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 0.48em;
+  overflow: visible;
   color: currentColor;
   line-height: 1;
 }
 
-/* Header lockup — extra air between isotipo and wordmark (Tailwind gap is overridden above). */
+/* Header lockup — clear separation so the mark is not covered by the wordmark. */
 .wordmark-lockup.wordmark-lockup--header {
-  gap: 0.65em;
+  gap: 0.72em;
+  min-width: max-content;
 }
 
 .wordmark-lockup__mark {
   height: 1.12em;
   width: auto;
-  aspect-ratio: 1293 / 1558;
+  aspect-ratio: 1338 / 1558;
   flex-shrink: 0;
+  overflow: visible;
 }
 
 .wordmark-lockup__mark--solo {
@@ -378,6 +381,8 @@ body.has-custom-cursor :focus-visible {
 .wordmark-lockup .wordmark {
   /* Optical centering against the rotated mark */
   transform: translateY(0.03em);
+  overflow: visible;
+  padding-inline-end: 0.06em;
 }
 
 .wordmark--compact {

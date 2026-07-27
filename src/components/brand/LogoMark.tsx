@@ -10,7 +10,8 @@ export const LOGO_MARK_PATHS = [
   "M1152 653 L1127 640 L1099 629 L1065 620 L1026 615 L991 615 L948 621 L913 631 L873 649 L831 677 L278 1111 L627 1557 L1190 1117 L1228 1079 L1255 1040 L1278 989 L1290 937 L1292 878 L1283 824 L1268 782 L1248 745 L1217 705 L1193 682 Z",
 ] as const;
 
-export const LOGO_VIEWBOX = "0 0 1293 1558";
+/** Padded on the right so the bolt edge is not clipped beside the wordmark. */
+export const LOGO_VIEWBOX = "0 0 1338 1558";
 
 /**
  * Scelerity isotipo — official vector mark.
@@ -20,8 +21,9 @@ export function LogoMark({ className }: Props) {
   return (
     <svg
       viewBox={LOGO_VIEWBOX}
+      overflow="visible"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn("block shrink-0 text-current", className)}
+      className={cn("block shrink-0 overflow-visible text-current", className)}
       aria-hidden
     >
       {LOGO_MARK_PATHS.map((d) => (
