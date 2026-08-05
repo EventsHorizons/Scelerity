@@ -4,7 +4,7 @@
  */
 export function HeroEnergyFallback() {
   return (
-    <div className="hero-energy-fallback absolute inset-0" aria-hidden>
+    <div className="hero-energy-fallback" aria-hidden>
       <div className="hero-energy-fallback__core" />
       <div className="hero-energy-fallback__halo" />
     </div>

@@ -1156,15 +1156,26 @@ body.nav-locked {
   touch-action: none;
 }
 
-/* ── Hero energy field — fluid stage + uniform edge dissolve ── */
-.hero-energy {
-  --hero-energy-fade: clamp(1.25rem, 9%, 4rem);
+/* ── Landing hero motion — full-bleed energy field ── */
+.hero-stage {
+  isolation: isolate;
+}
+
+.hero-motion {
   position: absolute;
   inset: 0;
   z-index: 0;
-  opacity: 0.62;
   overflow: hidden;
   pointer-events: none;
+}
+
+.hero-energy {
+  --hero-energy-fade: clamp(2rem, 12%, 7rem);
+  position: absolute;
+  inset: -18% -10%;
+  opacity: 0.62;
+  transform: translateZ(0);
+  contain: layout style paint;
   -webkit-mask-image:
     linear-gradient(to bottom, transparent, #000 var(--hero-energy-fade)),
     linear-gradient(to top, transparent, #000 var(--hero-energy-fade)),
@@ -1181,93 +1192,104 @@ body.nav-locked {
 
 .hero-energy__canvas {
   position: absolute;
-  inset: -8%;
-  width: auto;
-  height: auto;
+  inset: -12%;
 }
 
-.hero-energy__canvas canvas {
+.hero-energy__gl {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  display: block;
 }
 
 @media (min-width: 40rem) {
   .hero-energy {
-    opacity: 0.72;
+    opacity: 0.74;
+    --hero-energy-fade: clamp(2.25rem, 11%, 7.5rem);
   }
 }
 
 @media (min-width: 48rem) {
   .hero-energy {
-    opacity: 0.78;
+    opacity: 0.82;
   }
 }
 
 @media (min-width: 64rem) {
   .hero-energy {
-    inset: auto 0 0 auto;
-    top: 50%;
-    left: 38%;
-    right: -12%;
-    width: auto;
-    height: min(96svh, 140%);
-    transform: translateY(-50%);
+    inset: -22% -14% -18% -6%;
     opacity: 1;
-    --hero-energy-fade: clamp(1.5rem, 7%, 5rem);
+    --hero-energy-fade: clamp(2.5rem, 10%, 8.5rem);
   }
 }
 
 @media (min-width: 90rem) {
   .hero-energy {
-    left: 42%;
-    right: -10%;
+    inset: -24% -12% -20% -4%;
+    --hero-energy-fade: clamp(3rem, 9%, 9rem);
   }
 }
 
 @media (min-width: 120rem) {
   .hero-energy {
-    left: 44%;
-    right: -6%;
-    --hero-energy-fade: clamp(2rem, 6%, 6rem);
+    inset: -26% -10% -22% -2%;
+    --hero-energy-fade: clamp(3.5rem, 8%, 10rem);
   }
 }
 
 /* ── CSS hero energy core (mobile / low-power — zero WebGL) ── */
 .hero-energy-fallback {
   position: absolute;
-  inset: -5%;
-  overflow: visible;
+  inset: 0;
 }
 
 .hero-energy-fallback__core {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(88%, 100%);
-  height: min(88%, 100%);
+  width: min(92%, 100%);
+  height: min(92%, 100%);
+  max-width: 100%;
   aspect-ratio: 1;
   transform: translate3d(-50%, -50%, 0);
   border-radius: 50%;
   background: radial-gradient(
     circle at 38% 32%,
-    rgba(103, 240, 193, 0.38) 0%,
-    rgba(92, 141, 255, 0.3) 26%,
-    rgba(124, 108, 255, 0.16) 50%,
-    transparent 72%
+    rgba(103, 240, 193, 0.36) 0%,
+    rgba(92, 141, 255, 0.28) 28%,
+    rgba(124, 108, 255, 0.14) 52%,
+    transparent 78%
   );
 }
 
 .hero-energy-fallback__halo {
   position: absolute;
-  inset: -25%;
+  left: 50%;
+  top: 50%;
+  width: min(130%, 140%);
+  height: min(130%, 140%);
+  transform: translate3d(-50%, -50%, 0);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(92, 141, 255, 0.14) 0%,
-    rgba(124, 108, 255, 0.07) 42%,
-    transparent 70%
+    rgba(92, 141, 255, 0.12) 0%,
+    rgba(124, 108, 255, 0.06) 44%,
+    transparent 76%
   );
-  filter: blur(36px);
+  filter: blur(clamp(28px, 6vw, 48px));
+}
+
+@media (min-width: 64rem) {
+  .hero-energy-fallback__core {
+    left: 66%;
+    top: 50%;
+  }
+
+  .hero-energy-fallback__halo {
+    left: 66%;
+    top: 50%;
+  }
 }
 
 @keyframes energy-breathe {

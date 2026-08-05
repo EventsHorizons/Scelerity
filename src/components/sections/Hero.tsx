@@ -81,13 +81,12 @@ export function Hero() {
 
       <div
         ref={root}
-        className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-[var(--hero-pad-bottom)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]"
+        className="hero-stage relative z-10 flex min-h-[100svh] flex-col justify-center pb-[var(--hero-pad-bottom)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]"
       >
-        <div
-          className="hero-energy pointer-events-none"
-          aria-hidden
-        >
-          {webgl ? <EnergyField /> : <HeroEnergyFallback />}
+        <div className="hero-motion" aria-hidden>
+          <div className="hero-energy">
+            {webgl ? <EnergyField /> : <HeroEnergyFallback />}
+          </div>
         </div>
 
         <Container size="content" className="relative z-10">

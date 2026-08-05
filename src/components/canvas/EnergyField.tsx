@@ -92,18 +92,24 @@ const fragment = /* glsl */ `
     return c;
   }
 
-  // Organic SDF mass — never a perfect circle; breathes slowly.
+  // Organic SDF mass — soft dissolve, aspect-aware scale.
   float energyMass(vec2 p, float t) {
-    float breathe = 1.0 + 0.045 * sin(t * 0.22) + 0.025 * sin(t * 0.13 + 1.7);
+    float aspectTame = clamp(uAspect / 1.65, 0.72, 1.18);
+    float breathe = 1.0 + 0.038 * sin(t * 0.18) + 0.022 * sin(t * 0.11 + 1.7);
     float angle = atan(p.y, p.x);
     float deform =
-      fbm(vec2(angle * 1.4, t * 0.035)) * 0.09 +
-      fbm(vec2(angle * 2.8 + 3.1, t * 0.022)) * 0.045;
+      fbm(vec2(angle * 1.4, t * 0.032)) * 0.085 +
+      fbm(vec2(angle * 2.8 + 3.1, t * 0.02)) * 0.042;
     float r = length(p) * breathe;
-    float radius = 0.38 + deform;
+    float radius = (0.36 + deform) * aspectTame;
     float d = r - radius;
-    // Soft dissolve — no hard silhouette.
-    return 1.0 - smoothstep(-0.08, 0.22, d);
+    return 1.0 - smoothstep(-0.18, 0.32, d);
+  }
+
+  float uniformEdgeFade(vec2 uv) {
+    vec2 edge = min(uv, 1.0 - uv);
+    float dist = min(edge.x, edge.y);
+    return smoothstep(0.0, 0.22, dist);
   }
 
   void main() {
@@ -114,10 +120,6 @@ const fragment = /* glsl */ `
     float t = uTime;
 
     float mass = energyMass(p, t);
-    if (mass < 0.004) {
-      gl_FragColor = vec4(0.0);
-      return;
-    }
 
     // Flow field — arcs travel independently along curl streams.
     vec2 flowP = p * 2.4 + vec2(t * 0.08, t * 0.05);
@@ -171,15 +173,10 @@ const fragment = /* glsl */ `
     float lum = energy * (0.7 + filament * 0.45);
     lum = pow(clamp(lum, 0.0, 1.5), 1.1);
 
-    // Uniform edge dissolve — equal fade on all four sides.
-    vec2 edgeUv = min(vUv, 1.0 - vUv);
-    float edgeDist = min(edgeUv.x, edgeUv.y);
-    float edge = smoothstep(0.0, 0.14, edgeDist);
-
-    // Protect the headline on desktop; dissolve symmetrically when centred.
-    float textClear = mix(1.0, smoothstep(0.06, 0.38, vUv.x), uClear);
-
-    float alpha = lum * textClear * edge * uOpacity;
+    // Uniform dissolve on all four canvas edges + soft mass boundary.
+    float edge = uniformEdgeFade(vUv);
+    float textClear = mix(1.0, smoothstep(0.04, 0.34, vUv.x), uClear);
+    float alpha = lum * mass * textClear * edge * uOpacity;
     gl_FragColor = vec4(color * lum, clamp(alpha, 0.0, 1.0));
   }
 `;
@@ -217,9 +214,9 @@ function CorePlane({
     mat.uniforms.uAspect.value = size.width / size.height;
     mat.uniforms.uOpacity.value = opacity;
     mat.uniforms.uClear.value = compact ? 0 : 1;
-    mat.uniforms.uCenter.value.set(compact ? 0.5 : 0.62, compact ? 0.5 : 0.48);
+    mat.uniforms.uCenter.value.set(compact ? 0.5 : 0.66, compact ? 0.5 : 0.5);
     if (!reduced) {
-      mat.uniforms.uTime.value += Math.min(delta, 0.05);
+      mat.uniforms.uTime.value += Math.min(delta, 0.05) * 0.82;
     }
   });
 
@@ -279,9 +276,14 @@ export function EnergyField() {
     <div ref={ref} className="hero-energy__canvas">
       <Canvas
         frameloop={active ? "always" : "never"}
-        dpr={compact ? [1, 1.25] : [1, 1.5]}
-        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
-        className="!absolute inset-0"
+        dpr={compact ? [1, 1.25] : [1, 1.35]}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: "high-performance",
+          preserveDrawingBuffer: false,
+        }}
+        className="hero-energy__gl"
         camera={{ position: [0, 0, 1] }}
       >
         <CorePlane opacity={opacity} compact={compact} />
