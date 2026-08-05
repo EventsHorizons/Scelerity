@@ -7,6 +7,7 @@ import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
 import { KineticCard } from "@/components/motion/KineticCard";
 import { SolutionsVisual } from "@/components/sections/solutions/SolutionsVisual";
+import { solutionsVisuals } from "@/data/solutions-visuals";
 
 const icons = [Palette, Code2, Megaphone] as const;
 
@@ -58,10 +59,10 @@ export function SolutionsPillars() {
 
                   <div className={reversed ? "lg:[direction:ltr]" : ""}>
                     <SolutionsVisual
-                      media={i === 1 ? "video" : "image"}
-                      tone={i}
+                      visual={solutionsVisuals.pillars[i]}
                       aspect="aspect-[16/10]"
                       className="rounded-[var(--radius-md)]"
+                      sizes="(max-width: 1024px) 100vw, 520px"
                     />
                   </div>
                 </article>

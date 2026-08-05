@@ -6,6 +6,7 @@ import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
 import { KineticCard } from "@/components/motion/KineticCard";
 import { SolutionsVisual } from "@/components/sections/solutions/SolutionsVisual";
+import { solutionsVisuals } from "@/data/solutions-visuals";
 import { cn } from "@/lib/cn";
 
 export function SolutionsShowcase() {
@@ -36,9 +37,15 @@ export function SolutionsShowcase() {
             >
               <article data-cursor="media" className="group flex h-full flex-col">
                 <SolutionsVisual
-                  media={item.media}
-                  tone={i}
+                  visual={solutionsVisuals.showcase[i]}
                   aspect="aspect-[4/3] min-h-[12rem] h-full flex-1 rounded-none"
+                  sizes={
+                    item.layout === "hero"
+                      ? "(max-width: 768px) 100vw, 720px"
+                      : item.layout === "wide"
+                        ? "(max-width: 768px) 100vw, 960px"
+                        : "(max-width: 768px) 100vw, 480px"
+                  }
                 />
                 <div className="flex items-end justify-between gap-4 p-5 sm:p-6">
                   <div>

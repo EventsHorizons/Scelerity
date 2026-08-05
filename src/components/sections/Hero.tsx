@@ -84,7 +84,7 @@ export function Hero() {
         className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-[var(--hero-pad-bottom)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]"
       >
         <div
-          className="hero-energy pointer-events-none absolute left-1/2 top-1/2 h-[min(60svh,26rem)] w-[min(120%,34rem)] -translate-x-1/2 -translate-y-1/2 opacity-60 sm:h-[min(64svh,30rem)] sm:w-[min(105%,38rem)] md:opacity-75 lg:left-auto lg:right-[-6%] lg:h-[min(88svh,47.5rem)] lg:w-[min(56vw,45rem)] lg:translate-x-0 lg:opacity-100"
+          className="hero-energy pointer-events-none"
           aria-hidden
         >
           {webgl ? <EnergyField /> : <HeroEnergyFallback />}

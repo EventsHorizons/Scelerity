@@ -171,13 +171,13 @@ const fragment = /* glsl */ `
     float lum = energy * (0.7 + filament * 0.45);
     lum = pow(clamp(lum, 0.0, 1.5), 1.1);
 
+    // Uniform edge dissolve — equal fade on all four sides.
+    vec2 edgeUv = min(vUv, 1.0 - vUv);
+    float edgeDist = min(edgeUv.x, edgeUv.y);
+    float edge = smoothstep(0.0, 0.14, edgeDist);
+
     // Protect the headline on desktop; dissolve symmetrically when centred.
     float textClear = mix(1.0, smoothstep(0.06, 0.38, vUv.x), uClear);
-    float edge =
-      smoothstep(0.0, 0.1, vUv.y) *
-      smoothstep(1.0, 0.9, vUv.y) *
-      smoothstep(1.0, 0.86, vUv.x) *
-      mix(smoothstep(0.0, 0.14, vUv.x), 1.0, uClear);
 
     float alpha = lum * textClear * edge * uOpacity;
     gl_FragColor = vec4(color * lum, clamp(alpha, 0.0, 1.0));
@@ -276,7 +276,7 @@ export function EnergyField() {
       : 0.85;
 
   return (
-    <div ref={ref} className="absolute inset-0">
+    <div ref={ref} className="hero-energy__canvas">
       <Canvas
         frameloop={active ? "always" : "never"}
         dpr={compact ? [1, 1.25] : [1, 1.5]}

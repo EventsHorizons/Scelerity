@@ -12,6 +12,9 @@ export type Project = {
   description: string;
   metrics: { value: string; label: string }[];
   media: "image" | "video";
+  /** Editorial portfolio cover — /projects/{slug}.jpg */
+  cover: string;
+  coverAlt: string;
 };
 
 export type Content = {
@@ -173,6 +176,9 @@ export const content: Record<Locale, Content> = {
             { value: "8 sem", label: "Al lanzamiento" },
           ],
           media: "image",
+          cover: "/projects/aether.jpg",
+          coverAlt:
+            "Mockup editorial Aether — plataforma SaaS en MacBook y iPhone, paleta navy violeta y cian",
         },
         {
           title: "Northline",
@@ -184,6 +190,9 @@ export const content: Record<Locale, Content> = {
             { value: "60 fps", label: "En dispositivo" },
           ],
           media: "video",
+          cover: "/projects/northline.jpg",
+          coverAlt:
+            "Mockup editorial Northline — identidad motion en monitor y móvil, paleta charcoal arena y ámbar",
         },
         {
           title: "Vespera",
@@ -195,6 +204,9 @@ export const content: Record<Locale, Content> = {
             { value: "−38%", label: "Fricción" },
           ],
           media: "image",
+          cover: "/projects/vespera.jpg",
+          coverAlt:
+            "Mockup editorial Vespera — app de marca en iPhones, paleta blush wine y champagne",
         },
       ],
     },
@@ -258,6 +270,9 @@ export const content: Record<Locale, Content> = {
           { value: "−51%", label: "Tiempo de tarea" },
         ],
         media: "image",
+        cover: "/projects/aether.jpg",
+        coverAlt:
+          "Mockup editorial Aether — plataforma SaaS en MacBook y iPhone, paleta navy violeta y cian",
       },
     },
     process: {
@@ -453,6 +468,9 @@ export const content: Record<Locale, Content> = {
             { value: "8 wks", label: "To launch" },
           ],
           media: "image",
+          cover: "/projects/aether.jpg",
+          coverAlt:
+            "Editorial mockup Aether — SaaS platform on MacBook and iPhone, navy violet cyan palette",
         },
         {
           title: "Northline",
@@ -464,6 +482,9 @@ export const content: Record<Locale, Content> = {
             { value: "60 fps", label: "Every device" },
           ],
           media: "video",
+          cover: "/projects/northline.jpg",
+          coverAlt:
+            "Editorial mockup Northline — motion identity on monitor and phone, charcoal sand amber palette",
         },
         {
           title: "Vespera",
@@ -475,6 +496,9 @@ export const content: Record<Locale, Content> = {
             { value: "−38%", label: "Friction" },
           ],
           media: "image",
+          cover: "/projects/vespera.jpg",
+          coverAlt:
+            "Editorial mockup Vespera — brand app on iPhones, blush wine champagne palette",
         },
       ],
     },
@@ -538,6 +562,9 @@ export const content: Record<Locale, Content> = {
           { value: "−51%", label: "Task time" },
         ],
         media: "image",
+        cover: "/projects/aether.jpg",
+        coverAlt:
+          "Editorial mockup Aether — SaaS platform on MacBook and iPhone, navy violet cyan palette",
       },
     },
     process: {

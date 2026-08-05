@@ -9,6 +9,7 @@ import { Magnetic } from "@/components/motion/Magnetic";
 import { KineticCard } from "@/components/motion/KineticCard";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { SolutionsVisual } from "@/components/sections/solutions/SolutionsVisual";
+import { solutionsVisuals } from "@/data/solutions-visuals";
 
 export function SolutionsHero() {
   const { t } = useLocale();
@@ -64,8 +65,13 @@ export function SolutionsHero() {
               lean={3}
               className="w-full overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] lg:rounded-[28px]"
             >
-              <article data-cursor="media" className="group">
-                <SolutionsVisual media="video" tone={0} aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[5/4]" />
+              <article data-cursor="media" className="group relative min-h-0 overflow-hidden bg-[var(--card)]">
+                <SolutionsVisual
+                  visual={solutionsVisuals.hero}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  aspect="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[5/4]"
+                />
               </article>
             </KineticCard>
           </div>

@@ -6,6 +6,7 @@ import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { AmbientGlow } from "@/components/motion/AmbientGlow";
 import { KineticCard } from "@/components/motion/KineticCard";
+import { FeaturedProductReel } from "@/components/sections/FeaturedProductReel";
 
 export function Featured() {
   const { t } = useLocale();
@@ -26,16 +27,11 @@ export function Featured() {
 
         <KineticCard
           lean={3}
-          className="mt-[var(--space-fluid-lg)] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] md:rounded-[28px]"
+          className="mt-[var(--space-fluid-lg)] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[#09090b] md:rounded-[28px]"
         >
           <article data-cursor="media" className="group">
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1a1d2e] via-[#141722] to-[#0f1118] sm:aspect-[16/10] lg:aspect-[21/9]">
-              <div className="absolute inset-0 opacity-55 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-                <div className="absolute inset-[10%] rounded-[20px] border border-white/10" />
-                <div className="absolute left-[16%] top-[20%] h-[44%] w-[34%] rounded-[16px] border border-white/12 bg-white/[0.04]" />
-                <div className="absolute bottom-[14%] right-[12%] h-[30%] w-[42%] rounded-[16px] border border-[#67f0c1]/25 bg-[#67f0c1]/[0.07]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(92,141,255,0.22),transparent_50%)]" />
-              </div>
+            <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[21/9]">
+              <FeaturedProductReel />
             </div>
           </article>
         </KineticCard>
