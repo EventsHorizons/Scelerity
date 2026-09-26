@@ -22,7 +22,11 @@ export type Content = {
     work: string;
     about: string;
     services: string;
+    returns: string;
+    method: string;
     solutions: string;
+    servicesPage: string;
+    company: string;
     journal: string;
     contact: string;
     menu: string;
@@ -42,6 +46,7 @@ export type Content = {
   solutions: SolutionsContent;
   hero: {
     brand: string;
+    kicker: string;
     headline: string;
     sub: string;
     ctaPrimary: string;
@@ -51,23 +56,28 @@ export type Content = {
     label: string;
     headline: string;
     view: string;
+    cta: string;
     projects: Project[];
   };
   about: {
     label: string;
     headline: string;
     body: string[];
+    cta: string;
     principles: { title: string; text: string }[];
   };
   services: {
     label: string;
     headline: string;
-    columns: { what: string; why: string; result: string };
-    items: {
+    deck: string;
+    cta: string;
+    phases: {
       name: string;
-      what: string;
-      why: string;
-      result: string;
+      lead: string;
+      body: string;
+      rows: { label: string; value: string }[];
+      image: string;
+      alt: string;
     }[];
   };
   featured: {
@@ -134,20 +144,24 @@ export const content: Record<Locale, Content> = {
   es: {
     nav: {
       work: "Trabajo",
-      about: "Nosotros",
-      services: "Servicios",
+      about: "Agencia",
+      services: "Qué hacemos",
+      returns: "Territorio",
+      method: "Método",
       solutions: "Soluciones",
+      servicesPage: "Servicios",
+      company: "Nosotros",
       journal: "Blog",
-      contact: "Contacto",
+      contact: "Hablemos",
       menu: "Menú",
       openMenu: "Abrir menú",
       closeMenu: "Cerrar menú",
       skipToContent: "Saltar al contenido",
     },
     journal: {
-      label: "Blog",
-      headline: "Ideas que mueven marcas.",
-      sub: "Diseño, producto y marketing — sin relleno, con criterio.",
+      label: "Notas",
+      headline: "Notas.",
+      sub: "Textos sobre el trabajo.",
       readArticle: "Leer artículo",
       viewAll: "Ver todo el Blog",
       prev: "Anterior",
@@ -156,24 +170,25 @@ export const content: Record<Locale, Content> = {
     solutions: solutionsEs,
     hero: {
       brand: "Scelerity",
-      headline: "Velocidad con precisión.",
-      sub: "Diseño y producto digital de alto rendimiento.",
-      ctaPrimary: "Empezar",
-      ctaSecondary: "Ver trabajo",
+      kicker: "Cultural & creative marketing",
+      headline: "Hacemos que las ideas entren en la cultura.",
+      sub: "Estrategia, creatividad, identidad y experiencias para marcas, proyectos y comunidades que tienen algo que mover.",
+      ctaPrimary: "Hablemos",
+      ctaSecondary: "Ver proyectos",
     },
     work: {
-      label: "Trabajo seleccionado",
-      headline: "Proyectos que se sienten inevitables.",
-      view: "Explorar",
+      label: "Trabajo",
+      headline: "Ideas que ya están ocurriendo.",
+      view: "Ver proyecto",
+      cta: "Hablemos",
       projects: [
         {
           title: "Aether",
-          category: "Producto · Plataforma",
-          description:
-            "Una plataforma compleja convertida en una interfaz que se entiende en segundos.",
+          category: "Experiencias · Digital",
+          description: "Jerarquía y un solo sistema visual, en escritorio y en móvil.",
           metrics: [
-            { value: "+42%", label: "Conversión" },
-            { value: "8 sem", label: "Al lanzamiento" },
+            { value: "UI", label: "Producto" },
+            { value: "Web", label: "Escritorio y móvil" },
           ],
           media: "image",
           cover: "/projects/aether.jpg",
@@ -182,12 +197,11 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Northline",
-          category: "Motion · Identidad",
-          description:
-            "Sistema visual y motion diseñados como una sola pieza.",
+          category: "Identidad",
+          description: "Imagen fija y movimiento, leídos como una sola pieza.",
           metrics: [
-            { value: "3.2x", label: "Recuerdo" },
-            { value: "60 fps", label: "En dispositivo" },
+            { value: "Marca", label: "Identidad" },
+            { value: "Motion", label: "Pantalla" },
           ],
           media: "video",
           cover: "/projects/northline.jpg",
@@ -196,12 +210,11 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Vespera",
-          category: "App · Marca",
-          description:
-            "Producto y marca alineados desde el primer frame.",
+          category: "Identidad · Experiencias",
+          description: "La aplicación y la identidad, con el mismo criterio desde la primera pantalla.",
           metrics: [
-            { value: "4.8★", label: "Store rating" },
-            { value: "−38%", label: "Fricción" },
+            { value: "Marca", label: "Sistema" },
+            { value: "App", label: "Interfaz" },
           ],
           media: "image",
           cover: "/projects/vespera.jpg",
@@ -211,63 +224,99 @@ export const content: Record<Locale, Content> = {
       ],
     },
     about: {
-      label: "Sobre Scelerity",
-      headline: "Construimos lo que se siente inevitable.",
+      label: "Cultura",
+      headline: "Cultura mueve personas.",
       body: [
-        "Somos un estudio de diseño y producto digital. Trabajamos con marcas que necesitan velocidad sin perder control.",
-        "Cada detalle responde a una decisión. La belleza sin función no es craft, y la velocidad sin control no es potencia.",
+        "Nosotros ayudamos a mover ideas.",
+        "Trabajamos entre creatividad, estrategia y cultura para que un proyecto conecte con las personas correctas y tenga relevancia, no solo presencia.",
       ],
+      cta: "Ver proyectos",
       principles: [
         {
-          title: "Claridad",
-          text: "Si no se entiende rápido, no está terminado.",
+          title: "Proyectos culturales",
+          text: "Artistas, colectivos, instituciones, festivales, espacios, editoriales y organizaciones creativas.",
         },
         {
-          title: "Precisión",
-          text: "Cada interacción tiene una razón de existir.",
+          title: "Industrias creativas",
+          text: "Música, moda, arte, diseño, cine, entretenimiento, arquitectura, gastronomía y publishing.",
         },
         {
-          title: "Momentum",
-          text: "El producto debe sentirse vivo, no decorado.",
+          title: "Marcas",
+          text: "Empresas que quieren una relación real con comunidades y territorios culturales.",
         },
       ],
     },
     services: {
-      label: "Servicios",
-      headline: "Tres disciplinas. Una dirección.",
-      columns: { what: "Qué", why: "Por qué", result: "Resultado" },
-      items: [
+      label: "Qué hacemos",
+      headline: "Una idea no termina en una campaña.",
+      deck: "Una campaña se apaga. Si la idea no tiene estrategia, sistema, producto y una forma de seguir, se queda en un anuncio.",
+      cta: "Hablemos",
+      phases: [
         {
-          name: "Producto digital",
-          what: "Interfaces, flujos y sistemas de diseño.",
-          why: "Porque la experiencia es el producto.",
-          result: "Productos que se usan sin fricción y se recuerdan.",
+          name: "Estrategia",
+          lead: "Entender antes de comunicar.",
+          body: "Audiencia, contexto y territorio cultural. Sin eso, la pieza llega a nadie.",
+          rows: [
+            { label: "Audiencia", value: "A quién tiene que llegar" },
+            { label: "Contexto", value: "De dónde sale el proyecto" },
+            { label: "Territorio", value: "La conversación cultural" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1800&q=80",
+          alt: "Sala de una galería: el territorio donde una idea tiene que encontrar a alguien",
         },
         {
-          name: "Desarrollo",
-          what: "Frontends rápidos, estables y escalables.",
-          why: "Porque el craft se mide en rendimiento real.",
-          result: "Sistemas listos para crecer sin reescribirse.",
+          name: "Sistemas",
+          lead: "Hacer reconocible la idea.",
+          body: "Identidad, dirección de arte y un lenguaje que se sostiene en cada pieza.",
+          rows: [
+            { label: "Identidad", value: "Lo que se reconoce" },
+            { label: "Dirección", value: "Arte y tono" },
+            { label: "Lenguaje", value: "Lo que se repite en cada pieza" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1800&q=80",
+          alt: "Muestrario de color y paleta de un sistema visual",
         },
         {
-          name: "Marca",
-          what: "Identidad, motion y herramientas inteligentes.",
-          why: "Porque la marca debe operar, no solo verse.",
-          result: "Presencia con carácter e inteligencia con propósito.",
+          name: "Producto",
+          lead: "Darle una forma que se usa.",
+          body: "Interfaz e ingeniería, para que el mismo sentido aguante en el teléfono y en el escritorio.",
+          rows: [
+            { label: "Interfaz", value: "La forma de usarlo" },
+            { label: "Ingeniería", value: "Que siga en pie cuando llega gente" },
+            { label: "Lectura", value: "El mismo sentido en móvil y escritorio" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1800&q=80",
+          alt: "Una página diseñada, vista en monitor, tablet y teléfono",
+        },
+        {
+          name: "Continuidad",
+          lead: "Que no dependa de una campaña.",
+          body: "Experiencias, canales y lo que se automatiza para que el trabajo no se detenga.",
+          rows: [
+            { label: "Experiencias", value: "Digital, social y espacios" },
+            { label: "Automatización", value: "Lo que no debería ocupar el día" },
+            { label: "Después", value: "Qué se observa cuando la campaña termina" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1648134859187-71dadc9f815a?auto=format&fit=crop&w=1800&q=80",
+          alt: "Un tablero de automatizaciones que conecta tareas entre herramientas",
         },
       ],
     },
     featured: {
-      label: "Proyecto destacado",
+      label: "Pieza de muestra",
       project: {
         title: "Aether",
-        category: "Producto · Plataforma",
+        category: "Producto digital",
         description:
-          "Rediseñamos una plataforma densa en una experiencia clara: menos pasos, más confianza, resultados medibles en semanas.",
+          "Plataforma densa, difícil de enseñar. Quedaron la jerarquía y un solo sistema visual, en escritorio y en móvil.",
         metrics: [
-          { value: "+42%", label: "Conversión" },
-          { value: "8 sem", label: "Al lanzamiento" },
-          { value: "−51%", label: "Tiempo de tarea" },
+          { value: "UI", label: "Producto" },
+          { value: "Web", label: "Escritorio y móvil" },
+          { value: "Sistema", label: "Visual" },
         ],
         media: "image",
         cover: "/projects/aether.jpg",
@@ -277,85 +326,87 @@ export const content: Record<Locale, Content> = {
     },
     process: {
       label: "Método",
-      headline: "Cómo trabajamos.",
+      headline: "No existe una fórmula para la cultura.",
       steps: [
         {
           number: "01",
-          title: "Escuchar",
-          text: "Contexto, restricciones y objetivo real.",
+          title: "Observar",
+          text: "El proyecto, su contexto, las personas y la conversación cultural en la que quiere entrar.",
         },
         {
           number: "02",
-          title: "Definir",
-          text: "Alcance claro. Decisiones tempranas.",
+          title: "Encontrar",
+          text: "Una tensión, una oportunidad o una idea que vale la pena explorar.",
         },
         {
           number: "03",
-          title: "Construir",
-          text: "Diseño y desarrollo en paralelo.",
+          title: "Crear",
+          text: "Estrategia, concepto, identidad y experiencia.",
         },
         {
           number: "04",
-          title: "Pulir",
-          text: "Detalle, rendimiento y entrega limpia.",
+          title: "Activar",
+          text: "Los canales, plataformas, espacios y comunidades donde la idea puede tener sentido.",
+        },
+        {
+          number: "05",
+          title: "Aprender",
+          text: "Medimos, observamos y seguimos.",
         },
       ],
     },
     benefits: {
-      label: "Por qué Scelerity",
-      headline: "Lo que cambia cuando trabajas con nosotros.",
+      label: "Criterio",
+      headline: "No perseguimos tendencias.",
       items: [
         {
-          title: "Velocidad con criterio",
-          text: "Movemos rápido sin improvisar. Cada sprint deja algo usable.",
+          title: "Contexto",
+          text: "Antes que formato. Intentamos entender de dónde viene algo antes de usarlo.",
         },
         {
-          title: "Diseño que convierte",
-          text: "La estética sirve a la claridad, no al revés.",
+          title: "Idea",
+          text: "Antes que contenido. Crear contenido no es lo mismo que tener algo que decir.",
         },
         {
-          title: "Código listo para escala",
-          text: "Arquitectura pensada para crecer, no para demos.",
+          title: "Relevancia",
+          text: "Antes que ruido. Hacer ruido es fácil. Crear relevancia es otra cosa.",
         },
         {
-          title: "Una sola dirección",
-          text: "Diseño, producto y desarrollo alineados desde el día uno.",
+          title: "Tecnología",
+          text: "Cuando la idea necesita una nueva forma: web, interfaz, motion o un producto digital.",
         },
       ],
     },
     faq: {
-      label: "Preguntas",
+      label: "Alcance",
       headline: "Antes de empezar.",
       items: [
         {
-          q: "¿Con qué tipo de empresas trabajan?",
-          a: "Con startups en crecimiento y equipos que ya tienen tracción, pero necesitan un producto o marca a la altura de su ambición.",
+          q: "¿Sirve si el proyecto no es cultural?",
+          a: "Sí. El encargo es el mismo: que se vea, se use y pueda crecer. En música, arte y eventos esa necesidad aparece antes. En una empresa, por la misma razón.",
         },
         {
-          q: "¿Cuánto dura un proyecto típico?",
-          a: "Un MVP o rediseño enfocado suele tomar de 4 a 10 semanas. Proyectos de sistema más amplios se definen por fases.",
+          q: "¿Y si ya tengo identidad?",
+          a: "Si aguanta, se construye encima. Si no aguanta, se corrige antes de hacer el resto.",
         },
         {
-          q: "¿Trabajan remoto?",
-          a: "Sí. Operamos de forma remota con comunicación clara, demos frecuentes y un solo punto de contacto.",
+          q: "¿Qué recibo?",
+          a: "La parte encargada, lista para usar: identidad, producto, campaña, o las tres alineadas.",
         },
         {
-          q: "¿Cómo empieza una colaboración?",
-          a: "Con una llamada corta. Si hay feeling, te enviamos una propuesta con alcance, timeline y siguiente paso.",
+          q: "¿Puedo pedir solo la web?",
+          a: "Puedes. Si la web depende de una identidad que todavía no existe, se dice al empezar.",
         },
       ],
     },
     cta: {
-      eyebrow: "Let's build something exceptional",
-      headline: "Construyamos algo que se mueva.",
-      body: [
-        "Creamos experiencias digitales de alto impacto para empresas que buscan diferenciarse mediante diseño, desarrollo, inteligencia artificial y tecnología.",
-        "Cuéntanos tu idea y nuestro equipo se pondrá en contacto contigo en menos de 24 horas.",
-      ],
-      primary: "Escríbenos",
+      eyebrow: "Contacto",
+      headline: "¿Qué quieres poner en movimiento?",
+      body: ["Cuéntanos sobre el proyecto."],
+      primary: "Iniciar conversación",
       whatsapp: "(+57) 301 599 3300",
       email: "hello@scelerity.co",
-      location: "Remote · Worldwide",
+      location: "Bogotá · Colombia",
       response: "Respuesta en menos de 24 horas",
       form: {
         name: "Nombre",
@@ -364,9 +415,9 @@ export const content: Record<Locale, Content> = {
         source: "¿Cómo nos conoces?",
         sourcePlaceholder: "Selecciona una opción",
         message: "Mensaje",
-        messagePlaceholder: "Cuéntanos sobre tu proyecto...",
+        messagePlaceholder: "Qué es el proyecto y qué quieres poner en movimiento.",
         captcha: "No soy un robot",
-        submit: "Enviar mensaje",
+        submit: "Enviar",
         submitting: "Enviando...",
         success: "Mensaje enviado. Te respondemos pronto.",
         error: "No pudimos enviar el mensaje. Inténtalo de nuevo.",
@@ -384,16 +435,14 @@ export const content: Record<Locale, Content> = {
       },
     },
     footer: {
-      tagline: "Craft. Velocidad. Precisión.",
+      tagline: "Cultural & creative marketing.",
       rights: "Todos los derechos reservados.",
       navLabel: "Navegación",
       links: [
-        { href: "/soluciones/", label: "Soluciones" },
+        { href: "/servicios/", label: "Servicios" },
         { href: "/blog/", label: "Blog" },
-        { href: "/#services", label: "Servicios" },
-        { href: "/#work", label: "Portafolio" },
-        { href: "/#about", label: "Nosotros" },
-        { href: "/#contact", label: "Contacto" },
+        { href: "/nosotros/", label: "Nosotros" },
+        { href: "/contacto/", label: "Contacto" },
       ],
       legal: [
         { href: "/privacidad/", label: "Política de privacidad" },
@@ -426,20 +475,24 @@ export const content: Record<Locale, Content> = {
   en: {
     nav: {
       work: "Work",
-      about: "About us",
-      services: "Services",
+      about: "Agency",
+      services: "What we do",
+      returns: "Territory",
+      method: "Method",
       solutions: "Solutions",
+      servicesPage: "Services",
+      company: "About",
       journal: "Blog",
-      contact: "Contact",
+      contact: "Let's talk",
       menu: "Menu",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       skipToContent: "Skip to content",
     },
     journal: {
-      label: "Blog",
-      headline: "Ideas that move brands.",
-      sub: "Design, product, and marketing — no filler, just judgment.",
+      label: "Notes",
+      headline: "Notes.",
+      sub: "Writing about the work.",
       readArticle: "Read article",
       viewAll: "View all posts",
       prev: "Previous",
@@ -448,24 +501,25 @@ export const content: Record<Locale, Content> = {
     solutions: solutionsEn,
     hero: {
       brand: "Scelerity",
-      headline: "Speed with precision.",
-      sub: "High-performance digital design and product.",
-      ctaPrimary: "Start",
-      ctaSecondary: "View work",
+      kicker: "Cultural & creative marketing",
+      headline: "We help ideas enter culture.",
+      sub: "Strategy, creativity, identity, and experiences for brands, projects, and communities that have something to move.",
+      ctaPrimary: "Let's talk",
+      ctaSecondary: "See projects",
     },
     work: {
-      label: "Selected work",
-      headline: "Projects that feel inevitable.",
-      view: "Explore",
+      label: "Work",
+      headline: "Ideas already in motion.",
+      view: "View project",
+      cta: "Let's talk",
       projects: [
         {
           title: "Aether",
-          category: "Product · Platform",
-          description:
-            "A complex platform turned into an interface you understand in seconds.",
+          category: "Experiences · Digital",
+          description: "Hierarchy and one visual system, on desktop and on mobile.",
           metrics: [
-            { value: "+42%", label: "Conversion" },
-            { value: "8 wks", label: "To launch" },
+            { value: "UI", label: "Product" },
+            { value: "Web", label: "Desktop and mobile" },
           ],
           media: "image",
           cover: "/projects/aether.jpg",
@@ -474,12 +528,11 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Northline",
-          category: "Motion · Identity",
-          description:
-            "Visual system and motion designed as one piece.",
+          category: "Identity",
+          description: "Still image and motion, read as one piece.",
           metrics: [
-            { value: "3.2x", label: "Recall" },
-            { value: "60 fps", label: "Every device" },
+            { value: "Brand", label: "Identity" },
+            { value: "Motion", label: "Screen" },
           ],
           media: "video",
           cover: "/projects/northline.jpg",
@@ -488,12 +541,11 @@ export const content: Record<Locale, Content> = {
         },
         {
           title: "Vespera",
-          category: "App · Brand",
-          description:
-            "Product and brand aligned from the first frame.",
+          category: "Identity · Experiences",
+          description: "The app and the identity, with the same standard from the first screen.",
           metrics: [
-            { value: "4.8★", label: "Store rating" },
-            { value: "−38%", label: "Friction" },
+            { value: "Brand", label: "System" },
+            { value: "App", label: "Interface" },
           ],
           media: "image",
           cover: "/projects/vespera.jpg",
@@ -503,63 +555,99 @@ export const content: Record<Locale, Content> = {
       ],
     },
     about: {
-      label: "About Scelerity",
-      headline: "We build what feels inevitable.",
+      label: "Culture",
+      headline: "Culture moves people.",
       body: [
-        "We are a digital design and product studio. We work with brands that need speed without losing control.",
-        "Every detail answers to a decision. Beauty without function isn’t craft, and speed without control isn’t power.",
+        "We help move ideas.",
+        "We work between creativity, strategy, and culture so a project reaches the right people and gains relevance, not just presence.",
       ],
+      cta: "See projects",
       principles: [
         {
-          title: "Clarity",
-          text: "If it isn’t understood quickly, it isn’t finished.",
+          title: "Cultural projects",
+          text: "Artists, collectives, institutions, festivals, spaces, publishers, and creative organizations.",
         },
         {
-          title: "Precision",
-          text: "Every interaction has a reason to exist.",
+          title: "Creative industries",
+          text: "Music, fashion, art, design, film, entertainment, architecture, food, and publishing.",
         },
         {
-          title: "Momentum",
-          text: "The product should feel alive—not decorated.",
+          title: "Brands",
+          text: "Companies that want a real relationship with communities and cultural territories.",
         },
       ],
     },
     services: {
-      label: "Services",
-      headline: "Three disciplines. One direction.",
-      columns: { what: "What", why: "Why", result: "Result" },
-      items: [
+      label: "What we do",
+      headline: "An idea does not end in a campaign.",
+      deck: "A campaign goes out. If the idea has no strategy, system, product, and a way to continue, it stays an ad.",
+      cta: "Let's talk",
+      phases: [
         {
-          name: "Digital product",
-          what: "Interfaces, flows, and design systems.",
-          why: "Because experience is the product.",
-          result: "Products used without friction and remembered.",
+          name: "Strategy",
+          lead: "Understand before communicating.",
+          body: "Audience, context, and cultural territory. Without that, the piece reaches no one.",
+          rows: [
+            { label: "Audience", value: "Who it has to reach" },
+            { label: "Context", value: "Where the project comes from" },
+            { label: "Territory", value: "The cultural conversation" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1800&q=80",
+          alt: "A gallery room: the territory where an idea has to find someone",
         },
         {
-          name: "Development",
-          what: "Fast, stable frontends built to scale.",
-          why: "Because craft is measured in real performance.",
-          result: "Systems ready to grow without a rewrite.",
+          name: "Systems",
+          lead: "Make the idea recognizable.",
+          body: "Identity, art direction, and a language that holds on every piece.",
+          rows: [
+            { label: "Identity", value: "What gets recognized" },
+            { label: "Direction", value: "Art and tone" },
+            { label: "Language", value: "What repeats on every piece" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1800&q=80",
+          alt: "Color swatches and a palette from a visual system",
         },
         {
-          name: "Brand & AI",
-          what: "Identity, motion, and intelligent tools.",
-          why: "Because a brand should operate, not just look.",
-          result: "Presence with character. Intelligence with purpose.",
+          name: "Product",
+          lead: "Give it a form that gets used.",
+          body: "Interface and engineering, so the same meaning holds on the phone and on the desktop.",
+          rows: [
+            { label: "Interface", value: "The form of use" },
+            { label: "Engineering", value: "That it stays standing when people arrive" },
+            { label: "Reading", value: "The same meaning on phone and desktop" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1800&q=80",
+          alt: "A designed page, seen on a monitor, a tablet, and a phone",
+        },
+        {
+          name: "Continuity",
+          lead: "So it does not depend on a campaign.",
+          body: "Experiences, channels, and what gets automated so the work does not stop.",
+          rows: [
+            { label: "Experiences", value: "Digital, social, and spaces" },
+            { label: "Automation", value: "What should not take the day" },
+            { label: "After", value: "What gets watched once the campaign ends" },
+          ],
+          image:
+            "https://images.unsplash.com/photo-1648134859187-71dadc9f815a?auto=format&fit=crop&w=1800&q=80",
+          alt: "An automations board that connects tasks across tools",
         },
       ],
     },
     featured: {
-      label: "Featured project",
+      label: "Sample piece",
       project: {
         title: "Aether",
-        category: "Product · Platform",
+        category: "Digital product",
         description:
-          "We turned a dense platform into a clear experience: fewer steps, more trust, measurable results in weeks.",
+          "A dense platform, hard to show. What remained was the hierarchy and one visual system, on desktop and on mobile.",
         metrics: [
-          { value: "+42%", label: "Conversion" },
-          { value: "8 wks", label: "To launch" },
-          { value: "−51%", label: "Task time" },
+          { value: "UI", label: "Product" },
+          { value: "Web", label: "Desktop and mobile" },
+          { value: "System", label: "Visual" },
         ],
         media: "image",
         cover: "/projects/aether.jpg",
@@ -569,85 +657,87 @@ export const content: Record<Locale, Content> = {
     },
     process: {
       label: "Method",
-      headline: "How we work.",
+      headline: "There is no formula for culture.",
       steps: [
         {
           number: "01",
-          title: "Listen",
-          text: "Context, constraints, and the real goal.",
+          title: "Observe",
+          text: "The project, its context, the people, and the cultural conversation it wants to enter.",
         },
         {
           number: "02",
-          title: "Define",
-          text: "Clear scope. Early decisions.",
+          title: "Find",
+          text: "A tension, an opportunity, or an idea worth exploring.",
         },
         {
           number: "03",
-          title: "Build",
-          text: "Design and development in parallel.",
+          title: "Create",
+          text: "Strategy, concept, identity, and experience.",
         },
         {
           number: "04",
-          title: "Refine",
-          text: "Detail, performance, clean delivery.",
+          title: "Activate",
+          text: "The channels, platforms, spaces, and communities where the idea can make sense.",
+        },
+        {
+          number: "05",
+          title: "Learn",
+          text: "We measure, watch, and continue.",
         },
       ],
     },
     benefits: {
-      label: "Why Scelerity",
-      headline: "What changes when you work with us.",
+      label: "Judgment",
+      headline: "We do not chase trends.",
       items: [
         {
-          title: "Speed with judgment",
-          text: "We move fast without improvising. Every sprint leaves something usable.",
+          title: "Context",
+          text: "Before format. We try to understand where something comes from before using it.",
         },
         {
-          title: "Design that converts",
-          text: "Aesthetics serve clarity—not the other way around.",
+          title: "Idea",
+          text: "Before content. Making content is not the same as having something to say.",
         },
         {
-          title: "Code built to scale",
-          text: "Architecture for growth, not demos.",
+          title: "Relevance",
+          text: "Before noise. Making noise is easy. Creating relevance is something else.",
         },
         {
-          title: "One direction",
-          text: "Design, product, and engineering aligned from day one.",
+          title: "Technology",
+          text: "When the idea needs a new form: web, interface, motion, or a digital product.",
         },
       ],
     },
     faq: {
-      label: "Questions",
-      headline: "Before we start.",
+      label: "Scope",
+      headline: "Before you start.",
       items: [
         {
-          q: "Who do you work with?",
-          a: "Growing startups and teams that already have traction—but need a product or brand that matches their ambition.",
+          q: "Does this work if the project is not cultural?",
+          a: "Yes. The brief is the same: to be seen, to be used, and to be able to grow. In music, art, and events, that need appears sooner. In a company, for the same reason.",
         },
         {
-          q: "How long does a typical project take?",
-          a: "A focused MVP or redesign usually takes 4–10 weeks. Larger system work is scoped in phases.",
+          q: "What if I already have an identity?",
+          a: "If it holds, we build on it. If it does not, we correct it before making the rest.",
         },
         {
-          q: "Do you work remotely?",
-          a: "Yes. We operate remotely with clear communication, frequent demos, and a single point of contact.",
+          q: "What do I receive?",
+          a: "The part you commission, ready to use: identity, product, campaign, or the three of them aligned.",
         },
         {
-          q: "How does a collaboration start?",
-          a: "With a short call. If there’s a fit, we send a proposal with scope, timeline, and next step.",
+          q: "Can I ask only for the website?",
+          a: "You can. If the site depends on an identity that does not exist yet, we say so at the start.",
         },
       ],
     },
     cta: {
-      eyebrow: "Let's build something exceptional",
-      headline: "Let's build something that moves.",
-      body: [
-        "We create high-impact digital experiences for companies that want to stand out through design, development, artificial intelligence, and technology.",
-        "Tell us your idea and our team will get back to you within 24 hours.",
-      ],
-      primary: "Write to us",
+      eyebrow: "Contact",
+      headline: "What do you want to set in motion?",
+      body: ["Tell us about the project."],
+      primary: "Start a conversation",
       whatsapp: "+57 3015993300",
       email: "hello@scelerity.co",
-      location: "Remote · Worldwide",
+      location: "Bogotá · Colombia",
       response: "Reply within 24 hours",
       form: {
         name: "Name",
@@ -656,9 +746,9 @@ export const content: Record<Locale, Content> = {
         source: "How did you find us?",
         sourcePlaceholder: "Select an option",
         message: "Message",
-        messagePlaceholder: "Tell us about your project...",
+        messagePlaceholder: "What the project is, and what you want to set in motion.",
         captcha: "I'm not a robot",
-        submit: "Send message",
+        submit: "Send",
         submitting: "Sending...",
         success: "Message sent. We'll be in touch soon.",
         error: "We couldn't send the message. Please try again.",
@@ -676,16 +766,14 @@ export const content: Record<Locale, Content> = {
       },
     },
     footer: {
-      tagline: "Craft. Speed. Precision.",
+      tagline: "Cultural & creative marketing.",
       rights: "All rights reserved.",
       navLabel: "Navigation",
       links: [
-        { href: "/soluciones/", label: "Solutions" },
+        { href: "/servicios/", label: "Services" },
         { href: "/blog/", label: "Blog" },
-        { href: "/#services", label: "Services" },
-        { href: "/#work", label: "Portfolio" },
-        { href: "/#about", label: "About us" },
-        { href: "/#contact", label: "Contact" },
+        { href: "/nosotros/", label: "About" },
+        { href: "/contacto/", label: "Contact" },
       ],
       legal: [
         { href: "/privacidad/", label: "Privacy Policy" },

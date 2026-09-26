@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: page.metaTitle,
     description: page.metaDescription,
     path: `/local/${page.slug}/`,
-    keywords: [`agencia digital ${page.city}`, `diseño web ${page.city}`, `seo ${page.city}`],
+    keywords: [`marketing cultural ${page.city}`, `scelerity ${page.city}`],
   });
 }
 

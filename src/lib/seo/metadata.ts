@@ -52,15 +52,14 @@ export function buildPageMetadata({
 }
 
 export const HOME_METADATA = buildPageMetadata({
-  title: "Scelerity — Velocidad con precisión",
-  description: SEO_CONFIG.description,
+  title: "Scelerity — Hacemos que las ideas entren en la cultura.",
+  description:
+    "Estrategia, creatividad, identidad y experiencias para marcas, proyectos y comunidades.",
   path: "/",
   keywords: [
-    "agencia digital",
-    "diseño web",
-    "desarrollo web",
-    "marketing digital",
-    "inteligencia artificial",
-    "branding",
+    "agencia de marketing cultural",
+    "sector creativo",
+    "identidad",
+    "campañas",
   ],
 });

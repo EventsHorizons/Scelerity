@@ -18,7 +18,7 @@ export function Featured() {
       <Container size="content" className="relative z-10 section-y-lg">
         <p className="chapter-label">{t.featured.label}</p>
 
-        <h2 className="mt-[var(--space-8)] text-balance font-display text-hero font-semibold">
+        <h2 className="mt-[var(--space-8)] text-balance font-display text-h2">
           {project.title}
         </h2>
         <p className="mt-[var(--space-5)] text-small text-[var(--fg-muted)]">
@@ -56,7 +56,7 @@ export function Featured() {
 
           <div className="lg:col-span-2 lg:justify-self-end">
             <a
-              href="#contact"
+              href="/contacto/"
               data-cursor="link"
               className="tap-target group/link inline-flex items-center gap-2 text-small text-[var(--fg-muted)] transition-colors duration-300 hover:text-[var(--fg)]"
             >

@@ -11,16 +11,16 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[var(--border)]">
+    <footer>
       <Container
         size="content"
-        className="flex flex-col gap-[var(--space-8)] pb-[max(var(--space-10),env(safe-area-inset-bottom))] pt-[var(--space-8)] md:flex-row md:items-start md:justify-between"
+        className="flex flex-col gap-[var(--space-12)] pb-[max(var(--space-16),env(safe-area-inset-bottom))] pt-[var(--space-16)] md:flex-row md:items-start md:justify-between"
       >
         <div className="text-center md:text-left">
           <Link href="/" aria-label="Scelerity — Home">
-            <Logo className="text-[1.0625rem]" />
+            <Logo className="wordmark-lockup--footer" />
           </Link>
-          <p className="mt-2 text-small text-[var(--fg-muted)]">
+          <p className="mt-4 max-w-[28ch] text-small leading-relaxed text-[var(--fg-muted)]">
             {t.footer.tagline}
           </p>
           <SocialLinks links={t.footer.social} className="mt-5" />
@@ -57,7 +57,7 @@ export function Footer() {
             ))}
           </ul>
 
-          <div className="flex flex-col items-center gap-1 text-small text-[var(--fg-subtle)] md:items-end">
+          <div className="flex flex-col items-center gap-3 text-small text-[var(--fg-subtle)] md:items-end">
             <a
               href={`mailto:${t.cta.email}`}
               data-cursor="link"

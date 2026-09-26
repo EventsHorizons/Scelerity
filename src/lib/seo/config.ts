@@ -4,9 +4,9 @@ import { getSiteUrl } from "@/lib/site";
 export const SEO_CONFIG = {
   siteName: "Scelerity",
   defaultLocale: "es_ES" as const,
-  tagline: "Velocidad con precisión",
+  tagline: "Cultural & creative marketing.",
   description:
-    "Agencia digital especializada en diseño web, desarrollo de software, inteligencia artificial, branding y marketing digital.",
+    "Hacemos que las ideas entren en la cultura. Estrategia, creatividad, identidad y experiencias.",
   email: "hello@scelerity.co",
   phone: "+57 3015993300",
   whatsapp: "+573015993300",
@@ -31,12 +31,10 @@ export const SEO_CONFIG = {
   ],
   foundingDate: "2024",
   knowsAbout: [
-    "Diseño Web",
-    "Desarrollo de Software",
-    "Inteligencia Artificial",
-    "Branding",
-    "Marketing Digital",
-    "SEO",
+    "Marketing cultural",
+    "Identidad",
+    "Producto digital",
+    "Campañas",
   ],
 } as const;
 

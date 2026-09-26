@@ -8,7 +8,6 @@ export const dynamic = "force-static";
 
 const STATIC_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "monthly" as const },
-  { path: "/soluciones/", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/servicios/", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/blog/", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "/nosotros/", priority: 0.7, changeFrequency: "monthly" as const },

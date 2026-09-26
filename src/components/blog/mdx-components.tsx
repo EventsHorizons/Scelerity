@@ -16,17 +16,17 @@ export const blogMdxComponents = {
     </h3>
   ),
   p: ({ children }: Kids) => (
-    <p className="mt-[var(--space-5)] text-lead text-pretty text-[var(--fg-muted)]">
+    <p className="mt-[var(--space-6)] text-lead leading-relaxed text-pretty text-[var(--fg-muted)]">
       {children}
     </p>
   ),
   ul: ({ children }: Kids) => (
-    <ul className="mt-[var(--space-5)] list-disc space-y-2 pl-5 text-lead text-[var(--fg-muted)] marker:text-[var(--fg-subtle)]">
+    <ul className="mt-[var(--space-6)] list-disc space-y-4 pl-5 text-lead leading-relaxed text-[var(--fg-muted)] marker:text-[var(--fg-subtle)]">
       {children}
     </ul>
   ),
   ol: ({ children }: Kids) => (
-    <ol className="mt-[var(--space-5)] list-decimal space-y-2 pl-5 text-lead text-[var(--fg-muted)] marker:text-[var(--fg-subtle)]">
+    <ol className="mt-[var(--space-6)] list-decimal space-y-4 pl-5 text-lead leading-relaxed text-[var(--fg-muted)] marker:text-[var(--fg-subtle)]">
       {children}
     </ol>
   ),

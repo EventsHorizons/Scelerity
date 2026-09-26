@@ -25,12 +25,12 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       registerGsap();
 
       const lenis = new Lenis({
-        duration: lowPower ? 0.75 : 0.9,
-        easing: (t) => 1 - Math.pow(1 - t, 3.5),
+        duration: lowPower ? 1 : 1.15,
+        easing: (t) => 1 - Math.pow(1 - t, 3),
         smoothWheel: true,
-        wheelMultiplier: lowPower ? 0.9 : 1.05,
-        touchMultiplier: lowPower ? 1.2 : 1.4,
-        lerp: lowPower ? 0.085 : 0.1,
+        wheelMultiplier: lowPower ? 0.9 : 0.95,
+        touchMultiplier: 1,
+        lerp: lowPower ? 0.09 : 0.1,
       });
 
       setLenisInstance(lenis);

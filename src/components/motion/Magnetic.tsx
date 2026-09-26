@@ -17,7 +17,7 @@ type Props = {
  * pointer with a hard, precise pull and releases under control — no elastic
  * overshoot.
  */
-export function Magnetic({ children, strength = 0.4, className }: Props) {
+export function Magnetic({ children, strength = 0.16, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
   const reduced = useReducedMotion();
@@ -28,8 +28,8 @@ export function Magnetic({ children, strength = 0.4, className }: Props) {
     if (!el || !enabled) return;
 
     registerGsap();
-    const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "craft" });
-    const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "craft" });
+    const xTo = gsap.quickTo(el, "x", { duration: 0.32, ease: "craft" });
+    const yTo = gsap.quickTo(el, "y", { duration: 0.32, ease: "craft" });
 
     const onMove = (e: PointerEvent) => {
       const r = el.getBoundingClientRect();

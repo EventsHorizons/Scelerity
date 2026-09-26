@@ -11,7 +11,6 @@ import { ArticleShare } from "@/components/blog/ArticleShare";
 import { ArticleNav } from "@/components/blog/ArticleNav";
 import { ArticleJsonLd } from "@/components/blog/ArticleJsonLd";
 import { RelatedArticles } from "@/components/blog/RelatedArticles";
-import { BlogNewsletter } from "@/components/blog/BlogNewsletter";
 import { Button } from "@/components/ui/Button";
 import {
   categoryLabel,
@@ -76,7 +75,7 @@ export default async function BlogArticlePage({ params }: Props) {
       <SkipLink />
       <Header />
       <ArticleJsonLd post={post} url={url} />
-      <main id="main">
+      <main id="main" className="page-rhythm">
         <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="content">
             <p className="chapter-label">
@@ -145,31 +144,9 @@ export default async function BlogArticlePage({ params }: Props) {
               readLabel="Leer artículo"
             />
 
-            <div className="mt-[var(--space-fluid-xl)] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] px-[var(--space-6)] py-[var(--space-fluid-lg)] text-center sm:px-[var(--space-10)]">
-              <h2 className="font-display text-h2 font-semibold text-balance">
-                ¿Listo para aplicar esto a tu marca?
-              </h2>
-              <p className="mx-auto mt-[var(--space-4)] max-w-[40ch] text-body text-pretty text-[var(--fg-muted)]">
-                Diseñamos, desarrollamos y activamos sistemas digitales con
-                claridad y velocidad.
-              </p>
-              <div className="mt-[var(--space-8)] flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-                <Button href="/soluciones/" size="lg">
-                  Ver soluciones
-                </Button>
-                <Button href="/#contact" variant="secondary" size="lg">
-                  Hablar con el equipo
-                </Button>
-              </div>
+            <div className="mt-[var(--space-fluid-xl)]">
+              <Button href="/contacto/">Hablemos</Button>
             </div>
-
-            <BlogNewsletter
-              title="Recibe lo esencial del Blog"
-              body="Una entrega ocasional con ideas de producto, SEO y marketing."
-              placeholder="tu@email.com"
-              submit="Suscribirse"
-              success="Gracias. Te avisaremos cuando publiquemos algo útil."
-            />
           </Container>
         </Section>
       </main>

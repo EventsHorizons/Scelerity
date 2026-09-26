@@ -6,12 +6,13 @@ import { useLocale } from "@/context/LocaleContext";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { KineticCard } from "@/components/motion/KineticCard";
+import { Button } from "@/components/ui/Button";
 
 export function Work() {
   const { t } = useLocale();
 
   return (
-    <Section id="work" cardTone="light">
+    <Section id="trabajo" cardTone="light">
       <Container size="content" className="section-y-lg">
         <div className="section-head section-head--baseline">
           <p className="chapter-label">{t.work.label}</p>
@@ -20,10 +21,7 @@ export function Work() {
           </h2>
         </div>
 
-        {/* auto-fit: 1 column on phones, 2 on tablets, 3 from laptop up */}
-        <div
-          className="auto-grid mt-[var(--space-fluid-lg)] [--auto-grid-gap:var(--space-6)] [--auto-grid-min:17rem]"
-        >
+        <div className="auto-grid mt-24 [--auto-grid-gap:var(--space-10)] [--auto-grid-min:17rem] md:mt-32">
           {t.work.projects.map((project, index) => (
             <KineticCard
               key={project.title}
@@ -37,7 +35,7 @@ export function Work() {
                     alt={project.coverAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
                     priority={index === 0}
                   />
 
@@ -49,7 +47,6 @@ export function Work() {
                     </div>
                   ) : null}
 
-                  {/* Always readable on touch, revealed on hover for pointers */}
                   <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 bg-gradient-to-t from-black/55 to-transparent p-4 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100">
                     <span className="font-mono text-micro uppercase tracking-[0.18em] text-white/90">
                       {t.work.view}
@@ -60,17 +57,24 @@ export function Work() {
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col px-5 py-6">
-                  <h3 className="font-display text-h4 font-semibold">
+                <div className="flex flex-1 flex-col px-8 py-10 sm:px-10">
+                  <h3 className="font-display text-h4 font-semibold leading-relaxed">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-small text-[var(--fg-muted)]">
+                  <p className="mt-4 text-small leading-relaxed text-[var(--fg-muted)]">
                     {project.category}
+                  </p>
+                  <p className="mt-6 text-body text-pretty leading-relaxed text-[var(--fg-muted)]">
+                    {project.description}
                   </p>
                 </div>
               </article>
             </KineticCard>
           ))}
+        </div>
+
+        <div className="mt-20 md:mt-28">
+          <Button href="#contact">{t.work.cta}</Button>
         </div>
       </Container>
     </Section>

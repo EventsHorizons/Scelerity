@@ -14,13 +14,12 @@ import { content } from "@/data/content";
 export const metadata: Metadata = buildPageMetadata({
   title: "Nosotros — Scelerity",
   description:
-    "Conoce Scelerity: estudio de diseño y producto digital. Metodología, principios y equipo enfocado en velocidad con precisión.",
+    "Scelerity es una agencia de marketing cultural y creativo en Bogotá. Diseño, desarrollo y marketing para proyectos, industrias creativas y marcas.",
   path: "/nosotros/",
 });
 
 export default function NosotrosPage() {
   const about = content.es.about;
-  const process = content.es.process;
   const breadcrumbs = [
     { name: "Inicio", path: "/" },
     { name: "Nosotros", path: "/nosotros/" },
@@ -31,52 +30,32 @@ export default function NosotrosPage() {
       <SkipLink />
       <Header />
       <JsonLd data={pageGraph(breadcrumbs)} />
-      <main id="main">
-        <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
+      <main id="main" className="page-rhythm">
+        <Section cardTone="paper">
           <Container size="content">
-            <Breadcrumbs items={breadcrumbs} className="mb-[var(--space-6)]" />
-            <p className="chapter-label">{about.label}</p>
-            <h1 className="mt-3 font-display text-h1 font-bold text-balance">{about.headline}</h1>
-            {about.body.map((p) => (
-              <p key={p.slice(0, 24)} className="measure mt-[var(--space-6)] text-body-lg text-[var(--fg-muted)]">
-                {p}
+            <Breadcrumbs items={breadcrumbs} className="mb-16" />
+            <p className="chapter-label">Cultural & creative marketing</p>
+            <h1 className="mt-8 max-w-[18ch] text-balance font-display text-h1 font-semibold">
+              Agencia de marketing cultural y creativo.
+            </h1>
+            <div className="mt-10 measure space-y-8">
+              <p className="text-lead text-[var(--fg-muted)]">
+                Scelerity hace diseño, desarrollo y marketing desde Bogotá. El criterio es cultural: un proyecto tiene que entrar en una conversación, no solo publicarse.
               </p>
-            ))}
-          </Container>
-        </Section>
-
-        <Section cardTone="light">
-          <Container size="content" className="section-y">
-            <h2 className="font-display text-h2 font-semibold">Principios</h2>
-            <ul className="mt-[var(--space-fluid-md)] grid gap-[var(--space-6)] sm:grid-cols-3">
-              {about.principles.map((p) => (
-                <li key={p.title} className="rounded-[var(--radius-lg)] border border-[var(--glass-border)] p-[var(--space-6)]">
-                  <h3 className="font-display text-h4 font-semibold">{p.title}</h3>
-                  <p className="mt-2 text-body text-[var(--fg-muted)]">{p.text}</p>
+              <p className="text-lead text-[var(--fg-muted)]">
+                Trabajamos con proyectos culturales, industrias creativas y marcas que necesitan identidad, sitios, campañas y producto.
+              </p>
+            </div>
+            <ul className="mt-16 grid gap-10 md:grid-cols-3">
+              {about.principles.map((item) => (
+                <li key={item.title}>
+                  <h2 className="font-display text-h3 font-semibold">{item.title}</h2>
+                  <p className="mt-4 text-body text-[var(--fg-muted)]">{item.text}</p>
                 </li>
               ))}
             </ul>
-          </Container>
-        </Section>
-
-        <Section>
-          <Container size="content" className="section-y">
-            <h2 className="font-display text-h2 font-semibold">{process.headline}</h2>
-            <ol className="mt-[var(--space-fluid-md)] space-y-[var(--space-6)]">
-              {process.steps.map((s) => (
-                <li key={s.number} className="flex gap-[var(--space-5)]">
-                  <span className="font-mono text-micro text-[var(--fg-subtle)]">{s.number}</span>
-                  <div>
-                    <h3 className="font-display text-h4 font-semibold">{s.title}</h3>
-                    <p className="mt-1 text-body text-[var(--fg-muted)]">{s.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-[var(--space-fluid-lg)]">
-              <Button href="/contacto/" size="lg">
-                Trabajar con nosotros
-              </Button>
+            <div className="mt-16">
+              <Button href="/contacto/">Iniciar conversación</Button>
             </div>
           </Container>
         </Section>

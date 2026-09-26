@@ -46,7 +46,7 @@ export function LocalPageView({ page }: Props) {
       <SkipLink />
       <Header />
       <JsonLd data={schema} />
-      <main id="main">
+      <main id="main" className="page-rhythm">
         <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="content">
             <Breadcrumbs items={breadcrumbs} className="mb-[var(--space-6)]" />
@@ -67,15 +67,17 @@ export function LocalPageView({ page }: Props) {
 
         <Section cardTone="light">
           <Container size="content" className="section-y">
-            {page.intro.map((p) => (
-              <p key={p.slice(0, 30)} className="measure text-body text-[var(--fg-muted)]">
-                {p}
-              </p>
-            ))}
+            <div className="flex flex-col gap-6">
+              {page.intro.map((p) => (
+                <p key={p.slice(0, 30)} className="measure text-body leading-relaxed text-[var(--fg-muted)]">
+                  {p}
+                </p>
+              ))}
+            </div>
             <h2 className="mt-[var(--space-fluid-md)] font-display text-h3 font-semibold">
               Lo que hacemos en {page.city}
             </h2>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-8 space-y-4">
               {page.highlights.map((h) => (
                 <li key={h} className="text-body text-[var(--fg-muted)]">
                   · {h}
@@ -88,16 +90,16 @@ export function LocalPageView({ page }: Props) {
         <Section>
           <Container size="content" className="section-y">
             <h2 className="font-display text-h3 font-semibold">Servicios en {page.city}</h2>
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            <ul className="mt-10 grid gap-8 sm:grid-cols-2">
               {services.map((s) =>
                 s ? (
                   <li key={s.slug}>
                     <Link
                       href={`/servicios/${s.slug}/`}
-                      className="block rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] p-[var(--space-6)] transition-colors hover:border-[var(--border-strong)]"
+                      className="block rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] p-[var(--space-8)] transition-colors hover:border-[var(--border-strong)]"
                     >
                       <h3 className="font-display text-h4 font-semibold">{s.title}</h3>
-                      <p className="mt-2 text-small text-[var(--fg-muted)]">{s.metaDescription.slice(0, 100)}…</p>
+                      <p className="mt-4 text-small leading-relaxed text-[var(--fg-muted)]">{s.metaDescription.slice(0, 100)}…</p>
                     </Link>
                   </li>
                 ) : null,
@@ -109,11 +111,11 @@ export function LocalPageView({ page }: Props) {
         <Section cardTone="light">
           <Container size="content" className="section-y">
             <h2 className="font-display text-h3 font-semibold">Áreas que atendemos</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap gap-3">
               {page.neighborhoods.map((n) => (
                 <span
                   key={n}
-                  className="rounded-full border border-[var(--glass-border)] px-3 py-1 text-small text-[var(--fg-muted)]"
+                  className="rounded-full border border-[var(--glass-border)] px-4 py-2 text-small leading-relaxed text-[var(--fg-muted)]"
                 >
                   {n}
                 </span>
@@ -129,7 +131,7 @@ export function LocalPageView({ page }: Props) {
               {page.faq.map((item) => (
                 <div key={item.q} className="border-b border-[var(--border)] pb-[var(--space-6)]">
                   <dt className="font-display text-h4 font-semibold">{item.q}</dt>
-                  <dd className="measure mt-2 text-body text-[var(--fg-muted)]">{item.a}</dd>
+                  <dd className="measure mt-4 text-body leading-relaxed text-[var(--fg-muted)]">{item.a}</dd>
                 </div>
               ))}
             </dl>
@@ -148,8 +150,8 @@ export function LocalPageView({ page }: Props) {
               <Button href="/contacto/" size="lg">
                 Escríbenos
               </Button>
-              <Button href="/soluciones/" variant="secondary" size="lg">
-                Ver soluciones
+              <Button href="/servicios/" variant="secondary" size="lg">
+                Ver servicios
               </Button>
             </div>
           </Container>

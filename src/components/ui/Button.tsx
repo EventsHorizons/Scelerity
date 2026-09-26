@@ -4,6 +4,7 @@ import { motion, type HTMLMotionProps } from "framer-motion";
 import { forwardRef, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/easings";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -18,18 +19,15 @@ type ButtonProps = Omit<HTMLMotionProps<"a">, "children"> & {
 };
 
 const variants: Record<Variant, string> = {
-  primary: "btn-gradient border-transparent",
-  secondary:
-    "btn-secondary border border-[var(--glass-border)] bg-transparent text-[var(--fg)]",
-  ghost:
-    "bg-transparent text-[var(--fg-muted)] border border-transparent hover:text-[var(--fg)]",
+  primary: "btn",
+  secondary: "btn btn-secondary",
+  ghost: "btn btn-ghost",
 };
 
-/* Every size clears the 48px minimum touch target. */
 const sizes: Record<Size, string> = {
-  sm: "min-h-12 px-5 text-[0.8125rem]",
-  md: "min-h-12 px-6 text-[0.875rem]",
-  lg: "min-h-[3.25rem] px-7 text-[0.9375rem]",
+  sm: "min-h-12 px-7 py-3.5 text-base font-medium",
+  md: "min-h-12 px-8 py-4 text-base font-medium",
+  lg: "min-h-14 px-10 py-4 text-base font-medium",
 };
 
 export const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
@@ -45,16 +43,18 @@ export const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
     },
     ref,
   ) {
+    const reduced = useReducedMotion();
+
     return (
       <motion.a
         ref={ref}
         href={href}
-        data-cursor="cta"
-        whileHover={{ y: -2, scale: 1.012 }}
-        whileTap={{ scale: 0.96, y: 0 }}
-        transition={{ duration: 0.3, ease: ease.snap }}
+        data-cursor={variant === "primary" ? "cta" : "link"}
+        whileHover={reduced || variant === "primary" ? undefined : { y: -1 }}
+        whileTap={reduced || variant === "primary" ? undefined : { scale: 0.985 }}
+        transition={{ duration: 0.45, ease: ease.craft }}
         className={cn(
-          "group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full text-center font-medium tracking-tight [touch-action:manipulation]",
+          "whitespace-nowrap text-center [touch-action:manipulation]",
           variants[variant],
           sizes[size],
           block ? "w-full" : "max-w-full",
@@ -62,13 +62,7 @@ export const Button = forwardRef<HTMLAnchorElement, ButtonProps>(
         )}
         {...props}
       >
-        {variant === "primary" ? <span className="btn-sweep" aria-hidden /> : null}
-        {variant === "secondary" ? (
-          <span className="btn-secondary-fill" aria-hidden />
-        ) : null}
-        <span className="relative z-10 inline-flex items-center gap-2">
-          {children}
-        </span>
+        {children}
       </motion.a>
     );
   },

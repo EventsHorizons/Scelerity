@@ -4,8 +4,8 @@ import { usePathname } from "next/navigation";
 import { useLocale } from "@/context/LocaleContext";
 
 /**
- * Cross-page nav helpers — home sections stay hash-based on `/`,
- * and become `/#…` from other routes so static export + basePath work via Link.
+ * Primary navigation points at the site's routes.
+ * `home()` still builds a hash on `/` and `/#…` from any other page.
  */
 export function useSiteNav() {
   const pathname = usePathname();
@@ -15,17 +15,15 @@ export function useSiteNav() {
   const home = (hash: string) => (onHome ? `#${hash}` : `/#${hash}`);
 
   const links = [
-    { href: "/soluciones/", label: t.nav.solutions, external: false as const },
+    { href: "/servicios/", label: t.nav.servicesPage, external: false as const },
     { href: "/blog/", label: t.nav.journal, external: false as const },
-    { href: home("work"), label: t.nav.work, external: false as const },
-    { href: home("about"), label: t.nav.about, external: false as const },
-    { href: home("services"), label: t.nav.services, external: false as const },
+    { href: "/nosotros/", label: t.nav.company, external: false as const },
   ];
 
   return {
     onHome,
     logoHref: onHome ? "#top" : "/",
-    contactHref: home("contact"),
+    contactHref: "/contacto/",
     links,
     home,
   };

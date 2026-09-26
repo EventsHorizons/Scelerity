@@ -49,7 +49,7 @@ export function ServicePageView({ service }: Props) {
       <SkipLink />
       <Header />
       <JsonLd data={schema} />
-      <main id="main">
+      <main id="main" className="page-rhythm">
         <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="content">
             <Breadcrumbs items={breadcrumbs} className="mb-[var(--space-6)]" />
@@ -60,12 +60,9 @@ export function ServicePageView({ service }: Props) {
             <p className="measure mt-[var(--space-6)] text-body-lg text-pretty text-[var(--fg-muted)]">
               {service.hero.sub}
             </p>
-            <div className="mt-[var(--space-8)] flex flex-wrap gap-3">
+            <div className="mt-[var(--space-8)]">
               <Button href="/contacto/" size="lg">
                 {sharedCta.primary}
-              </Button>
-              <Button href="/soluciones/" variant="secondary" size="lg">
-                {sharedCta.secondary}
               </Button>
             </div>
           </Container>
@@ -97,14 +94,14 @@ export function ServicePageView({ service }: Props) {
         <Section>
           <Container size="content" className="section-y">
             <h2 className="font-display text-h2 font-semibold">Beneficios</h2>
-            <ul className="mt-[var(--space-fluid-md)] grid gap-[var(--space-6)] sm:grid-cols-2">
+            <ul className="mt-[var(--space-fluid-md)] grid gap-[var(--space-8)] sm:grid-cols-2">
               {service.benefits.map((b) => (
                 <li
                   key={b.title}
-                  className="rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] p-[var(--space-6)]"
+                  className="rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] p-[var(--space-8)]"
                 >
-                  <h3 className="font-display text-h4 font-semibold">{b.title}</h3>
-                  <p className="mt-2 text-body text-[var(--fg-muted)]">{b.text}</p>
+                  <h3 className="font-display text-h4 font-semibold leading-relaxed">{b.title}</h3>
+                  <p className="mt-4 text-body leading-relaxed text-[var(--fg-muted)]">{b.text}</p>
                 </li>
               ))}
             </ul>
@@ -116,7 +113,7 @@ export function ServicePageView({ service }: Props) {
             <div className="grid gap-[var(--space-fluid-lg)] lg:grid-cols-2">
               <div>
                 <h2 className="font-display text-h3 font-semibold">Casos de uso</h2>
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-8 space-y-4">
                   {service.useCases.map((u) => (
                     <li key={u} className="text-body text-[var(--fg-muted)]">
                       · {u}
@@ -126,11 +123,11 @@ export function ServicePageView({ service }: Props) {
               </div>
               <div>
                 <h2 className="font-display text-h3 font-semibold">Tecnologías</h2>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-8 flex flex-wrap gap-3">
                   {service.technologies.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-[var(--glass-border)] px-3 py-1 font-mono text-micro uppercase tracking-wider text-[var(--fg-muted)]"
+                      className="rounded-full border border-[var(--glass-border)] px-4 py-2 font-mono text-micro uppercase tracking-wider text-[var(--fg-muted)]"
                     >
                       {t}
                     </span>
@@ -148,7 +145,7 @@ export function ServicePageView({ service }: Props) {
               {service.faq.map((item) => (
                 <div key={item.q} className="border-b border-[var(--border)] pb-[var(--space-6)]">
                   <dt className="font-display text-h4 font-semibold">{item.q}</dt>
-                  <dd className="measure mt-2 text-body text-[var(--fg-muted)]">{item.a}</dd>
+                  <dd className="measure mt-4 text-body leading-relaxed text-[var(--fg-muted)]">{item.a}</dd>
                 </div>
               ))}
             </dl>
@@ -199,17 +196,11 @@ export function ServicePageView({ service }: Props) {
           <Container size="content" className="section-y text-center">
             <p className="chapter-label">{PILLAR_LABELS[service.pillar]}</p>
             <h2 className="mx-auto mt-3 max-w-[20ch] font-display text-h2 font-semibold text-balance">
-              ¿Listo para empezar con {service.title.toLowerCase()}?
+              Hablemos
             </h2>
-            <p className="mx-auto measure mt-4 text-body text-[var(--fg-muted)]">
-              Cuéntanos tu proyecto y te respondemos en menos de 24 horas.
-            </p>
-            <div className="mt-[var(--space-8)] flex flex-wrap justify-center gap-3">
+            <div className="mt-[var(--space-8)]">
               <Button href="/contacto/" size="lg">
                 {sharedCta.primary}
-              </Button>
-              <Button href="/#work" variant="secondary" size="lg">
-                Ver proyectos
               </Button>
             </div>
           </Container>

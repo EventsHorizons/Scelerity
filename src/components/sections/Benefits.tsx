@@ -8,7 +8,7 @@ export function Benefits() {
   const { t } = useLocale();
 
   return (
-    <Section id="benefits" cardTone="dark">
+    <Section id="benefits" cardTone="paper">
       <Container size="content" className="section-y-lg">
         <div className="section-head">
           <p className="chapter-label lg:pt-3">{t.benefits.label}</p>
@@ -17,13 +17,13 @@ export function Benefits() {
           </h2>
         </div>
 
-        <div className="rule-grid rule-grid--2 mt-[var(--space-fluid-lg)]">
+        <div className="rule-grid rule-grid--2 mt-20 md:mt-28">
           {t.benefits.items.map((item, i) => (
             <div key={item.title}>
               <p className="font-mono text-small text-[var(--fg-subtle)]">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-[var(--space-5)] font-display text-h3 font-semibold">
+              <h3 className="mt-8 font-display text-h3 font-semibold">
                 {item.title}
               </h3>
               <p className="mt-[var(--space-4)] measure-sm text-body text-pretty text-[var(--fg-muted)]">

@@ -22,7 +22,7 @@ export function registerGsap() {
   CustomEase.create("bolt-inout", "M0,0 C0.7,0 0.2,1 1,1");
   CustomEase.create("charge", "M0,0 C0.4,-0.08 0.05,1 1,1");
 
-  gsap.defaults({ ease: "craft", duration: 0.85 });
+  gsap.defaults({ ease: "craft", duration: 0.55 });
   registered = true;
 }
 

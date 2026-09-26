@@ -22,7 +22,6 @@ export function FinalCTA() {
     <Section id="contact" cardTone="light">
       <AmbientGlow variant="cta" />
       <Container size="content" className="relative z-10 section-y-lg">
-        {/* Single column until there is genuinely room for two */}
         <div className="grid items-start gap-[var(--space-fluid-lg)] lg:grid-cols-2 lg:gap-[var(--space-12)] xl:gap-[var(--space-20)]">
           <div>
             <p className="chapter-label">{t.cta.eyebrow}</p>

@@ -46,7 +46,7 @@ export function BlogCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
         </div>
 
-        <div className="flex flex-1 flex-col px-5 py-6 sm:px-6">
+        <div className="flex flex-1 flex-col px-7 py-8 sm:px-8 sm:py-10">
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-micro uppercase tracking-[0.16em] text-[var(--fg-subtle)]">
             <span>{categoryLabel(post.category, locale)}</span>
             <span aria-hidden>·</span>
@@ -57,11 +57,11 @@ export function BlogCard({
             <span>{post.readingTime}</span>
           </div>
 
-          <h3 className="mt-4 font-display text-h4 font-semibold text-balance transition-colors duration-300 group-hover:text-[var(--fg)]">
+          <h3 className="mt-6 font-display text-h4 font-semibold leading-relaxed text-balance transition-colors duration-300 group-hover:text-[var(--fg)]">
             {post.title}
           </h3>
 
-          <p className="mt-3 line-clamp-2 text-small text-pretty text-[var(--fg-muted)]">
+          <p className="mt-5 line-clamp-3 text-small leading-relaxed text-pretty text-[var(--fg-muted)]">
             {post.excerpt}
           </p>
 

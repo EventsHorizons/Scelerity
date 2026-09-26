@@ -8,9 +8,8 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 type CursorMode = "default" | "link" | "cta" | "media";
 
 /**
- * Cursor v2 — extension of the interface.
- * Velocity stretch/compress, magnetic CTAs, ambient glow,
- * adapts appearance between dark and light themes.
+ * Precise cursor. A dot sits on the pointer. A thin ring follows
+ * a fraction behind and only changes size on links, media, and primary CTAs.
  */
 export function CustomCursor() {
   const finePointer = useMediaQuery("(hover: hover) and (pointer: fine)");
@@ -26,23 +25,18 @@ export function CustomCursor() {
     const bolt = boltRef.current!;
     document.body.classList.add("has-custom-cursor");
 
-    const coreX = gsap.quickTo(core, "x", { duration: 0.07, ease: "craft" });
-    const coreY = gsap.quickTo(core, "y", { duration: 0.07, ease: "craft" });
-    const boltX = gsap.quickTo(bolt, "x", { duration: 0.18, ease: "craft" });
-    const boltY = gsap.quickTo(bolt, "y", { duration: 0.18, ease: "craft" });
-    const rotTo = gsap.quickTo(bolt, "rotate", { duration: 0.14, ease: "craft" });
-    const sxTo = gsap.quickTo(bolt, "scaleX", { duration: 0.28, ease: "craft" });
-    const syTo = gsap.quickTo(bolt, "scaleY", { duration: 0.28, ease: "craft" });
+    const coreX = gsap.quickTo(core, "x", { duration: 0.08, ease: "power2.out" });
+    const coreY = gsap.quickTo(core, "y", { duration: 0.08, ease: "power2.out" });
+    const boltX = gsap.quickTo(bolt, "x", { duration: 0.22, ease: "power3.out" });
+    const boltY = gsap.quickTo(bolt, "y", { duration: 0.22, ease: "power3.out" });
+    const scaleTo = gsap.quickTo(bolt, "scale", { duration: 0.26, ease: "power3.out" });
 
-    let px = 0;
-    let py = 0;
     let x = 0;
     let y = 0;
     let visible = false;
     let mode: CursorMode = "default";
     let pressed = false;
-    let magnetX: number | null = null;
-    let magnetY: number | null = null;
+    let hiddenField = false;
     let raf = 0;
 
     const syncTheme = () => {
@@ -59,9 +53,9 @@ export function CustomCursor() {
 
     const modeScale: Record<CursorMode, number> = {
       default: 1,
-      link: 1.85,
-      cta: 2.6,
-      media: 2.3,
+      link: 1.35,
+      cta: 1.7,
+      media: 1.9,
     };
 
     const onMove = (e: PointerEvent) => {
@@ -69,73 +63,61 @@ export function CustomCursor() {
       y = e.clientY;
       if (!visible) {
         visible = true;
-        px = x;
-        py = y;
-        gsap.set([core, bolt], { autoAlpha: 1 });
+        gsap.set([core, bolt], { x, y, autoAlpha: hiddenField ? 0 : 1 });
       }
     };
+
+    const isField = (target: EventTarget | null) =>
+      target instanceof Element &&
+      Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
 
     const resolve = (
       target: EventTarget | null,
-    ): { mode: CursorMode; el: Element | null } => {
-      if (!(target instanceof Element)) return { mode: "default", el: null };
+    ): { mode: CursorMode; field: boolean } => {
+      if (isField(target)) return { mode: "default", field: true };
+      if (!(target instanceof Element)) return { mode: "default", field: false };
       const el = target.closest<HTMLElement>("[data-cursor]");
       if (el) {
         const m = el.dataset.cursor;
-        if (m === "cta" || m === "media" || m === "link") return { mode: m, el };
+        if (m === "cta" || m === "media" || m === "link") return { mode: m, field: false };
       }
-      if (target.closest("a, button, [role='button']")) return { mode: "link", el: null };
-      return { mode: "default", el: null };
+      if (target.closest("a, button, [role='button']")) return { mode: "link", field: false };
+      return { mode: "default", field: false };
     };
 
     const onOver = (e: PointerEvent) => {
-      const { mode: m, el } = resolve(e.target);
-      mode = m;
-      bolt.dataset.mode = m;
-      if (m === "cta" && el) {
-        const r = el.getBoundingClientRect();
-        magnetX = r.left + r.width / 2;
-        magnetY = r.top + r.height / 2;
-      } else {
-        magnetX = null;
-        magnetY = null;
-      }
+      const next = resolve(e.target);
+      mode = next.mode;
+      hiddenField = next.field;
+      bolt.dataset.mode = next.mode;
+      gsap.to([core, bolt], {
+        autoAlpha: hiddenField ? 0 : 1,
+        duration: 0.1,
+        overwrite: "auto",
+      });
     };
 
     const onDown = () => {
       pressed = true;
+      bolt.dataset.pressed = "true";
     };
     const onUp = () => {
       pressed = false;
+      delete bolt.dataset.pressed;
     };
     const onLeaveDoc = () => {
       visible = false;
-      gsap.to([core, bolt], { autoAlpha: 0, duration: 0.2 });
+      gsap.to([core, bolt], { autoAlpha: 0, duration: 0.12 });
     };
 
     const render = () => {
-      const vx = x - px;
-      const vy = y - py;
-      px += vx;
-      py += vy;
-
-      const speed = Math.min(Math.hypot(vx, vy), 60);
-      const norm = speed / 60;
-
-      const tx = magnetX !== null ? gsap.utils.interpolate(x, magnetX, 0.38) : x;
-      const ty = magnetY !== null ? gsap.utils.interpolate(y, magnetY, 0.38) : y;
-
-      coreX(tx);
-      coreY(ty);
-      boltX(tx);
-      boltY(ty);
-
-      if (speed > 1.2) rotTo((Math.atan2(vy, vx) * 180) / Math.PI);
-
-      const base = modeScale[mode] * (pressed ? 0.68 : 1);
-      sxTo(base * (1 + norm * 1.65));
-      syTo(base * (1 - norm * 0.5));
-
+      if (visible && !hiddenField) {
+        coreX(x);
+        coreY(y);
+        boltX(x);
+        boltY(y);
+        scaleTo(modeScale[mode] * (pressed ? 0.86 : 1));
+      }
       raf = requestAnimationFrame(render);
     };
 

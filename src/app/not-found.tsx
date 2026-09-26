@@ -43,11 +43,6 @@ export default function NotFound() {
                     Contacto
                   </Link>
                 </li>
-                <li>
-                  <Link href="/soluciones/" className="hover:text-[var(--fg)]">
-                    Soluciones
-                  </Link>
-                </li>
               </ul>
             </nav>
           </Container>

@@ -9,7 +9,7 @@ export function LanguageToggle({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex h-12 shrink-0 items-center rounded-full border border-[var(--glass-border)] bg-[var(--glass)] backdrop-blur-md",
+        "inline-flex h-11 shrink-0 items-center rounded-full bg-[var(--fill)]",
         className,
       )}
       role="group"
@@ -26,10 +26,10 @@ export function LanguageToggle({ className }: { className?: string }) {
             aria-pressed={active}
             aria-label={code === "es" ? "Español" : "English"}
             className={cn(
-              "inline-flex h-full min-w-11 items-center justify-center rounded-full px-3 font-mono text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-300 [touch-action:manipulation]",
+              "inline-flex h-full min-w-11 items-center justify-center rounded-full px-3 text-[13px] font-medium tracking-[-0.01em] transition-[background-color,color] duration-[140ms] ease-[cubic-bezier(0.22,1,0.36,1)] [touch-action:manipulation]",
               active
-                ? "bg-[var(--fg)] text-[var(--bg)]"
-                : "text-[var(--fg-muted)] hover:text-[var(--fg)]",
+                ? "bg-[var(--fill-selected)] text-[var(--text)]"
+                : "text-[var(--text-2)] hover:text-[var(--text)]",
             )}
           >
             {code}

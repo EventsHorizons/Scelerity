@@ -25,13 +25,13 @@ export function ArticleNav({
   return (
     <nav
       aria-label="Navegación entre artículos"
-      className="mt-[var(--space-fluid-xl)] grid gap-4 border-t border-[var(--border)] pt-[var(--space-fluid-md)] md:grid-cols-2"
+      className="mt-[var(--space-fluid-xl)] grid gap-6 border-t border-[var(--border)] pt-[var(--space-fluid-md)] md:grid-cols-2"
     >
       {prev ? (
         <Link
           href={`/blog/${prev.slug}/`}
           data-cursor="link"
-          className="group flex gap-4 rounded-[var(--radius-md)] border border-[var(--border)] p-4 transition-colors duration-300 hover:border-[var(--border-strong)]"
+          className="group flex gap-6 rounded-[var(--radius-md)] border border-[var(--border)] p-6 transition-colors duration-300 hover:border-[var(--border-strong)] sm:p-8"
         >
           <div className="relative hidden h-20 w-28 shrink-0 overflow-hidden rounded-xl sm:block">
             <Image
@@ -64,7 +64,7 @@ export function ArticleNav({
         <Link
           href={`/blog/${next.slug}/`}
           data-cursor="link"
-          className="group flex gap-4 rounded-[var(--radius-md)] border border-[var(--border)] p-4 text-right transition-colors duration-300 hover:border-[var(--border-strong)] md:ml-auto md:flex-row-reverse"
+          className="group flex gap-6 rounded-[var(--radius-md)] border border-[var(--border)] p-6 text-right transition-colors duration-300 hover:border-[var(--border-strong)] sm:p-8 md:ml-auto md:flex-row-reverse"
         >
           <div className="relative hidden h-20 w-28 shrink-0 overflow-hidden rounded-xl sm:block">
             <Image

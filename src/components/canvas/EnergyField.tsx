@@ -3,280 +3,343 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
-import { useTheme } from "@/context/ThemeContext";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-const vertex = /* glsl */ `
-  varying vec2 vUv;
-  void main() {
-    vUv = uv;
-    gl_Position = vec4(position.xy, 0.0, 1.0);
-  }
-`;
-
 /**
- * Electromagnetic Energy Core — living cluster of fine electrical filaments
- * contained in an organic plasma mass. Ridged FBM + curl flow fields produce
- * arcs that connect, break and reconnect. SCELERITY palette only.
+ * One standing-wave field on a thin plate.
+ * Frequency drifts on a closed, slow curve. Grains have inertia and
+ * only move toward wherever that field is quiet. The figure is the
+ * density that gathers there. Nothing is swapped or crossfaded.
  */
-const fragment = /* glsl */ `
-  precision highp float;
-  varying vec2 vUv;
-  uniform float uTime;
-  uniform float uAspect;
-  uniform float uOpacity;
-  uniform vec2 uCenter;
-  uniform float uClear;
-  uniform vec3 uColorA;
-  uniform vec3 uColorB;
-  uniform vec3 uColorC;
-  uniform vec3 uColorD;
 
-  float hash(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+const PERIOD = 96;
+
+function field(x: number, y: number, n: number, s: number) {
+  const r = Math.hypot(x, y);
+  const th = Math.atan2(y, x);
+  const polar = Math.sin(Math.PI * s * r) * Math.cos(n * th);
+  const px = x * Math.PI;
+  const py = y * Math.PI;
+  const plate =
+    Math.cos(n * px) * Math.cos(s * py) - Math.cos(s * px) * Math.cos(n * py);
+  const grain = 1 + 0.028 * Math.sin(x * 21.7 + y * 16.3);
+  return (polar * 0.62 + plate * 0.9) * grain;
+}
+
+function modesAt(time: number) {
+  const u = ((time % PERIOD) + PERIOD) / PERIOD;
+  const breathe = (1 - Math.cos(u * Math.PI * 2)) * 0.5;
+  const drift = Math.sin(u * Math.PI * 2);
+  const n = 0.4 + breathe * 6.4;
+  const s = 1.1 + breathe * 3.1 + drift * 0.72;
+  return { n, s, breathe };
+}
+
+const plateVertex = /* glsl */ `
+  varying vec3 vN;
+  varying vec3 vWorld;
+  varying vec2 vP;
+  uniform float uN;
+  uniform float uS;
+  uniform float uDisp;
+  uniform float uWave;
+  float field(vec2 p) {
+    float r = length(p);
+    float th = atan(p.y, p.x);
+    float polar = sin(3.14159265 * uS * r) * cos(uN * th);
+    vec2 w = p * 3.14159265;
+    float plate = cos(uN * w.x) * cos(uS * w.y) - cos(uS * w.x) * cos(uN * w.y);
+    float grain = 1.0 + 0.028 * sin(p.x * 21.7 + p.y * 16.3);
+    return (polar * 0.62 + plate * 0.9) * grain;
   }
-
-  float noise(vec2 p) {
-    vec2 i = floor(p);
-    vec2 f = fract(p);
-    f = f * f * (3.0 - 2.0 * f);
-    return mix(
-      mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
-      mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0)), f.x),
-      f.y
-    );
-  }
-
-  float fbm(vec2 p) {
-    float v = 0.0;
-    float a = 0.5;
-    mat2 m = mat2(0.8, -0.6, 0.6, 0.8);
-    for (int i = 0; i < 5; i++) {
-      v += a * noise(p);
-      p = m * p * 2.02 + vec2(14.1, 6.7);
-      a *= 0.5;
-    }
-    return v;
-  }
-
-  // Ridged FBM — thin electrical filament ridges.
-  float ridged(vec2 p) {
-    float v = 0.0;
-    float a = 0.5;
-    mat2 m = mat2(0.8, -0.6, 0.6, 0.8);
-    for (int i = 0; i < 4; i++) {
-      float n = 1.0 - abs(noise(p) * 2.0 - 1.0);
-      n = n * n;
-      v += a * n;
-      p = m * p * 2.15 + vec2(9.3, 3.8);
-      a *= 0.48;
-    }
-    return v;
-  }
-
-  vec2 curl(vec2 p) {
-    float e = 0.001;
-    float n1 = fbm(p + vec2(0.0, e));
-    float n2 = fbm(p - vec2(0.0, e));
-    float n3 = fbm(p + vec2(e, 0.0));
-    float n4 = fbm(p - vec2(e, 0.0));
-    return normalize(vec2(n1 - n2, n4 - n3) + 1e-5);
-  }
-
-  vec3 palette(float t) {
-    t = clamp(t, 0.0, 1.0);
-    vec3 c = mix(uColorA, uColorB, smoothstep(0.0, 0.32, t));
-    c = mix(c, uColorC, smoothstep(0.32, 0.68, t));
-    c = mix(c, uColorD, smoothstep(0.68, 1.0, t));
-    return c;
-  }
-
-  // Organic SDF mass — soft dissolve, aspect-aware scale.
-  float energyMass(vec2 p, float t) {
-    float aspectTame = clamp(uAspect / 1.65, 0.72, 1.18);
-    float breathe = 1.0 + 0.038 * sin(t * 0.18) + 0.022 * sin(t * 0.11 + 1.7);
-    float angle = atan(p.y, p.x);
-    float deform =
-      fbm(vec2(angle * 1.4, t * 0.032)) * 0.085 +
-      fbm(vec2(angle * 2.8 + 3.1, t * 0.02)) * 0.042;
-    float r = length(p) * breathe;
-    float radius = (0.36 + deform) * aspectTame;
-    float d = r - radius;
-    return 1.0 - smoothstep(-0.18, 0.32, d);
-  }
-
-  float uniformEdgeFade(vec2 uv) {
-    vec2 edge = min(uv, 1.0 - uv);
-    float dist = min(edge.x, edge.y);
-    return smoothstep(0.0, 0.22, dist);
-  }
-
   void main() {
-    vec2 uv = vUv;
-    // Offset right on desktop, centred on compact viewports.
-    vec2 p = (uv - uCenter) * vec2(uAspect, 1.0);
-
-    float t = uTime;
-
-    float mass = energyMass(p, t);
-
-    // Flow field — arcs travel independently along curl streams.
-    vec2 flowP = p * 2.4 + vec2(t * 0.08, t * 0.05);
-    vec2 flow = curl(flowP);
-    vec2 warped = p + flow * 0.055;
-    warped += (fbm(warped * 1.8 + t * 0.04) - 0.5) * 0.07;
-
-    // Multi-scale filament network — connect / break / reconnect via domain warp.
-    float arcs = 0.0;
-
-    // Primary dense network
-    float r1 = ridged(warped * 5.5 + flow * 0.8 + vec2(t * 0.12, 0.0));
-    arcs += pow(r1, 3.8) * 1.15;
-
-    // Secondary finer arcs
-    float r2 = ridged(warped * 9.2 - flow * 1.2 + vec2(0.0, t * 0.09));
-    arcs += pow(r2, 5.2) * 0.7;
-
-    // Tertiary micro-filaments (split / merge)
-    float r3 = ridged(warped * 14.0 + vec2(t * 0.07, t * 0.11) + flow * 0.5);
-    arcs += pow(r3, 7.0) * 0.4;
-
-    // Occasional thicker core veins
-    float veins = ridged(warped * 2.8 + vec2(t * 0.04, t * 0.03));
-    arcs += pow(veins, 2.6) * 0.35;
-
-    arcs = clamp(arcs, 0.0, 2.0);
-
-    // Contain arcs inside the mass; denser toward center.
-    float containment = mass * mass;
-    float coreFocus = 1.0 - smoothstep(0.0, 0.42, length(p));
-    float filament = arcs * containment * (0.55 + coreFocus * 0.55);
-
-    // Soft ambient plasma body (not smoke — subtle fill under arcs).
-    float body = mass * (0.12 + fbm(p * 1.6 + t * 0.02) * 0.08);
-    float glow = pow(mass, 2.2) * 0.28;
-
-    float energy = filament * 0.85 + body + glow;
-
-    // Brand palette driven by position + filament intensity.
-    float gradT =
-      length(p) * 0.9 +
-      filament * 0.25 +
-      p.x * 0.15 +
-      0.25;
-    vec3 color = palette(gradT);
-    // Hotter filaments lean toward cyan/mint.
-    color = mix(color, uColorD, smoothstep(0.4, 1.4, filament) * 0.35);
-
-    // Soft luminosity — no neon bloom, no flash.
-    float lum = energy * (0.7 + filament * 0.45);
-    lum = pow(clamp(lum, 0.0, 1.5), 1.1);
-
-    // Uniform dissolve on all four canvas edges + soft mass boundary.
-    float edge = uniformEdgeFade(vUv);
-    float textClear = mix(1.0, smoothstep(0.04, 0.34, vUv.x), uClear);
-    float alpha = lum * mass * textClear * edge * uOpacity;
-    gl_FragColor = vec4(color * lum, clamp(alpha, 0.0, 1.0));
+    vec2 p = position.xy;
+    vP = p;
+    float e = 0.016;
+    float a = field(p);
+    float ax = field(p + vec2(e, 0.0));
+    float ay = field(p + vec2(0.0, e));
+    vec3 pos = position;
+    pos.z += a * uDisp * uWave;
+    vec3 n = normalize(vec3(a - ax, a - ay, e * 1.6));
+    vec4 world = modelMatrix * vec4(pos, 1.0);
+    vWorld = world.xyz;
+    vN = normalize(mat3(modelMatrix) * n);
+    gl_Position = projectionMatrix * viewMatrix * world;
   }
 `;
 
-function CorePlane({
-  opacity,
-  compact,
-}: {
-  opacity: number;
-  compact: boolean;
-}) {
-  const material = useRef<THREE.ShaderMaterial>(null);
-  const { size } = useThree();
-  const reduced = useReducedMotion();
+const plateFragment = /* glsl */ `
+  precision highp float;
+  varying vec3 vN;
+  varying vec3 vWorld;
+  varying vec2 vP;
+  void main() {
+    float r = length(vP);
+    float disc = smoothstep(1.02, 0.72, r);
+    vec3 N = normalize(vN);
+    vec3 L = normalize(vec3(-0.22, 0.64, 0.82));
+    vec3 V = normalize(cameraPosition - vWorld);
+    vec3 H = normalize(L + V);
+    float ndl = clamp(dot(N, L), 0.0, 1.0);
+    float spec = pow(clamp(dot(N, H), 0.0, 1.0), 42.0);
+    vec3 base = vec3(0.055, 0.055, 0.058);
+    vec3 col = base * (0.5 + 0.5 * ndl) + spec * vec3(0.72, 0.71, 0.68) * 0.16;
+    float rim = smoothstep(0.9, 0.99, r) * disc;
+    col += rim * 0.045;
+    gl_FragColor = vec4(col, 0.28 * disc);
+  }
+`;
 
-  const uniforms = useMemo(
+const grainVertex = /* glsl */ `
+  attribute float aSettle;
+  varying float vSettle;
+  uniform float uSize;
+  void main() {
+    vSettle = aSettle;
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = uSize * (0.85 + aSettle * 0.35) * (210.0 / max(1.0, -mv.z));
+    gl_Position = projectionMatrix * mv;
+  }
+`;
+
+const grainFragment = /* glsl */ `
+  precision highp float;
+  varying float vSettle;
+  uniform float uOpacity;
+  void main() {
+    float d = length(gl_PointCoord - 0.5);
+    float grain = smoothstep(0.5, 0.12, d);
+    float alpha = grain * uOpacity * (0.22 + vSettle * 0.78);
+    vec3 dust = mix(vec3(0.55, 0.54, 0.52), vec3(0.9, 0.89, 0.86), vSettle);
+    gl_FragColor = vec4(dust, alpha);
+  }
+`;
+
+function integrate(
+  xy: Float32Array,
+  positions: Float32Array,
+  vel: Float32Array,
+  settle: Float32Array,
+  count: number,
+  dt: number,
+  time: number,
+  seek: number,
+) {
+  const { n, s } = modesAt(time);
+  const step = Math.min(2, dt * 60);
+  const eps = 0.018;
+  for (let i = 0; i < count; i++) {
+    let x = xy[i * 2];
+    let y = xy[i * 2 + 1];
+    const a = field(x, y, n, s);
+    const ax = field(x + eps, y, n, s);
+    const ay = field(x, y + eps, n, s);
+    const gx = ax * ax - a * a;
+    const gy = ay * ay - a * a;
+    const mag = Math.hypot(gx, gy) + 1e-6;
+    const push = 0.00018 * seek * step * (0.3 + Math.min(1, Math.abs(a)));
+    let vx = vel[i * 2];
+    let vy = vel[i * 2 + 1];
+    vx += (-gx / mag) * push;
+    vy += (-gy / mag) * push;
+    const h = ((i * 13) % 11) / 11 - 0.5;
+    vx += h * 0.000045 * step * Math.min(1, Math.abs(a));
+    vy += (((i * 19) % 9) / 9 - 0.5) * 0.000045 * step * Math.min(1, Math.abs(a));
+    vx *= Math.exp(-dt * 2.4);
+    vy *= Math.exp(-dt * 2.4);
+    const speed = Math.hypot(vx, vy);
+    const limit = 0.0065 * step;
+    if (speed > limit) {
+      vx = (vx / speed) * limit;
+      vy = (vy / speed) * limit;
+    }
+    x += vx;
+    y += vy;
+    const rad = Math.hypot(x, y);
+    if (rad > 0.9) {
+      const pull = (rad - 0.9) * 0.06 * step;
+      x -= (x / rad) * pull;
+      y -= (y / rad) * pull;
+      vx *= 0.94;
+      vy *= 0.94;
+    }
+    const nodal = 1 - Math.min(1, Math.abs(a) * 1.35);
+    settle[i] += (nodal - settle[i]) * (1 - Math.exp(-dt * 1.6));
+    xy[i * 2] = x;
+    xy[i * 2 + 1] = y;
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = nodal * 0.008;
+    vel[i * 2] = vx;
+    vel[i * 2 + 1] = vy;
+  }
+}
+
+function Rig({ reduced }: { reduced: boolean }) {
+  const { camera } = useThree();
+  useFrame(({ clock }) => {
+    const t = reduced ? 1.2 : clock.elapsedTime;
+    camera.position.set(
+      0.18 + Math.sin(t * 0.07) * 0.055,
+      0.4 + Math.cos(t * 0.05) * 0.028,
+      3.58 + Math.sin(t * 0.04) * 0.035,
+    );
+    camera.lookAt(0.2, -0.02, 0);
+  });
+  return null;
+}
+
+function Plate({
+  segments,
+  reduced,
+  offset,
+  count,
+}: {
+  segments: number;
+  reduced: boolean;
+  offset: [number, number, number];
+  count: number;
+}) {
+  const plate = useRef<THREE.ShaderMaterial>(null);
+  const points = useRef<THREE.Points>(null);
+
+  const sim = useMemo(() => {
+    const positions = new Float32Array(count * 3);
+    const xy = new Float32Array(count * 2);
+    const vel = new Float32Array(count * 2);
+    const settle = new Float32Array(count);
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const rad = Math.sqrt(Math.random()) * 0.88;
+      const x = Math.cos(a) * rad;
+      const y = Math.sin(a) * rad;
+      xy[i * 2] = x;
+      xy[i * 2 + 1] = y;
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      settle[i] = 0.12;
+    }
+    const held = PERIOD * 0.18;
+    if (reduced) {
+      for (let s = 0; s < 220; s++) {
+        integrate(xy, positions, vel, settle, count, 1 / 60, held, 1);
+      }
+    }
+    return { positions, xy, vel, settle, time: reduced ? held : 0 };
+  }, [count, reduced]);
+
+  const plateUniforms = useMemo(
     () => ({
-      uTime: { value: 0 },
-      uAspect: { value: 1 },
-      uOpacity: { value: 0 },
-      uCenter: { value: new THREE.Vector2(0.5, 0.5) },
-      uClear: { value: 1 },
-      uColorA: { value: new THREE.Color("#7c6cff") },
-      uColorB: { value: new THREE.Color("#5c8dff") },
-      uColorC: { value: new THREE.Color("#45c8ff") },
-      uColorD: { value: new THREE.Color("#67f0c1") },
+      uN: { value: 0.4 },
+      uS: { value: 1.1 },
+      uDisp: { value: 0.026 },
+      uWave: { value: 0 },
     }),
-    // Uniform objects are created once; values are pushed in useFrame.
     [],
   );
 
+  const grainUniforms = useMemo(
+    () => ({
+      uSize: { value: count > 5000 ? 1.35 : 1.65 },
+      uOpacity: { value: 0.72 },
+    }),
+    [count],
+  );
+
   useFrame((_, delta) => {
-    const mat = material.current;
-    if (!mat) return;
-    mat.uniforms.uAspect.value = size.width / size.height;
-    mat.uniforms.uOpacity.value = opacity;
-    mat.uniforms.uClear.value = compact ? 0 : 1;
-    mat.uniforms.uCenter.value.set(compact ? 0.5 : 0.66, compact ? 0.5 : 0.5);
-    if (!reduced) {
-      mat.uniforms.uTime.value += Math.min(delta, 0.05) * 0.82;
+    const dt = Math.min(delta, 0.033);
+    if (!reduced) sim.time += dt;
+    const { n, s } = modesAt(sim.time);
+    const intro = reduced ? 1 : Math.min(1, sim.time / 7.5);
+    const seek = 0.22 + 0.78 * intro;
+    integrate(sim.xy, sim.positions, sim.vel, sim.settle, count, reduced ? 0 : dt, sim.time, reduced ? 1 : seek);
+
+    const geometry = points.current?.geometry;
+    const positionAttr = geometry?.getAttribute("position");
+    const settleAttr = geometry?.getAttribute("aSettle");
+    if (positionAttr) positionAttr.needsUpdate = true;
+    if (settleAttr) settleAttr.needsUpdate = true;
+
+    if (plate.current) {
+      plate.current.uniforms.uN.value = n;
+      plate.current.uniforms.uS.value = s;
+      plate.current.uniforms.uDisp.value = 0;
+      plate.current.uniforms.uWave.value = 0;
     }
   });
 
   return (
-    <mesh>
-      <planeGeometry args={[2, 2]} />
-      <shaderMaterial
-        ref={material}
-        vertexShader={vertex}
-        fragmentShader={fragment}
-        uniforms={uniforms}
-        transparent
-        depthWrite={false}
-        blending={THREE.NormalBlending}
-      />
-    </mesh>
+    <group position={offset} rotation={[-0.4, 0.12, 0.015]}>
+      <mesh>
+        <circleGeometry args={[1, segments]} />
+        <shaderMaterial
+          ref={plate}
+          vertexShader={plateVertex}
+          fragmentShader={plateFragment}
+          uniforms={plateUniforms}
+          transparent
+          depthWrite={false}
+        />
+      </mesh>
+      <points ref={points} frustumCulled={false}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[sim.positions, 3]} />
+          <bufferAttribute attach="attributes-aSettle" args={[sim.settle, 1]} />
+        </bufferGeometry>
+        <shaderMaterial
+          vertexShader={grainVertex}
+          fragmentShader={grainFragment}
+          uniforms={grainUniforms}
+          transparent
+          depthWrite={false}
+        />
+      </points>
+    </group>
   );
 }
 
 export function EnergyField() {
-  const { theme } = useTheme();
-  const desktop = useMediaQuery("(min-width: 64rem)");
-  const compact = !desktop;
+  const reduced = useReducedMotion();
+  const desktop = typeof window !== "undefined" ? window.matchMedia("(min-width: 64rem)").matches : true;
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(true);
+  const [wide, setWide] = useState(desktop);
 
-  // Never burn GPU cycles on a canvas that has scrolled away.
   useEffect(() => {
     const el = ref.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
+    const mq = window.matchMedia("(min-width: 64rem)");
+    const onMq = () => setWide(mq.matches);
+    onMq();
+    mq.addEventListener("change", onMq);
 
-    const io = new IntersectionObserver(
-      ([entry]) => setActive(entry.isIntersecting),
-      { rootMargin: "120px" },
-    );
-    io.observe(el);
-
-    const onVisibility = () => setActive(!document.hidden);
+    let io: IntersectionObserver | undefined;
+    if (el && typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(
+        ([entry]) => setActive(entry.isIntersecting && !document.hidden),
+        { rootMargin: "120px" },
+      );
+      io.observe(el);
+    }
+    const onVisibility = () => {
+      if (document.hidden) setActive(false);
+    };
     document.addEventListener("visibilitychange", onVisibility);
-
     return () => {
-      io.disconnect();
+      io?.disconnect();
+      mq.removeEventListener("change", onMq);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
-  const light = theme === "light";
-  const opacity = compact
-    ? light
-      ? 0.32
-      : 0.62
-    : light
-      ? 0.45
-      : 0.85;
+  const count = wide ? 9600 : 3000;
+  const segments = wide ? 80 : 40;
 
   return (
     <div ref={ref} className="hero-energy__canvas">
       <Canvas
-        frameloop={active ? "always" : "never"}
-        dpr={compact ? [1, 1.25] : [1, 1.35]}
+        frameloop={!active || reduced ? "demand" : "always"}
+        dpr={wide ? [1, 1.25] : [1, 1.05]}
         gl={{
           antialias: false,
           alpha: true,
@@ -284,9 +347,19 @@ export function EnergyField() {
           preserveDrawingBuffer: false,
         }}
         className="hero-energy__gl"
-        camera={{ position: [0, 0, 1] }}
+        camera={{ position: [0.18, 0.4, 3.58], fov: 28 }}
+        onCreated={({ gl }) => {
+          gl.setClearColor(0x000000, 0);
+        }}
       >
-        <CorePlane opacity={opacity} compact={compact} />
+        <Rig reduced={reduced} />
+        <Plate
+          key={count}
+          count={count}
+          segments={segments}
+          reduced={reduced}
+          offset={wide ? [0.42, -0.12, 0] : [0, -0.05, 0]}
+        />
       </Canvas>
     </div>
   );

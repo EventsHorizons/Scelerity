@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-export type CardTone = "dark" | "light";
+export type CardTone = "dark" | "light" | "paper";
 
 type Props = {
   children: ReactNode;
@@ -26,7 +26,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "relative w-full overflow-x-clip",
+        "relative w-full",
         full && "min-h-[100svh]",
         cardTone && `section-card section-card--${cardTone}`,
         className,

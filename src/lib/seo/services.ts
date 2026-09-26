@@ -19,8 +19,8 @@ export type ServicePage = {
 };
 
 const sharedCta = {
-  primary: "Solicitar asesoría",
-  secondary: "Ver soluciones",
+  primary: "Hablemos",
+  secondary: "Ver trabajo",
 };
 
 export const SEO_SERVICES: ServicePage[] = [

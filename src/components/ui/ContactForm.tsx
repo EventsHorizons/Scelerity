@@ -109,7 +109,7 @@ export function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label={t.cta.form.submit}
-      className="contact-form relative flex w-full flex-col gap-[var(--space-6)] rounded-[24px] border border-[var(--border)] bg-[var(--fg)]/[0.03] p-[var(--space-5)] sm:p-[var(--space-8)]"
+      className="contact-form relative flex w-full flex-col gap-10 rounded-[16px] bg-[var(--fill)] p-8 sm:p-10 md:gap-12 md:p-14"
     >
       {/* Honeypot — hidden from users, bots fill this */}
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
@@ -250,9 +250,9 @@ export function ContactForm() {
             markTouched("captcha");
           }}
           className={cn(
-            "recaptcha-box flex w-full min-h-14 items-center gap-3 rounded-[14px] border border-[var(--border)] bg-[var(--bg)]/40 px-4 py-3 text-left transition-colors duration-300 [touch-action:manipulation]",
-            values.captcha && "border-[var(--border-strong)]",
-            show("captcha") && "border-[var(--danger)]/60",
+            "flex min-h-11 w-full items-center gap-2 rounded-[12px] bg-[var(--elevated)] px-4 text-left transition-[background-color,opacity] duration-[140ms] [touch-action:manipulation]",
+            values.captcha && "bg-[var(--fill-selected)]",
+            show("captcha") && "outline outline-2 outline-offset-2 outline-[var(--danger)]",
           )}
           role="checkbox"
           aria-checked={values.captcha}
@@ -261,9 +261,8 @@ export function ContactForm() {
         >
           <span
             className={cn(
-              "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] border border-[var(--border-strong)] transition-colors duration-300",
-              values.captcha &&
-                "border-transparent bg-[image:var(--gradient-primary)]",
+              "inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-[6px] bg-[var(--fill)]",
+              values.captcha && "bg-[var(--text)] text-[var(--on-primary)]",
             )}
             aria-hidden
           >
@@ -275,7 +274,7 @@ export function ContactForm() {
             {f.captcha}
           </span>
           <span
-            className="hidden shrink-0 font-mono text-micro uppercase tracking-[0.14em] text-[var(--fg-subtle)] sm:inline"
+            className="hidden shrink-0 text-[12px] leading-[1.4] tracking-[-0.01em] text-[var(--text-3)] sm:inline"
             aria-hidden
           >
             reCAPTCHA
@@ -292,13 +291,12 @@ export function ContactForm() {
         type="submit"
         data-cursor="cta"
         disabled={status === "loading"}
-        className="group/btn btn-gradient relative inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border-transparent px-6 text-[0.9375rem] font-medium tracking-tight transition-transform duration-300 [touch-action:manipulation] enabled:active:scale-[0.98] disabled:cursor-wait disabled:opacity-80 md:enabled:hover:-translate-y-0.5"
+        className="btn btn-lg h-12 w-full disabled:cursor-not-allowed disabled:opacity-40"
       >
-        <span className="btn-sweep" aria-hidden />
-        <span className="relative z-10 inline-flex items-center gap-2">
+        <span className="inline-flex items-center gap-2">
           {status === "loading" ? (
             <>
-              <Loader2 size={18} className="animate-spin" aria-hidden />
+              <Loader2 size={20} className="[animation:spin_900ms_linear_infinite]" aria-hidden />
               {f.submitting}
             </>
           ) : (
@@ -343,10 +341,10 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <label
         htmlFor={id}
-        className="font-mono text-micro uppercase tracking-[0.16em] text-[var(--fg-subtle)]"
+        className="font-sans text-[13px] font-medium leading-[1.35] tracking-[0.01em] text-[var(--text-2)]"
       >
         {label}
         {required ? (

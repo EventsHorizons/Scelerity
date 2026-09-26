@@ -18,8 +18,8 @@ export default function PrivacidadPage() {
     <>
       <SkipLink />
       <Header />
-      <main id="main">
-        <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
+      <main id="main" className="page-rhythm">
+        <Section className="pb-[var(--section-y)] pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="narrow">
             <Breadcrumbs
               items={[

@@ -10,9 +10,9 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { LOCAL_PAGES } from "@/lib/seo/local";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Agencia Digital Local — Florida y Worldwide",
+  title: "Presencia — Diseño, desarrollo y marketing",
   description:
-    "Scelerity atiende Orlando, Miami, Tampa, Jacksonville, Kissimmee y clientes worldwide. Diseño, desarrollo y marketing digital.",
+    "Scelerity trabaja desde Bogotá y también en Orlando, Miami, Tampa, Jacksonville y Kissimmee. Diseño, desarrollo y marketing.",
   path: "/local/",
 });
 
@@ -21,39 +21,35 @@ export default function LocalIndexPage() {
     <>
       <SkipLink />
       <Header />
-      <main id="main">
-        <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
+      <main id="main" className="page-rhythm">
+        <Section cardTone="paper">
           <Container size="content">
             <Breadcrumbs
               items={[
                 { name: "Inicio", path: "/" },
-                { name: "Local", path: "/local/" },
+                { name: "Presencia", path: "/local/" },
               ]}
-              className="mb-[var(--space-6)]"
+              className="mb-16"
             />
-            <h1 className="font-display text-h1 font-bold text-balance">
-              Presencia local, alcance global
-            </h1>
-            <p className="measure mt-[var(--space-6)] text-body-lg text-[var(--fg-muted)]">
-              Operamos remoto con enfoque local en Florida. Cada ciudad tiene contenido único — nunca duplicado.
+            <p className="chapter-label">Cultural & creative marketing</p>
+            <h1 className="mt-8 font-display text-h1 font-semibold">Presencia</h1>
+            <p className="mt-8 measure text-lead text-[var(--fg-muted)]">
+              Diseño, desarrollo y marketing desde Bogotá, y en estas ciudades cuando el proyecto está ahí.
             </p>
           </Container>
         </Section>
 
         <Section cardTone="light">
-          <Container size="content" className="section-y">
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Container size="content">
+            <ul className="rule-grid rule-grid--3">
               {LOCAL_PAGES.map((p) => (
                 <li key={p.slug}>
-                  <Link
-                    href={`/local/${p.slug}/`}
-                    className="block rounded-[var(--radius-lg)] border border-[var(--glass-border)] bg-[var(--card)] p-[var(--space-6)] transition-colors hover:border-[var(--border-strong)]"
-                  >
-                    <h2 className="font-display text-h4 font-semibold">
+                  <Link href={`/local/${p.slug}/`} className="group block">
+                    <h2 className="font-display text-h3 font-semibold group-hover:opacity-70">
                       {p.city}, {p.region}
                     </h2>
-                    <p className="mt-2 text-small text-[var(--fg-muted)]">
-                      {p.metaDescription.slice(0, 100)}…
+                    <p className="mt-[var(--space-4)] text-body text-[var(--fg-muted)]">
+                      {p.metaDescription}
                     </p>
                   </Link>
                 </li>

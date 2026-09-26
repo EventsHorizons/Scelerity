@@ -13,6 +13,20 @@ type Props = {
   label?: string;
 };
 
+const WORDMARK = ["s", "c", "e", "l", "e", "r", "i", "t", "y"] as const;
+
+function Wordmark() {
+  return (
+    <span className="wordmark" aria-hidden>
+      {WORDMARK.map((letter, index) => (
+        <span key={`${letter}-${index}`} className={`wordmark__pair wordmark__pair--${index}`}>
+          {letter}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 /**
  * Scelerity brand lockup — isotipo + wordmark.
  * Light theme: dark mark + text · Dark theme: light mark + text (via currentColor).
@@ -40,8 +54,8 @@ export function Logo({
 
   if (variant === "wordmark") {
     return (
-      <span className={cn("wordmark", className)} aria-label={label}>
-        Scelerity
+      <span className={cn("wordmark-lockup wordmark-lockup--type", className)} aria-label={label} role="img">
+        <Wordmark />
       </span>
     );
   }
@@ -53,7 +67,7 @@ export function Logo({
       role="img"
     >
       <LogoMark className="wordmark-lockup__mark" />
-      <span className="wordmark">Scelerity</span>
+      <Wordmark />
     </span>
   );
 }

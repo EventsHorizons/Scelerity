@@ -15,7 +15,7 @@ import { content } from "@/data/content";
 export const metadata: Metadata = buildPageMetadata({
   title: "Contacto — Scelerity",
   description:
-    "Contacta a Scelerity. Diseño web, desarrollo y marketing digital. Respuesta en menos de 24 horas.",
+    "Cuéntanos sobre el proyecto. Cultural & creative marketing, desde Bogotá.",
   path: "/contacto/",
 });
 
@@ -40,31 +40,29 @@ export default function ContactoPage() {
           }),
         ])}
       />
-      <main id="main">
-        <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
+      <main id="main" className="page-rhythm">
+        <Section cardTone="paper">
           <Container size="content">
-            <Breadcrumbs items={breadcrumbs} className="mb-[var(--space-6)]" />
-            <h1 className="font-display text-h1 font-bold text-balance">{cta.headline}</h1>
-            {cta.body.map((p) => (
-              <p key={p.slice(0, 24)} className="measure mt-[var(--space-6)] text-body-lg text-[var(--fg-muted)]">
-                {p}
-              </p>
-            ))}
-            <ul className="mt-[var(--space-8)] space-y-2 text-body text-[var(--fg-muted)]">
-              <li>
-                <a href={`mailto:${cta.email}`} className="hover:text-[var(--fg)]">
-                  {cta.email}
-                </a>
-              </li>
-              <li>{cta.location}</li>
-              <li>{cta.response}</li>
-            </ul>
+            <Breadcrumbs items={breadcrumbs} className="mb-16" />
+            <h1 className="font-display text-h1 font-semibold">{cta.headline}</h1>
+            <div className="mt-10 measure space-y-8">
+              {cta.body.map((p) => (
+                <p key={p} className="text-lead text-[var(--fg-muted)]">
+                  {p}
+                </p>
+              ))}
+            </div>
+            <a
+              href={`mailto:${cta.email}`}
+              className="mt-10 inline-flex min-h-11 items-center text-body text-[var(--fg)]"
+            >
+              {cta.email}
+            </a>
           </Container>
         </Section>
 
         <Section cardTone="light">
-          <Container size="narrow" className="section-y">
-            <h2 className="font-display text-h2 font-semibold">Escríbenos</h2>
+          <Container size="narrow">
             <ContactForm />
           </Container>
         </Section>

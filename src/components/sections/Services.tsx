@@ -1,63 +1,95 @@
 "use client";
 
+import { useRef } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { Section } from "@/components/layout/Section";
-import { Container } from "@/components/layout/Container";
-import { AmbientGlow } from "@/components/motion/AmbientGlow";
+import { useServiceReel } from "@/components/sections/services-system/useServiceReel";
+import heroStyles from "@/components/sections/scelerity-hero/hero.module.css";
+import styles from "./home-cycle.module.css";
+import { cn } from "@/lib/cn";
 
 export function Services() {
   const { t } = useLocale();
-  const columns = [
-    { key: "what", label: t.services.columns.what },
-    { key: "why", label: t.services.columns.why },
-    { key: "result", label: t.services.columns.result },
-  ] as const;
+  const rootRef = useRef<HTMLElement>(null);
+  const copy = t.services;
+  const total = copy.phases.length + 1;
+  const totalLabel = String(total).padStart(2, "0");
+
+  useServiceReel(rootRef, total);
 
   return (
-    <Section id="services" cardTone="light">
-      <AmbientGlow variant="services" />
-      <Container size="content" className="relative z-10 section-y-lg">
-        <div className="section-head">
-          <p className="chapter-label lg:pt-3">{t.services.label}</p>
-          <h2 className="text-balance font-display text-h2 font-semibold">
-            {t.services.headline}
-          </h2>
-        </div>
+    <section
+      ref={rootRef}
+      id="services"
+      className={cn("home-cycle", styles.cycle)}
+      style={{ ["--slides" as string]: total }}
+      aria-label={copy.label}
+    >
+      <div className={styles.viewport}>
+        <div data-reel="track" className={styles.track}>
+          <article data-reel-slide className={styles.intro} aria-labelledby="home-cycle-title">
+            <p className={styles.kicker}>{copy.label}</p>
+            <h2 id="home-cycle-title" className={styles.manifesto}>
+              {copy.headline}
+            </h2>
+            <p className={styles.deck}>{copy.deck}</p>
+          </article>
 
-        <div className="mt-[var(--space-fluid-lg)] border-t border-[var(--border)]">
-          {t.services.items.map((item, i) => (
-            <div
-              key={item.name}
-              data-cursor="link"
-              className="group grid gap-[var(--space-6)] border-b border-[var(--border)] py-[var(--space-fluid-md)] lg:grid-cols-12 lg:gap-[var(--space-8)] lg:py-[var(--space-fluid-lg)]"
+          {copy.phases.map((phase, index) => (
+            <article
+              key={phase.name}
+              data-reel-slide
+              className={styles.slide}
+              aria-labelledby={`home-cycle-${index}`}
             >
-              <p className="font-mono text-small text-[var(--fg-subtle)] lg:col-span-1">
-                {String(i + 1).padStart(2, "0")}
-              </p>
+              <figure className={styles.visual}>
+                <img
+                  src={phase.image}
+                  alt={phase.alt}
+                  width={1600}
+                  height={1200}
+                  className={styles.photo}
+                />
+                <div className={styles.shade} aria-hidden />
+                <div className={cn(heroStyles.grain, styles.grain)} aria-hidden />
+              </figure>
 
-              <div className="lg:col-span-4">
-                <h3 className="font-display text-title font-semibold">
-                  {item.name}
+              <div className={styles.copy}>
+                <p className={styles.kicker}>
+                  <span>Fase {String(index + 1).padStart(2, "0")}</span>
+                  <span aria-hidden> · </span>
+                  <span>{phase.name}</span>
+                </p>
+                <h3 id={`home-cycle-${index}`} className={styles.phaseTitle}>
+                  {phase.lead}
                 </h3>
-                <div className="mt-[var(--space-5)] h-px w-12 bg-[image:var(--gradient-primary)] transition-all duration-500 group-hover:w-24" />
+                <p className={styles.phaseBody}>{phase.body}</p>
+                <ul className={styles.rows}>
+                  {phase.rows.map((row) => (
+                    <li key={row.label} className={styles.row}>
+                      <span className={styles.rowLabel}>{row.label}</span>
+                      <span className={styles.rowValue}>{row.value}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#contact" className={styles.cta} data-cursor="link">
+                  {copy.cta}
+                </a>
               </div>
-
-              <div className="grid gap-[var(--space-6)] md:grid-cols-2 lg:col-span-7 lg:grid-cols-3">
-                {columns.map((column) => (
-                  <div key={column.key}>
-                    <p className="font-mono text-micro uppercase tracking-[0.18em] text-[var(--fg-subtle)]">
-                      {column.label}
-                    </p>
-                    <p className="mt-[var(--space-3)] text-body text-pretty text-[var(--fg-muted)]">
-                      {item[column.key]}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </article>
           ))}
         </div>
-      </Container>
-    </Section>
+
+        <div className={styles.progress} aria-hidden>
+          <p className={styles.count}>
+            <span className={styles.fase}>Fase</span>
+            <span data-reel="current">01</span>
+            <span className={styles.total}> / {totalLabel}</span>
+          </p>
+          <div className={styles.bar}>
+            <span data-reel="bar" className={styles.barFill} />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

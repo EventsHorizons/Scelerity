@@ -28,9 +28,9 @@ export function KineticCard({ children, className, lean = 6 }: Props) {
     if (!el || !enabled) return;
 
     registerGsap();
-    const rotX = gsap.quickTo(el, "rotationX", { duration: 0.5, ease: "craft" });
-    const rotY = gsap.quickTo(el, "rotationY", { duration: 0.5, ease: "craft" });
-    const zTo = gsap.quickTo(el, "z", { duration: 0.5, ease: "craft" });
+    const rotX = gsap.quickTo(el, "rotationX", { duration: 0.42, ease: "craft" });
+    const rotY = gsap.quickTo(el, "rotationY", { duration: 0.42, ease: "craft" });
+    const zTo = gsap.quickTo(el, "z", { duration: 0.42, ease: "craft" });
 
     const onMove = (e: PointerEvent) => {
       const r = el.getBoundingClientRect();
@@ -40,7 +40,7 @@ export function KineticCard({ children, className, lean = 6 }: Props) {
       el.style.setProperty("--my", `${ny * 100}%`);
       rotY((nx - 0.5) * lean * 2);
       rotX((0.5 - ny) * lean * 2);
-      zTo(30);
+      zTo(12);
     };
     const onLeave = () => {
       rotX(0);

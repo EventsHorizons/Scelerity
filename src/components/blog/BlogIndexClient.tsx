@@ -118,7 +118,7 @@ export function BlogIndexClient({ posts, labels, locale = "es" }: Props) {
           {labels.empty}
         </p>
       ) : (
-        <div className="mt-[var(--space-8)] grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-[var(--space-10)] grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {filtered.map((post, i) => (
             <BlogCard
               key={post.slug}

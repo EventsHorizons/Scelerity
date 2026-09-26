@@ -7,452 +7,441 @@ export type SolutionsContent = {
     label: string;
     headline: string;
     sub: string;
+    body: string[];
     ctaPrimary: string;
     ctaSecondary: string;
   };
-  pillars: {
+  manifesto: {
     label: string;
     headline: string;
-    items: {
-      title: string;
-      tagline: string;
-      value: string;
-    }[];
-  };
-  showcase: {
-    label: string;
-    headline: string;
-    items: {
-      title: string;
-      category: string;
-      media: "image" | "video";
-      layout: "hero" | "wide" | "default";
-    }[];
-  };
-  plans: {
-    label: string;
-    headline: string;
-    idealLabel: string;
-    includesLabel: string;
-    resultLabel: string;
-    items: {
-      name: string;
-      tagline: string;
-      ideal: string;
-      includes: string[];
-      result: string;
-    }[];
-  };
-  strategy: {
-    label: string;
-    headline: string;
+    lead: string;
     body: string;
-    points: string[];
+    creed: string;
+  };
+  capabilities: {
+    label: string;
+    headline: string;
+    lead: string;
+    emphasis: string;
+    includesLabel: string;
+    stackLabel: string;
+    items: {
+      index: string;
+      name: string;
+      headline: string;
+      lead: string;
+      body: string;
+      includes: string[];
+      stack: string;
+      microcopy: string;
+      cta: string;
+      href: string;
+    }[];
+  };
+  system: {
+    label: string;
+    headline: string;
+    lines: string[];
+    closer: string;
+    layers: { title: string; text: string }[];
+    statement: string;
+  };
+  forward: {
+    label: string;
+    headline: string;
+    body: string[];
+    emphasis: string[];
   };
   process: {
     label: string;
     headline: string;
-    steps: { number: string; title: string; text: string }[];
+    steps: {
+      number: string;
+      title: string;
+      lead: string;
+      text: string[];
+    }[];
   };
-  benefits: {
+  principle: {
     label: string;
     headline: string;
-    items: { title: string; text: string }[];
+    intro: string;
+    questions: string[];
+    close: string;
   };
   close: {
     headline: string;
-    body: string;
+    lines: string[];
+    emphasis: string;
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  statement: {
+    brand: string;
+    tagline: string;
+    layers: string;
+    year: string;
+    line: string;
+  };
+};
+
+const capabilitiesShared = {
+  items: [
+    {
+      index: "01",
+      name: "Digital Architecture",
+      includes: [
+        "Web Architecture",
+        "Full-Stack Development",
+        "Web Applications",
+        "Digital Products",
+        "Performance Engineering",
+        "APIs & Integrations",
+        "Scalable Systems",
+      ],
+      stack: "React · Next.js · Astro · TypeScript · Node.js · PostgreSQL",
+      microcopy: "Idea → Architecture → Build → Scale",
+      href: "/servicios/desarrollo-web/",
+    },
+    {
+      index: "02",
+      name: "Human Experience",
+      includes: [
+        "UX Strategy",
+        "Product Design",
+        "UI Systems",
+        "Design Systems",
+        "Brand Identity",
+        "Art Direction",
+        "Interaction Design",
+        "Motion",
+      ],
+      stack: "Figma · React · Tailwind · GSAP · Framer Motion · Three.js",
+      microcopy: "Understand → Define → Design → Evolve",
+      href: "/servicios/diseno-web/",
+    },
+    {
+      index: "03",
+      name: "Cultural Growth",
+      includes: [
+        "Cultural Positioning",
+        "Growth Strategy",
+        "Content Systems",
+        "Campaigns",
+        "Social Strategy",
+        "Performance Marketing",
+        "Analytics",
+        "Conversion Optimization",
+      ],
+      stack: "GA4 · Meta Ads · Search · CRM · Analytics · AI",
+      microcopy: "Observe → Position → Activate → Grow",
+      href: "/servicios/marketing-digital/",
+    },
+  ],
 };
 
 export const solutionsEs: SolutionsContent = {
   meta: {
-    title: "Soluciones — Scelerity",
+    title: "Servicios — Arquitectura, experiencia y growth",
     description:
-      "Diseño, desarrollo y marketing digital para marcas que quieren crecer con claridad.",
+      "Estrategia, tecnología, diseño y growth para crear experiencias digitales preparadas para el próximo ciclo cultural.",
   },
   hero: {
-    label: "Soluciones",
-    headline: "Diseño, desarrollo y marketing que hacen crecer tu marca.",
-    sub: "Unimos los tres pilares que tu negocio necesita para verse bien, funcionar mejor y llegar más lejos.",
-    ctaPrimary: "Escríbenos",
-    ctaSecondary: "Ver planes",
+    label: "Services / 2028+",
+    headline: "Construimos hoy lo que tu marca necesitará mañana.",
+    sub: "Estrategia, tecnología, diseño y growth para crear experiencias digitales preparadas para el próximo ciclo cultural.",
+    body: [
+      "No utilizamos tecnología para hacer ruido.",
+      "La utilizamos para resolver mejor, conectar más profundamente y abrir posibilidades que antes no existían.",
+    ],
+    ctaPrimary: "Hablemos de tu proyecto →",
+    ctaSecondary: "Explorar capacidades ↓",
   },
-  pillars: {
-    label: "Tres pilares",
-    headline: "Todo lo que tu marca necesita, en un solo lugar.",
+  manifesto: {
+    label: "Manifiesto",
+    headline: "La tecnología no es el destino.",
+    lead: "Es la infraestructura de nuevas formas de crear, comunicar, descubrir y relacionarnos.",
+    body: "Por eso diseñamos pensando en la persona que está frente a la pantalla, la cultura que la rodea y el sistema que existe detrás.",
+    creed: "Tecno-Humanismo: tecnología avanzada con criterio humano.",
+  },
+  capabilities: {
+    label: "Capabilities",
+    headline: "Tres sistemas. Una misma visión.",
+    lead: "No vendemos servicios aislados.",
+    emphasis:
+      "Diseñamos la arquitectura, la experiencia y el crecimiento como partes de un mismo sistema.",
+    includesLabel: "Incluye",
+    stackLabel: "Stack",
     items: [
       {
-        title: "Diseño",
-        tagline: "Claridad antes que decoración.",
-        value:
-          "Identidad visual, estructura y experiencia pensadas para que tu marca se entienda al instante y genere confianza.",
+        ...capabilitiesShared.items[0],
+        headline: "Arquitectura de Experiencias Digitales",
+        lead: "Diseñamos y desarrollamos productos digitales rápidos, escalables y preparados para evolucionar.",
+        body: "Desde sitios de alto rendimiento hasta plataformas y sistemas web complejos, construimos la infraestructura que permite que una idea llegue al mundo sin quedar atrapada en ella.",
+        cta: "Ver arquitectura →",
       },
       {
-        title: "Desarrollo",
-        tagline: "Rápido, sólido, listo para escalar.",
-        value:
-          "Sitios web, plataformas y e-commerce construidos con criterio: velocidad, funcionalidad y una base que crece contigo.",
+        ...capabilitiesShared.items[1],
+        headline: "Interfaces que entienden a las personas.",
+        lead: "Diseñamos experiencias donde identidad, interacción y tecnología funcionan como una sola cosa.",
+        body: "UX, UI, branding y motion se convierten en un sistema coherente: reconocible, intuitivo y suficientemente flexible para crecer con el producto.",
+        cta: "Ver experience →",
       },
       {
-        title: "Marketing digital",
-        tagline: "Visibilidad con dirección.",
-        value:
-          "SEO, campañas y contenido que conectan con las personas correctas y convierten interés en oportunidades reales.",
+        ...capabilitiesShared.items[2],
+        headline: "Growth con contexto.",
+        lead: "No hacemos marketing para llenar feeds. Diseñamos sistemas de crecimiento alrededor de cultura, comportamiento y datos.",
+        body: "Encontramos dónde existe atención, por qué importa y cómo convertirla en reconocimiento, comunidad y crecimiento sostenible.",
+        cta: "Ver growth →",
       },
     ],
   },
-  showcase: {
-    label: "En acción",
-    headline: "Así se ve cuando diseño, código y estrategia trabajan juntos.",
-    items: [
-      {
-        title: "Northline",
-        category: "Identidad · Motion",
-        media: "video",
-        layout: "hero",
-      },
-      {
-        title: "Aether",
-        category: "Producto · Plataforma",
-        media: "image",
-        layout: "default",
-      },
-      {
-        title: "Pulse",
-        category: "Landing · Conversión",
-        media: "video",
-        layout: "wide",
-      },
-      {
-        title: "Meridian",
-        category: "E-commerce · UX",
-        media: "image",
-        layout: "default",
-      },
-      {
-        title: "Signal",
-        category: "SEO · Contenido",
-        media: "image",
-        layout: "default",
-      },
+  system: {
+    label: "System",
+    headline: "Una misma idea. Todo el sistema.",
+    lines: [
+      "Una marca no vive en un logo.",
+      "Un producto no vive en una interfaz.",
+      "Una campaña no vive en una publicación.",
     ],
+    closer: "Todo está conectado.",
+    layers: [
+      { title: "Strategy", text: "Definimos qué merece existir." },
+      { title: "Experience", text: "Diseñamos cómo debe sentirse." },
+      { title: "Technology", text: "Construimos cómo debe funcionar." },
+      { title: "Growth", text: "Creamos cómo llega y cómo evoluciona." },
+    ],
+    statement: "Scelerity conecta las cuatro capas.",
   },
-  plans: {
-    label: "Planes",
-    headline: "Elige el punto de partida que tiene sentido para ti.",
-    idealLabel: "Para quién es",
-    includesLabel: "Qué incluye",
-    resultLabel: "Qué buscamos lograr",
-    items: [
-      {
-        name: "Starter",
-        tagline: "Presencia web + SEO local",
-        ideal: "Tu primera web profesional y empezar a aparecer donde te buscan.",
-        includes: [
-          "Web de hasta 5 páginas",
-          "Diseño responsive + WhatsApp",
-          "SEO on-page y Google Business",
-          "Analítica básica",
-        ],
-        result: "Una presencia clara, confiable y visible en tu mercado local.",
-      },
-      {
-        name: "Growth",
-        tagline: "Web + SEO + marketing",
-        ideal: "Ya tienes presencia y quieres generar leads de forma más constante.",
-        includes: [
-          "Web de hasta 10 páginas + landings",
-          "SEO técnico y contenido",
-          "Google Ads y Meta Ads",
-          "Reportes mensuales",
-        ],
-        result: "Un sistema que atrae tráfico cualificado y convierte mejor.",
-      },
-      {
-        name: "Full Digital",
-        tagline: "Estrategia integral",
-        ideal: "Necesitas una operación digital completa, medida y sostenida.",
-        includes: [
-          "Sitio a medida o e-commerce",
-          "SEO, contenido y multicanal",
-          "Automatización y remarketing",
-          "Reuniones de estrategia con KPIs",
-        ],
-        result: "Una operación digital ordenada, medible y pensada para crecer.",
-      },
+  forward: {
+    label: "2028+",
+    headline: "Diseñar para 2028 no significa predecir el futuro.",
+    body: [
+      "Significa no construir con las reglas del pasado.",
+      "Trabajamos con tecnologías contemporáneas y emergentes —IA, interfaces inteligentes, 3D, motion, automatización y arquitecturas modernas— cuando aportan una ventaja real.",
     ],
-  },
-  strategy: {
-    label: "Estrategia",
-    headline: "No improvisamos. Entendemos, definimos y ejecutamos.",
-    body: "Cada proyecto empieza por entender tu negocio. Después definimos el camino, construimos la solución correcta y la mejoramos con el tiempo.",
-    points: [
-      "Analizamos tu negocio y tu mercado",
-      "Definimos qué comunicar y a quién",
-      "Implementamos con criterio y coherencia",
-      "Medimos, ajustamos y optimizamos",
-    ],
+    emphasis: ["No perseguimos la novedad.", "Perseguimos la posibilidad."],
   },
   process: {
-    label: "Cómo trabajamos",
-    headline: "Un proceso claro, sin complicaciones.",
+    label: "Process",
+    headline: "Primero pensamos. Después construimos.",
     steps: [
       {
         number: "01",
-        title: "Descubrimiento",
-        text: "Conocemos tu negocio, tu mercado y tu punto de partida.",
+        title: "Decode",
+        lead: "Entendemos el problema.",
+        text: [
+          "Negocio, audiencia, cultura, producto, datos y contexto.",
+          "El objetivo no es comenzar rápido.",
+          "Es comenzar en la dirección correcta.",
+        ],
       },
       {
         number: "02",
-        title: "Estrategia",
-        text: "Definimos el camino y priorizamos lo que más impacta.",
+        title: "Design",
+        lead: "Convertimos complejidad en una experiencia clara.",
+        text: [
+          "Estrategia, arquitectura, identidad, UX, UI y concepto empiezan a formar un mismo sistema.",
+        ],
       },
       {
         number: "03",
-        title: "Ejecución",
-        text: "Diseñamos, desarrollamos y activamos con foco en calidad.",
+        title: "Build",
+        lead: "Pasamos de intención a realidad.",
+        text: [
+          "Desarrollamos, integramos, probamos y optimizamos con una arquitectura pensada para el mundo real.",
+        ],
       },
       {
         number: "04",
-        title: "Revisión",
-        text: "Validamos contigo que todo responda a lo que necesitas.",
-      },
-      {
-        number: "05",
-        title: "Lanzamiento",
-        text: "Ponemos todo en marcha, ordenado y listo para crecer.",
-      },
-      {
-        number: "06",
-        title: "Optimización",
-        text: "Medimos, ajustamos y seguimos mejorando.",
+        title: "Evolve",
+        lead: "Publicar no es terminar.",
+        text: [
+          "Observamos el comportamiento, medimos lo que importa y seguimos evolucionando el producto.",
+        ],
       },
     ],
   },
-  benefits: {
-    label: "Qué ganas",
-    headline: "Lo que cambia cuando trabajamos juntos.",
-    items: [
-      {
-        title: "Marca más clara",
-        text: "Tu mensaje se entiende. Tu identidad se siente coherente.",
-      },
-      {
-        title: "Presencia más fuerte",
-        text: "Una web que inspira confianza desde el primer segundo.",
-      },
-      {
-        title: "Mejor visibilidad",
-        text: "Apareces donde importa, con estrategia detrás.",
-      },
-      {
-        title: "Más oportunidades",
-        text: "Mejor conversión, mejores leads, mejores resultados.",
-      },
+  principle: {
+    label: "Principle",
+    headline: "La tecnología debe ampliar lo humano, no reemplazarlo.",
+    intro: "Cada decisión debe pasar por tres preguntas:",
+    questions: [
+      "¿Es útil?",
+      "¿Se entiende?",
+      "¿Hace algo posible que antes no lo era?",
     ],
+    close: "Si la respuesta no es clara, seguimos pensando.",
   },
   close: {
-    headline: "Tu marca ya tiene potencial. Hagamos que se note.",
-    body: "Si buscas una estrategia clara, una ejecución cuidada y un equipo que piense contigo, hablemos.",
-    ctaPrimary: "Escríbenos",
-    ctaSecondary: "Ver planes",
+    headline: "Hay cosas que todavía no tienen nombre.",
+    lines: [
+      "Productos que aún no existen.",
+      "Experiencias que todavía no tienen una interfaz.",
+      "Marcas que todavía no encontraron su lenguaje.",
+    ],
+    emphasis: "Ahí es donde queremos trabajar.",
+    ctaPrimary: "Empezar un proyecto →",
+    ctaSecondary: "Ver nuestro trabajo",
+  },
+  statement: {
+    brand: "Scelerity",
+    tagline: "Digital systems for a changing culture.",
+    layers: "Strategy · Experience · Technology · Growth",
+    year: "2028+",
+    line: "Construyendo hacia adelante.",
   },
 };
 
 export const solutionsEn: SolutionsContent = {
   meta: {
-    title: "Solutions — Scelerity",
+    title: "Services — Architecture, experience, and growth",
     description:
-      "Design, development, and digital marketing for brands that want to grow with clarity.",
+      "Strategy, technology, design, and growth to create digital experiences ready for the next cultural cycle.",
   },
   hero: {
-    label: "Solutions",
-    headline: "Design, development, and marketing that help your brand grow.",
-    sub: "We bring together the three pillars your business needs to look sharp, work better, and go further.",
-    ctaPrimary: "Write to us",
-    ctaSecondary: "View plans",
+    label: "Services / 2028+",
+    headline: "We build today what your brand will need tomorrow.",
+    sub: "Strategy, technology, design, and growth to create digital experiences ready for the next cultural cycle.",
+    body: [
+      "We don't use technology to make noise.",
+      "We use it to solve better, connect more deeply, and open possibilities that didn't exist before.",
+    ],
+    ctaPrimary: "Let's talk about your project →",
+    ctaSecondary: "Explore capabilities ↓",
   },
-  pillars: {
-    label: "Three pillars",
-    headline: "Everything your brand needs, in one place.",
+  manifesto: {
+    label: "Manifesto",
+    headline: "Technology is not the destination.",
+    lead: "It is the infrastructure of new ways to create, communicate, discover, and relate.",
+    body: "That is why we design for the person in front of the screen, the culture around them, and the system behind it.",
+    creed: "Techno-Humanism: advanced technology with human judgment.",
+  },
+  capabilities: {
+    label: "Capabilities",
+    headline: "Three systems. One vision.",
+    lead: "We don't sell isolated services.",
+    emphasis:
+      "We design architecture, experience, and growth as parts of the same system.",
+    includesLabel: "Includes",
+    stackLabel: "Stack",
     items: [
       {
-        title: "Design",
-        tagline: "Clarity before decoration.",
-        value:
-          "Visual identity, structure, and experience built so your brand is understood instantly and earns trust.",
+        ...capabilitiesShared.items[0],
+        headline: "Digital Experience Architecture",
+        lead: "We design and build digital products that are fast, scalable, and ready to evolve.",
+        body: "From high-performance sites to platforms and complex web systems, we build the infrastructure that lets an idea reach the world without getting trapped in it.",
+        cta: "View architecture →",
       },
       {
-        title: "Development",
-        tagline: "Fast, solid, ready to scale.",
-        value:
-          "Websites, platforms, and e-commerce built with intent: speed, functionality, and a foundation that grows with you.",
+        ...capabilitiesShared.items[1],
+        headline: "Interfaces that understand people.",
+        lead: "We design experiences where identity, interaction, and technology work as one.",
+        body: "UX, UI, branding, and motion become a coherent system: recognizable, intuitive, and flexible enough to grow with the product.",
+        cta: "View experience →",
       },
       {
-        title: "Digital marketing",
-        tagline: "Visibility with direction.",
-        value:
-          "SEO, campaigns, and content that reach the right people and turn interest into real opportunities.",
+        ...capabilitiesShared.items[2],
+        headline: "Growth with context.",
+        lead: "We don't do marketing to fill feeds. We design growth systems around culture, behavior, and data.",
+        body: "We find where attention exists, why it matters, and how to turn it into recognition, community, and sustainable growth.",
+        cta: "View growth →",
       },
     ],
   },
-  showcase: {
-    label: "In action",
-    headline: "What it looks like when design, code, and strategy work together.",
-    items: [
-      {
-        title: "Northline",
-        category: "Identity · Motion",
-        media: "video",
-        layout: "hero",
-      },
-      {
-        title: "Aether",
-        category: "Product · Platform",
-        media: "image",
-        layout: "default",
-      },
-      {
-        title: "Pulse",
-        category: "Landing · Conversion",
-        media: "video",
-        layout: "wide",
-      },
-      {
-        title: "Meridian",
-        category: "E-commerce · UX",
-        media: "image",
-        layout: "default",
-      },
-      {
-        title: "Signal",
-        category: "SEO · Content",
-        media: "image",
-        layout: "default",
-      },
+  system: {
+    label: "System",
+    headline: "One idea. The whole system.",
+    lines: [
+      "A brand does not live in a logo.",
+      "A product does not live in an interface.",
+      "A campaign does not live in a post.",
     ],
+    closer: "Everything is connected.",
+    layers: [
+      { title: "Strategy", text: "We define what deserves to exist." },
+      { title: "Experience", text: "We design how it should feel." },
+      { title: "Technology", text: "We build how it should work." },
+      { title: "Growth", text: "We create how it arrives and how it evolves." },
+    ],
+    statement: "Scelerity connects the four layers.",
   },
-  plans: {
-    label: "Plans",
-    headline: "Choose the starting point that makes sense for you.",
-    idealLabel: "Who it's for",
-    includesLabel: "What's included",
-    resultLabel: "What we're aiming for",
-    items: [
-      {
-        name: "Starter",
-        tagline: "Web presence + local SEO",
-        ideal: "Your first professional site and showing up where people search for you.",
-        includes: [
-          "Website up to 5 pages",
-          "Responsive design + WhatsApp",
-          "On-page SEO and Google Business",
-          "Basic analytics",
-        ],
-        result: "A clear, trustworthy presence visible in your local market.",
-      },
-      {
-        name: "Growth",
-        tagline: "Web + SEO + marketing",
-        ideal: "You already have a presence and want to generate leads more consistently.",
-        includes: [
-          "Website up to 10 pages + landings",
-          "Technical SEO and content",
-          "Google Ads and Meta Ads",
-          "Monthly reports",
-        ],
-        result: "A system that attracts qualified traffic and converts better.",
-      },
-      {
-        name: "Full Digital",
-        tagline: "Full-funnel strategy",
-        ideal: "You need a complete, measured, sustained digital operation.",
-        includes: [
-          "Custom site or e-commerce",
-          "SEO, content, and multichannel",
-          "Automation and remarketing",
-          "Strategy meetings with KPIs",
-        ],
-        result: "An orderly, measurable digital operation built to grow.",
-      },
+  forward: {
+    label: "2028+",
+    headline: "Designing for 2028 does not mean predicting the future.",
+    body: [
+      "It means not building with the rules of the past.",
+      "We work with contemporary and emerging technologies — AI, intelligent interfaces, 3D, motion, automation, and modern architectures — when they offer a real advantage.",
     ],
-  },
-  strategy: {
-    label: "Strategy",
-    headline: "We don't wing it. We understand, define, and execute.",
-    body: "Every project starts by understanding your business. Then we define the path, build the right solution, and keep improving it over time.",
-    points: [
-      "We analyze your business and market",
-      "We define what to say and who to reach",
-      "We implement with judgment and coherence",
-      "We measure, adjust, and optimize",
-    ],
+    emphasis: ["We don't chase novelty.", "We chase possibility."],
   },
   process: {
-    label: "How we work",
-    headline: "A clear process, no unnecessary friction.",
+    label: "Process",
+    headline: "First we think. Then we build.",
     steps: [
       {
         number: "01",
-        title: "Discovery",
-        text: "We learn your business, market, and starting point.",
+        title: "Decode",
+        lead: "We understand the problem.",
+        text: [
+          "Business, audience, culture, product, data, and context.",
+          "The goal is not to start fast.",
+          "It is to start in the right direction.",
+        ],
       },
       {
         number: "02",
-        title: "Strategy",
-        text: "We define the path and prioritize what matters most.",
+        title: "Design",
+        lead: "We turn complexity into a clear experience.",
+        text: [
+          "Strategy, architecture, identity, UX, UI, and concept start to form one system.",
+        ],
       },
       {
         number: "03",
-        title: "Execution",
-        text: "We design, build, and launch with a focus on quality.",
+        title: "Build",
+        lead: "We move from intention to reality.",
+        text: [
+          "We develop, integrate, test, and optimize with an architecture built for the real world.",
+        ],
       },
       {
         number: "04",
-        title: "Review",
-        text: "We validate with you that everything fits what you need.",
-      },
-      {
-        number: "05",
-        title: "Launch",
-        text: "We go live — organized and ready to grow.",
-      },
-      {
-        number: "06",
-        title: "Optimization",
-        text: "We measure, adjust, and keep improving.",
+        title: "Evolve",
+        lead: "Publishing is not finishing.",
+        text: [
+          "We watch behavior, measure what matters, and keep evolving the product.",
+        ],
       },
     ],
   },
-  benefits: {
-    label: "What you gain",
-    headline: "What changes when we work together.",
-    items: [
-      {
-        title: "Clearer brand",
-        text: "Your message lands. Your identity feels coherent.",
-      },
-      {
-        title: "Stronger presence",
-        text: "A website that inspires trust from the first second.",
-      },
-      {
-        title: "Better visibility",
-        text: "You show up where it matters — with strategy behind it.",
-      },
-      {
-        title: "More opportunities",
-        text: "Better conversion, better leads, better results.",
-      },
+  principle: {
+    label: "Principle",
+    headline: "Technology should expand what is human, not replace it.",
+    intro: "Every decision has to pass three questions:",
+    questions: [
+      "Is it useful?",
+      "Is it clear?",
+      "Does it make something possible that wasn't before?",
     ],
+    close: "If the answer isn't clear, we keep thinking.",
   },
   close: {
-    headline: "Your brand already has potential. Let's make it show.",
-    body: "If you want a clear strategy, careful execution, and a team that thinks with you — let's talk.",
-    ctaPrimary: "Write to us",
-    ctaSecondary: "View plans",
+    headline: "There are things that still don't have a name.",
+    lines: [
+      "Products that don't exist yet.",
+      "Experiences that still don't have an interface.",
+      "Brands that still haven't found their language.",
+    ],
+    emphasis: "That is where we want to work.",
+    ctaPrimary: "Start a project →",
+    ctaSecondary: "See our work",
+  },
+  statement: {
+    brand: "Scelerity",
+    tagline: "Digital systems for a changing culture.",
+    layers: "Strategy · Experience · Technology · Growth",
+    year: "2028+",
+    line: "Building forward.",
   },
 };

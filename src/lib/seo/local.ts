@@ -19,17 +19,17 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Orlando",
     region: "FL",
     country: "US",
-    metaTitle: "Agencia Digital en Orlando — Diseño, Desarrollo y Marketing",
+    metaTitle: "Diseño, desarrollo y marketing en Orlando — Scelerity",
     metaDescription:
-      "Scelerity en Orlando: diseño web, desarrollo de software, SEO y marketing digital para empresas en Florida. Remoto con enfoque local.",
+      "Diseño web, desarrollo y marketing para proyectos en Orlando. El mismo oficio de Scelerity, con criterio cultural.",
     hero: {
       eyebrow: "Orlando, FL",
-      headline: "Agencia digital para empresas en Orlando.",
-      sub: "Diseño, desarrollo e IA para marcas en Central Florida que quieren crecer con velocidad y precisión.",
+      headline: "Diseño, desarrollo y marketing en Orlando.",
+      sub: "Sitios, identidad y campañas para proyectos que necesitan verse y funcionar en Central Florida.",
     },
     intro: [
-      "Orlando concentra turismo, tecnología y emprendimiento — mercados donde la experiencia digital define la primera impresión.",
-      "Trabajamos con empresas locales y remotas en Florida, combinando craft visual, ingeniería moderna y estrategia de marketing medible.",
+      "Orlando concentra turismo, tecnología y emprendimiento. Ahí la primera impresión suele ser digital.",
+      "Hacemos diseño, desarrollo y marketing desde Bogotá, con el criterio cultural de Scelerity.",
     ],
     highlights: [
       "Landing pages para negocios de hospitalidad y servicios",
@@ -48,17 +48,17 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Miami",
     region: "FL",
     country: "US",
-    metaTitle: "Agencia Digital en Miami — Branding, Web y Marketing",
+    metaTitle: "Diseño, desarrollo y marketing en Miami — Scelerity",
     metaDescription:
-      "Agencia digital en Miami: branding, diseño web, desarrollo y marketing para marcas que compiten en mercados exigentes.",
+      "Branding, web y marketing para marcas en Miami que compiten en un mercado exigente.",
     hero: {
       eyebrow: "Miami, FL",
-      headline: "Marca y producto digital para Miami.",
-      sub: "Identidad, web y growth para empresas que necesitan destacar en uno de los mercados más competitivos de Florida.",
+      headline: "Marca, web y marketing en Miami.",
+      sub: "Identidad, desarrollo y campañas para proyectos que necesitan destacarse en Miami-Dade.",
     },
     intro: [
-      "Miami exige marcas con carácter y productos digitales impecables. La competencia es global desde el día uno.",
-      "Ayudamos a empresas en Miami-Dade a construir presencia digital premium con resultados medibles.",
+      "Miami pide marcas con carácter y productos digitales que aguanten una comparación global.",
+      "El oficio es diseño, desarrollo y marketing. El criterio, el de Scelerity: cultural y creativo.",
     ],
     highlights: [
       "Branding para startups y real estate",
@@ -77,17 +77,17 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Tampa",
     region: "FL",
     country: "US",
-    metaTitle: "Agencia Digital en Tampa — Desarrollo Web y SEO",
+    metaTitle: "Desarrollo web y SEO en Tampa — Scelerity",
     metaDescription:
-      "Diseño web, desarrollo y SEO en Tampa Bay. Scelerity ayuda a empresas locales a crecer con producto digital de alto rendimiento.",
+      "Desarrollo web, SEO y marketing para empresas en Tampa Bay.",
     hero: {
       eyebrow: "Tampa, FL",
       headline: "Producto digital para Tampa Bay.",
-      sub: "Desarrollo web, SEO y automatización para empresas en un ecosistema en rápido crecimiento.",
+      sub: "Desarrollo web, SEO y automatización para negocios que no pueden depender de un sitio lento.",
     },
     intro: [
-      "Tampa Bay combina corporativo, tech y servicios — sectores donde un sitio lento o desactualizado cuesta oportunidades.",
-      "Entregamos plataformas rápidas, SEO local y sistemas que escalan con el negocio.",
+      "Tampa Bay mezcla corporativo, tecnología y servicios. Un sitio lento o desactualizado se nota.",
+      "Construimos plataformas, SEO y marketing con el criterio cultural de Scelerity.",
     ],
     highlights: [
       "Desarrollo Next.js para empresas B2B",
@@ -106,17 +106,17 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Jacksonville",
     region: "FL",
     country: "US",
-    metaTitle: "Agencia Digital en Jacksonville — Web y Marketing Digital",
+    metaTitle: "Web y marketing en Jacksonville — Scelerity",
     metaDescription:
-      "Agencia digital en Jacksonville: diseño web, marketing digital y desarrollo para empresas en Northeast Florida.",
+      "Diseño web, desarrollo y marketing para empresas en Jacksonville.",
     hero: {
       eyebrow: "Jacksonville, FL",
-      headline: "Digital craft para Jacksonville.",
-      sub: "Webs, campañas y producto digital para empresas en Northeast Florida que quieren competir online.",
+      headline: "Web y marketing para Jacksonville.",
+      sub: "Sitios, campañas y producto digital para empresas en Northeast Florida.",
     },
     intro: [
-      "Jacksonville es uno de los mercados de mayor crecimiento en Florida. Las empresas locales necesitan presencia digital profesional.",
-      "Combinamos diseño estratégico, desarrollo moderno y marketing medible para generar leads cualificados.",
+      "Jacksonville crece y las empresas locales necesitan una presencia que se pueda usar, no solo un perfil.",
+      "Diseño, desarrollo y marketing, con el criterio cultural de Scelerity.",
     ],
     highlights: [
       "Rediseño web corporativo",
@@ -135,17 +135,17 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Kissimmee",
     region: "FL",
     country: "US",
-    metaTitle: "Agencia Digital en Kissimmee — Diseño Web y SEO Local",
+    metaTitle: "Diseño web y SEO local en Kissimmee — Scelerity",
     metaDescription:
-      "Diseño web y SEO local en Kissimmee para negocios de turismo, servicios y retail en Osceola County.",
+      "Diseño web y SEO local para negocios de turismo y servicios en Kissimmee.",
     hero: {
       eyebrow: "Kissimmee, FL",
-      headline: "Presencia digital para negocios en Kissimmee.",
-      sub: "Webs rápidas, SEO local y marketing para empresas cerca de los principales destinos turísticos de Florida.",
+      headline: "Presencia digital para Kissimmee.",
+      sub: "Webs y SEO local para turismo, servicios y retail en Osceola County.",
     },
     intro: [
-      "Kissimmee y Osceola County dependen del turismo y servicios locales — sectores donde la visibilidad en Google es crítica.",
-      "Creamos sitios optimizados para conversión móvil y SEO local que capturan búsquedas de visitantes y residentes.",
+      "Kissimmee depende del turismo y de los servicios locales. La búsqueda en Google es parte del negocio.",
+      "Hacemos sitios y SEO con el criterio cultural de Scelerity, no una plantilla genérica.",
     ],
     highlights: [
       "SEO local Kissimmee / Osceola",

@@ -22,7 +22,7 @@ export function FAQ() {
           </h2>
         </div>
 
-        <div className="mt-[var(--space-fluid-lg)] border-t border-[var(--border)]">
+        <div className="mt-20 border-t border-[var(--border)] md:mt-28">
           {t.faq.items.map((item, i) => {
             const isOpen = open === i;
             const panelId = `${uid}-panel-${i}`;
@@ -38,7 +38,7 @@ export function FAQ() {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-start justify-between gap-[var(--space-5)] py-[var(--space-6)] text-left [touch-action:manipulation] md:py-[var(--space-8)]"
+                    className="flex w-full items-start justify-between gap-[var(--space-8)] py-[var(--space-8)] text-left [touch-action:manipulation] md:py-[var(--space-10)]"
                   >
                     <span className="font-display text-h4 font-semibold text-pretty">
                       {item.q}
@@ -64,7 +64,7 @@ export function FAQ() {
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="measure pb-[var(--space-8)] text-body text-pretty text-[var(--fg-muted)]">
+                    <p className="measure pb-[var(--space-10)] text-body text-pretty leading-relaxed text-[var(--fg-muted)]">
                       {item.a}
                     </p>
                   </div>

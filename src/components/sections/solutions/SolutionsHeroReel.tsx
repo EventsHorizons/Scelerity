@@ -90,7 +90,7 @@ function SolutionsSite() {
   return (
     <div className="solutions-site">
       <header className="solutions-site__nav">
-        <span className="solutions-site__logo">Scelerity</span>
+        <span className="solutions-site__logo">scelerity</span>
         <nav className="solutions-site__links">
           <span>Servicios</span>
           <span>Proyectos</span>
@@ -128,7 +128,7 @@ function MobileSite() {
   return (
     <div className="solutions-site solutions-site--mobile">
       <header className="solutions-site__nav">
-        <span className="solutions-site__logo">Scelerity</span>
+        <span className="solutions-site__logo">scelerity</span>
       </header>
       <section className="solutions-site__hero">
         <p className="solutions-site__eyebrow">Soluciones</p>

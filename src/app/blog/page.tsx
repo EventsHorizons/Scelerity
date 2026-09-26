@@ -1,25 +1,20 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { BlogIndexClient } from "@/components/blog/BlogIndexClient";
-import { BlogNewsletter } from "@/components/blog/BlogNewsletter";
 import { getAllPosts } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog — Scelerity",
-  description:
-    "Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial. El blog editorial de Scelerity.",
+  description: "Notas sobre diseño, desarrollo, marketing y cultura.",
   alternates: { canonical: "/blog/" },
   openGraph: {
     title: "Blog — Scelerity",
-    description:
-      "Ideas sobre diseño, desarrollo, marketing digital e inteligencia artificial.",
+    description: "Notas sobre diseño, desarrollo, marketing y cultura.",
     type: "website",
     url: `${getSiteUrl()}/blog/`,
   },
@@ -32,31 +27,14 @@ export default function BlogPage() {
     <>
       <SkipLink />
       <Header />
-      <main id="main">
-        <Section id="blog-hero" className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
-          <Container size="content" className="pb-[var(--space-fluid-lg)]">
-            <p className="chapter-label">Blog</p>
-            <div className="mt-[var(--space-6)] grid items-end gap-[var(--space-fluid-lg)] lg:grid-cols-12">
-              <div className="lg:col-span-7">
-                <h1 className="text-balance font-display text-hero font-semibold">
-                  Ideas que construyen marcas más claras.
-                </h1>
-                <p className="mt-[var(--space-6)] max-w-[40ch] text-sub text-pretty text-[var(--fg-muted)]">
-                  Estrategia, producto y marketing — escritos como los usamos
-                  en proyectos reales.
-                </p>
-              </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--glass-border)] lg:col-span-5">
-                <Image
-                  src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"
-                  alt="Escritorio editorial con portátil y café"
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-              </div>
-            </div>
+      <main id="main" className="page-rhythm">
+        <Section id="blog-hero" cardTone="paper">
+          <Container size="content">
+            <p className="chapter-label">Cultural & creative marketing</p>
+            <h1 className="mt-8 font-display text-h1 font-semibold">Blog</h1>
+            <p className="mt-8 max-w-[42ch] text-lead text-[var(--fg-muted)]">
+              Diseño, desarrollo, SEO, marca y campañas, leídos desde el trabajo cultural y creativo.
+            </p>
           </Container>
         </Section>
 
@@ -74,25 +52,6 @@ export default function BlogPage() {
                 results: "{n} artículos",
               }}
             />
-
-            <BlogNewsletter
-              title="Recibe lo esencial del Blog"
-              body="Una entrega ocasional con ideas de producto, SEO y marketing. Sin ruido."
-              placeholder="tu@email.com"
-              submit="Suscribirse"
-              success="Gracias. Te avisaremos cuando publiquemos algo útil."
-            />
-
-            <p className="mt-[var(--space-10)] text-center text-small text-[var(--fg-subtle)]">
-              ¿Quieres aplicar esto a tu marca?{" "}
-              <Link
-                href="/#contact"
-                className="text-[var(--fg)] underline underline-offset-4"
-              >
-                Hablemos
-              </Link>
-              .
-            </p>
           </Container>
         </Section>
       </main>

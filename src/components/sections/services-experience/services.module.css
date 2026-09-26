@@ -1,0 +1,63 @@
+.frame {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.media {
+  height: 112%;
+  width: 100%;
+  object-fit: cover;
+  transform: translate3d(0, -4%, 0);
+  transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+
+.wake .media {
+  filter: grayscale(1) contrast(0.92);
+  transition:
+    transform 0.6s cubic-bezier(0.22, 0.8, 0.2, 1),
+    filter 0.7s ease;
+}
+
+.scene:global(.is-active) .wake .media,
+.wake:hover .media {
+  filter: none;
+}
+
+.scene:global(.is-active) .index {
+  color: #fd3db5;
+}
+
+.connector {
+  stroke: currentColor;
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.35;
+}
+
+.scene:global(.is-active) .connector {
+  stroke: #fd3db5;
+  opacity: 1;
+}
+
+.node {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.scene:global(.is-active) .nodeLive {
+  fill: #fd3db5;
+  stroke: #fd3db5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media,
+  .wake .media {
+    height: 100%;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
