@@ -5,10 +5,6 @@ import { gsap, registerGsap } from "@/lib/gsap";
 import { getLenisInstance } from "@/lib/lenis";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-function pad(value: number) {
-  return String(value).padStart(2, "0");
-}
-
 /**
  * The section is as tall as every service. A sticky frame holds the viewport
  * and a damped follow (lerp) slides the track sideways, so the motion settles
@@ -22,9 +18,7 @@ export function useServiceReel(rootRef: RefObject<HTMLElement | null>, count: nu
     if (!root || count < 1) return;
 
     const track = root.querySelector<HTMLElement>("[data-reel='track']");
-    const current = root.querySelector<HTMLElement>("[data-reel='current']");
-    const bar = root.querySelector<HTMLElement>("[data-reel='bar']");
-    if (!track || !current || !bar) return;
+    if (!track) return;
 
     const slides = Array.from(track.querySelectorAll<HTMLElement>("[data-reel-slide]"));
     const last = Math.max(count - 1, 1);
@@ -32,8 +26,6 @@ export function useServiceReel(rootRef: RefObject<HTMLElement | null>, count: nu
     const paint = (eased: number) => {
       const cursor = eased * last;
       const index = Math.min(count - 1, Math.max(0, Math.round(cursor)));
-      current.textContent = pad(index + 1);
-      bar.style.transform = `scaleX(${Math.min(1, Math.max(0, eased))})`;
       slides.forEach((slide, i) => {
         const reveal = Math.max(0, 1 - Math.abs(cursor - i));
         slide.style.setProperty("--reveal", reveal.toFixed(4));

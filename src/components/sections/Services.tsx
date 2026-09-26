@@ -12,7 +12,6 @@ export function Services() {
   const rootRef = useRef<HTMLElement>(null);
   const copy = t.services;
   const total = copy.phases.length + 1;
-  const totalLabel = String(total).padStart(2, "0");
 
   useServiceReel(rootRef, total);
 
@@ -54,11 +53,7 @@ export function Services() {
               </figure>
 
               <div className={styles.copy}>
-                <p className={styles.kicker}>
-                  <span>Fase {String(index + 1).padStart(2, "0")}</span>
-                  <span aria-hidden> · </span>
-                  <span>{phase.name}</span>
-                </p>
+                <p className={styles.kicker}>{phase.name}</p>
                 <h3 id={`home-cycle-${index}`} className={styles.phaseTitle}>
                   {phase.lead}
                 </h3>
@@ -77,17 +72,6 @@ export function Services() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className={styles.progress} aria-hidden>
-          <p className={styles.count}>
-            <span className={styles.fase}>Fase</span>
-            <span data-reel="current">01</span>
-            <span className={styles.total}> / {totalLabel}</span>
-          </p>
-          <div className={styles.bar}>
-            <span data-reel="bar" className={styles.barFill} />
-          </div>
         </div>
       </div>
     </section>

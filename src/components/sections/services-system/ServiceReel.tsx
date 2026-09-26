@@ -10,7 +10,6 @@ import styles from "./services.module.css";
 export function ServiceReel() {
   const { locale } = useLocale();
   const rootRef = useRef<HTMLElement>(null);
-  const total = String(SERVICES.length).padStart(2, "0");
 
   useServiceReel(rootRef, SERVICES.length);
 
@@ -26,16 +25,6 @@ export function ServiceReel() {
           {SERVICES.map((service, index) => (
             <ServiceSection key={service.slug} service={service} index={index} />
           ))}
-        </div>
-
-        <div className={styles.reelProgress} aria-hidden>
-          <p className={styles.reelCount}>
-            <span data-reel="current">01</span>
-            <span className={styles.reelTotal}> / {total}</span>
-          </p>
-          <div className={styles.reelBar} aria-hidden>
-            <span data-reel="bar" className={styles.reelBarFill} />
-          </div>
         </div>
       </div>
     </section>

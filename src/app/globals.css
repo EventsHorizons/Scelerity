@@ -328,9 +328,16 @@ html {
   scroll-behavior: auto;
   /* clip (not hidden) so position: sticky keeps working */
   overflow-x: clip;
+  scrollbar-width: none;
   scroll-padding-top: calc(var(--header-h) + var(--space-6));
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 html,

@@ -3,6 +3,7 @@
   padding: 0;
   background: #09090b;
   color: #f4f0e8;
+  overflow-x: clip;
 }
 
 .viewport {
@@ -82,21 +83,22 @@
 }
 
 .manifesto {
-  max-width: 12ch;
+  max-width: min(12ch, 100%);
   margin: 0;
   font-family: var(--font-display), "Aspekta Variable", system-ui, sans-serif;
-  font-size: clamp(3.2rem, 7vw, 7.4rem);
+  font-size: clamp(2.35rem, 11vw, 7.4rem);
   font-weight: 560;
   line-height: 0.92;
   letter-spacing: -0.045em;
+  overflow-wrap: break-word;
 }
 
 .deck {
-  max-width: 36ch;
+  max-width: min(36ch, 100%);
   margin: 0;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.5;
-  color: #c8c0b4;
+  color: #f4f0e8;
 }
 
 .visual {
@@ -155,11 +157,11 @@
 }
 
 .phaseBody {
-  max-width: 36ch;
+  max-width: min(36ch, 100%);
   margin: 0 0 0.4rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #c8c0b4;
+  color: #f4f0e8;
 }
 
 .rows {
@@ -192,7 +194,7 @@
 .rowValue {
   font-size: 0.92rem;
   line-height: 1.45;
-  color: #c8c0b4;
+  color: #f4f0e8;
 }
 
 .cta {
@@ -280,10 +282,31 @@
   transform-origin: left center;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 63.99rem) {
+  .intro {
+    padding: calc(var(--header-h) + 1.5rem) max(1.25rem, env(safe-area-inset-right)) 2.5rem max(1.25rem, env(safe-area-inset-left));
+  }
+
+  .slide {
+    min-height: 0;
+    grid-template-rows: minmax(11rem, 32vh) auto;
+  }
+
+  .copy {
+    padding: 1.25rem max(1.25rem, env(safe-area-inset-right)) 2rem max(1.25rem, env(safe-area-inset-left));
+  }
+
   .row {
     grid-template-columns: 1fr;
     gap: 0.2rem;
+  }
+
+  .bar {
+    display: none;
+  }
+
+  .progress {
+    width: auto;
   }
 }
 

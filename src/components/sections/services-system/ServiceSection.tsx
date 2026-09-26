@@ -32,12 +32,6 @@ export function ServiceSection({ service, index }: { service: ServiceEntry; inde
       </figure>
 
       <div className={styles.reelCopy}>
-        <p className={styles.reelBadge}>
-          <span>{service.index}</span>
-          <span aria-hidden>·</span>
-          <span>{tx(locale, PAGE.hero.label)}</span>
-        </p>
-
         <h2 id={`${service.slug}-title`} className={styles.reelTitle}>
           {tx(locale, service.title)}
         </h2>

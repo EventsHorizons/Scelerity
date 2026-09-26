@@ -94,7 +94,6 @@ export function ServicesHero() {
           {SERVICES.map((service) => (
             <a key={service.slug} href={`#${service.slug}`} data-reel-target={service.slug} data-cursor="link">
               <span className={styles.indexName}>{tx(locale, service.title)}</span>
-              <span className={styles.indexNum}>{service.index}</span>
             </a>
           ))}
         </nav>

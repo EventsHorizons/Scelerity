@@ -20,7 +20,7 @@ export function Footer() {
           <Link href="/" aria-label="Scelerity — Home">
             <Logo className="wordmark-lockup--footer" />
           </Link>
-          <p className="mt-4 max-w-[28ch] text-small leading-relaxed text-[var(--fg-muted)]">
+          <p className="mx-auto mt-4 max-w-[28ch] text-center text-small leading-relaxed text-[var(--fg-muted)] md:mx-0 md:text-left">
             {t.footer.tagline}
           </p>
           <SocialLinks links={t.footer.social} className="mt-5" />
