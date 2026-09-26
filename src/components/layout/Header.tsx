@@ -11,6 +11,7 @@ import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/brand/Logo";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { getLenisInstance } from "@/lib/lenis";
 import { useSiteNav } from "@/hooks/useSiteNav";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/easings";
@@ -26,6 +27,11 @@ function isCurrent(href: string, pathname: string) {
     return true;
   }
   return path === target || path.startsWith(target);
+}
+
+function scrollToStart() {
+  getLenisInstance()?.scrollTo(0, { immediate: true, force: true });
+  window.scrollTo(0, 0);
 }
 
 const itemClass = (active: boolean) =>
@@ -45,8 +51,31 @@ export function Header() {
   const solid = !onDarkOpen || scrolled;
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const skipRestore = useRef(false);
 
-  useScrollLock(open);
+  useScrollLock(open, skipRestore);
+
+  useEffect(() => {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash !== "#top") return;
+    scrollToStart();
+    const frame = requestAnimationFrame(scrollToStart);
+    const later = window.setTimeout(scrollToStart, 80);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(later);
+    };
+  }, [pathname]);
+
+  const openPage = useCallback(() => {
+    skipRestore.current = true;
+    setOpen(false);
+    scrollToStart();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -101,7 +130,7 @@ export function Header() {
           <Link
             href={logoHref}
             data-cursor="link"
-            onClick={() => setOpen(false)}
+            onClick={openPage}
             className="inline-flex min-h-11 shrink-0 items-center"
             aria-label="Scelerity — Home"
           >
@@ -127,6 +156,7 @@ export function Header() {
                     data-cursor="link"
                     aria-current={active ? "page" : undefined}
                     className={itemClass(active)}
+                    onClick={openPage}
                   >
                     {link.label}
                   </Link>
@@ -139,7 +169,7 @@ export function Header() {
             <div className="hidden items-center gap-5 xl:flex">
               <LanguageToggle />
               <ThemeToggle />
-              <Button href={contactHref}>
+              <Button href={contactHref} onClick={openPage}>
                 {t.nav.contact}
               </Button>
             </div>
@@ -205,7 +235,7 @@ export function Header() {
                         <Link
                           href={link.href}
                           data-cursor="link"
-                          onClick={close}
+                          onClick={openPage}
                           aria-current={active ? "page" : undefined}
                           data-active={active ? "true" : undefined}
                           className="nav-overlay__link"
@@ -223,7 +253,7 @@ export function Header() {
                     <Link
                       href={contactHref}
                       data-cursor="link"
-                      onClick={close}
+                      onClick={openPage}
                       className="nav-overlay__link"
                     >
                       {t.nav.contact}

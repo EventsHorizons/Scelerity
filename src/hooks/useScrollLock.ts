@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
 import { getLenisInstance } from "@/lib/lenis";
 
 /**
@@ -8,7 +8,7 @@ import { getLenisInstance } from "@/lib/lenis";
  * rubber-band the body, and compensates for the scrollbar so nothing shifts
  * horizontally when the lock engages on desktop.
  */
-export function useScrollLock(locked: boolean) {
+export function useScrollLock(locked: boolean, skipRestore?: RefObject<boolean | null>) {
   useEffect(() => {
     if (!locked) return;
 
@@ -36,9 +36,11 @@ export function useScrollLock(locked: boolean) {
       body.style.top = previous.top;
       body.style.width = previous.width;
       body.style.paddingRight = previous.paddingRight;
-      window.scrollTo({ top: scrollY, behavior: "instant" as ScrollBehavior });
+      const top = skipRestore?.current ? 0 : scrollY;
+      if (skipRestore) skipRestore.current = false;
+      window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
       const lenis = getLenisInstance();
-      lenis?.scrollTo(scrollY, { immediate: true });
+      lenis?.scrollTo(top, { immediate: true, force: true });
       lenis?.start();
     };
   }, [locked]);
