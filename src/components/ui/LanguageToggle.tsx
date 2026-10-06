@@ -28,8 +28,8 @@ export function LanguageToggle({ className }: { className?: string }) {
             className={cn(
               "inline-flex h-full min-w-11 items-center justify-center rounded-full px-3 text-[13px] font-medium tracking-[-0.01em] transition-[background-color,color] duration-[140ms] ease-[cubic-bezier(0.22,1,0.36,1)] [touch-action:manipulation]",
               active
-                ? "bg-[var(--fill-selected)] text-[var(--text)]"
-                : "text-[var(--text-2)] hover:text-[var(--text)]",
+                ? "bg-[var(--fill-selected)] text-current"
+                : "text-current opacity-70 hover:opacity-100",
             )}
           >
             {code}

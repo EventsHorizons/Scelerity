@@ -402,6 +402,123 @@ export const SEO_SERVICES: ServicePage[] = [
     relatedServices: ["desarrollo-web", "diseno-web", "marketing-digital"],
     relatedBlogSlugs: ["pagina-web-conversiones", "velocidad-core-web-vitals"],
   },
+  {
+    slug: "migracion-legacy",
+    pillar: "desarrollo",
+    title: "Migración y Refactorización de Código Legacy",
+    metaTitle: "Migración Legacy — Refactor a React, Astro y TypeScript",
+    metaDescription:
+      "Modernizamos monolitos obsoletos. Reescribimos lógica de negocio en React, Astro, TypeScript y Supabase para una interfaz rápida y escalable.",
+    keywords: [
+      "migración legacy",
+      "refactorización de código",
+      "modernización de software",
+      "migración a React",
+    ],
+    hero: {
+      eyebrow: "Desarrollo",
+      headline: "El código viejo no tiene que decidir el ritmo del producto.",
+      sub: "Modernizamos sistemas monolíticos obsoletos y reescribimos lógica compleja en arquitecturas modernas.",
+    },
+    problem: {
+      headline: "El monolito ya no aguanta el siguiente cambio",
+      paragraphs: [
+        "Cada feature toca demasiadas capas. La lógica de negocio queda atrapada y el equipo evita tocar lo crítico.",
+        "Sin una base moderna, la interfaz no puede ser rápida ni escalable sin miedo a romper producción.",
+      ],
+    },
+    solution: {
+      headline: "Reescritura con criterio, no un rewrite ciego",
+      paragraphs: [
+        "Mapeamos qué conservar, qué extraer y qué reescribir. La migración avanza por fases para no detener el negocio.",
+        "Entregamos la lógica en TypeScript sobre React o Astro, con datos en Supabase u otra base relacional según el caso.",
+      ],
+    },
+    benefits: [
+      { title: "Velocidad de cambio", text: "Menos miedo al deploy y ciclos de entrega más cortos." },
+      { title: "Interfaz moderna", text: "UI rápida, clara y lista para crecer." },
+      { title: "Arquitectura viva", text: "Código documentado y separado por responsabilidades." },
+      { title: "Continuidad", text: "Migración por fases sin apagar el producto actual." },
+    ],
+    useCases: [
+      "Monolitos PHP/Java a Next o Astro",
+      "Paneles internos obsoletos",
+      "APIs acopladas al frontend",
+      "Deuda técnica que bloquea features",
+    ],
+    technologies: ["React", "Astro", "TypeScript", "Supabase", "Next.js", "PostgreSQL"],
+    faq: [
+      {
+        q: "¿Hay que reescribir todo de una vez?",
+        a: "No. Definimos un perímetro y migramos por fases para proteger el negocio.",
+      },
+      {
+        q: "¿Qué frameworks usan?",
+        a: "React, Astro y TypeScript según el producto; datos en Supabase u otra base relacional.",
+      },
+    ],
+    relatedServices: ["desarrollo-web", "desarrollo-apps", "mvp-rapido"],
+    relatedBlogSlugs: ["velocidad-core-web-vitals", "ia-potencia-empresas"],
+  },
+  {
+    slug: "mvp-rapido",
+    pillar: "desarrollo",
+    title: "MVP Ultra-Rápido como Servicio (MaaS)",
+    metaTitle: "MVP en 15 Días — De Idea a Plataforma en Producción",
+    metaDescription:
+      "De idea a plataforma funcional en 15 días. Código listo para producción con frameworks modernos y bases relacionales. Ideal para POC y lanzamientos ágiles.",
+    keywords: [
+      "mvp rápido",
+      "mvp en 15 días",
+      "prueba de concepto",
+      "desarrollo ágil",
+      "maas",
+    ],
+    hero: {
+      eyebrow: "Desarrollo",
+      headline: "De idea a plataforma funcional en quince días.",
+      sub: "Entregamos código listo para producción. Ideal para pruebas de concepto y lanzamientos ágiles.",
+    },
+    problem: {
+      headline: "Sin un producto usable, la idea no se valida",
+      paragraphs: [
+        "Esperar un trimestre para ver la primera versión mata el momentum y el aprendizaje.",
+        "Un deck no sustituye un flujo que alguien pueda usar, pagar o rechazar con datos reales.",
+      ],
+    },
+    solution: {
+      headline: "Un MVP con perímetro claro y salida a producción",
+      paragraphs: [
+        "Acordamos el flujo crítico, construimos con React o Astro, TypeScript y una base relacional, y desplegamos.",
+        "Sales con repositorio, accesos y una base lista para iterar — no con un prototipo descartable.",
+      ],
+    },
+    benefits: [
+      { title: "Tiempo", text: "Validación en semanas, no en un trimestre." },
+      { title: "Producción", text: "Código desplegado, no solo un demo local." },
+      { title: "Enfoque", text: "Solo el flujo que demuestra la hipótesis." },
+      { title: "Continuidad", text: "Base técnica para la siguiente versión." },
+    ],
+    useCases: [
+      "Pruebas de concepto para inversionistas",
+      "Lanzamientos de nuevo producto",
+      "Herramientas internas urgentes",
+      "Validación de marketplace o SaaS",
+    ],
+    technologies: ["React", "Astro", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
+    faq: [
+      {
+        q: "¿Qué entra en los 15 días?",
+        a: "El flujo crítico acordado al inicio: autenticación, la acción principal y el deploy. Lo demás queda en la hoja de ruta.",
+      },
+      {
+        q: "¿El código es mío?",
+        a: "Sí. Entregamos repositorio y la base para seguir construyendo con tu equipo o con nosotros.",
+      },
+    ],
+    relatedServices: ["desarrollo-apps", "desarrollo-web", "migracion-legacy"],
+    relatedBlogSlugs: ["pagina-web-conversiones", "velocidad-core-web-vitals"],
+  },
 ];
 
 export { sharedCta };

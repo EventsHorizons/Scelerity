@@ -27,18 +27,30 @@ function readTheme(): Theme {
   return "dark";
 }
 
+function applyTheme(next: Theme) {
+  const root = document.documentElement;
+  root.dataset.theme = next;
+  root.style.colorScheme = next;
+  try {
+    localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    /* storage blocked */
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("dark");
 
   useEffect(() => {
-    setThemeState(readTheme());
+    const current = readTheme();
+    setThemeState(current);
+    applyTheme(current);
   }, []);
 
   const setTheme = useCallback((next: Theme) => {
     setThemeState(next);
+    applyTheme(next);
     const root = document.documentElement;
-    root.dataset.theme = next;
-    localStorage.setItem(STORAGE_KEY, next);
     root.classList.remove("theme-shifting");
     void root.offsetWidth;
     root.classList.add("theme-shifting");

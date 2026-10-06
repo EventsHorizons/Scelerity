@@ -5,21 +5,13 @@ import { useLocale } from "@/context/LocaleContext";
 import { Container } from "@/components/layout/Container";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { PAGE, tx } from "./content";
-import { depthStyle } from "./depthStyle";
 import styles from "./services.module.css";
-
-const tone = depthStyle({
-  bg: "#ffffff",
-  fg: "#1c1c1e",
-  muted: "#5e5952",
-  subtle: "#8a847c",
-});
 
 export function ServicesCTA() {
   const { locale } = useLocale();
 
   return (
-    <section className="services-close" style={tone} aria-labelledby="services-close-title">
+    <section className="services-close" aria-labelledby="services-close-title">
       <Container size="content">
         <div className={styles.closeGrid}>
           <div>

@@ -6,9 +6,11 @@
       (window.matchMedia("(prefers-color-scheme: light)").matches
         ? "light"
         : "dark");
-    document.documentElement.dataset.theme = theme;
+    var root = document.documentElement;
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
     var locale = localStorage.getItem("scelerity-locale");
-    if (locale === "es" || locale === "en") document.documentElement.lang = locale;
+    if (locale === "es" || locale === "en") root.lang = locale;
   } catch (_e) {
     /* localStorage blocked — default theme from HTML applies */
   }

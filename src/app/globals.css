@@ -98,19 +98,27 @@ html[data-theme="light"] {
   --fill-strong: rgba(28, 28, 30, 0.07);
   --fill-selected: rgba(28, 28, 30, 0.1);
   --inactive: rgba(28, 28, 30, 0.72);
+  --scrim: rgba(28, 28, 30, 0.4);
+  --scrim-page: rgba(247, 246, 243, 0.72);
   --disabled: rgba(28, 28, 30, 0.08);
   --dock: rgba(255, 255, 255, 0.92);
+  --handle: rgba(28, 28, 30, 0.28);
   --ok: #5f6d5e;
   --warn: #9a7d4f;
   --danger: #a34a3c;
   --info: #5f6d7a;
   --glass: rgba(28, 28, 30, 0.04);
+  --glass-border: rgba(28, 28, 30, 0.08);
   --cursor: #1c1c1e;
   --accent-fg: #f2f2f7;
   --selection-bg: #1c1c1e;
   --selection-fg: #f2f2f7;
+  --shadow-min: 0 1px 2px rgba(18, 18, 20, 0.06);
+  --shadow-dock: 0 2px 12px rgba(18, 18, 20, 0.08);
+  --shadow-mid: 0 4px 16px rgba(18, 18, 20, 0.08);
   --shadow-high: 0 8px 28px rgba(18, 18, 20, 0.08);
   --shadow-higher: 0 12px 40px rgba(28, 28, 30, 0.08);
+  --shadow-dialog: 0 16px 48px rgba(18, 18, 20, 0.12);
   color-scheme: light;
 }
 
@@ -345,6 +353,12 @@ body {
   transition:
     background-color var(--dur-mid) var(--ease),
     color var(--dur-mid) var(--ease);
+}
+
+/* Avoid transitioning while the first paint settles from theme-init. */
+html:not([data-theme]),
+html:not([data-theme]) body {
+  transition: none;
 }
 
 /* Surfaces morph together when the user toggles theme. */
@@ -688,6 +702,17 @@ body.has-custom-cursor [contenteditable="true"] {
   padding: 0;
   background: #09090b;
   color: #f4f0e8;
+  color-scheme: dark;
+  /* Intentional dark island — chalk type stays readable in both site themes. */
+  --bg: #09090b;
+  --fg: #f4f0e8;
+  --fg-muted: #c8c0b4;
+  --fg-subtle: #a39e96;
+  --text: #f4f0e8;
+  --text-2: #c8c0b4;
+  --text-3: #a39e96;
+  --cursor: #f4f0e8;
+  --fill: rgba(244, 240, 232, 0.08);
 }
 
 @media (min-width: 1024px) {
@@ -813,9 +838,21 @@ footer {
   padding-bottom: clamp(2.5rem, 5vw, 4rem);
   background: #09090b;
   color: #f4f0e8;
+  color-scheme: dark;
+  --bg: #09090b;
+  --fg: #f4f0e8;
+  --fg-muted: #c8c0b4;
+  --fg-subtle: #a39e96;
+  --text: #f4f0e8;
+  --text-2: #c8c0b4;
+  --text-3: #a39e96;
+  --cursor: #f4f0e8;
+  --fill: rgba(244, 240, 232, 0.08);
 }
 
-#main.services-page {
+/* Services: light theme keeps the editorial white surface.
+   Dark theme inherits site tokens so the toggle still applies. */
+html[data-theme="light"] #main.services-page {
   --bg: #ffffff;
   --surface: #ffffff;
   --card: #f4f2ee;
@@ -830,8 +867,14 @@ footer {
   --fill: rgba(28, 28, 30, 0.04);
   --fill-strong: rgba(28, 28, 30, 0.07);
   --fill-selected: rgba(28, 28, 30, 0.1);
+  --cursor: #1c1c1e;
   background: #ffffff;
   color: #1c1c1e;
+}
+
+html[data-theme="dark"] #main.services-page {
+  background: var(--bg);
+  color: var(--fg);
 }
 
 #main.page-rhythm > section.services-intro {
@@ -846,8 +889,8 @@ footer {
 
 #main.page-rhythm > section.services-reel {
   padding: 0;
-  background: #ffffff;
-  color: #1c1c1e;
+  background: var(--bg);
+  color: var(--fg);
 }
 
 #main.page-rhythm > section.services-chapter,
@@ -1044,6 +1087,12 @@ html[data-theme="light"] .glass-panel {
   backdrop-filter: blur(24px) saturate(160%);
 }
 
+html[data-theme="dark"] .header-glass.is-on {
+  background: rgba(18, 18, 20, 0.78);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
 .header-bar {
   color: #f2f2f7;
   transition: color 280ms var(--ease);
@@ -1051,6 +1100,10 @@ html[data-theme="light"] .glass-panel {
 
 .header-bar.is-scrolled {
   color: #1c1c1e;
+}
+
+html[data-theme="dark"] .header-bar.is-scrolled {
+  color: #f2f2f7;
 }
 
 .header-bar a:not(.btn),
@@ -1067,9 +1120,18 @@ html[data-theme="light"] .glass-panel {
   background: rgba(28, 28, 30, 0.08);
 }
 
+html[data-theme="dark"] .header-bar.is-scrolled .header-link.is-active {
+  background: rgba(242, 242, 247, 0.14);
+}
+
 .header-bar.is-scrolled .btn {
   background: #1c1c1e;
   color: #f2f2f7;
+}
+
+html[data-theme="dark"] .header-bar.is-scrolled .btn {
+  background: #f2f2f7;
+  color: #1c1c1e;
 }
 
 .header-menu:hover {
@@ -1078,6 +1140,10 @@ html[data-theme="light"] .glass-panel {
 
 .header-bar.is-scrolled .header-menu:hover {
   background: rgba(28, 28, 30, 0.06);
+}
+
+html[data-theme="dark"] .header-bar.is-scrolled .header-menu:hover {
+  background: rgba(242, 242, 247, 0.1);
 }
 
 /* Contact form fields — editorial, light border, generous air.
@@ -1390,36 +1456,44 @@ html[data-theme="light"] .glass-panel {
   border-color: transparent;
 }
 
-/* Cursor — precise dot, quiet ring. Magenta only marks a primary CTA. */
+/* Cursor — precise dot, quiet ring. Magenta only marks a primary CTA.
+   Colors track data-theme; mix-blend difference keeps the pointer
+   readable on both light surfaces and intentional dark islands. */
 .cursor-core {
   background: var(--cursor);
   mix-blend-mode: difference;
   box-shadow: none;
+  transition: background-color 140ms var(--ease);
+}
+
+.cursor-core[data-theme="dark"] {
+  background: #f2f2f7;
+}
+
+.cursor-core[data-theme="light"] {
+  background: #1c1c1e;
 }
 
 .cursor-bolt {
   border: 1.5px solid var(--cursor);
   background: transparent;
   box-shadow: none;
+  mix-blend-mode: difference;
   transition:
     border-color 140ms var(--ease),
     background-color 140ms var(--ease);
 }
 
-.cursor-bolt[data-theme="dark"],
-.cursor-bolt[data-theme="light"] {
-  box-shadow: none;
-}
-
 .cursor-bolt[data-theme="dark"] {
-  border-color: rgba(242, 242, 247, 0.9);
+  border-color: rgba(242, 242, 247, 0.92);
 }
 
 .cursor-bolt[data-theme="light"] {
-  border-color: rgba(28, 28, 30, 0.8);
+  border-color: rgba(28, 28, 30, 0.85);
 }
 
 .cursor-bolt[data-mode="cta"] {
+  mix-blend-mode: normal;
   border-color: #fd3db5;
   background: rgba(253, 61, 181, 0.16);
 }
@@ -1429,6 +1503,7 @@ html[data-theme="light"] .glass-panel {
 }
 
 .cursor-bolt[data-pressed="true"] {
+  mix-blend-mode: normal;
   border-color: #fd3db5;
   background: rgba(253, 61, 181, 0.22);
 }

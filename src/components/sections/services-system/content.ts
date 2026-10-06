@@ -778,4 +778,142 @@ export const SERVICES: ServiceEntry[] = [
     compose: "through",
     depth: voidBlack,
   },
+  {
+    slug: "migracion-legacy",
+    index: "10",
+    title: {
+      es: "Migración y refactorización",
+      en: "Migration and refactoring",
+    },
+    manifesto: {
+      es: "El código viejo no tiene que decidir el ritmo del producto.",
+      en: "Old code does not have to set the pace of the product.",
+    },
+    problem: {
+      es: "Un monolito obsoleto frena cada cambio: la lógica de negocio queda atrapada y la interfaz no puede crecer sin miedo a romper lo que ya funciona.",
+      en: "An obsolete monolith slows every change: business logic stays trapped and the interface cannot grow without fear of breaking what already works.",
+    },
+    response: {
+      es: "Modernizamos sistemas monolíticos obsoletos. Reescribimos lógica de negocio compleja en arquitecturas modernas (React, Astro, TypeScript, Supabase) para entregar una interfaz rápida y escalable en una fracción del tiempo habitual.",
+      en: "We modernize obsolete monolithic systems. We rewrite complex business logic on modern architectures (React, Astro, TypeScript, Supabase) to deliver a fast, scalable interface in a fraction of the usual time.",
+    },
+    capabilities: [
+      {
+        title: { es: "Diagnóstico", en: "Diagnosis" },
+        items: [
+          { es: "Mapa del monolito", en: "Monolith map" },
+          { es: "Deuda y riesgos", en: "Debt and risks" },
+          { es: "Qué conservar", en: "What to keep" },
+        ],
+      },
+      {
+        title: { es: "Reescritura", en: "Rewrite" },
+        items: [
+          { es: "Lógica de negocio", en: "Business logic" },
+          { es: "TypeScript y APIs", en: "TypeScript and APIs" },
+          { es: "Datos en Supabase", en: "Data on Supabase" },
+        ],
+      },
+      {
+        title: { es: "Entrega", en: "Delivery" },
+        items: [
+          { es: "Interfaz moderna", en: "Modern interface" },
+          { es: "Migración por fases", en: "Phased migration" },
+          { es: "Sin parar el negocio", en: "Without stopping the business" },
+        ],
+      },
+    ],
+    deliverables: [
+      { es: "Código modernizado", en: "Modernized code" },
+      { es: "Arquitectura documentada", en: "Documented architecture" },
+      { es: "Plan de corte y despliegue", en: "Cutover and deploy plan" },
+    ],
+    impact: [
+      { es: "Menos fricción al cambiar", en: "Less friction when changing" },
+      { es: "Interfaz más rápida", en: "A faster interface" },
+      { es: "Base lista para escalar", en: "A base ready to scale" },
+    ],
+    figure: { es: "De monolito a base viva", en: "From monolith to a living base" },
+    image: {
+      src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
+      alt: {
+        es: "Código en un editor, listo para reescribirse en una arquitectura moderna",
+        en: "Code in an editor, ready to be rewritten into a modern architecture",
+      },
+      line: { es: "Código", en: "Code" },
+      key: { es: "vivo", en: "alive" },
+    },
+    kind: "aperture",
+    compose: "rise",
+    depth: paper,
+  },
+  {
+    slug: "mvp-rapido",
+    index: "11",
+    title: {
+      es: "MVP ultra-rápido (MaaS)",
+      en: "Ultra-fast MVP (MaaS)",
+    },
+    manifesto: {
+      es: "De idea a plataforma funcional en quince días.",
+      en: "From idea to a working platform in fifteen days.",
+    },
+    problem: {
+      es: "Una prueba de concepto no puede esperar un trimestre. Sin un producto usable, la idea no se valida ni se financia.",
+      en: "A proof of concept cannot wait a quarter. Without a usable product, the idea is neither validated nor funded.",
+    },
+    response: {
+      es: "Entregamos el código listo para producción con frameworks modernos y bases de datos relacionales. Ideal para pruebas de concepto y lanzamientos ágiles.",
+      en: "We deliver production-ready code with modern frameworks and relational databases. Built for proofs of concept and agile launches.",
+    },
+    capabilities: [
+      {
+        title: { es: "Alcance", en: "Scope" },
+        items: [
+          { es: "Flujo crítico", en: "Critical flow" },
+          { es: "Qué entra en 15 días", en: "What fits in 15 days" },
+          { es: "Qué queda fuera", en: "What stays out" },
+        ],
+      },
+      {
+        title: { es: "Construcción", en: "Build" },
+        items: [
+          { es: "React o Astro", en: "React or Astro" },
+          { es: "TypeScript", en: "TypeScript" },
+          { es: "Base relacional", en: "Relational database" },
+        ],
+      },
+      {
+        title: { es: "Salida", en: "Ship" },
+        items: [
+          { es: "Deploy a producción", en: "Production deploy" },
+          { es: "Accesos y roles", en: "Access and roles" },
+          { es: "Base para iterar", en: "A base to iterate on" },
+        ],
+      },
+    ],
+    deliverables: [
+      { es: "MVP en producción", en: "MVP in production" },
+      { es: "Código y repositorio", en: "Code and repository" },
+      { es: "Guía de siguientes pasos", en: "Guide for next steps" },
+    ],
+    impact: [
+      { es: "Validación en semanas, no meses", en: "Validation in weeks, not months" },
+      { es: "Producto real para mostrar", en: "A real product to show" },
+      { es: "Menos riesgo antes de invertir más", en: "Less risk before investing more" },
+    ],
+    figure: { es: "Una plataforma que ya corre", en: "A platform that already runs" },
+    image: {
+      src: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80",
+      alt: {
+        es: "Equipo trabajando sobre pantallas con producto y código listo para lanzar",
+        en: "A team working over screens with product and code ready to launch",
+      },
+      line: { es: "Idea a", en: "Idea to" },
+      key: { es: "producto", en: "product" },
+    },
+    kind: "truss",
+    compose: "flank",
+    depth: ivory,
+  },
 ];
