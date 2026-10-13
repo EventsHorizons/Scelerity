@@ -3,12 +3,11 @@
 import { useEffect, useRef } from "react";
 import { useLocale } from "@/context/LocaleContext";
 import { Container } from "@/components/layout/Container";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { registerGsap, gsap } from "@/lib/gsap";
 import { cn } from "@/lib/cn";
-import { PAGE, SERVICES, tx } from "./content";
+import { PAGE, tx } from "./content";
 import { depthStyle } from "./depthStyle";
 import heroStyles from "../scelerity-hero/hero.module.css";
 import styles from "./services.module.css";
@@ -74,13 +73,6 @@ export function ServicesHero() {
       </div>
 
       <Container size="content" className={styles.heroCopy}>
-        <Breadcrumbs
-          items={[
-            { name: tx(locale, hero.home), path: "/" },
-            { name: tx(locale, hero.crumb), path: "/servicios/" },
-          ]}
-        />
-
         <p className={styles.heroKicker}>{tx(locale, hero.label)}</p>
         <h1 id="services-hero-title" className={styles.heroTitle}>
           {tx(locale, hero.title)}
@@ -89,14 +81,6 @@ export function ServicesHero() {
         <a href="#contact" className={cn(styles.cta, styles.ctaOnDark, styles.heroCta)} data-cursor="cta">
           {tx(locale, hero.cta)}
         </a>
-
-        <nav aria-label={tx(locale, hero.indexLabel)} className={styles.index}>
-          {SERVICES.map((service) => (
-            <a key={service.slug} href={`#${service.slug}`} data-reel-target={service.slug} data-cursor="link">
-              <span className={styles.indexName}>{tx(locale, service.title)}</span>
-            </a>
-          ))}
-        </nav>
       </Container>
     </section>
   );

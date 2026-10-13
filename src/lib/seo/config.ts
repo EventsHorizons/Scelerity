@@ -7,7 +7,7 @@ export const SEO_CONFIG = {
   tagline: "Agencia creativa y digital.",
   description:
     "Agencia creativa y digital especializada en ecosistemas web, diseño UI/UX, identidad de marca y marketing. Soluciones precisas para empresas y creadores.",
-  email: "hello@scelerity.co",
+  email: "hello@drawboard.co",
   phone: "+57 3015993300",
   whatsapp: "+573015993300",
   /** Primary service area for LocalBusiness schema */

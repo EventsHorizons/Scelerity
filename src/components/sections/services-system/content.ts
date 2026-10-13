@@ -139,9 +139,6 @@ export const PAGE = {
       en: "Web development, interfaces, brands, and marketing. A shop, search, apps, and other pieces exist if the project needs them.",
     },
     cta: { es: "Hablemos de tu proyecto", en: "Let’s talk about your project" },
-    indexLabel: { es: "Índice", en: "Index" },
-    crumb: { es: "Servicios", en: "Services" },
-    home: { es: "Inicio", en: "Home" },
   },
   intro: {
     label: { es: "Qué hacemos", en: "What we do" },

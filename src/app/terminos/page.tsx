@@ -56,7 +56,7 @@ export default function TerminosPage() {
               <section>
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">4. Contacto</h2>
                 <p className="mt-2">
-                  Para consultas sobre estos términos: hello@scelerity.co
+                  Para consultas sobre estos términos: hello@drawboard.co
                 </p>
               </section>
             </div>

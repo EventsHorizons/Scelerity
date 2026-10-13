@@ -28,7 +28,7 @@ export function About() {
             </div>
 
             <div className="mt-[var(--space-fluid-md)]">
-              <Button href="#services">{t.about.cta}</Button>
+              <Button href="/servicios/">{t.about.cta}</Button>
             </div>
           </div>
         </div>

@@ -8,6 +8,17 @@ import heroStyles from "@/components/sections/scelerity-hero/hero.module.css";
 import styles from "./home-cycle.module.css";
 import { cn } from "@/lib/cn";
 
+function Manifesto({ text }: { text: string }) {
+  const cut = text.indexOf(". ");
+  if (cut === -1) return text;
+  return (
+    <>
+      {text.slice(0, cut + 1)}{" "}
+      <em className={styles.manifestoItalic}>{text.slice(cut + 2)}</em>
+    </>
+  );
+}
+
 export function Services() {
   const { t } = useLocale();
   const rootRef = useRef<HTMLElement>(null);
@@ -22,14 +33,13 @@ export function Services() {
       id="services"
       className={cn("home-cycle", styles.cycle)}
       style={{ ["--slides" as string]: total }}
-      aria-label={copy.label}
+      aria-label={copy.headline}
     >
       <div className={styles.viewport}>
         <div data-reel="track" className={styles.track}>
           <article data-reel-slide className={styles.intro} aria-labelledby="home-cycle-title">
-            <p className={styles.kicker}>{copy.label}</p>
             <h2 id="home-cycle-title" className={styles.manifesto}>
-              {copy.headline}
+              <Manifesto text={copy.headline} />
             </h2>
             <p className={styles.deck}>{copy.deck}</p>
           </article>

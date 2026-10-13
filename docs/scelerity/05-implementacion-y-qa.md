@@ -5,7 +5,7 @@
 
 ## Resumen
 
-El sitio deja de ofrecer once oficios. La navegación es Cómo trabajamos, Proyectos, Nosotros y Contacto. La portada mantiene «Ideas en cultura.» y explica el encargo en cuatro pasos y tres piezas: Diagnóstico, Sistema y Continuidad. Aether, Northline y Vespera se muestran como estudios internos. El formulario ya no finge un envío: el contacto es `hello@scelerity.co` y `https://wa.me/573015993300`. El domicilio en los datos estructurados pasa de Orlando a Bogotá. Las fichas `/servicios/[slug]/`, `/soluciones/` y `/local/` dejan de generarse. En Vercel, `vercel.json` las redirige a `/servicios/`.
+El sitio deja de ofrecer once oficios. La navegación es Cómo trabajamos, Proyectos, Nosotros y Contacto. La portada mantiene «Ideas en cultura.» y explica el encargo en cuatro pasos y tres piezas: Diagnóstico, Sistema y Continuidad. Aether, Northline y Vespera se muestran como estudios internos. El formulario ya no finge un envío: el contacto es `hello@drawboard.co` y `https://wa.me/573015993300`. El domicilio en los datos estructurados pasa de Orlando a Bogotá. Las fichas `/servicios/[slug]/`, `/soluciones/` y `/local/` dejan de generarse. En Vercel, `vercel.json` las redirige a `/servicios/`.
 
 ### Conflictos resueltos de forma conservadora
 
@@ -53,7 +53,7 @@ En la carga local de la portada no aparecieron recursos propios con estado HTTP 
 
 | Prioridad | Problema |
 | --- | --- |
-| P0 | Nadie ha confirmado que `hello@scelerity.co` y el WhatsApp se leen. El sitio no promete un plazo de respuesta |
+| P0 | Nadie ha confirmado que `hello@drawboard.co` y el WhatsApp se leen. El sitio no promete un plazo de respuesta |
 | P1 | Las redirecciones de fichas viejas y de `/local/` están en `vercel.json`. No se comprobaron en Vercel porque no hubo deploy. En local, esas URL responden 404 |
 | P1 | El blog sigue publicado con artículos genéricos de SEO e IA. No está en el menú, pero sigue en el sitemap |
 | P2 | `tsc` suelto choca con la caché de `.next` después del build. Hace falta regenerar esa caché o borrar `validator.ts` antes de fiarse de un `tsc` aislado |

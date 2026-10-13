@@ -316,7 +316,7 @@ El texto actual de Nosotros («agencia de marketing cultural» que «hace diseñ
 **Intención.** Dejar datos suficientes para una respuesta útil.  
 **Pregunta.** «¿Cómo les cuento el proyecto sin llenar un formulario largo?»  
 **Mensaje.** Hace falta la organización, la acción y el plazo. El correo es el canal que sí existe hoy.  
-**CTA principal.** Enviar, solo cuando el envío llegue a un buzón. Hasta entonces, el botón principal es escribir a `hello@scelerity.co`.  
+**CTA principal.** Enviar, solo cuando el envío llegue a un buzón. Hasta entonces, el botón principal es escribir a `hello@drawboard.co`.  
 **CTA secundario.** WhatsApp, con el número ya publicado `+57 301 599 3300`, armado como `https://wa.me/573015993300`. El enlace actual del sitio mete espacios y paréntesis en `wa.me`; eso hay que corregirlo al implementar. No es un canal nuevo.
 
 ### Formulario
@@ -344,7 +344,7 @@ Se quitan como obligatorios: teléfono, «¿cómo nos conoces?» y el presupuest
 - Acción: «Cuéntanos qué tiene que quedar funcionando.»
 - Plazo: «Elige un plazo.»
 - Casilla: «Hace falta tu aceptación para escribirte.»
-- Fallo de envío: «No salió. Escríbenos a hello@scelerity.co.»
+- Fallo de envío: «No salió. Escríbenos a hello@drawboard.co.»
 
 **Confirmación, solo si el mensaje llegó al buzón:** «Llegó. Te escribimos a este correo sobre [organización].»
 
@@ -358,7 +358,7 @@ No decir que llegó si el formulario sigue en el `setTimeout` de 1,1 segundos si
 
 **Datos visibles**
 
-- Correo: hello@scelerity.co
+- Correo: hello@drawboard.co
 - WhatsApp: +57 301 599 3300
 - Ciudad: Bogotá, Colombia
 
@@ -428,7 +428,7 @@ Tampoco cifras de impacto, logos de clientes ni nombres de personas que no hayan
 | Testimonios | El cliente, por escrito | No se redactan |
 | Horas reales para cotizar | El fundador, en el primer diagnóstico | No hay precios en la web |
 | Buzón que reciba el formulario | Implementación. Hoy no hay API | Contacto muestra correo y WhatsApp |
-| Confirmación de que hello@scelerity.co y el WhatsApp se leen | El fundador | No prometer plazo de respuesta |
+| Confirmación de que hello@drawboard.co y el WhatsApp se leen | El fundador | No prometer plazo de respuesta |
 | Que las redes del pie (Instagram, Facebook, TikTok, LinkedIn) sean perfiles reales | El fundador. La auditoría no los abrió | No decir «síguenos» como prueba de comunidad |
 | Artículos útiles sobre la oferta | Cuando exista un encargo o una entrevista | El blog no vuelve al menú |
 | Revisión de un abogado si algún texto menciona contratos o derechos | Un abogado con tarjeta | El párrafo de Cómo trabajamos se queda en el límite ya escrito. No se amplía |

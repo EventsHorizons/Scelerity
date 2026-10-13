@@ -172,7 +172,7 @@ Estado vacío futuro: si se quita una maqueta, no se rellena con un rectángulo 
 | Enlace de texto | Subrayado en reposo | Subrayado más grueso o `--fg` pleno | Opacidad 0.7 | Mismo anillo | — | — | — | — |
 | Campo | Fondo `--surface`, texto `--fg`, borde 1px `--fg` al 20% | Borde `--fg` | Igual | Anillo 2px `--fg` | — | — | Borde `--danger` y el texto de error debajo | — |
 | Casilla | Caja 20px y etiqueta | — | — | Anillo en la caja | — | — | Texto de error bajo la etiqueta | — |
-| Envío | — | — | — | — | Botón disabled mientras `aria-busy` | «Enviando…» | «No salió. Escríbenos a hello@scelerity.co.» | «Llegó. Te escribimos a este correo sobre [organización].» Solo si el buzón respondió |
+| Envío | — | — | — | — | Botón disabled mientras `aria-busy` | «Enviando…» | «No salió. Escríbenos a hello@drawboard.co.» | «Llegó. Te escribimos a este correo sobre [organización].» Solo si el buzón respondió |
 
 El éxito no se pinta de verde como única señal: va el texto «Llegó». El error no es solo el borde rojo: va la frase junto al campo. Área táctil mínima 44×44px en botones, casilla y menú.
 

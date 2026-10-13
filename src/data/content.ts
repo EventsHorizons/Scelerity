@@ -404,7 +404,7 @@ export const content: Record<Locale, Content> = {
       body: ["Ya sea que tengas requerimientos técnicos muy estructurados o apenas una idea que necesitas aterrizar, estamos aquí para escucharte. Cuéntanos sobre tu visión; analizaremos tu caso y te responderemos para evaluar cómo podemos sumar valor a tu proyecto."],
       primary: "Hablemos de tu proyecto",
       whatsapp: "(+57) 301 599 3300",
-      email: "hello@scelerity.co",
+      email: "hello@drawboard.co",
       location: "Bogotá · Colombia",
         response: "Te responderemos muy pronto.",
         form: {
@@ -731,7 +731,7 @@ export const content: Record<Locale, Content> = {
       body: ["An artist, an event, or a business. What already exists and what is missing: brand, site, interface, or outreach."],
       primary: "Outline a brief",
       whatsapp: "+57 3015993300",
-      email: "hello@scelerity.co",
+      email: "hello@drawboard.co",
       location: "Bogotá · Colombia",
       response: "Write to us and we will reply.",
       form: {

@@ -36,7 +36,7 @@ export default function PrivacidadPage() {
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">1. Responsable</h2>
                 <p className="mt-2">
                   Drawboard («nosotros») es responsable del tratamiento de los datos personales recopilados a través de
-                  Drawboard y canales de contacto asociados. Email: hello@scelerity.co
+                  Drawboard y canales de contacto asociados. Email: hello@drawboard.co
                 </p>
               </section>
               <section>
@@ -56,7 +56,7 @@ export default function PrivacidadPage() {
               <section>
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">4. Tus derechos</h2>
                 <p className="mt-2">
-                  Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a hello@scelerity.co
+                  Puedes solicitar acceso, rectificación o eliminación de tus datos escribiendo a hello@drawboard.co
                 </p>
               </section>
             </div>

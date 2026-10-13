@@ -149,7 +149,7 @@ export function ScelerityHero() {
         </div>
         <div className="absolute inset-x-0 top-[calc(50%+(0.9*clamp(2.35rem,6.2vw,5.25rem)+0.95*clamp(2.35rem,5.2vw,4.5rem))/2+2.75rem)] z-30 flex flex-col items-center justify-center gap-3 px-5 sm:flex-row lg:px-[8vw]">
           <Button href="/contacto/">{copy.cta}</Button>
-          <Button href="#services" variant="secondary" className={styles.heroSecondary}>
+          <Button href="/servicios/" variant="secondary" className={styles.heroSecondary}>
             {copy.ctaSecondary}
           </Button>
         </div>

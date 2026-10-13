@@ -5,7 +5,6 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   type ServicePage,
@@ -52,7 +51,6 @@ export function ServicePageView({ service }: Props) {
       <main id="main" className="page-rhythm">
         <Section className="pt-[calc(var(--header-h)+var(--space-fluid-lg))]">
           <Container size="content">
-            <Breadcrumbs items={breadcrumbs} className="mb-[var(--space-6)]" />
             <p className="chapter-label">{service.hero.eyebrow}</p>
             <h1 className="mt-3 max-w-[18ch] font-display text-h1 font-bold text-balance">
               {service.hero.headline}
