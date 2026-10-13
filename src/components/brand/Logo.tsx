@@ -2,39 +2,30 @@
 
 import { cn } from "@/lib/cn";
 import { LogoMark } from "@/components/brand/LogoMark";
+import { WordmarkPaths } from "@/components/brand/WordmarkPaths";
 
 export type LogoVariant = "lockup" | "mark" | "wordmark" | "compact";
 
 type Props = {
-  /** lockup = isotipo + Scelerity (default) */
+  /** lockup = isotipo + Drawboard (default) */
   variant?: LogoVariant;
   className?: string;
-  /** Accessible label — defaults to Scelerity */
+  /** Accessible label — defaults to Drawboard */
   label?: string;
 };
 
-const WORDMARK = ["s", "c", "e", "l", "e", "r", "i", "t", "y"] as const;
-
 function Wordmark() {
-  return (
-    <span className="wordmark" aria-hidden>
-      {WORDMARK.map((letter, index) => (
-        <span key={`${letter}-${index}`} className={`wordmark__pair wordmark__pair--${index}`}>
-          {letter}
-        </span>
-      ))}
-    </span>
-  );
+  return <WordmarkPaths />;
 }
 
 /**
- * Scelerity brand lockup — isotipo + wordmark.
+ * Drawboard brand lockup — isotipo + wordmark.
  * Light theme: dark mark + text · Dark theme: light mark + text (via currentColor).
  */
 export function Logo({
   variant = "lockup",
   className,
-  label = "Scelerity",
+  label = "Drawboard",
 }: Props) {
   if (variant === "mark") {
     return (

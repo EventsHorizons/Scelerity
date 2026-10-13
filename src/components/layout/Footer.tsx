@@ -17,7 +17,7 @@ export function Footer() {
         className="flex flex-col gap-[var(--space-12)] pb-[max(var(--space-16),env(safe-area-inset-bottom))] pt-[var(--space-16)] md:flex-row md:items-start md:justify-between"
       >
         <div className="text-center md:text-left">
-          <Link href="/" aria-label="Scelerity — Home">
+          <Link href="/" aria-label="Drawboard — Home">
             <Logo className="wordmark-lockup--footer" />
           </Link>
           <p className="mx-auto mt-4 max-w-[28ch] text-center text-small leading-relaxed text-[var(--fg-muted)] md:mx-0 md:text-left">
@@ -66,7 +66,7 @@ export function Footer() {
               {t.cta.email}
             </a>
             <p className="font-mono text-micro">
-              © {year} Scelerity · {t.footer.rights}
+              © {year} Drawboard · {t.footer.rights}
             </p>
           </div>
         </div>

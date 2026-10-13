@@ -1,4 +1,4 @@
-# Auditoría de Scelerity
+# Auditoría de Drawboard
 
 **Fecha:** 11 de octubre de 2026  
 **Alcance:** sitio publicado en https://scelerity.vercel.app/ y repositorio Next.js del proyecto.  
@@ -12,7 +12,7 @@ Leyenda: **hecho** = visto en el sitio o en un archivo. **Inferencia** = conclus
 
 ## Resumen ejecutivo
 
-En los primeros segundos la portada se entiende como un estudio cultural. El título publicado es «Scelerity — Hacemos que las ideas entren en la cultura.» El único `h1` visible en el DOM es «Ideas en cultura.» Debajo, el sitio nombra proyectos culturales, industrias creativas y marcas, y cierra el ciclo «Qué hacemos» con «Una idea no termina en una campaña» y cuatro fases: estrategia, sistemas, producto y continuidad.
+En los primeros segundos la portada se entiende como un estudio cultural. El título publicado es «Drawboard — Hacemos que las ideas entren en la cultura.» El único `h1` visible en el DOM es «Ideas en cultura.» Debajo, el sitio nombra proyectos culturales, industrias creativas y marcas, y cierra el ciclo «Qué hacemos» con «Una idea no termina en una campaña» y cuatro fases: estrategia, sistemas, producto y continuidad.
 
 Esa lectura se rompe en cuanto el visitante abre Servicios. La navegación principal (Servicios, Blog, Nosotros, Contacto) lleva a un catálogo de once oficios. La ficha `/servicios/mvp-rapido/` titula «MVP en 15 Días — De Idea a Plataforma en Producción» y promete código en producción con React o Astro, TypeScript y una base relacional. El pie de esa misma página sigue diciendo «Cultural & creative marketing.»
 
@@ -34,7 +34,7 @@ La decisión ya escrita en `docs/estrategia-scelerity.md` —una oferta, Sistema
 
 **Páginas de servicio** declaradas en `src/lib/seo/services.ts`: diseño web, desarrollo web, desarrollo de apps, SEO, branding, marketing digital, inteligencia artificial, automatización, e-commerce, migración legacy, MVP rápido. `/soluciones/` reexporta `/servicios/` (`src/app/soluciones/page.tsx`) y no está en el sitemap.
 
-**Blog** (`content/blog/`): `branding-digital`, `velocidad-core-web-vitals`, `marketing-digital-integrado`, `ia-potencia-empresas`, `pagina-web-conversiones`, `seo-2026`. El de SEO está fechado 2026-07-14 y habla de prácticas generales, no de un proyecto de Scelerity.
+**Blog** (`content/blog/`): `branding-digital`, `velocidad-core-web-vitals`, `marketing-digital-integrado`, `ia-potencia-empresas`, `pagina-web-conversiones`, `seo-2026`. El de SEO está fechado 2026-07-14 y habla de prácticas generales, no de un proyecto de Drawboard.
 
 **Componentes vivos de la portada** (`src/app/page.tsx`): `ScelerityHero`, `About`, `Work`, `Services` (ciclo de cuatro fases), `FinalCTA`, `Header`, `Footer`.
 
@@ -57,7 +57,7 @@ La decisión ya escrita en `docs/estrategia-scelerity.md` —una oferta, Sistema
 | 7 | Analítica solo si hay variables de entorno; en esta carga no había `gtag` ni `dataLayer` | Hecho | `Analytics.tsx`; `Runtime.evaluate` en la portada: `ga: false` | No hay línea base de visitas ni de formularios | P1 | Depende de cuentas | No tratar visitas como demanda hasta que exista medición con consentimiento |
 | 8 | Imágenes de hero a 2400 px, repetidas en el DOM (cortes, espejos, lente) | Hecho | `scelerity-hero/data.ts`; evaluación: varias `<img>` de `arte.jpg`, `sistemas.jpg`, `cultura.jpg` con `naturalWidth` 2400 | Peso potencial. No medido en Lighthouse | P2 | Medio | Medir antes de optimizar. No se afirma un Core Web Vital |
 | 9 | Código muerto de hero WebGL, edición de servicios y soluciones | Hecho | Imports no alcanzados desde `src/app` | Confunde la siguiente fase y mantiene `three` en el bundle de dependencias | P2 | Medio | Decidir qué árbol es el vigente |
-| 10 | Blog genérico de SEO, branding e IA | Hecho | Seis MDX; ninguno documenta un encargo de Scelerity | No sostiene la oferta cultural | P2 editorial | Bajo | Alinear o dejar de enlazar desde servicios |
+| 10 | Blog genérico de SEO, branding e IA | Hecho | Seis MDX; ninguno documenta un encargo de Drawboard | No sostiene la oferta cultural | P2 editorial | Bajo | Alinear o dejar de enlazar desde servicios |
 | 11 | Contraste, foco y rendimiento no medidos con herramienta | Hecho de método | No se corrió axe ni Lighthouse. Sí hay enlace «Saltar al contenido» y el viewport no fija `maximum-scale` (`layout.tsx`) | No declarar el sitio accesible ni rápido | — | — | Repetir esas pruebas después de cualquier cambio |
 
 **Hipótesis, no demostrada:** un productor cultural reconoce la portada y se pierde en Servicios. Hace falta la entrevista, no otra opinión de interfaz.

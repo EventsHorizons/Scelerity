@@ -9,11 +9,11 @@ import { getAllPosts } from "@/lib/blog";
 import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Blog — Scelerity",
+  title: "Blog — Drawboard",
   description: "Textos sobre sitios, marcas, interfaces y marketing.",
   alternates: { canonical: "/blog/" },
   openGraph: {
-    title: "Blog — Scelerity",
+    title: "Blog — Drawboard",
     description: "Textos sobre sitios, marcas, interfaces y marketing.",
     type: "website",
     url: `${getSiteUrl()}/blog/`,

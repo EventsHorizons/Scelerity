@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  if (!service) return { title: "Servicio — Scelerity" };
+  if (!service) return { title: "Servicio — Drawboard" };
 
   return buildPageMetadata({
     title: service.metaTitle,

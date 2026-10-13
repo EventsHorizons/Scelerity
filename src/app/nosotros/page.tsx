@@ -12,9 +12,9 @@ import { pageGraph } from "@/lib/seo/schema";
 import { content } from "@/data/content";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Nosotros — Scelerity",
+  title: "Nosotros — Drawboard",
   description:
-    "Cada proyecto tiene su propio punto de partida. Scelerity.",
+    "Cada proyecto tiene su propio punto de partida. Drawboard.",
   path: "/nosotros/",
 });
 
@@ -43,7 +43,7 @@ export default function NosotrosPage() {
                 Algunos negocios necesitan encontrar su voz. Otros tienen un excelente producto, pero una web que los frena o un mensaje que no llega a su audiencia.
               </p>
               <p className="text-lead text-[var(--fg-muted)]">
-                En Scelerity no aplicamos fórmulas genéricas. Combinamos diseño, código y marketing estratégico para resolver el problema exacto que tienes frente a ti.
+                En Drawboard no aplicamos fórmulas genéricas. Combinamos diseño, código y marketing estratégico para resolver el problema exacto que tienes frente a ti.
               </p>
               <p className="text-lead text-[var(--fg-muted)]">
                 Te damos claridad técnica y visual, invirtiendo solo en lo que realmente necesitas para avanzar.

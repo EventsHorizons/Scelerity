@@ -19,9 +19,9 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Orlando",
     region: "FL",
     country: "US",
-    metaTitle: "Diseño, desarrollo y marketing en Orlando — Scelerity",
+    metaTitle: "Diseño, desarrollo y marketing en Orlando — Drawboard",
     metaDescription:
-      "Diseño web, desarrollo y marketing para empresas. Scelerity trabaja desde Bogotá.",
+      "Diseño web, desarrollo y marketing para empresas. Drawboard trabaja desde Bogotá.",
     hero: {
       eyebrow: "Orlando, FL",
       headline: "Diseño, desarrollo y marketing en Orlando.",
@@ -48,7 +48,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Miami",
     region: "FL",
     country: "US",
-    metaTitle: "Diseño, desarrollo y marketing en Miami — Scelerity",
+    metaTitle: "Diseño, desarrollo y marketing en Miami — Drawboard",
     metaDescription:
       "Branding, web y marketing para marcas en Miami que compiten en un mercado exigente.",
     hero: {
@@ -77,7 +77,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Tampa",
     region: "FL",
     country: "US",
-    metaTitle: "Desarrollo web y SEO en Tampa — Scelerity",
+    metaTitle: "Desarrollo web y SEO en Tampa — Drawboard",
     metaDescription:
       "Desarrollo web, SEO y marketing para empresas en Tampa Bay.",
     hero: {
@@ -106,7 +106,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Jacksonville",
     region: "FL",
     country: "US",
-    metaTitle: "Web y marketing en Jacksonville — Scelerity",
+    metaTitle: "Web y marketing en Jacksonville — Drawboard",
     metaDescription:
       "Diseño web, desarrollo y marketing para empresas en Jacksonville.",
     hero: {
@@ -135,7 +135,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     city: "Kissimmee",
     region: "FL",
     country: "US",
-    metaTitle: "Diseño web y SEO local en Kissimmee — Scelerity",
+    metaTitle: "Diseño web y SEO local en Kissimmee — Drawboard",
     metaDescription:
       "Diseño web y SEO local para negocios de turismo y servicios en Kissimmee.",
     hero: {

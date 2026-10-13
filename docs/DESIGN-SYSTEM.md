@@ -1,4 +1,4 @@
-# Scelerity — Documento de Diseño
+# Drawboard — Documento de Diseño
 
 Tipografías, paleta de colores y tokens visuales del sistema de marca digital.
 
@@ -10,7 +10,7 @@ Fuente de verdad en código: `src/app/globals.css` · `src/app/layout.tsx`
 
 | Atributo | Valor |
 |----------|-------|
-| Nombre | **Scelerity** |
+| Nombre | **Drawboard** |
 | Tagline | Velocidad con precisión |
 | Personalidad | Premium, técnico, cinético, limpio |
 | Principios | Craft · Velocidad · Precisión |
@@ -34,14 +34,14 @@ Tres familias vía `next/font` (Google Fonts), con `font-display: swap`.
 ### Wordmark
 
 ```
-Scelerity
+Drawboard
 ```
 
 - Familia: Syne
 - Peso: **700**
 - Letter-spacing: **−0.048em**
 - Features: `kern`, `liga`, `calt`
-- Nunca en mayúsculas: siempre **Scelerity**
+- Nunca en mayúsculas: siempre **Drawboard**
 
 ### Escala tipográfica (fluida)
 
@@ -210,7 +210,7 @@ Escala fija + fluid:
 
 | Variante | Descripción |
 |----------|-------------|
-| **Lockup** | Isotipo + wordmark «Scelerity» |
+| **Lockup** | Isotipo + wordmark «Drawboard» |
 | **Mark** | Solo isotipo (rayo / bolt) |
 | **Wordmark** | Solo tipografía Syne |
 
@@ -267,4 +267,4 @@ className="btn-gradient" // usa --gradient-primary
 
 ---
 
-*Scelerity Design System — tipografía y color · agosto 2026*
+*Drawboard Design System — tipografía y color · agosto 2026*

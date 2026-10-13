@@ -42,7 +42,7 @@ function parseFrontmatter(data: Record<string, unknown>): BlogFrontmatter {
     excerpt: String(data.excerpt ?? data.description ?? ""),
     category: data.category,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-    author: String(data.author ?? "Scelerity"),
+    author: String(data.author ?? "Drawboard"),
     authorRole: String(data.authorRole ?? "Equipo editorial"),
     publishedAt: String(data.publishedAt ?? ""),
     updatedAt: data.updatedAt ? String(data.updatedAt) : undefined,

@@ -13,9 +13,9 @@ import { SEO_CONFIG } from "@/lib/seo/config";
 import { content } from "@/data/content";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contacto — Scelerity",
+  title: "Contacto — Drawboard",
   description:
-    "Cuéntanos qué estás preparando. Scelerity.",
+    "Cuéntanos qué estás preparando. Drawboard.",
   path: "/contacto/",
 });
 

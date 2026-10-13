@@ -14,7 +14,7 @@ export function ArticleJsonLd({ post, url }: ArticleJsonLdProps) {
       {
         "@type": "Organization",
         "@id": `${base}/#organization`,
-        name: "Scelerity",
+        name: "Drawboard",
         url: base,
         logo: `${base}/favicon.svg`,
       },

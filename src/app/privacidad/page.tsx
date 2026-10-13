@@ -8,8 +8,8 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Política de Privacidad — Scelerity",
-  description: "Política de privacidad de Scelerity. Cómo recopilamos, usamos y protegemos tus datos.",
+  title: "Política de Privacidad — Drawboard",
+  description: "Política de privacidad de Drawboard. Cómo recopilamos, usamos y protegemos tus datos.",
   path: "/privacidad/",
 });
 
@@ -35,8 +35,8 @@ export default function PrivacidadPage() {
               <section>
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">1. Responsable</h2>
                 <p className="mt-2">
-                  Scelerity («nosotros») es responsable del tratamiento de los datos personales recopilados a través de
-                  scelerity.co y canales de contacto asociados. Email: hello@scelerity.co
+                  Drawboard («nosotros») es responsable del tratamiento de los datos personales recopilados a través de
+                  Drawboard y canales de contacto asociados. Email: hello@scelerity.co
                 </p>
               </section>
               <section>

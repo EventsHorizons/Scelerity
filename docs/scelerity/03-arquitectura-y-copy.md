@@ -12,7 +12,7 @@ Este documento no cambia la estrategia. Donde un pedido de esta fase chocaba con
 | Una página de negocios B2B | No se crea. La fase 2 la deja fuera hasta que alguien de esas conversaciones pague. |
 | Un titular que diga oficio y cliente, en lugar de «Ideas en cultura.» | El `h1` se queda. El subtítulo dice para quién es y qué se construye. |
 | Mostrar Definir / Construir / Activar como método visible | No. En la página se usan las cuatro fases ya aprobadas: audiencia, sistema, producto, continuidad. |
-| Blog de ideas en el menú | No. Los seis artículos actuales no hablan de un encargo de Scelerity. Las URL pueden seguir vivas; no se enlazan desde la navegación principal. |
+| Blog de ideas en el menú | No. Los seis artículos actuales no hablan de un encargo de Drawboard. Las URL pueden seguir vivas; no se enlazan desde la navegación principal. |
 | «Respuesta en menos de 24 horas» | Se quita. La fase 2 lo prohíbe hasta que alguien pueda cumplir ese plazo. |
 
 No se reescribe la paleta, el hero ni el pie negro. Aquí solo está la información y el texto.
@@ -50,7 +50,7 @@ Esas URL hoy responden 200. Al implementar, cada una redirige a `/servicios/` o 
 ## Portada `/`
 
 **Audiencia.** Quien ya tiene un proyecto cultural en marcha.  
-**Intención.** Saber si Scelerity hace lo que le falta.  
+**Intención.** Saber si Drawboard hace lo que le falta.  
 **Pregunta.** «¿Esto es para un proyecto como el mío, o es una agencia que hace de todo?»  
 **Mensaje.** Un proyecto con fecha o con algo que cobrar necesita una pieza que siga en pie, no otra campaña.  
 **CTA principal.** «Cuéntanos la fecha» → `/contacto/`.  
@@ -122,11 +122,11 @@ No usar «Ver proyecto». No poner un botón de reproducir en Northline: en el r
 
 Si ya sabes la acción —entrada, reserva, patrocinio o contacto—, escríbenos. Si todavía no, pide el diagnóstico.
 
-**CTA:** Escribir a Scelerity → `/contacto/`
+**CTA:** Escribir a Drawboard → `/contacto/`
 
 **Metadatos**
 
-- Título: `Scelerity — Ideas en cultura`
+- Título: `Drawboard — Ideas en cultura`
 - Descripción: `Estudio en Bogotá para festivales, espacios, sellos y productores. Ordenamos la oferta y construimos la pieza digital que sigue cuando la campaña se apaga.`
 
 ---
@@ -196,7 +196,7 @@ Si ya sabes la acción —entrada, reserva, patrocinio o contacto—, escríbeno
 
 **Listo cuando.** Hay una decisión de seguir, ajustar o parar, con el número de esa acción: solicitudes, reservas o entradas. No con seguidores.
 
-**Condición.** Solo después de un Sistema entregado por Scelerity.
+**Condición.** Solo después de un Sistema entregado por Drawboard.
 
 **CTA:** Preguntar por continuidad → `/contacto/?pieza=continuidad`
 
@@ -225,7 +225,7 @@ En Bogotá. El trabajo con clientes de otras ciudades es remoto. No tenemos ofic
 
 **Metadatos**
 
-- Título: `Cómo trabajamos — Scelerity`
+- Título: `Cómo trabajamos — Drawboard`
 - Descripción: `Diagnóstico, Sistema y Continuidad para proyectos culturales que ya operan. Qué entra, qué no entra y cómo se sabe que el encargo está listo.`
 
 ---
@@ -247,7 +247,7 @@ En Bogotá. El trabajo con clientes de otras ciudades es remoto. No tenemos ofic
 
 Lo que sigue son estudios internos. Sirven para mostrar criterio de interfaz e identidad. No tienen cliente, fecha de encargo ni resultado de negocio. No los uses como prueba de ventas, de patrocinio ni de un producto en el mercado.
 
-Cuando exista un encargo con permiso para contarlo, esta página dirá el contexto, el reto, qué hizo Scelerity, qué se entregó y cómo se comprobó el resultado. Hasta entonces, no hay logos, cifras ni testimonios.
+Cuando exista un encargo con permiso para contarlo, esta página dirá el contexto, el reto, qué hizo Drawboard, qué se entregó y cómo se comprobó el resultado. Hasta entonces, no hay logos, cifras ni testimonios.
 
 **h2:** Aether  
 **Etiqueta visible:** Estudio interno  
@@ -273,8 +273,8 @@ Cuando exista un encargo con permiso para contarlo, esta página dirá el contex
 
 **Metadatos**
 
-- Título: `Proyectos — Scelerity`
-- Descripción: `Estudios internos de interfaz e identidad. Scelerity aún no publica casos de clientes ni resultados de negocio.`
+- Título: `Proyectos — Drawboard`
+- Descripción: `Estudios internos de interfaz e identidad. Drawboard aún no publica casos de clientes ni resultados de negocio.`
 
 ---
 
@@ -291,7 +291,7 @@ Cuando exista un encargo con permiso para contarlo, esta página dirá el contex
 
 **Etiqueta:** Nosotros
 
-**h1:** Scelerity es un estudio en Bogotá.
+**h1:** Drawboard es un estudio en Bogotá.
 
 Ordenamos la oferta de proyectos culturales que ya operan y construimos la pieza digital que esa oferta necesita. Diseño y desarrollo entran ahí. No se venden como una lista de oficios.
 
@@ -303,7 +303,7 @@ El sitio muestra tres maquetas propias. Cuando podamos contar un encargo con nom
 
 **Metadatos**
 
-- Título: `Nosotros — Scelerity`
+- Título: `Nosotros — Drawboard`
 - Descripción: `Estudio en Bogotá para proyectos culturales que ya operan. Construimos la pieza digital que sigue cuando la campaña se apaga.`
 
 El texto actual de Nosotros («agencia de marketing cultural» que «hace diseño, desarrollo y marketing») se reemplaza por este. Decir agencia y tres oficios contradice la fase 2.
@@ -330,7 +330,7 @@ Campos, en este orden:
 5. Enlace del proyecto. Opcional. Pista: «Sitio, red o documento. Si no hay, déjalo vacío.»
 6. Plazo. Obligatorio. Select: «Hay una fecha concreta», «En este trimestre», «Todavía no hay fecha».
 7. Pieza. Select, puede venir en la URL (`diagnostico`, `sistema`, `continuidad`). Opciones visibles: Diagnóstico, Sistema, Continuidad, Todavía no sé.
-8. Casilla: «Acepto que Scelerity use estos datos para responder este mensaje.» Enlace a `/privacidad/`. Obligatoria.
+8. Casilla: «Acepto que Drawboard use estos datos para responder este mensaje.» Enlace a `/privacidad/`. Obligatoria.
 
 Se quitan como obligatorios: teléfono, «¿cómo nos conoces?» y el presupuesto. El presupuesto se pide en la propuesta, cuando existan horas.
 
@@ -364,8 +364,8 @@ No decir que llegó si el formulario sigue en el `setTimeout` de 1,1 segundos si
 
 **Metadatos**
 
-- Título: `Contacto — Scelerity`
-- Descripción: `Escribe a Scelerity en Bogotá. Cuéntanos la organización, la fecha y qué tiene que quedar funcionando.`
+- Título: `Contacto — Drawboard`
+- Descripción: `Escribe a Drawboard en Bogotá. Cuéntanos la organización, la fecha y qué tiene que quedar funcionando.`
 
 ---
 
@@ -393,7 +393,7 @@ Tampoco cifras de impacto, logos de clientes ni nombres de personas que no hayan
 
 - Un solo `h1` por página. Las fases y las tres piezas son `h2` o `h3`, en el orden en que se leen.
 - Cada enlace dice el destino: «Ver cómo trabajamos», «Pedir diagnóstico», «Ver los estudios». No «Ver más», «Ver proyecto» ni «Leer».
-- Los alt describen la maqueta que se ve. No llevan «SEO», «SaaS» ni «Scelerity Bogotá».
+- Los alt describen la maqueta que se ve. No llevan «SEO», «SaaS» ni «Drawboard Bogotá».
 - El estado de error del formulario va junto al campo, no solo en el color.
 - «Estudio interno» es texto, no una etiqueta que dependa del color.
 - Privacidad se enlaza al lado de la casilla, con el nombre de la página.

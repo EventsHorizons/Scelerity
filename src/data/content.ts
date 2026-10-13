@@ -177,7 +177,7 @@ export const content: Record<Locale, Content> = {
     },
     solutions: solutionsEs,
     hero: {
-      brand: "Scelerity",
+      brand: "Drawboard",
       kicker: "Bogotá",
       headline: "Diseño, tecnología y estrategia para marcas con propósito.",
       sub: "",
@@ -432,7 +432,7 @@ export const content: Record<Locale, Content> = {
       },
     },
     footer: {
-      tagline: "Scelerity es una agencia creativa y digital especializada en branding, diseño UI/UX, desarrollo web y estrategias de marketing para marcas con propósito y proyectos culturales.",
+      tagline: "Drawboard es una agencia creativa y digital especializada en branding, diseño UI/UX, desarrollo web y estrategias de marketing para marcas con propósito y proyectos culturales.",
       rights: "Todos los derechos reservados.",
       navLabel: "Navegación",
       links: [
@@ -497,7 +497,7 @@ export const content: Record<Locale, Content> = {
     },
     solutions: solutionsEn,
     hero: {
-      brand: "Scelerity",
+      brand: "Drawboard",
       kicker: "Bogotá",
       headline: "Brand, site, and outreach for projects and companies.",
       sub: "An artist, an event, or a business. What is missing can be commissioned together or in parts.",
@@ -555,7 +555,7 @@ export const content: Record<Locale, Content> = {
       label: "The studio",
       headline: "Four crafts, one brief.",
       body: [
-        "Scelerity, in Bogotá, makes identity, interface, site, and outreach. A musician, a festival, or a company can commission one piece.",
+        "Drawboard, in Bogotá, makes identity, interface, site, and outreach. A musician, a festival, or a company can commission one piece.",
         "If the site depends on a brand that does not exist yet, that is written into the scope. We do not promise a full room or a sales figure.",
       ],
       cta: "See the crafts",

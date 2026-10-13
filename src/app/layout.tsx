@@ -31,6 +31,7 @@ const dmMono = DM_Mono({
   variable: "--font-dm-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -84,7 +85,7 @@ export default function RootLayout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title="Scelerity Blog RSS"
+          title="Drawboard Blog RSS"
           href={`${getSiteUrl()}/feed.xml`}
         />
       </head>

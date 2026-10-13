@@ -131,7 +131,7 @@ Narrativa vertical. No es un carrusel.
 1. Título y la frase de la acción (entrar, reservar, patrocinar, escribir).
 2. Diagnóstico. Título grande. A la derecha, o debajo en móvil: «Qué recibe», «Qué no entra», «Listo cuando». CTA al final del bloque.
 3. Sistema. La misma estructura, más larga. La lista de exclusiones es una lista de texto, no una nube de chips.
-4. Continuidad. Misma estructura. Una línea visible antes del CTA: «Solo después de un Sistema entregado por Scelerity.»
+4. Continuidad. Misma estructura. Una línea visible antes del CTA: «Solo después de un Sistema entregado por Drawboard.»
 5. «Qué no hacemos.» Un párrafo. Sin iconos de prohibido.
 6. Preguntas. `h3` pregunta, párrafo respuesta. No un acordeón si el texto cabe. Si se pliega en móvil, el botón muestra la pregunta completa y el estado abierto no depende solo del color.
 

@@ -211,7 +211,7 @@ export const solutionsEs: SolutionsContent = {
       { title: "Technology", text: "Construimos cómo debe funcionar." },
       { title: "Growth", text: "Creamos cómo llega y cómo evoluciona." },
     ],
-    statement: "Scelerity conecta las cuatro capas.",
+    statement: "Drawboard conecta las cuatro capas.",
   },
   forward: {
     label: "2028+",
@@ -285,7 +285,7 @@ export const solutionsEs: SolutionsContent = {
     ctaSecondary: "Ver nuestro trabajo",
   },
   statement: {
-    brand: "Scelerity",
+    brand: "Drawboard",
     tagline: "Digital systems for a changing culture.",
     layers: "Strategy · Experience · Technology · Growth",
     year: "2028+",
@@ -364,7 +364,7 @@ export const solutionsEn: SolutionsContent = {
       { title: "Technology", text: "We build how it should work." },
       { title: "Growth", text: "We create how it arrives and how it evolves." },
     ],
-    statement: "Scelerity connects the four layers.",
+    statement: "Drawboard connects the four layers.",
   },
   forward: {
     label: "2028+",
@@ -438,7 +438,7 @@ export const solutionsEn: SolutionsContent = {
     ctaSecondary: "See our work",
   },
   statement: {
-    brand: "Scelerity",
+    brand: "Drawboard",
     tagline: "Digital systems for a changing culture.",
     layers: "Strategy · Experience · Technology · Growth",
     year: "2028+",

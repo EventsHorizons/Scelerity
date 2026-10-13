@@ -1,5 +1,5 @@
 /**
- * Cada imagen es evidencia del oficio, tomada del propio trabajo de Scelerity.
+ * Cada imagen es evidencia del oficio, tomada del propio trabajo de Drawboard.
  * IA y automatización no usan foto: el servicio es una relación, no un objeto fotografiable.
  */
 

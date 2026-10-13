@@ -22,7 +22,7 @@ export function buildPageMetadata({
   keywords,
 }: PageMetaInput): Metadata {
   const url = absoluteUrl(path);
-  const fullTitle = title.includes("Scelerity") ? title : `${title} — Scelerity`;
+  const fullTitle = title.includes("Drawboard") ? title : `${title} — Drawboard`;
   const image = ogImage ?? absoluteUrl("/favicon.svg");
 
   return {
@@ -52,7 +52,7 @@ export function buildPageMetadata({
 }
 
 export const HOME_METADATA = buildPageMetadata({
-  title: "Scelerity | Diseño Web, UX/UI y Estrategia Digital",
+  title: "Drawboard | Diseño Web, UX/UI y Estrategia Digital",
   description:
     "Agencia creativa y digital especializada en ecosistemas web, diseño UI/UX, identidad de marca y marketing. Soluciones precisas para empresas y creadores.",
   path: "/",

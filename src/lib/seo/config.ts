@@ -2,7 +2,7 @@ import { getSiteUrl } from "@/lib/site";
 
 /** Central SEO configuration — single source of truth for schema & metadata. */
 export const SEO_CONFIG = {
-  siteName: "Scelerity",
+  siteName: "Drawboard",
   defaultLocale: "es_ES" as const,
   tagline: "Agencia creativa y digital.",
   description:

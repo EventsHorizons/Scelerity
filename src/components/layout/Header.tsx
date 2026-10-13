@@ -143,7 +143,7 @@ export function Header() {
             data-cursor="link"
             onClick={openPage}
             className="inline-flex min-h-11 shrink-0 items-center"
-            aria-label="Scelerity — Home"
+            aria-label="Drawboard — Home"
           >
             <Logo className="wordmark-lockup--header" />
           </Link>

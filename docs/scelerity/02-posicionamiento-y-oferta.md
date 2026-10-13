@@ -10,7 +10,7 @@ La dirección a evaluar —estudio de marca y producto digital, con definir / co
 2. No hay casos con cliente ni resultado (Aether, Northline, Vespera). Ninguna razón de elección puede apoyarse en resultados de clientes.
 3. El formulario no envía mensajes y las páginas de Florida afirman una operación que la portada no sostiene. Eso se corrige aparte. No se usa como argumento de posicionamiento.
 
-El valor agregado cultural del DANE y del Ministerio de las Culturas (47,8 billones de pesos en 2025, boletín del 30 de julio de 2026) no es demanda de Scelerity.
+El valor agregado cultural del DANE y del Ministerio de las Culturas (47,8 billones de pesos en 2025, boletín del 30 de julio de 2026) no es demanda de Drawboard.
 
 ---
 
@@ -20,7 +20,7 @@ El valor agregado cultural del DANE y del Ministerio de las Culturas (47,8 billo
 
 No es una agencia de once oficios, ni una software house, ni una consultora jurídica, ni un venture studio.
 
-**Frase.** Scelerity construye el sistema con el que un proyecto cultural deja de depender de una campaña: a quién llega, cómo se reconoce y qué pieza queda funcionando.
+**Frase.** Drawboard construye el sistema con el que un proyecto cultural deja de depender de una campaña: a quién llega, cómo se reconoce y qué pieza queda funcionando.
 
 **Posicionamiento principal.** Uno solo. La portada cultural se mantiene. No se sustituye por «Tu negocio tiene algo valioso», que el informe planteó como opción A y que la auditoría muestra más genérica que el sitio actual.
 
@@ -39,7 +39,7 @@ Definir, construir y activar no son un segundo eslogan. Son el orden del trabajo
 | 1. Cultura con actividad recurrente | Principal. Es la única que se publica | Productor, promotor, festival, espacio, estudio, sello u organización en Colombia con programación, ventas, patrocinio, alquiler, formación o equipo | Hipótesis comercial. No está validada con ventas |
 | 2. B2B con producto ya existente | Experimento. Sin página propia hasta que alguien pague | Empresa pequeña que ya tiene oferta o producto y no logra explicar el valor o conseguir conversaciones | Como máximo ocho conversaciones entre los días 31 y 60. Si nadie paga, la ruta se cierra |
 
-Las dos rutas compran las mismas tres piezas. No hay marca «Scelerity Cultura» ni «Scelerity Tech».
+Las dos rutas compran las mismas tres piezas. No hay marca «Drawboard Cultura» ni «Drawboard Tech».
 
 ### Cliente, comprador y problema
 
@@ -51,14 +51,14 @@ Las dos rutas compran las mismas tres piezas. No hay marca «Scelerity Cultura»
 
 **Quién queda fuera por ahora.** Artista sin ingreso identificable, hasta que una entrevista muestre que sí paga. Quien pide una app, un SaaS o un MVP en quince días sin un flujo ya definido. Quien pide concepto jurídico, representación o un beneficio tributario.
 
-### Razones para elegir Scelerity
+### Razones para elegir Drawboard
 
 Solo dos son defendibles hoy. La tercera se niega a propósito.
 
 1. **El encargo tiene una acción y un límite.** Se acuerda qué debe poder hacer la persona al final (comprar, reservar, escribir, patrocinar) y qué queda fuera. Eso se puede mostrar en una propuesta. No depende de un caso que el sitio no tiene.
-2. **La pieza se entrega, no solo el discurso.** El repositorio demuestra que Scelerity publica un sitio real (Next.js, estático, bilingüe). Eso acredita oficio de construcción de una presencia web. No acredita resultados de clientes ni un plazo de quince días.
+2. **La pieza se entrega, no solo el discurso.** El repositorio demuestra que Drawboard publica un sitio real (Next.js, estático, bilingüe). Eso acredita oficio de construcción de una presencia web. No acredita resultados de clientes ni un plazo de quince días.
 
-No se dice que Scelerity sea líder, única o más cultural que el mercado. El conocimiento cultural es el idioma de la ruta 1. No es una ventaja demostrada: no hay proyectos publicados con cliente, rol y resultado.
+No se dice que Drawboard sea líder, única o más cultural que el mercado. El conocimiento cultural es el idioma de la ruta 1. No es una ventaja demostrada: no hay proyectos publicados con cliente, rol y resultado.
 
 ### Qué se puede prometer y qué no
 
@@ -71,7 +71,7 @@ No se dice que Scelerity sea líder, única o más cultural que el mercado. El c
 | Una lista de eventos a medir y un plan de mejora | Posiciones SEO, retorno de pauta o «crecimiento» |
 | Entrega del repositorio y accesos cuando hay código | Que el código sea de un producto de inversión |
 
-Temas de contratos, derechos de autor, cesión de la pieza y patrocinio: Scelerity puede ordenar documentos, fechas y un presupuesto de proyecto. El concepto jurídico, la revisión de riesgo y la representación los hace un abogado habilitado, con contrato distinto. No se ofrece la Ley 1493 de 2011 ni el incentivo de la Ley de Cine (Decreto 876 de 2026) como beneficio de cualquier proyecto cultural.
+Temas de contratos, derechos de autor, cesión de la pieza y patrocinio: Drawboard puede ordenar documentos, fechas y un presupuesto de proyecto. El concepto jurídico, la revisión de riesgo y la representación los hace un abogado habilitado, con contrato distinto. No se ofrece la Ley 1493 de 2011 ni el incentivo de la Ley de Cine (Decreto 876 de 2026) como beneficio de cualquier proyecto cultural.
 
 ---
 
@@ -114,7 +114,7 @@ Esta es la oferta principal. Es la que `docs/estrategia-scelerity.md` ya nombró
 | | |
 | --- | --- |
 | Problema de compra | La pieza existe y hace falta observar y ajustar, no abrir otro oficio |
-| Cliente | Quien ya tiene un Sistema entregado por Scelerity |
+| Cliente | Quien ya tiene un Sistema entregado por Drawboard |
 | Alcance | Revisión periódica de la acción medida, ajustes acotados de mensaje o de la pieza, y una lista de lo que no se toca |
 | Entregables | Informe corto del periodo y los cambios acordados, con límite de horas o de ítems |
 | Límites | No es un retainer de contenido, ni de ads, ni de desarrollo abierto |
@@ -126,7 +126,7 @@ No se vende Continuidad a quien todavía no tiene pieza.
 
 ### Cómo cotizar
 
-No hay tarifas de Scelerity en el repositorio ni en el sitio. No se publican precios. La referencia de JC-Green (planes de 2,5 y 5 millones COP al mes, antes de IVA) es un dato de otra empresa, no una tarifa de este estudio.
+No hay tarifas de Drawboard en el repositorio ni en el sitio. No se publican precios. La referencia de JC-Green (planes de 2,5 y 5 millones COP al mes, antes de IVA) es un dato de otra empresa, no una tarifa de este estudio.
 
 Antes de decir un número, anotar:
 
@@ -146,7 +146,7 @@ Faltan, y sin ellos cualquier cifra es un supuesto: capacidad semanal real, cost
 | Identidad aplicada a esa pieza | Branding como línea suelta |
 | Formulario e integración escrita en el alcance | Automatización o IA como servicio. En el código, la IA no es un producto; es una ficha de marketing |
 | Medición mínima de la acción acordada | SEO local en Florida, planes Starter / Growth / Full Digital, Google Business Profile como promesa |
-| Repositorio y accesos de lo que Scelerity construye en ese encargo | Migración de código legacy como producto |
+| Repositorio y accesos de lo que Drawboard construye en ese encargo | Migración de código legacy como producto |
 
 ---
 
@@ -172,7 +172,7 @@ Ninguna está demostrada el 11 de octubre de 2026.
 | Ruta B2B solo como experimento, sin página | El sitio no tiene casos B2B. Las páginas de Florida no cuentan como prueba (hallazgo 4 y 5) | Alta para no publicarla. Baja para saber si alguien pagaría | Ocho conversaciones | Día 60. Si no hay pago, se descarta |
 | Tres piezas: Diagnóstico, Sistema, Continuidad | La portada ya tiene las cuatro fases. El catálogo las disuelve | Alta como empaque. Baja como precio y plazo | Horas reales del primer diagnóstico | Al cerrar el primer piloto |
 | Se retira la promesa de quince días y las fichas sueltas de IA, SEO, ads, e-commerce, migración y apps | Esas fichas están publicadas y no tienen casos (`seo/services.ts`, `/servicios/mvp-rapido/`) | Alta | Ninguna comercial. Es coherencia, no una apuesta | Al cambiar el menú |
-| No hay oferta jurídica propia | Decreto 196 de 1971 y Ley 1905 de 2018, citados en el informe. Scelerity no acredita tarjeta profesional en el repo | Alta | El texto comercial lo debe leer un abogado antes de mencionar contratos | Antes de publicar cualquier línea sobre derechos o patrocinio |
+| No hay oferta jurídica propia | Decreto 196 de 1971 y Ley 1905 de 2018, citados en el informe. Drawboard no acredita tarjeta profesional en el repo | Alta | El texto comercial lo debe leer un abogado antes de mencionar contratos | Antes de publicar cualquier línea sobre derechos o patrocinio |
 | No se publican precios | No hay estados financieros ni tarifas en el proyecto | Alta | Horas y coste interno | Antes de la primera propuesta formal |
 | La identidad visual no se rehace en esta decisión | La auditoría localiza el fallo en la promesa, el formulario y la prueba, no en la paleta | Alta | Nada visual hasta que el menú y el formulario estén resueltos | Si las entrevistas no reconocen la portada |
 
@@ -192,7 +192,7 @@ Ninguna está demostrada el 11 de octubre de 2026.
 
 Usar este bloque sin reinterpretarlo. No inventar servicios, ciudades, plazos ni resultados.
 
-**Qué es.** Scelerity es un estudio. Ordena la oferta de un proyecto cultural y construye la pieza digital que esa oferta necesita para seguir en pie cuando la campaña se apaga.
+**Qué es.** Drawboard es un estudio. Ordena la oferta de un proyecto cultural y construye la pieza digital que esa oferta necesita para seguir en pie cuando la campaña se apaga.
 
 **Frase que manda.** Una idea no termina en una campaña. La portada «Ideas en cultura» se queda.
 

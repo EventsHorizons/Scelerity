@@ -19,13 +19,14 @@ type LocaleContextValue = {
 };
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
-const STORAGE_KEY = "scelerity-locale";
+const STORAGE_KEY = "drawboard-locale";
+const LEGACY_LOCALE_KEY = "scelerity-locale";
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("es");
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
+    const stored = (localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_LOCALE_KEY)) as Locale | null;
     if (stored === "es" || stored === "en") {
       setLocaleState(stored);
       document.documentElement.lang = stored;

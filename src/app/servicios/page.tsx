@@ -10,10 +10,10 @@ import { pageGraph, serviceNode } from "@/lib/seo/schema";
 import { SEO_SERVICES } from "@/lib/seo/services";
 
 const description =
-  "Diseño web, branding, desarrollo, aplicaciones, comercio electrónico, SEO y marketing digital. Scelerity, Bogotá.";
+  "Diseño web, branding, desarrollo, aplicaciones, comercio electrónico, SEO y marketing digital. Drawboard, Bogotá.";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Servicios — Scelerity",
+  title: "Servicios — Drawboard",
   description,
   path: "/servicios/",
   keywords: [

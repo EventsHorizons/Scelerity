@@ -13,7 +13,7 @@ type Props = {
 };
 
 const urls: Record<SolutionsReelVariant, string> = {
-  hero: "scelerity.com",
+  hero: "drawboard.com",
   dev: "studio.app",
   landing: "pulse.io",
 };

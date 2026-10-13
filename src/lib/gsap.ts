@@ -6,7 +6,7 @@ import { CustomEase } from "gsap/CustomEase";
 let registered = false;
 
 /**
- * SCELERITY Motion System v2 — controlled kinetic energy.
+ * DRAWBOARD Motion System v2 — controlled kinetic energy.
  * ScrollTrigger is registered lazily by SmoothScroll when Lenis is active.
  */
 export function registerGsap() {

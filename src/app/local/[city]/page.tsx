@@ -13,13 +13,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city } = await params;
   const page = getLocalBySlug(city);
-  if (!page) return { title: "Local — Scelerity" };
+  if (!page) return { title: "Local — Drawboard" };
 
   return buildPageMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
     path: `/local/${page.slug}/`,
-    keywords: [`diseño web ${page.city}`, `scelerity ${page.city}`],
+    keywords: [`diseño web ${page.city}`, `drawboard ${page.city}`],
   });
 }
 

@@ -33,7 +33,7 @@ El build estático listó: `/`, `/servicios/`, `/proyectos/`, `/nosotros/`, `/co
 
 En `http://localhost:3000/` se leyó el texto aprobado: h1 «Ideas en cultura.», las cuatro fases, las tres piezas, la frase de maquetas, correo, WhatsApp y Bogotá. No había `<form>`. El enlace de WhatsApp es `https://wa.me/573015993300`.
 
-`/servicios/` titula «Cómo trabajamos — Scelerity» y abre con Diagnóstico. `/proyectos/` dice que no hay casos y muestra tres imágenes.
+`/servicios/` titula «Cómo trabajamos — Drawboard» y abre con Diagnóstico. `/proyectos/` dice que no hay casos y muestra tres imágenes.
 
 A 390 px de ancho, la portada no generó scroll horizontal (`scrollWidth` igual a 390). El botón «Abrir menú» está en el árbol de accesibilidad. No se recorrió el sitio entero con Tab.
 

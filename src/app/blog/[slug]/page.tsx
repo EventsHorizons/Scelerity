@@ -33,12 +33,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Artículo — Scelerity" };
+  if (!post) return { title: "Artículo — Drawboard" };
 
   const url = `${getSiteUrl()}/blog/${post.slug}/`;
 
   return {
-    title: `${post.title} — Scelerity`,
+    title: `${post.title} — Drawboard`,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}/` },
     authors: [{ name: post.author }],

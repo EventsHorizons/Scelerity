@@ -18,7 +18,7 @@ type ThemeContextValue = {
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
-const STORAGE_KEY = "scelerity-theme";
+const STORAGE_KEY = "drawboard-theme";
 
 function readTheme(): Theme {
   if (typeof document === "undefined") return "dark";

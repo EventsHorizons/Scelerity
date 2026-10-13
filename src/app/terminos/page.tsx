@@ -8,8 +8,8 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Términos y Condiciones — Scelerity",
-  description: "Términos y condiciones de uso del sitio web y servicios de Scelerity.",
+  title: "Términos y Condiciones — Drawboard",
+  description: "Términos y condiciones de uso del sitio web y servicios de Drawboard.",
   path: "/terminos/",
 });
 
@@ -35,14 +35,14 @@ export default function TerminosPage() {
               <section>
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">1. Uso del sitio</h2>
                 <p className="mt-2">
-                  Al acceder a scelerity.co aceptas estos términos. El contenido del sitio es informativo y no constituye
+                  Al acceder a Drawboard aceptas estos términos. El contenido del sitio es informativo y no constituye
                   una oferta vinculante hasta acordar un contrato de servicios por escrito.
                 </p>
               </section>
               <section>
                 <h2 className="font-display text-h4 font-semibold text-[var(--fg)]">2. Propiedad intelectual</h2>
                 <p className="mt-2">
-                  El diseño, código, marca y contenidos de Scelerity están protegidos. No está permitida su reproducción
+                  El diseño, código, marca y contenidos de Drawboard están protegidos. No está permitida su reproducción
                   sin autorización expresa.
                 </p>
               </section>

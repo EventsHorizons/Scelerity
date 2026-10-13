@@ -28,7 +28,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "diseno-web",
     pillar: "diseno",
     title: "Diseño Web",
-    metaTitle: "Diseño de páginas web — Scelerity",
+    metaTitle: "Diseño de páginas web — Drawboard",
     metaDescription:
       "Sitios y páginas de llegada que explican la oferta, se leen en el teléfono y dejan un contacto. El plazo se acuerda al definir el alcance.",
     keywords: ["diseño web", "diseño web profesional", "ux ui", "landing page"],
@@ -70,7 +70,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "desarrollo-web",
     pillar: "desarrollo",
     title: "Desarrollo Web",
-    metaTitle: "Desarrollo web — Scelerity",
+    metaTitle: "Desarrollo web — Drawboard",
     metaDescription:
       "El sitio se construye para seguir en pie cuando llega gente, y para cambiar sin reescribirlo entero.",
     keywords: ["desarrollo web", "desarrollo web a medida", "sitios web"],
@@ -112,7 +112,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "desarrollo-apps",
     pillar: "desarrollo",
     title: "Desarrollo de Aplicaciones",
-    metaTitle: "Aplicaciones — Scelerity",
+    metaTitle: "Aplicaciones — Drawboard",
     metaDescription:
       "Aplicaciones con un flujo que alguien puede volver a abrir. El alcance se corta antes de construir.",
     keywords: ["desarrollo de apps", "aplicaciones a medida", "mvp", "software a medida"],
@@ -154,7 +154,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "seo",
     pillar: "marketing",
     title: "SEO",
-    metaTitle: "SEO — Scelerity",
+    metaTitle: "SEO — Drawboard",
     metaDescription:
       "Que el sitio aparezca cuando la búsqueda ya tiene una intención. Técnica, estructura y contenido. Sin una posición prometida.",
     keywords: ["seo", "posicionamiento web", "seo técnico", "agencia seo"],
@@ -196,7 +196,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "branding",
     pillar: "diseno",
     title: "Branding Digital",
-    metaTitle: "Branding e identidad de marca — Scelerity",
+    metaTitle: "Branding e identidad de marca — Drawboard",
     metaDescription:
       "Identidad de marca para empresas: nombre, tono, sistema visual y manual para usar la marca en el día a día.",
     keywords: ["branding digital", "identidad visual", "marca", "posicionamiento de marca"],
@@ -238,7 +238,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "marketing-digital",
     pillar: "marketing",
     title: "Marketing Digital",
-    metaTitle: "Marketing digital — Scelerity",
+    metaTitle: "Marketing digital — Drawboard",
     metaDescription:
       "Campaña, sitio y mensaje con el mismo texto. Cada canal entra si queda escrito en el encargo. Sin una venta prometida.",
     keywords: ["marketing digital", "publicidad digital", "comunicación digital"],
@@ -280,7 +280,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "inteligencia-artificial",
     pillar: "desarrollo",
     title: "Inteligencia Artificial",
-    metaTitle: "Inteligencia artificial — Scelerity",
+    metaTitle: "Inteligencia artificial — Drawboard",
     metaDescription:
       "Un caso concreto de IA dentro del trabajo que ya existe. La decisión sigue en el equipo. Sin un demo que nadie usa.",
     keywords: ["inteligencia artificial empresas", "ia para empresas", "automatización ia"],
@@ -322,7 +322,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "automatizacion",
     pillar: "desarrollo",
     title: "Automatización",
-    metaTitle: "Automatización — Scelerity",
+    metaTitle: "Automatización — Drawboard",
     metaDescription:
       "Lo que se copia entre herramientas sale del día, con un aviso cuando falla. Sin prometer horas recuperadas.",
     keywords: ["automatización", "integraciones", "procesos"],
@@ -364,7 +364,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "ecommerce",
     pillar: "desarrollo",
     title: "E-commerce",
-    metaTitle: "E-commerce — Scelerity",
+    metaTitle: "E-commerce — Drawboard",
     metaDescription:
       "Ficha, catálogo y pago en un solo recorrido. Cada paso se ordena para no perder una compra ya decidida.",
     keywords: ["ecommerce", "tienda online", "desarrollo ecommerce"],
@@ -406,7 +406,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "migracion-legacy",
     pillar: "desarrollo",
     title: "Migración y Refactorización de Código Legacy",
-    metaTitle: "Migración de código heredado — Scelerity",
+    metaTitle: "Migración de código heredado — Drawboard",
     metaDescription:
       "El sistema viejo deja de marcar el ritmo del producto. Se reescribe por partes, sin apagar el negocio.",
     keywords: [
@@ -463,7 +463,7 @@ export const SEO_SERVICES: ServicePage[] = [
     slug: "mvp-rapido",
     pillar: "desarrollo",
     title: "MVP Ultra-Rápido como Servicio (MaaS)",
-    metaTitle: "Primera versión de un producto — Scelerity",
+    metaTitle: "Primera versión de un producto — Drawboard",
     metaDescription:
       "Una primera versión usable, con el flujo acordado y un plazo definido en la conversación inicial. No publicamos un plazo fijo.",
     keywords: [

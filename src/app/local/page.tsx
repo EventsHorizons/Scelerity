@@ -12,7 +12,7 @@ import { LOCAL_PAGES } from "@/lib/seo/local";
 export const metadata: Metadata = buildPageMetadata({
   title: "Presencia — Diseño, desarrollo y marketing",
   description:
-    "Scelerity trabaja desde Bogotá y también en Orlando, Miami, Tampa, Jacksonville y Kissimmee. Diseño, desarrollo y marketing.",
+    "Drawboard trabaja desde Bogotá y también en Orlando, Miami, Tampa, Jacksonville y Kissimmee. Diseño, desarrollo y marketing.",
   path: "/local/",
 });
 
