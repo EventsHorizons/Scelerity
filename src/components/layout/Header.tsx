@@ -77,6 +77,17 @@ export function Header() {
     scrollToStart();
   }, []);
 
+  const followLink = useCallback(
+    (href: string) => {
+      if (href.startsWith("#") || href.includes("/#")) {
+        setOpen(false);
+        return;
+      }
+      openPage();
+    },
+    [openPage],
+  );
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -156,7 +167,7 @@ export function Header() {
                     data-cursor="link"
                     aria-current={active ? "page" : undefined}
                     className={itemClass(active)}
-                    onClick={openPage}
+                    onClick={() => followLink(link.href)}
                   >
                     {link.label}
                   </Link>
@@ -235,7 +246,7 @@ export function Header() {
                         <Link
                           href={link.href}
                           data-cursor="link"
-                          onClick={openPage}
+                          onClick={() => followLink(link.href)}
                           aria-current={active ? "page" : undefined}
                           data-active={active ? "true" : undefined}
                           className="nav-overlay__link"

@@ -132,13 +132,13 @@ const voidBlack: Depth = {
 export const PAGE = {
   hero: {
     label: { es: "Servicios", en: "Services" },
-    title: { es: "Forma, base y señal.", en: "Form, structure, and signal." },
-    key: { es: "la base.", en: "the base." },
+    title: { es: "Servicios", en: "Services" },
+    key: { es: "concretos.", en: "in plain terms." },
     sub: {
-      es: "Diseño, desarrollo, producto y distribución. Cada servicio parte de un problema concreto y termina en una pieza que el proyecto puede seguir usando.",
-      en: "Design, engineering, product, and distribution. Each service starts from a concrete problem and ends in a piece the project can keep using.",
+      es: "Desarrollo web, interfaces, marcas y marketing. También hay tienda, búsqueda, apps y otras piezas si el proyecto las necesita.",
+      en: "Web development, interfaces, brands, and marketing. A shop, search, apps, and other pieces exist if the project needs them.",
     },
-    cta: { es: "Hablar del proyecto", en: "Talk about the project" },
+    cta: { es: "Hablemos de tu proyecto", en: "Let’s talk about your project" },
     indexLabel: { es: "Índice", en: "Index" },
     crumb: { es: "Servicios", en: "Services" },
     home: { es: "Inicio", en: "Home" },
@@ -146,32 +146,32 @@ export const PAGE = {
   intro: {
     label: { es: "Qué hacemos", en: "What we do" },
     title: {
-      es: "Una intervención, no un catálogo.",
-      en: "An intervention, not a catalogue.",
+      es: "Una ficha por servicio.",
+      en: "One entry per service.",
     },
     body: {
-      es: "No separamos la imagen del uso, ni el uso de la técnica que lo sostiene. El trabajo empieza por lo que no se entiende, no convierte o no aguanta — y termina en una pieza que el proyecto puede seguir usando.",
-      en: "We do not separate image from use, or use from the technique that holds it. The work starts with what cannot be understood, does not convert, or does not hold — and ends in a piece the project can keep using.",
+      es: "El sitio se construye. La interfaz ordena el uso. La marca define cómo se reconoce. El marketing lleva gente a una página que ya está lista.",
+      en: "The site gets built. The interface orders its use. The brand defines how it is recognized. Marketing brings people to a page that is already ready.",
     },
   },
   hinge: {
     label: { es: "Profundidad", en: "Depth" },
     text: {
-      es: "El contraste sube porque el trabajo cambia de naturaleza. De la forma visible a la estructura que la sostiene.",
-      en: "Contrast rises because the work changes nature. From the visible form to the structure that holds it.",
+      es: "Cada servicio de abajo nombra un problema y lo que se entrega.",
+      en: "Each service below names a problem and what gets delivered.",
     },
   },
   close: {
     label: { es: "Conversación", en: "Conversation" },
     title: {
-      es: "El proyecto, dicho con precisión.",
-      en: "The project, said precisely.",
+      es: "Qué necesitas.",
+      en: "What you need.",
     },
     body: {
-      es: "Si el problema ya tiene nombre, el siguiente paso es definirlo juntos. Sin lista de promesas: alcance, forma y base.",
-      en: "If the problem already has a name, the next step is to define it together. No list of promises: scope, form, and structure.",
+      es: "Empresa, artista o evento. Te respondemos con el alcance.",
+      en: "A company, an artist, or an event. We reply with the scope.",
     },
-    cta: { es: "Hablar del proyecto", en: "Talk about the project" },
+    cta: { es: "Hablemos de tu proyecto", en: "Let’s talk about your project" },
   },
   enter: { es: "Ver el servicio", en: "View the service" },
   labels: {
@@ -189,8 +189,8 @@ export const SERVICES: ServiceEntry[] = [
     index: "01",
     title: { es: "Diseño web", en: "Web design" },
     manifesto: {
-      es: "La interfaz es la forma en que una idea se deja usar.",
-      en: "The interface is the way an idea allows itself to be used.",
+      es: "Sitios que explican el negocio y se pueden usar en el teléfono.",
+      en: "Websites that explain the business and work on a phone.",
     },
     problem: {
       es: "Una primera pantalla que no se entiende pierde a quien llegó con una intención. El móvil y el escritorio no pueden pedir dos lecturas distintas.",
@@ -232,16 +232,16 @@ export const SERVICES: ServiceEntry[] = [
       { es: "Prototipos de lectura", en: "Reading prototypes" },
     ],
     impact: [
-      { es: "Menos fricción en la primera lectura", en: "Less friction on the first reading" },
+      { es: "La primera lectura pide menos esfuerzo", en: "The first reading asks for less effort" },
       { es: "Oferta más clara", en: "A clearer offer" },
       { es: "El mismo sentido en móvil y escritorio", en: "The same meaning on phone and desktop" },
     ],
     figure: { es: "Estructura de lectura", en: "Reading structure" },
     image: {
-      src: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/pagina.jpg",
       alt: {
-        es: "Una landing page diseñada, vista a la vez en monitor, tablet y teléfono",
-        en: "A designed landing page, seen at once on a monitor, tablet, and phone",
+        es: "Un monitor y una hoja impresa con la misma composición, sin texto",
+        en: "A monitor and a printed sheet with the same layout, and no text",
       },
       line: { es: "Diseño", en: "Design" },
       key: { es: "web", en: "web" },
@@ -255,8 +255,8 @@ export const SERVICES: ServiceEntry[] = [
     index: "02",
     title: { es: "Branding", en: "Branding" },
     manifesto: {
-      es: "La identidad es un sistema que se reconoce antes del nombre.",
-      en: "Identity is a system recognized before the name.",
+      es: "Nombre, tono y sistema visual para usar la marca en el día a día.",
+      en: "Name, tone, and a visual system the brand can use every day.",
     },
     problem: {
       es: "Piezas que no se hablan entre sí debilitan la percepción antes de que exista un argumento.",
@@ -304,10 +304,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Centro que se sostiene", en: "A center that holds" },
     image: {
-      src: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/marca.jpg",
       alt: {
-        es: "Muestrario de color y paleta: el sistema visual de una marca",
-        en: "Color swatches and a palette: a brand’s visual system",
+        es: "Papel hueso, papel negro, un chip magenta y un signo geométrico",
+        en: "Bone paper, black paper, a magenta chip, and a geometric mark",
       },
       line: { es: "La marca", en: "The mark" },
       key: { es: "antes", en: "first" },
@@ -370,10 +370,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Carga y conexión", en: "Load and connection" },
     image: {
-      src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/estructura.jpg",
       alt: {
-        es: "Editor con el HTML y el CSS de una página web",
-        en: "An editor with the HTML and CSS of a web page",
+        es: "Un monitor con bloques de página y tres acetatos con la misma estructura",
+        en: "A monitor with page blocks and three acetate sheets of the same structure",
       },
       line: { es: "La base", en: "The base" },
       key: { es: "aguanta", en: "holds" },
@@ -430,16 +430,16 @@ export const SERVICES: ServiceEntry[] = [
       { es: "Paneles y prototipos funcionales", en: "Panels and working prototypes" },
     ],
     impact: [
-      { es: "Menos fricción en el uso repetido", en: "Less friction in repeated use" },
+      { es: "Volver a abrirla cuesta menos", en: "Opening it again costs less" },
       { es: "Decisiones de producto más claras", en: "Clearer product decisions" },
       { es: "Una base que admite el siguiente paso", en: "A base that admits the next step" },
     ],
     figure: { es: "Capas de un producto", en: "Layers of a product" },
     image: {
-      src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/app.jpg",
       alt: {
-        es: "La interfaz de una aplicación en el teléfono, y el mismo producto en el portátil",
-        en: "An application interface on the phone, and the same product on the laptop",
+        es: "Un teléfono con una interfaz de bloques grises y una línea magenta",
+        en: "A phone with a gray-block interface and a magenta line",
       },
       line: { es: "Capas", en: "Layers" },
       key: { es: "de uso", en: "of use" },
@@ -502,10 +502,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Recorrido hacia el pago", en: "Path toward payment" },
     image: {
-      src: "https://images.unsplash.com/photo-1539278383962-a7774385fa02?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/caja.jpg",
       alt: {
-        es: "Ficha de producto en una tienda online: prenda, precio y variantes de color",
-        en: "A product page in an online store: garment, price, and color variants",
+        es: "Una caja con franja magenta y un teléfono que muestra el mismo bloque",
+        en: "A box with a magenta stripe and a phone showing the same block",
       },
       line: { es: "El objeto", en: "The object" },
       key: { es: "y el paso", en: "and the step" },
@@ -568,10 +568,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Una búsqueda que encuentra", en: "A search that finds" },
     image: {
-      src: "https://images.unsplash.com/photo-1726066012699-1c843dad5fd8?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/hallazgo.jpg",
       alt: {
-        es: "Una búsqueda de Google abierta en un portátil",
-        en: "A Google search open on a laptop",
+        es: "Una hoja clara sobre un montón de hojas negras, con el filo magenta",
+        en: "A light sheet on a stack of black sheets, with a magenta edge",
       },
       line: { es: "La búsqueda", en: "The search" },
       key: { es: "encuentra", en: "finds" },
@@ -634,10 +634,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "El mismo mensaje, en ondas", en: "The same message, in waves" },
     image: {
-      src: "https://images.unsplash.com/photo-1759215524600-7971d6a4dac0?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/piezas.jpg",
       alt: {
-        es: "Estadísticas de una publicación en redes: alcance, seguidores y origen de las vistas",
-        en: "Stats for a social post: reach, followers, and where the views came from",
+        es: "Un ticket, una tarjeta y un sobre con el mismo signo y la misma franja magenta",
+        en: "A ticket, a card, and an envelope sharing one mark and one magenta stripe",
       },
       line: { es: "El mismo", en: "The same" },
       key: { es: "mensaje", en: "message" },
@@ -700,10 +700,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Densidad donde el campo se calma", en: "Density where the field goes quiet" },
     image: {
-      src: "https://images.unsplash.com/photo-1753907537890-f20de9e116cc?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/seleccion.jpg",
       alt: {
-        es: "La interfaz de ChatGPT: un flujo asistido, con la petición en pantalla",
-        en: "The ChatGPT interface: an assisted flow, with the request on screen",
+        es: "Cinco tarjetas iguales y una sola marcada con un cuadrado magenta",
+        en: "Five identical cards, only one marked with a magenta square",
       },
       line: { es: "El criterio", en: "Judgment" },
       key: { es: "sigue", en: "stays" },
@@ -766,10 +766,10 @@ export const SERVICES: ServiceEntry[] = [
     ],
     figure: { es: "Un circuito que sigue", en: "A circuit that continues" },
     image: {
-      src: "https://images.unsplash.com/photo-1648134859187-71dadc9f815a?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/hilo.jpg",
       alt: {
-        es: "Un tablero de automatizaciones que conecta tareas entre herramientas",
-        en: "An automations board that connects tasks across tools",
+        es: "Tres cubos negros unidos por un hilo magenta",
+        en: "Three black cubes joined by a magenta thread",
       },
       line: { es: "Lo que se", en: "What" },
       key: { es: "repite", en: "repeats" },
@@ -794,8 +794,8 @@ export const SERVICES: ServiceEntry[] = [
       en: "An obsolete monolith slows every change: business logic stays trapped and the interface cannot grow without fear of breaking what already works.",
     },
     response: {
-      es: "Modernizamos sistemas monolíticos obsoletos. Reescribimos lógica de negocio compleja en arquitecturas modernas (React, Astro, TypeScript, Supabase) para entregar una interfaz rápida y escalable en una fracción del tiempo habitual.",
-      en: "We modernize obsolete monolithic systems. We rewrite complex business logic on modern architectures (React, Astro, TypeScript, Supabase) to deliver a fast, scalable interface in a fraction of the usual time.",
+      es: "Modernizamos el sistema que ya no deja cambiar el producto. La lógica se reescribe por partes, sin apagar el negocio, hasta dejar una interfaz que se puede seguir.",
+      en: "We modernize the system that no longer lets the product change. The logic is rewritten in parts, without stopping the business, until the interface can keep going.",
     },
     capabilities: [
       {
@@ -809,9 +809,9 @@ export const SERVICES: ServiceEntry[] = [
       {
         title: { es: "Reescritura", en: "Rewrite" },
         items: [
-          { es: "Lógica de negocio", en: "Business logic" },
-          { es: "TypeScript y APIs", en: "TypeScript and APIs" },
-          { es: "Datos en Supabase", en: "Data on Supabase" },
+          { es: "La lógica del negocio", en: "The business logic" },
+          { es: "Contratos claros", en: "Clear contracts" },
+          { es: "Datos en un solo lugar", en: "Data in one place" },
         ],
       },
       {
@@ -829,16 +829,16 @@ export const SERVICES: ServiceEntry[] = [
       { es: "Plan de corte y despliegue", en: "Cutover and deploy plan" },
     ],
     impact: [
-      { es: "Menos fricción al cambiar", en: "Less friction when changing" },
+      { es: "El siguiente cambio no obliga a rehacerlo", en: "The next change does not force a rewrite" },
       { es: "Interfaz más rápida", en: "A faster interface" },
       { es: "Base lista para escalar", en: "A base ready to scale" },
     ],
     figure: { es: "De monolito a base viva", en: "From monolith to a living base" },
     image: {
-      src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/paso.jpg",
       alt: {
-        es: "Código en un editor, listo para reescribirse en una arquitectura moderna",
-        en: "Code in an editor, ready to be rewritten into a modern architecture",
+        es: "Un montón de papel gastado al lado de un montón de papel nuevo",
+        en: "A stack of worn paper beside a stack of new paper",
       },
       line: { es: "Código", en: "Code" },
       key: { es: "vivo", en: "alive" },
@@ -855,32 +855,32 @@ export const SERVICES: ServiceEntry[] = [
       en: "Ultra-fast MVP (MaaS)",
     },
     manifesto: {
-      es: "De idea a plataforma funcional en quince días.",
-      en: "From idea to a working platform in fifteen days.",
+      es: "Una primera versión usable, con el alcance y el plazo acordados.",
+      en: "A usable first version, with scope and timeline agreed up front.",
     },
     problem: {
       es: "Una prueba de concepto no puede esperar un trimestre. Sin un producto usable, la idea no se valida ni se financia.",
       en: "A proof of concept cannot wait a quarter. Without a usable product, the idea is neither validated nor funded.",
     },
     response: {
-      es: "Entregamos el código listo para producción con frameworks modernos y bases de datos relacionales. Ideal para pruebas de concepto y lanzamientos ágiles.",
-      en: "We deliver production-ready code with modern frameworks and relational databases. Built for proofs of concept and agile launches.",
+      es: "Construimos el flujo que demuestra la idea y lo dejamos publicado. El plazo sale del alcance, no de una fecha fija.",
+      en: "We build the flow that proves the idea and leave it published. The timeline comes from the scope, not from a fixed date.",
     },
     capabilities: [
       {
         title: { es: "Alcance", en: "Scope" },
         items: [
           { es: "Flujo crítico", en: "Critical flow" },
-          { es: "Qué entra en 15 días", en: "What fits in 15 days" },
+          { es: "Qué entra en esta fase", en: "What fits in this phase" },
           { es: "Qué queda fuera", en: "What stays out" },
         ],
       },
       {
         title: { es: "Construcción", en: "Build" },
         items: [
-          { es: "React o Astro", en: "React or Astro" },
-          { es: "TypeScript", en: "TypeScript" },
-          { es: "Base relacional", en: "Relational database" },
+          { es: "Interfaz usable", en: "A usable interface" },
+          { es: "Lógica escrita", en: "Written logic" },
+          { es: "Datos ordenados", en: "Ordered data" },
         ],
       },
       {
@@ -898,16 +898,16 @@ export const SERVICES: ServiceEntry[] = [
       { es: "Guía de siguientes pasos", en: "Guide for next steps" },
     ],
     impact: [
-      { es: "Validación en semanas, no meses", en: "Validation in weeks, not months" },
+      { es: "Una primera versión que se puede abrir", en: "A first version someone can open" },
       { es: "Producto real para mostrar", en: "A real product to show" },
       { es: "Menos riesgo antes de invertir más", en: "Less risk before investing more" },
     ],
     figure: { es: "Una plataforma que ya corre", en: "A platform that already runs" },
     image: {
-      src: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80",
+      src: "/services/prueba.jpg",
       alt: {
-        es: "Equipo trabajando sobre pantallas con producto y código listo para lanzar",
-        en: "A team working over screens with product and code ready to launch",
+        es: "Un teléfono y una tarjeta pequeña sobre una mesa casi vacía",
+        en: "A phone and a small card on an almost empty table",
       },
       line: { es: "Idea a", en: "Idea to" },
       key: { es: "producto", en: "product" },

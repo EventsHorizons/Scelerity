@@ -122,7 +122,7 @@ export function ServicePageView({ service }: Props) {
                 </ul>
               </div>
               <div>
-                <h2 className="font-display text-h3 font-semibold">Tecnologías</h2>
+                <h2 className="font-display text-h3 font-semibold">Ejecución</h2>
                 <div className="mt-8 flex flex-wrap gap-3">
                   {service.technologies.map((t) => (
                     <span
@@ -196,7 +196,7 @@ export function ServicePageView({ service }: Props) {
           <Container size="content" className="section-y text-center">
             <p className="chapter-label">{PILLAR_LABELS[service.pillar]}</p>
             <h2 className="mx-auto mt-3 max-w-[20ch] font-display text-h2 font-semibold text-balance">
-              Hablemos
+              Hablemos de tu proyecto
             </h2>
             <div className="mt-[var(--space-8)]">
               <Button href="/contacto/" size="lg">

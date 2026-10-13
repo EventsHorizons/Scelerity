@@ -4,9 +4,9 @@ import { getSiteUrl } from "@/lib/site";
 export const SEO_CONFIG = {
   siteName: "Scelerity",
   defaultLocale: "es_ES" as const,
-  tagline: "Cultural & creative marketing.",
+  tagline: "Agencia creativa y digital.",
   description:
-    "Hacemos que las ideas entren en la cultura. Estrategia, creatividad, identidad y experiencias.",
+    "Agencia creativa y digital especializada en ecosistemas web, diseño UI/UX, identidad de marca y marketing. Soluciones precisas para empresas y creadores.",
   email: "hello@scelerity.co",
   phone: "+57 3015993300",
   whatsapp: "+573015993300",
@@ -30,12 +30,7 @@ export const SEO_CONFIG = {
     "https://tiktok.com/@scelerity",
   ],
   foundingDate: "2024",
-  knowsAbout: [
-    "Marketing cultural",
-    "Identidad",
-    "Producto digital",
-    "Campañas",
-  ],
+  knowsAbout: ["Marca", "Sitios web", "Mensajes", "Identidad"],
 } as const;
 
 export function getOrgId() {

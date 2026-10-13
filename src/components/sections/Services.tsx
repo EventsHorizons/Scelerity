@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { useLocale } from "@/context/LocaleContext";
 import { useServiceReel } from "@/components/sections/services-system/useServiceReel";
 import heroStyles from "@/components/sections/scelerity-hero/hero.module.css";
@@ -60,15 +61,15 @@ export function Services() {
                 <p className={styles.phaseBody}>{phase.body}</p>
                 <ul className={styles.rows}>
                   {phase.rows.map((row) => (
-                    <li key={row.label} className={styles.row}>
+                    <li key={`${row.label}-${row.value}`} className={styles.row}>
                       <span className={styles.rowLabel}>{row.label}</span>
                       <span className={styles.rowValue}>{row.value}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" className={styles.cta} data-cursor="link">
-                  {copy.cta}
-                </a>
+                <Link href={phase.href} className={styles.cta} data-cursor="link">
+                  {phase.action}
+                </Link>
               </div>
             </article>
           ))}

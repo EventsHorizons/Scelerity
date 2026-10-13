@@ -232,13 +232,13 @@ export function ServiceOffer() {
         <Container size="content" className="section-y-lg">
           <Breadcrumbs items={breadcrumbs} className="mb-16" />
           <div className="section-head">
-            <p className="chapter-label lg:pt-3">Cultural & creative marketing</p>
+            <p className="chapter-label lg:pt-3">Agencia creativa y digital</p>
             <div>
               <h1 className="text-balance font-display text-hero font-semibold">
                 Diseño, desarrollo y marketing.
               </h1>
               <p className="mt-12 measure text-lead text-pretty text-[var(--fg-muted)]">
-                Nueve oficios. Un criterio: que la idea entre en la cultura.
+                Marca, diseño y presencia digital para empresas de distintos sectores.
               </p>
               <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:gap-8">
                 <Button href="/contacto/">Hablemos</Button>

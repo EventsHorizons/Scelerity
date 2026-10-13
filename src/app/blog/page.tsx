@@ -10,11 +10,11 @@ import { getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog — Scelerity",
-  description: "Notas sobre diseño, desarrollo, marketing y cultura.",
+  description: "Textos sobre sitios, marcas, interfaces y marketing.",
   alternates: { canonical: "/blog/" },
   openGraph: {
     title: "Blog — Scelerity",
-    description: "Notas sobre diseño, desarrollo, marketing y cultura.",
+    description: "Textos sobre sitios, marcas, interfaces y marketing.",
     type: "website",
     url: `${getSiteUrl()}/blog/`,
   },
@@ -30,10 +30,10 @@ export default function BlogPage() {
       <main id="main" className="page-rhythm">
         <Section id="blog-hero" cardTone="paper">
           <Container size="content">
-            <p className="chapter-label">Cultural & creative marketing</p>
+            <p className="chapter-label">Notas</p>
             <h1 className="mt-8 font-display text-h1 font-semibold">Blog</h1>
             <p className="mt-8 max-w-[42ch] text-lead text-[var(--fg-muted)]">
-              Diseño, desarrollo, SEO, marca y campañas, leídos desde el trabajo cultural y creativo.
+              Textos sobre sitios, marcas, interfaces y marketing.
             </p>
           </Container>
         </Section>

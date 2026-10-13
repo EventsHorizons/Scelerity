@@ -21,7 +21,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     country: "US",
     metaTitle: "Diseño, desarrollo y marketing en Orlando — Scelerity",
     metaDescription:
-      "Diseño web, desarrollo y marketing para proyectos en Orlando. El mismo oficio de Scelerity, con criterio cultural.",
+      "Diseño web, desarrollo y marketing para empresas. Scelerity trabaja desde Bogotá.",
     hero: {
       eyebrow: "Orlando, FL",
       headline: "Diseño, desarrollo y marketing en Orlando.",
@@ -29,7 +29,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     },
     intro: [
       "Orlando concentra turismo, tecnología y emprendimiento. Ahí la primera impresión suele ser digital.",
-      "Hacemos diseño, desarrollo y marketing desde Bogotá, con el criterio cultural de Scelerity.",
+      "Hacemos diseño, desarrollo y marketing desde Bogotá. No tenemos oficina en esta ciudad.",
     ],
     highlights: [
       "Landing pages para negocios de hospitalidad y servicios",
@@ -39,8 +39,8 @@ export const LOCAL_PAGES: LocalPage[] = [
     neighborhoods: ["Downtown Orlando", "Lake Nona", "Winter Park", "Dr. Phillips", "International Drive"],
     services: ["diseno-web", "seo", "marketing-digital", "desarrollo-web"],
     faq: [
-      { q: "¿Tienen oficina en Orlando?", a: "Operamos remoto con reuniones presenciales bajo demanda en Orlando." },
-      { q: "¿Atienden solo Orlando?", a: "No. Servimos toda Florida y clientes internacionales." },
+      { q: "¿Tienen oficina en Orlando?", a: "No. El trabajo se hace desde Bogotá." },
+      { q: "¿Atienden solo Orlando?", a: "No. Un proyecto puede ser de otra ciudad. No hay sede publicada en Florida." },
     ],
   },
   {
@@ -58,7 +58,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     },
     intro: [
       "Miami pide marcas con carácter y productos digitales que aguanten una comparación global.",
-      "El oficio es diseño, desarrollo y marketing. El criterio, el de Scelerity: cultural y creativo.",
+      "El oficio es diseño, desarrollo y marketing para empresas. El trabajo se hace desde Bogotá.",
     ],
     highlights: [
       "Branding para startups y real estate",
@@ -68,7 +68,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     neighborhoods: ["Brickell", "Wynwood", "Coral Gables", "Miami Beach", "Doral"],
     services: ["branding", "diseno-web", "marketing-digital", "desarrollo-apps"],
     faq: [
-      { q: "¿Contenido en español e inglés?", a: "Sí. Bilingüe nativo para mercados locales e internacionales." },
+      { q: "¿Contenido en español e inglés?", a: "Sí, si el encargo lo pide. El idioma se define con el alcance." },
       { q: "¿Industrias que atienden en Miami?", a: "Real estate, fintech, hospitality, e-commerce y servicios profesionales." },
     ],
   },
@@ -87,10 +87,10 @@ export const LOCAL_PAGES: LocalPage[] = [
     },
     intro: [
       "Tampa Bay mezcla corporativo, tecnología y servicios. Un sitio lento o desactualizado se nota.",
-      "Construimos plataformas, SEO y marketing con el criterio cultural de Scelerity.",
+      "Diseño, sitios y comunicación para empresas. El equipo está en Bogotá.",
     ],
     highlights: [
-      "Desarrollo Next.js para empresas B2B",
+      "Sitios para empresas que venden a otras empresas",
       "SEO local Tampa Bay",
       "Integraciones CRM y automatización",
     ],
@@ -116,7 +116,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     },
     intro: [
       "Jacksonville crece y las empresas locales necesitan una presencia que se pueda usar, no solo un perfil.",
-      "Diseño, desarrollo y marketing, con el criterio cultural de Scelerity.",
+      "Diseño, desarrollo y marketing para empresas, desde Bogotá.",
     ],
     highlights: [
       "Rediseño web corporativo",
@@ -127,7 +127,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     services: ["diseno-web", "marketing-digital", "ecommerce", "seo"],
     faq: [
       { q: "¿Atienden Jacksonville Beach y área metropolitana?", a: "Sí, toda el área metro de Jacksonville." },
-      { q: "¿Presupuestos para PYMES?", a: "Sí, con planes Starter, Growth y Full Digital adaptados al tamaño del proyecto." },
+      { q: "¿Presupuestos para PYMES?", a: "El precio se define por el alcance de cada proyecto. No publicamos planes con nombre ni tarifas fijas." },
     ],
   },
   {
@@ -145,7 +145,7 @@ export const LOCAL_PAGES: LocalPage[] = [
     },
     intro: [
       "Kissimmee depende del turismo y de los servicios locales. La búsqueda en Google es parte del negocio.",
-      "Hacemos sitios y SEO con el criterio cultural de Scelerity, no una plantilla genérica.",
+      "Hacemos sitios y comunicación para empresas, desde Bogotá.",
     ],
     highlights: [
       "SEO local Kissimmee / Osceola",

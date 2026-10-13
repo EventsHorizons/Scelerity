@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useLocale } from "@/context/LocaleContext";
 import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/Button";
 import { HERO_COPY, HERO_PEOPLE, SLICE_COUNT } from "./scelerity-hero/data";
 import styles from "./scelerity-hero/hero.module.css";
 import { useHeroMotion } from "./scelerity-hero/useHeroMotion";
@@ -133,18 +134,24 @@ export function ScelerityHero() {
         <div className="pointer-events-none absolute inset-x-0 top-1/2 z-30 -translate-y-1/2 mix-blend-difference px-5 text-center lg:px-[8vw]">
           <p
             data-hero="type"
-            className="font-display text-[clamp(4.5rem,13vw,12.5rem)] font-bold leading-[0.82] tracking-tighter text-[#f4f0e8]"
+            className="font-display text-[clamp(2.35rem,6.2vw,5.25rem)] font-bold leading-[0.9] tracking-tighter text-[#f4f0e8]"
             aria-hidden
           >
             {copy.line}
           </p>
           <p
             data-hero="type"
-            className="font-serif text-[clamp(3.4rem,8vw,8.5rem)] italic leading-[0.9] tracking-tight text-[#f4f0e8] lg:pl-[18vw]"
+            className="font-serif text-[clamp(2.35rem,5.2vw,4.5rem)] italic leading-[0.95] tracking-tight text-[#f4f0e8] lg:pl-[8vw]"
             aria-hidden
           >
             {copy.key}
           </p>
+        </div>
+        <div className="absolute inset-x-0 top-[calc(50%+(0.9*clamp(2.35rem,6.2vw,5.25rem)+0.95*clamp(2.35rem,5.2vw,4.5rem))/2+2.75rem)] z-30 flex flex-col items-center justify-center gap-3 px-5 sm:flex-row lg:px-[8vw]">
+          <Button href="/contacto/">{copy.cta}</Button>
+          <Button href="#services" variant="secondary" className={styles.heroSecondary}>
+            {copy.ctaSecondary}
+          </Button>
         </div>
       </div>
 

@@ -144,12 +144,12 @@ export const solutionsEs: SolutionsContent = {
   meta: {
     title: "Servicios — Arquitectura, experiencia y growth",
     description:
-      "Estrategia, tecnología, diseño y growth para crear experiencias digitales preparadas para el próximo ciclo cultural.",
+      "Estrategia, identidad, diseño y presencia digital para empresas de distintos sectores.",
   },
   hero: {
     label: "Services / 2028+",
     headline: "Construimos hoy lo que tu marca necesitará mañana.",
-    sub: "Estrategia, tecnología, diseño y growth para crear experiencias digitales preparadas para el próximo ciclo cultural.",
+    sub: "Estrategia, identidad, diseño y presencia digital para empresas de distintos sectores.",
     body: [
       "No utilizamos tecnología para hacer ruido.",
       "La utilizamos para resolver mejor, conectar más profundamente y abrir posibilidades que antes no existían.",
@@ -297,12 +297,12 @@ export const solutionsEn: SolutionsContent = {
   meta: {
     title: "Services — Architecture, experience, and growth",
     description:
-      "Strategy, technology, design, and growth to create digital experiences ready for the next cultural cycle.",
+      "Strategy, identity, design, and digital presence for companies in different sectors.",
   },
   hero: {
     label: "Services / 2028+",
     headline: "We build today what your brand will need tomorrow.",
-    sub: "Strategy, technology, design, and growth to create digital experiences ready for the next cultural cycle.",
+    sub: "Strategy, identity, design, and digital presence for companies in different sectors.",
     body: [
       "We don't use technology to make noise.",
       "We use it to solve better, connect more deeply, and open possibilities that didn't exist before.",

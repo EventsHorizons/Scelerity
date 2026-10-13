@@ -21,7 +21,7 @@ const plate = depthStyle({
 });
 
 const ATMOSPHERE =
-  "https://images.unsplash.com/photo-1770891948880-65950e82697d?auto=format&fit=crop&w=2000&q=70";
+  "/services/decision.jpg";
 
 export function ServicesHero() {
   const { locale } = useLocale();

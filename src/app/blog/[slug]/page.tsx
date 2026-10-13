@@ -145,7 +145,7 @@ export default async function BlogArticlePage({ params }: Props) {
             />
 
             <div className="mt-[var(--space-fluid-xl)]">
-              <Button href="/contacto/">Hablemos</Button>
+              <Button href="/contacto/">Hablemos de tu proyecto</Button>
             </div>
           </Container>
         </Section>

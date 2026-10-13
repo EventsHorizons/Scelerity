@@ -15,7 +15,7 @@ import { content } from "@/data/content";
 export const metadata: Metadata = buildPageMetadata({
   title: "Contacto — Scelerity",
   description:
-    "Cuéntanos sobre el proyecto. Cultural & creative marketing, desde Bogotá.",
+    "Cuéntanos qué estás preparando. Scelerity.",
   path: "/contacto/",
 });
 

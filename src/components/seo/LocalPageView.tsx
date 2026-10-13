@@ -148,7 +148,7 @@ export function LocalPageView({ page }: Props) {
             </p>
             <div className="mt-[var(--space-8)] flex flex-wrap justify-center gap-3">
               <Button href="/contacto/" size="lg">
-                Escríbenos
+                Hablemos de tu proyecto
               </Button>
               <Button href="/servicios/" variant="secondary" size="lg">
                 Ver servicios

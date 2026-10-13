@@ -9,7 +9,7 @@ export function About() {
   const { t } = useLocale();
 
   return (
-    <Section id="about" cardTone="light">
+    <Section id="valor" cardTone="light">
       <Container size="content" className="section-y-lg">
         <div className="section-head">
           <p className="chapter-label lg:pt-3">{t.about.label}</p>
@@ -28,7 +28,7 @@ export function About() {
             </div>
 
             <div className="mt-[var(--space-fluid-md)]">
-              <Button href="#trabajo">{t.about.cta}</Button>
+              <Button href="#services">{t.about.cta}</Button>
             </div>
           </div>
         </div>

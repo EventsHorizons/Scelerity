@@ -14,7 +14,7 @@ import { content } from "@/data/content";
 export const metadata: Metadata = buildPageMetadata({
   title: "Nosotros — Scelerity",
   description:
-    "Scelerity es una agencia de marketing cultural y creativo en Bogotá. Diseño, desarrollo y marketing para proyectos, industrias creativas y marcas.",
+    "Cada proyecto tiene su propio punto de partida. Scelerity.",
   path: "/nosotros/",
 });
 
@@ -34,16 +34,19 @@ export default function NosotrosPage() {
         <Section cardTone="paper">
           <Container size="content">
             <Breadcrumbs items={breadcrumbs} className="mb-16" />
-            <p className="chapter-label">Cultural & creative marketing</p>
-            <h1 className="mt-8 max-w-[18ch] text-balance font-display text-h1 font-semibold">
-              Agencia de marketing cultural y creativo.
+            <p className="chapter-label">Bogotá</p>
+            <h1 className="mt-8 max-w-[16ch] text-balance font-display text-h1 font-semibold">
+              Cada proyecto tiene su propio punto de partida.
             </h1>
             <div className="mt-10 measure space-y-8">
               <p className="text-lead text-[var(--fg-muted)]">
-                Scelerity hace diseño, desarrollo y marketing desde Bogotá. El criterio es cultural: un proyecto tiene que entrar en una conversación, no solo publicarse.
+                Algunos negocios necesitan encontrar su voz. Otros tienen un excelente producto, pero una web que los frena o un mensaje que no llega a su audiencia.
               </p>
               <p className="text-lead text-[var(--fg-muted)]">
-                Trabajamos con proyectos culturales, industrias creativas y marcas que necesitan identidad, sitios, campañas y producto.
+                En Scelerity no aplicamos fórmulas genéricas. Combinamos diseño, código y marketing estratégico para resolver el problema exacto que tienes frente a ti.
+              </p>
+              <p className="text-lead text-[var(--fg-muted)]">
+                Te damos claridad técnica y visual, invirtiendo solo en lo que realmente necesitas para avanzar.
               </p>
             </div>
             <ul className="mt-16 grid gap-10 md:grid-cols-3">
@@ -55,7 +58,7 @@ export default function NosotrosPage() {
               ))}
             </ul>
             <div className="mt-16">
-              <Button href="/contacto/">Iniciar conversación</Button>
+              <Button href="/contacto/">Hablemos de tu proyecto</Button>
             </div>
           </Container>
         </Section>

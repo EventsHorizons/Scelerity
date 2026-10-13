@@ -14,6 +14,9 @@ const Services = dynamic(() =>
 const About = dynamic(() =>
   import("@/components/sections/About").then((m) => ({ default: m.About })),
 );
+const Method = dynamic(() =>
+  import("@/components/sections/Method").then((m) => ({ default: m.Method })),
+);
 const FinalCTA = dynamic(() =>
   import("@/components/sections/FinalCTA").then((m) => ({ default: m.FinalCTA })),
 );
@@ -27,8 +30,9 @@ export default function Home() {
       <main id="main" className="landing-rhythm">
         <ScelerityHero />
         <About />
-        <Work />
         <Services />
+        <Method />
+        <Work />
         <FinalCTA />
       </main>
       <Footer />

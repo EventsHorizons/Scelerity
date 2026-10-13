@@ -52,14 +52,14 @@ export function buildPageMetadata({
 }
 
 export const HOME_METADATA = buildPageMetadata({
-  title: "Scelerity — Hacemos que las ideas entren en la cultura.",
+  title: "Scelerity | Diseño Web, UX/UI y Estrategia Digital",
   description:
-    "Estrategia, creatividad, identidad y experiencias para marcas, proyectos y comunidades.",
+    "Agencia creativa y digital especializada en ecosistemas web, diseño UI/UX, identidad de marca y marketing. Soluciones precisas para empresas y creadores.",
   path: "/",
   keywords: [
-    "agencia de marketing cultural",
-    "sector creativo",
-    "identidad",
-    "campañas",
+    "agencia creativa",
+    "diseño web",
+    "branding",
+    "Bogotá",
   ],
 });

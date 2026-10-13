@@ -31,7 +31,7 @@ export default function LocalIndexPage() {
               ]}
               className="mb-16"
             />
-            <p className="chapter-label">Cultural & creative marketing</p>
+            <p className="chapter-label">Agencia creativa y digital</p>
             <h1 className="mt-8 font-display text-h1 font-semibold">Presencia</h1>
             <p className="mt-8 measure text-lead text-[var(--fg-muted)]">
               Diseño, desarrollo y marketing desde Bogotá, y en estas ciudades cuando el proyecto está ahí.
